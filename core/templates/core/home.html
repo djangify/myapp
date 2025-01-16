@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Django and TailwindCSS Developer{% endblock %}
+
+{% block content %}
+<header class="p-6 bg-primary text-text relative md:p-16 flex flex-col gap-y-5 lg:gap-y-20">
+    {% include 'core/hero.html' %}
+</header>
+
+<main>
+    <!-- About Me Section -->
+     <section id="about" class="scroll-mt-16 p-6 flex flex-col gap-y-10 bg-secondary text-text lg:gap-x-10 lg:flex-row-reverse *:basis-full md:p-16 2xl:rounded">
+        <div class="space-y-5 *:space-y-2 lg:self-center xl:space-y-10">
+            <div>
+                <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
+                    About Me
+                </h6>
+                <h2 class="text-2xl capitalize font-bold lg:text-3xl">
+                    Professional Developer
+                </h2>
+            </div>
+        
+            <div>
+                <p>
+                    A full-stack developer leveraging Django, Django Rest Framework, TailwindCSS, AI and FastAPI as my tech stack. 
+                </p>
+                <p>
+                    I love building modern web applications that deliver great user experiences because they are useful and easy to use.
+                </p>
+                <p>
+                    I am embracing my &quot;Build and Bloom Era&quot;, and after over 10 years of working freelance with WordPress I have taken on a new challenge of selling what I build and building what I sell.
+                </p>
+                <p>
+                    Proficient in Django-based backend systems and FastAPI for scalable applications. Leveraging TailwindCSS for dynamic and responsive frontend designs.I am discovering innovative ways to integrate agentic AI into education, personal growth and commerce.
+                </p>
+            </div>
+        
+            <a class="uppercase inline-block p-2 border-2 border-accent self-start text-xs rounded sm:text-lg sm:px-4" href="#">Learn More</a>
+        </div>
+        
+        <div class="grid gap-5 *:flex *:flex-col *:gap-y-5 *:items-center *:border-2 *:border-accent *:rounded *:p-8 sm:grid-cols-2">
+            <div>
+                <figure class="h-28">
+                    <img src="{% static 'images/service-1.png' %}" alt="Service 1" />
+                </figure>
+    
+                <h5 class="text-xl text-accent text-center">EduCommerce</h5>
+                <p class="text-center">
+                    Organise your content, sell products and build brand authority —all in one place.
+                </p>
+            </div>
+    
+            <div>
+                <figure class="h-28">
+                    <img src="{% static 'images/service-2.png' %}" alt="Service 2" />
+                </figure>
+    
+                <h5 class="text-xl text-accent text-center">Agentic AI</h5>
+                <p class="text-center">
+                    AI Assistants that perform complex tasks, take actions & learn with limited supervision.
+                </p>
+            </div>
+    
+            <div>
+                <figure class="h-28">
+                    <img src="{% static 'images/service-3.png' %}" alt="Service 3" />
+                </figure>
+    
+                <h5 class="text-xl text-accent text-center">Backend Developer</h5>
+                <p class="text-center">
+                    Working on server-side software to create the structure and logic of a website/app .
+                </p>
+            </div>
+    
+            <div>
+                <figure class="h-28">
+                    <img src="{% static 'images/service-4.png' %}" alt="Service 4" />
+                </figure>
+    
+                <h5 class="text-xl text-accent text-center">Fast API</h5>
+                <p class="text-center">
+                    Web framework for building APIs with Python. Simplifies the development of APIs.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="p-6 flex flex-col gap-y-10 bg-primary text-text md:p-16 lg:gap-x-10 lg:flex-row *:basis-full">
+        <div class="space-y-5 lg:self-center xl:space-y-10">
+            <div class="space-y-2">
+                <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
+                    My Skills
+                </h6>
+                <h2 class="text-2xl capitalize font-bold lg:text-3xl">
+                    My Tech Stack
+                </h2>
+            </div>
+    
+            <div class="space-y-2">
+                <p>
+                    These percentages represent how frequently I use each tool in my daily work. I use Claude.ai to speed up my development process and work through bugs.
+                </p>
+            </div>
+    
+            <div class="space-y-5 *:space-y-2 xl:space-y-8">
+                <div>
+                    <h5 class="font-bold text-accent">Django</h5>
+                    <div class="h-6 w-full rounded-full bg-secondary relative before before:top-0 before:left-0 before:h-6 before:w-[90%] before:rounded-full z-10 before:-z-10 pl-4">
+                        90%
+                    </div>
+                </div>
+    
+                <div>
+                    <h5 class="font-bold text-accent">TailwindCSS</h5>
+                    <div class="h-6 w-full rounded-full bg-secondary relative before before:top-0 before:left-0 before:h-6 before:w-[80%] before:rounded-full z-10 before:-z-10 pl-4">
+                        80%
+                    </div>
+                </div>
+    
+                <div>
+                    <h5 class="font-bold text-accent">FastAPI</h5>
+                    <div class="h-6 w-full rounded-full bg-secondary relative before before:top-0 before:left-0 before:h-6 before:w-[80%] before:rounded-full z-10 before:-z-10 pl-4">
+                        80%
+                    </div>
+                </div>
+    
+                <div>
+                    <h5 class="font-bold text-accent">Claude.ai</h5>
+                    <div class="h-6 w-full rounded-full bg-secondary relative before before:top-0 before:left-0 before:h-6 before:w-[90%] before:rounded-full z-10 before:-z-10 pl-4">
+                        90%
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold text-accent">AI Agents</h5>
+                    <div class="h-6 w-full rounded-full bg-secondary relative before before:top-0 before:left-0 before:h-6 before:w-[80%] before:rounded-full z-10 before:-z-10 pl-4">
+                        80%
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <figure class="lg:max-w-[550px] xl:relative xl:before xl:before:top-0 xl:before:left-0 xl:before:h-full xl:before:w-5 xl:pl-20">
+            <img src="{% static 'images/skills.jpg' %}" alt="Skills Image" />
+        </figure>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="scroll-mt-16">
+        {% include 'base/gallery.html' %}
+    </section>
+    <!-- News Section -->
+    <section id="news" class="scroll-mt-16">
+        {% include 'base/news.html' %}
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="scroll-mt-16">
+        {% include 'contact/contact.html' %}
+    </section>
+
+</main>
+{% endblock %}
