@@ -1,0 +1,85 @@
+# Path: portfolio/templates/portfolio/portfolio_list.html
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Portfolio - Django and TailwindCSS Projects{% endblock %}
+
+{% block content %}
+<section class="p-6 bg-[#1E1E1E] text-white md:p-16">
+    <!-- Section Header -->
+    <div class="mb-12">
+        <h6 class="text-sm pl-6 uppercase relative before:content-[''] before:absolute before:h-1 before:w-4 before:bg-[#FF6B6B] before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
+            My Projects
+        </h6>
+        <h2 class="text-3xl font-bold mt-4">Recent Work</h2>
+    </div>
+
+    <!-- Technologies Filter -->
+    <div class="mb-10">
+        <div class="flex flex-wrap gap-3">
+            {% for tech in technologies %}
+            <a href="{% url 'portfolio:portfolio_by_technology' tech.slug %}" 
+               class="px-4 py-2 text-sm border border-[#FF6B6B] rounded hover:bg-[#FF6B6B] hover:text-white transition-colors">
+                <i class="{{ tech.icon }}"></i> {{ tech.name }}
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {% for portfolio in portfolios %}
+        <article class="bg-[#2D2D2D] rounded-lg overflow-hidden group">
+            {% if portfolio.display_image %}
+            <div class="relative overflow-hidden">
+                <img src="{{ portfolio.display_image }}" 
+                     alt="{{ portfolio.title }}" 
+                     class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"/>
+                <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <a href="{% url 'portfolio:portfolio_detail' portfolio.slug %}" 
+                       class="px-6 py-2 border-2 border-[#FF6B6B] text-white rounded hover:bg-[#FF6B6B] transition-colors">
+                        View Project
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+            
+            <div class="p-6 space-y-4">
+                <h3 class="text-xl font-bold">{{ portfolio.title }}</h3>
+                <p class="text-gray-400">{{ portfolio.short_description }}</p>
+                
+                <div class="flex flex-wrap gap-2">
+                    {% for tech in portfolio.technologies.all %}
+                    <span class="px-2 py-1 text-xs bg-[#1E1E1E] rounded text-[#FF6B6B]">
+                        <i class="{{ tech.icon }}"></i> {{ tech.name }}
+                    </span>
+                    {% endfor %}
+                </div>
+                
+                <div class="pt-4 flex justify-between items-center">
+                    {% if portfolio.live_site_url %}
+                    <a href="{{ portfolio.live_site_url }}" 
+                       target="_blank"
+                       class="text-[#FF6B6B] hover:text-white transition-colors">
+                        <i class="fas fa-external-link-alt"></i> Live Site
+                    </a>
+                    {% endif %}
+                    {% if portfolio.github_url %}
+                    <a href="{{ portfolio.github_url }}" 
+                       target="_blank"
+                       class="text-[#FF6B6B] hover:text-white transition-colors">
+                        <i class="fab fa-github"></i> Code
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </article>
+        {% empty %}
+        <div class="col-span-full text-center py-12">
+            <p class="text-gray-400">No portfolio items available yet.</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

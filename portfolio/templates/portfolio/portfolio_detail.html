@@ -1,0 +1,88 @@
+# Path: portfolio/templates/portfolio/portfolio_detail.html
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ portfolio.meta_title|default:portfolio.title }} - Portfolio{% endblock %}
+
+{% block content %}
+<article class="p-6 bg-[#1E1E1E] text-white md:p-16">
+    <!-- Project Header -->
+    <header class="max-w-4xl mx-auto text-center mb-12">
+        <h6 class="text-sm pl-6 uppercase relative before:content-[''] before:absolute before:h-1 before:w-4 before:bg-[#FF6B6B] before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
+            Project Details
+        </h6>
+        <h1 class="text-4xl font-bold mt-4 mb-6">{{ portfolio.title }}</h1>
+        <p class="text-xl text-gray-400">{{ portfolio.short_description }}</p>
+    </header>
+
+    <!-- Featured Image -->
+    {% if portfolio.display_image %}
+    <div class="max-w-4xl mx-auto mb-12">
+        <div class="relative rounded-lg overflow-hidden">
+            <img src="{{ portfolio.display_image }}" 
+                 alt="{{ portfolio.title }}" 
+                 class="w-full h-auto"/>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#1E1E1E] opacity-30"></div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Project Links -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+        {% if portfolio.live_site_url %}
+        <a href="{{ portfolio.live_site_url }}" 
+           target="_blank"
+           class="inline-flex items-center px-6 py-3 border-2 border-[#FF6B6B] rounded hover:bg-[#FF6B6B] transition-colors">
+            <i class="fas fa-globe mr-2"></i> View Live Site
+        </a>
+        {% endif %}
+        
+        {% if portfolio.github_url %}
+        <a href="{{ portfolio.github_url }}" 
+           target="_blank"
+           class="inline-flex items-center px-6 py-3 border-2 border-[#FF6B6B] rounded hover:bg-[#FF6B6B] transition-colors">
+            <i class="fab fa-github mr-2"></i> View Code
+        </a>
+        {% endif %}
+    </div>
+
+    <!-- Technologies Used -->
+    <div class="max-w-4xl mx-auto mb-12 bg-[#2D2D2D] p-8 rounded-lg">
+        <h2 class="text-2xl font-bold mb-6">Technologies Used</h2>
+        <div class="flex flex-wrap gap-3">
+            {% for tech in portfolio.technologies.all %}
+            <span class="px-4 py-2 bg-[#1E1E1E] rounded text-[#FF6B6B]">
+                <i class="{{ tech.icon }}"></i> {{ tech.name }}
+            </span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Project Description -->
+    <div class="max-w-4xl mx-auto prose prose-invert prose-headings:text-white prose-a:text-[#FF6B6B]">
+        {{ portfolio.description|safe }}
+    </div>
+
+    <!-- Project Gallery -->
+    {% if portfolio.images.exists %}
+    <div class="max-w-6xl mx-auto mt-16">
+        <h2 class="text-2xl font-bold mb-8">Project Gallery</h2>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {% for image in portfolio.images.all %}
+            <div class="rounded-lg overflow-hidden group relative">
+                <img src="{{ image.display_image }}" 
+                     alt="{{ image.caption|default:portfolio.title }}"
+                     class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"/>
+                {% if image.caption %}
+                <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 p-3 transform translate-y-full group-hover:translate-y-0 transition-transform">
+                    <p class="text-sm text-gray-200">{{ image.caption }}</p>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</article>
+{% endblock %}

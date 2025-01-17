@@ -98,7 +98,7 @@
                 </h2>
             </div>
     
-            <div class="space-y-2">
+            <div class="space-y-2 text-lg">
                 <p>
                     These percentages represent how frequently I use each tool in my daily work. I use Claude.ai to speed up my development process and work through bugs.
                 </p>
@@ -154,6 +154,28 @@
     <section id="news" class="scroll-mt-16">
         {% include 'base/news.html' %}
     </section>
+
+    <!-- *-*-*-*-*-*-*-*-*-*-*-*-* Motto -->
+    <section class="p-6 bg-secondary text-text md:p-16 2xl:rounded">
+        <div
+        class="p-2 flex flex-col gap-y-5 lg:w-3/4 lg:mx-auto lg:relative lg:after lg:after:h-2 lg:after:w-16 lg:after:-bottom-6 lg:after:left-2/4 lg:after:-translate-x-2/4"
+        >
+        <blockquote
+            cite="https://martinfowler.com/books/refactoring.html"
+        >
+            <p
+            class="before:content-['\201C'] after:content-['\201D'] text-xl text-center lg:text-2xl"
+            >
+            If you can get today’s work done today, but you do it in such a way that you can’t possibly get tomorrow’s work done tomorrow, then you lose.
+            </p>
+        </blockquote>
+        <p class="text-center font-bold">
+            — Martin Fowler, <cite>Refactoring: Improving the Design of Existing Code</cite>
+        </p>
+        </div>
+    </section>
+
+
     <!-- Contact Section -->
     <section id="contact" class="scroll-mt-16">
         {% include 'contact/contact.html' %}
