@@ -1,5 +1,4 @@
 # Path: portfolio/admin.py
-
 from django.contrib import admin
 from django.utils.html import format_html
 from django import forms
@@ -32,6 +31,15 @@ class TechnologyAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
     ordering = ["name", "-created_at"]
 
+class PortfolioAdminForm(forms.ModelForm):
+    introduction = forms.CharField(widget=CKEditorWidget())
+    tech_stack_description = forms.CharField(widget=CKEditorWidget(), required=False)
+    feature_description = forms.CharField(widget=CKEditorWidget(), required=False)
+    
+    class Meta:
+        model = Portfolio
+        fields = '__all__'
+
 @admin.register(Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
     form = PortfolioAdminForm
@@ -44,7 +52,7 @@ class PortfolioAdmin(admin.ModelAdmin):
         "created_at",
     )
     list_filter = ("status", "is_featured", "technologies", "created_at")
-    search_fields = ("title", "description", "short_description")
+    search_fields = ("title", "introduction", "tech_stack_description", "feature_description", "short_description")
     prepopulated_fields = {"slug": ("title",)}
     filter_horizontal = ("technologies",)
     inlines = [PortfolioImageInline]
@@ -56,8 +64,15 @@ class PortfolioAdmin(admin.ModelAdmin):
             "fields": ("title", "slug", "short_description", "status"),
             "classes": ("wide", "extrapretty"),
         }),
-        ("Content", {
-            "fields": ("description", "featured_image", "featured_image_url", "technologies"),
+        ("Project Content", {
+            "fields": (
+                "introduction",
+                "tech_stack_description", 
+                "feature_description",
+                "featured_image", 
+                "featured_image_url", 
+                "technologies"
+            ),
             "classes": ("wide", "extrapretty"),
         }),
         ("Project Details", {

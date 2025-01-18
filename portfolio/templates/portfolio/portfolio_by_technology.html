@@ -1,85 +1,83 @@
-# Path: portfolio/templates/portfolio/portfolio_by_technology.html
-
 {% extends 'base.html' %}
 {% load static %}
 
 {% block title %}{{ technology.name }} Projects - Portfolio{% endblock %}
 
 {% block content %}
-<section class="p-6 bg-[#1E1E1E] text-white md:p-16">
-    <!-- Technology Header -->
-    <header class="mb-12">
-        <h6 class="text-sm pl-6 uppercase relative before:content-[''] before:absolute before:h-1 before:w-4 before:bg-[#FF6B6B] before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
+<section class="p-6 bg-secondary text-text md:p-16">
+    <!-- Section Header -->
+    <div class="mb-12">
+        <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg mb-4">
             Projects Using
         </h6>
-        <div class="flex items-center gap-4 mt-4">
-            <i class="{{ technology.icon }} text-4xl text-[#FF6B6B]"></i>
-            <h1 class="text-4xl font-bold">{{ technology.name }}</h1>
+        <div class="flex items-center gap-4 mt-8">
+            <span class="inline-flex items-center px-6 py-3 text-lg bg-accent/10 rounded-full text-accent border-2 border-accent">
+                <i class="{{ technology.icon }} mr-3"></i>
+                <h1 class="text-3xl font-bold">{{ technology.name }}</h1>
+            </span>
         </div>
-    </header>
+    </div>
 
-    <!-- Back to All Projects -->
-    <div class="mb-8">
+    <!-- Back to Projects Link -->
+    <div class="mb-12 pb-8 border-b border-gray-700">
         <a href="{% url 'portfolio:portfolio_list' %}" 
-           class="inline-flex items-center px-4 py-2 text-[#FF6B6B] hover:text-white transition-colors">
-            <i class="fas fa-arrow-left mr-2"></i> All Projects
+           class="inline-flex items-center px-6 py-3 mt-8 bg-accent text-white rounded-md hover:bg-accent/90 transition-colors">
+            <i class="fas fa-arrow-left mr-3"></i>
+            <span>All Projects</span>
         </a>
     </div>
 
     <!-- Portfolio Grid -->
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {% for portfolio in portfolios %}
-        <article class="bg-[#2D2D2D] rounded-lg overflow-hidden group">
+        <article class="bg-primary rounded-lg overflow-hidden">
             {% if portfolio.display_image %}
-            <div class="relative overflow-hidden">
+            <div class="aspect-w-16 aspect-h-9">
                 <img src="{{ portfolio.display_image }}" 
                      alt="{{ portfolio.title }}" 
-                     class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"/>
-                <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <a href="{% url 'portfolio:portfolio_detail' portfolio.slug %}" 
-                       class="px-6 py-2 border-2 border-[#FF6B6B] text-white rounded hover:bg-[#FF6B6B] transition-colors">
-                        View Project
-                    </a>
-                </div>
+                     class="w-full h-full object-cover"/>
             </div>
             {% endif %}
             
-            <div class="p-6 space-y-4">
-                <h3 class="text-xl font-bold">{{ portfolio.title }}</h3>
-                <p class="text-gray-400">{{ portfolio.short_description }}</p>
+            <div class="p-8">
+                <h3 class="text-xl font-bold mb-6">{{ portfolio.title }}</h3>
+                <p class="text-gray-400 mb-8">{{ portfolio.short_description }}</p>
                 
-                <div class="flex flex-wrap gap-2">
-                    {% for tech in portfolio.technologies.all %}
-                    <span class="px-2 py-1 text-xs bg-[#1E1E1E] rounded text-[#FF6B6B]">
-                        <i class="{{ tech.icon }}"></i> {{ tech.name }}
-                    </span>
-                    {% endfor %}
-                </div>
-                
-                <div class="pt-4 flex justify-between items-center">
-                    {% if portfolio.live_site_url %}
-                    <a href="{{ portfolio.live_site_url }}" 
-                       target="_blank"
-                       class="text-[#FF6B6B] hover:text-white transition-colors">
-                        <i class="fas fa-external-link-alt"></i> Live Site
+                <div class="pt-6 mt-8 flex justify-between items-center border-t border-gray-700">
+                    <a href="{% url 'portfolio:portfolio_detail' portfolio.slug %}" 
+                       class="flex-1 mr-8 inline-flex items-center justify-center px-6 py-3 bg-accent text-white rounded-md hover:bg-accent/90 transition-colors">
+                        View Details
+                        <i class="fas fa-arrow-right ml-3"></i>
                     </a>
-                    {% endif %}
-                    {% if portfolio.github_url %}
-                    <a href="{{ portfolio.github_url }}" 
-                       target="_blank"
-                       class="text-[#FF6B6B] hover:text-white transition-colors">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-                    {% endif %}
+                    <!-- live link and github link-->
+                    <div class="pt-6 mt-8 flex justify-between items-center border-t border-gray-700">
+                        <div class="flex gap-4">
+                            {% if portfolio.live_site_url %}
+                            <a href="{{ portfolio.live_site_url }}" 
+                               target="_blank"
+                               class="px-6 py-3 rounded-md bg-accent text-white hover:bg-accent/90 transition-colors">
+                                <i class="fas fa-external-link-alt text-lg"></i>
+                            </a>
+                            {% endif %}
+                            {% if portfolio.github_url %}
+                            <a href="{{ portfolio.github_url }}" 
+                               target="_blank"
+                               class="px-6 py-3 rounded-md border-2 border-accent text-accent hover:bg-accent hover:text-white transition-colors">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </article>
         {% empty %}
-        <div class="col-span-full text-center bg-[#2D2D2D] rounded-lg p-12">
-            <p class="text-gray-400 mb-6">No projects found using {{ technology.name }}.</p>
+        <div class="col-span-full text-center p-12 bg-primary rounded-lg">
+            <p class="text-gray-400 mb-8">No projects found using {{ technology.name }}.</p>
             <a href="{% url 'portfolio:portfolio_list' %}" 
-               class="inline-block px-6 py-3 border-2 border-[#FF6B6B] rounded hover:bg-[#FF6B6B] transition-colors">
-                View All Projects
+               class="inline-flex items-center px-6 py-3 bg-accent text-white rounded-md hover:bg-accent/90 transition-colors">
+                <i class="fas fa-arrow-left mr-3"></i>
+                <span>Back to All Projects</span>
             </a>
         </div>
         {% endfor %}

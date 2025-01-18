@@ -1,5 +1,4 @@
 # Path: portfolio/models.py
-
 from django.db import models
 from django.core.validators import FileExtensionValidator
 
@@ -32,6 +31,7 @@ class Technology(models.Model):
     def __str__(self):
         return self.name
 
+
 class Portfolio(models.Model):
     STATUS_CHOICES = [
         ('draft', 'Draft'),
@@ -41,8 +41,25 @@ class Portfolio(models.Model):
 
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
-    description = models.TextField()
     short_description = models.CharField(max_length=200)
+    
+    # Content sections
+    introduction = models.TextField(
+        blank=True, 
+        null=True,
+        help_text="Introduction section describing the project overview"
+    )
+    tech_stack_description = models.TextField(
+        blank=True, 
+        null=True,
+        help_text="Detailed description of the technical stack and architecture"
+    )
+    feature_description = models.TextField(
+        blank=True, 
+        null=True,
+        help_text="Description of key features and functionality"
+    )
+
     featured_image = models.ImageField(
         upload_to='portfolio/featured/',
         validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'webp'])],
@@ -89,6 +106,7 @@ class Portfolio(models.Model):
     @property
     def display_image(self):
         return self.featured_image_url or (self.featured_image.url if self.featured_image else None)
+
 
 class PortfolioImage(models.Model):
     portfolio = models.ForeignKey(Portfolio, related_name='images', on_delete=models.CASCADE)
