@@ -4,76 +4,70 @@
 {% block title %}Portfolio - Django and TailwindCSS Projects{% endblock %}
 
 {% block content %}
-<section class="p-6 bg-secondary text-text md:p-16">
+<section class="p-6 bg-secondary  text-text md:p-16">
     <!-- Section Header -->
     <div class="mb-12">
-        <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg mb-4">
+        <h3 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg mb-4">
             My Projects
-        </h6>
+        </h3>
         <h2 class="text-3xl font-bold mt-8 mb-6">Recent Work</h2>
         <p class="mt-6 text-gray-400 max-w-2xl mb-12">
             Explore my latest web development projects and experiments.
         </p>
-  
-        <div class="flex flex-wrap gap-8 mb-16 pb-8 border-b border-gray-700">
+        </div>
+        <br>
+         <!-- Technology Filter -->
+         <div class="flex flex-wrap justify-center gap-4 mb-16">
             {% for tech in technologies %}
             <a href="{% url 'portfolio:portfolio_by_technology' tech.slug %}" 
-               class="px-6 py-3 text-sm bg-accent/10 border-2 border-accent rounded-full text-accent hover:bg-accent hover:text-white transition-colors">
-                <i class="{{ tech.icon }} mr-3"></i> {{ tech.name }}
+               class="px-6 py-3 text-sm bg-accent/10 border border-accent rounded-full text-accent hover:bg-accent hover:text-white transition-colors">
+                {{ tech.name }}
             </a>
             {% endfor %}
         </div>
-    </div>
-
-    <!-- Portfolio Grid -->
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {% for portfolio in portfolios %}
-        <article class="bg-primary rounded-lg overflow-hidden">
-            {% if portfolio.display_image %}
-            <div class="aspect-w-16 aspect-h-9">
-                <img src="{{ portfolio.display_image }}" 
-                     alt="{{ portfolio.title }}" 
-                     class="w-full h-full object-cover"/>
+        <br>
+        <!-- Project Grid -->
+        {% if not portfolios %}
+            <div class="text-center py-8 gap-4">
+                <p class="text-lg text-gray-400">No portfolio items available yet.</p>
             </div>
-            {% endif %}
-            
-            <div class="p-8"> <!-- Increased padding -->
-                <h3 class="text-xl font-bold mb-6">{{ portfolio.title }}</h3>
-                <p class="text-gray-400 mb-8">{{ portfolio.short_description }}</p>
-                
-                <!-- Action buttons  -->
-                <div class="pt-6 mt-8 flex justify-between items-center border-t border-gray-700">
-                    <a href="{% url 'portfolio:portfolio_detail' portfolio.slug %}" 
-                       class="flex-1 mr-8 inline-flex items-center justify-center px-6 py-3 bg-accent text-white rounded-md hover:bg-accent/90 transition-colors">
-                        View Details
-                        <i class="fas fa-arrow-right ml-3"></i>
-                    </a>
-                    <!-- live link and github link-->
-                    <div class="pt-6 mt-8 flex justify-between items-center border-t border-gray-700">
-                        <div class="flex gap-4">
-                            {% if portfolio.live_site_url %}
-                            <a href="{{ portfolio.live_site_url }}" 
-                               target="_blank"
-                               class="px-6 py-3 rounded-md bg-accent text-white hover:bg-accent/90 transition-colors">
-                                <i class="fas fa-external-link-alt text-lg"></i>
-                            </a>
-                            {% endif %}
-                            {% if portfolio.github_url %}
-                            <a href="{{ portfolio.github_url }}" 
-                               target="_blank"
-                               class="px-6 py-3 rounded-md border-2 border-accent text-accent hover:bg-accent hover:text-white transition-colors">
-                                <i class="fab fa-github text-lg"></i>
-                            </a>
-                            {% endif %}
-                        </div>
+        {% else %}
+            <div class="grid gap-x-2 gap-y-2 md:grid-cols-2 lg:grid-cols-3">
+                {% for portfolio in portfolios %}
+                <article class="bg-primary rounded-lg overflow-hidden">
+                    {% if portfolio.display_image %}
+                    <div class="h-68 rounded">
+                        <img src="{{ portfolio.display_image }}" 
+                             alt="{{ portfolio.title }}" 
+                             class="w-full h-full object-cover"/>
                     </div>
-                </div>
-        </article>
-        {% empty %}
-        <div class="col-span-full text-center py-12">
-            <p class="text-gray-400">No portfolio items available yet.</p>
-        </div>
-        {% endfor %}
+                    {% endif %}
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">{{ portfolio.title }}</h3>
+                        <p class="text-sm mb-4">{{ portfolio.short_description }}</p>
+                        
+                        <!-- Technologies -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            {% for tech in portfolio.technologies.all %}
+                            <span class="text-accent text-sm">{{ tech.name }}</span>
+                            {% if not forloop.last %}<span class="text-accent">•</span>{% endif %}
+                            {% endfor %}
+                        </div>
+
+                        <!-- View Details Button -->
+		 
+               		 <div class="pt-6 mt-8 flex justify-between items-center border-t border-gray-700">
+                   		 <a href="{% url 'portfolio:portfolio_detail' portfolio.slug %}" 
+                    		   class="flex-1 mr-8 inline-flex items-center justify-center px-6 py-3 bg-accent text-white rounded-md hover:bg-accent/90 transition-colors">
+                      		  View Details
+                      		  <i class="fas fa-arrow-right ml-3"></i>
+                   		 </a>
+                    	</div>
+                </article>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 </section>
 {% endblock %}

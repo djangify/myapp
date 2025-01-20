@@ -10,6 +10,7 @@
         <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg mb-4">
             Projects Using
         </h6>
+        <br>
         <div class="flex items-center gap-4 mt-8">
             <span class="inline-flex items-center px-6 py-3 text-lg bg-accent/10 rounded-full text-accent border-2 border-accent">
                 <i class="{{ technology.icon }} mr-3"></i>
@@ -17,7 +18,7 @@
             </span>
         </div>
     </div>
-
+    <br>
     <!-- Back to Projects Link -->
     <div class="mb-12 pb-8 border-b border-gray-700">
         <a href="{% url 'portfolio:portfolio_list' %}" 
@@ -26,9 +27,9 @@
             <span>All Projects</span>
         </a>
     </div>
-
+    <br>
     <!-- Portfolio Grid -->
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-8 gap-x-2 gap-y-2 md:grid-cols-2 lg:grid-cols-3">
         {% for portfolio in portfolios %}
         <article class="bg-primary rounded-lg overflow-hidden">
             {% if portfolio.display_image %}
