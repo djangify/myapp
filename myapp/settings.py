@@ -3,7 +3,7 @@ import environ
 import os
 import sys
 from environ import Env
-import pymysql
+import pymysql # type: ignore
 
 pymysql.install_as_MySQLdb()
 
@@ -154,7 +154,7 @@ STATICFILES_DIRS = [
 # CKEditor settings
 CKEDITOR_UPLOAD_SLUGIFY_FILENAME = True
 CKEDITOR_JQUERY_URL = None
-CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename_generator'
+
 
 CKEDITOR_UPLOAD_PATH = "uploads/ckeditor/"
 CKEDITOR_ALLOW_NONIMAGE_FILES = True
