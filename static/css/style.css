@@ -461,6 +461,12 @@ video {
   height: auto;
 }
 
+img.gallery {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Make elements with the HTML hidden attribute stay hidden by default */
 
 [hidden] {
