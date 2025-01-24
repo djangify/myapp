@@ -468,9 +468,9 @@ video {
 }
 
 :root {
-  --color-primary: 0deg 0% 14%;
-  --color-secondary: 0deg 0% 18%;
-  --color-accent: 3deg 74% 65%;
+  --color-primary: 180deg 92% 18%;
+  --color-secondary: 180deg 92% 23%;
+  --color-accent: 209.66deg 91.75% 19.02%;
   --color-text: 0deg 0% 100%;
 }
 

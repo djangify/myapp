@@ -2,28 +2,35 @@
 {% block content %}
 
 <!-- news/templates/news/detail.html -->
-<div class="mx-auto max-w-4xl px-6 sm:px-8 lg:px-12">
-    <div class="bg-white p-8 rounded-lg shadow-sm">
-        <header class="mb-8">
-            <h1 class="text-4xl font-bold">{{ post.title }}</h1>
-            <div class="mt-2 text-gray-600">
-                {{ post.publish_date|date:"F j, Y" }} | 
-                <a href="{{ post.category.get_absolute_url }}" class="text-blue-600 hover:text-blue-800">
-                    {{ post.category.name }}
-                </a>
+<section class="px-6 bg-secondary text-text md:p-16">
+    <!-- Hero Section -->
+    <section class="flex flex-col gap-10 lg:flex-row lg:*:basis-full lg:gap-x-24 xl:gap-x-12">
+        <div class="flex flex-col gap-y-5 lg:gap-y-12 xl:self-center xl:gap-y-24">
+            <div class="space-y-2 lg:space-y-4">
+                <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
+                    Article Details
+                </h6>
+                <h1 class="text-5xl font-bold lg:text-5xl">{{ post.title }}</h1>
             </div>
-        </header>
-        
-        {% if post.external_image_url %}
-            <div class="mb-8">
-                <img src="{{ post.external_image_url }}" alt="{{ post.title }}" class="w-full h-auto rounded-lg shadow-sm">
-            </div>
-        {% elif post.image %}
-            <div class="mb-8">
-                <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-auto rounded-lg shadow-sm">
-            </div>
-        {% endif %}
-
+            {% if post.introduction %}
+                <div class="lg:text-lg mb-12">{{ post.introduction|safe }}</div>
+            {% endif %}
+        </div>
+        <figure class="h-[600px] lg:max-w-[550px] lg:relative lg:before:absolute lg:before:content-[''] lg:before:border-[20px] lg:before:rounded lg:before:border-accent lg:before:h-96 lg:before:w-96 lg:before:-top-12 lg:before:-left-12 lg:before:-z-10 lg:z-10">
+            {% if post.external_image_url %}
+                <img src="{{ post.external_image_url }}" 
+                     alt="{{ post.title }}" 
+                     class="w-full h-full object-cover rounded-lg" />
+            {% elif post.image %}
+                <img src="{{ post.image.url }}" 
+                     alt="{{ post.title }}" 
+                     class="w-full h-full object-cover rounded-lg" />
+            {% endif %}
+        </figure>
+    </section>
+    <br>
+    <!-- Content Section -->
+    <div class="container mx-auto max-w-4xl mt-16">
         {% if post.youtube_url %}
         <div class="mb-8">
             <div class="relative w-full" style="padding-top: 56.25%">
@@ -38,16 +45,16 @@
         </div>
         {% endif %}
 
-        <div class="prose prose-lg text-gray-800 leading-relaxed">
+        <div class="prose prose-lg text-text max-w-none">
             {{ post.content|safe }}
         </div>
 
         <!-- Navigation -->
-        <nav class="mt-16 border-t border-gray-200 pt-12">
+        <nav class="mt-16 border-t border-gray-700 pt-12">
             <div class="flex justify-between items-center">
                 {% if previous_post %}
-                <a href="{{ previous_post.get_absolute_url }}" class="group flex items-center text-sm mt-8 text-gray-500 hover:text-gray-700">
-                    <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <a href="{{ previous_post.get_absolute_url }}" class="group flex items-center text-sm mt-8 text-gray-400 hover:text-gray-200">
+                    <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
                     <div>
@@ -60,12 +67,12 @@
                 {% endif %}
 
                 {% if next_post %}
-                <a href="{{ next_post.get_absolute_url }}" class="group flex items-center text-right text-sm text-gray-500 hover:text-gray-700">
+                <a href="{{ next_post.get_absolute_url }}" class="group flex items-center text-right text-sm text-gray-400 hover:text-gray-200">
                     <div>
                         <span class="block text-xs text-gray-400">Next</span>
                         <span class="block">{{ next_post.title|truncatechars:40 }}</span>
                     </div>
-                    <svg class="ml-3 h-5 w-5 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="ml-3 h-5 w-5 text-gray-400 group-hover:text-gray-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
                 </a>
@@ -74,20 +81,22 @@
                 {% endif %}
             </div>
         </nav>
-        <!-- all articles in category -->
+
+        <!-- Category Link -->
         <div class="text-center py-12 mb-6">
-            <a href="{{ post.category.get_absolute_url }}" class="inline-flex items-center py-1 px-4 mb-7 text-md text-bold bg-gray-100 text-gray-700 rounded-full dark:bg-gray-800 dark:text-white">
-                <span class="bg-blue-600 hover:text-white-800 text-white text-md px-4 py-1.5 rounded-full mr-2">All articles in category:</span>
+            <a href="{{ post.category.get_absolute_url }}" class="inline-flex items-center px-6 py-3 text-sm border-2 border-accent rounded-full text-accent hover:bg-accent hover:text-white transition-colors">
+                <span class="mr-2">All articles in category:</span>
                 {{ post.category.name }}
             </a>
         </div>
-       <!-- related posts -->
+
+        <!-- Related Posts -->
         <div class="mt-12 mb-24">
             <h2 class="text-2xl font-bold mb-8">Related Posts</h2>
-            <div class="flex flex-row justify-between space-x-8">
+            <div class="flex flex-col md:flex-row justify-between gap-8">
                 {% for related in related_posts %}
-                <a href="{{ related.get_absolute_url }}" class="group w-1/2">
-                    <div class="aspect-video w-full mb-4 overflow-hidden rounded-lg bg-gray-100">
+                <a href="{{ related.get_absolute_url }}" class="group w-full md:w-1/2">
+                    <div class="aspect-video w-full mb-4 overflow-hidden rounded-lg bg-gray-800">
                         {% if related.external_image_url %}
                             <img src="{{ related.external_image_url }}" 
                                 alt="{{ related.title }}" 
@@ -98,22 +107,23 @@
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200">
                         {% endif %}
                     </div>
-                    <p class="text-lg text-gray-900 group-hover:text-blue-600 transition-colors duration-200">
+                    <p class="text-lg text-text group-hover:text-accent transition-colors duration-200">
                         {{ related.title|truncatechars:60 }}
                     </p>
                 </a>
                 {% empty %}
-                    <div class="w-full text-center text-gray-500 py-4">
+                    <div class="w-full text-center text-gray-400 py-4">
                         No related posts found
                     </div>
                 {% endfor %}
             </div>
         </div>
+
         <!-- Advertisement Section -->
         {% if post.ad_type == 'banner' and post.ad_image %}
             <img src="{{ post.get_ad_image_url }}" alt="Advertisement" class="mx-auto max-w-full h-auto rounded-lg shadow-sm">
         {% endif %}
     </div>
-</div>
+</section>
 
 {% endblock %}

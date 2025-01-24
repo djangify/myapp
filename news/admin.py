@@ -5,6 +5,8 @@ from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 import requests
 from .models import Category, Post
+from django import forms
+from ckeditor.widgets import CKEditorWidget
 
 
 @admin.register(Category)
@@ -13,12 +15,25 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
     search_fields = ["name"]
 
+class PostAdminForm(forms.ModelForm):
+    introduction = forms.CharField(widget=CKEditorWidget(), required=False)
+    content = forms.CharField(widget=CKEditorWidget())
+    
+    class Meta:
+        model = Post
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Make introduction not required
+        self.fields['introduction'].required = False
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
+    form = PostAdminForm
     list_display = ["title", "category", "status", "publish_date", "display_thumbnail"]
     list_filter = ["status", "category", "created", "publish_date"]
-    search_fields = ["title", "content", "meta_title", "meta_description"]
+    search_fields = ["title", "introduction", "content", "meta_title", "meta_description"]
     prepopulated_fields = {"slug": ("title",)}
     date_hierarchy = "publish_date"
     readonly_fields = ["display_media"]
@@ -31,6 +46,7 @@ class PostAdmin(admin.ModelAdmin):
                     "title",
                     "slug",
                     "category",
+                    "introduction",
                     "content",
                     "status",
                     "publish_date",

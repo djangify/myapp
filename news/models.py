@@ -36,6 +36,13 @@ class Post(models.Model):
     # Basic fields
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
+    introduction = RichTextUploadingField(
+        "Introduction", 
+        config_name="default",
+        blank=True, 
+        null=True,
+        help_text="Introduction"
+    )
     content = RichTextUploadingField("Content", config_name="default")
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="draft")
