@@ -238,6 +238,9 @@ SITE_ID = 1
 
 SITE_URL = "https://www.djangify.com"
 
+AUTH_USER_MODEL = 'shop.CustomUser'
+
+# Shop App Settings
 
 
 
@@ -258,7 +261,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
