@@ -241,7 +241,9 @@ SITE_URL = "https://www.djangify.com"
 AUTH_USER_MODEL = 'shop.CustomUser'
 
 # Shop App Settings
-
+STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
+STRIPE_WEBHOOK_SECRET = env('STRIPE_WEBHOOK_SECRET')
 
 
 # Password validation

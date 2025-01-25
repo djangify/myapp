@@ -11,6 +11,7 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('portfolio/', include('portfolio.urls')),
     path('news/', include('news.urls')),
+    path('shop/', include('shop.urls')),
     path('media/<path:path>', serve, {
         'document_root': settings.MEDIA_ROOT,
     }),
