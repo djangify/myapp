@@ -1,0 +1,23 @@
+<!-- templates/error/404.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}404 Not Found - Djangify{% endblock %}
+
+{% block content %}
+<div class="min-h-[70vh] bg-secondary text-text p-6 flex items-center justify-center md:p-16">
+    <div class="text-center">
+        <h1 class="text-8xl font-bold text-accent mb-4">404</h1>
+        <h2 class="text-2xl font-bold mb-4">Page Not Found</h2>
+        <p class="text-lg mb-8">The page you're looking for doesn't exist or has been moved.</p>
+        <div class="flex flex-col gap-4 sm:flex-row justify-center items-center">
+            <a href="/" class="inline-flex items-center px-6 py-3 bg-accent text-white rounded-md hover:bg-accent/90 transition-colors">
+                <span>Return Home</span>
+            </a>
+            <a href="{% url 'portfolio:portfolio_list' %}" class="inline-flex items-center px-6 py-3 border-2 border-accent text-accent rounded-md hover:bg-accent hover:text-white transition-colors">
+                <span>View Portfolio</span>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

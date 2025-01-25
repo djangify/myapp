@@ -18,7 +18,7 @@ logs_dir = BASE_DIR / "logs"
 ENV_FILE = ".env"
 environ.Env.read_env(os.path.join(BASE_DIR, ENV_FILE))
 
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["127.0.0.1"])
+ALLOWED_HOSTS = ['djangify.com', 'www.djangify.com']
 
 # Configure CSRF_TRUSTED_ORIGINS
 CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=[])
@@ -28,7 +28,7 @@ CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=[])
 SECRET_KEY = env("SECRET_KEY", default="your-secret-key-here")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 INTERNAL_IPS = ['127.0.0.1']
 
@@ -108,6 +108,7 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 USE_X_FORWARDED_HOST = True
 USE_X_FORWARDED_PORT = True
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+SECURE_SSL_REDIRECT = True
 
 # IP Rate limiting settings
 IP_RATE_LIMIT_MAX_ATTEMPTS = 20  # Maximum attempts per IP
@@ -117,10 +118,12 @@ IP_RATE_LIMIT_TIMEOUT = 300  # Reset after 5 minutes (in seconds)
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
-
 # WhiteNoise configuration (if you're using WhiteNoise)
 WHITENOISE_USE_FINDERS = True
 WHITENOISE_MANIFEST_STRICT = False
+
+# WhiteNoise configuration
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media File Headers
 MEDIA_FILE_SERVE_HEADERS = {
@@ -144,11 +147,20 @@ FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o755
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+# Ensure media directory exists
+if not os.path.exists(MEDIA_ROOT):
+    os.makedirs(MEDIA_ROOT)
+
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'  
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
+]
+# Static files configuration
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
 # CKEditor settings
