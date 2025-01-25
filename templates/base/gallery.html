@@ -8,27 +8,35 @@
         <br>
         <section class="grid gap-y-4 gap-x-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             <figure>
-                <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
-                     src="{% static 'images/gallery-1.png' %}" 
-                     alt="Project 1" />
+                <a href="/portfolio/stream-english/" target="_blank" rel="noopener noreferrer">
+                    <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+                         src="{% static 'images/gallery-1.png' %}" 
+                         alt="Project 1 - Stream English" />
+                </a>
             </figure>
             
             <figure>
-                <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
-                     src="{% static 'images/gallery-2.jpg' %}" 
-                     alt="Project 2" />
+                <a href="/portfolio/our-spot/" target="_blank" rel="noopener noreferrer">
+                    <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+                         src="{% static 'images/gallery-2.jpg' %}" 
+                         alt="Project 2 - Our Spot" />
+                </a>
             </figure>
             
             <figure>
-                <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
-                     src="{% static 'images/gallery-3.jpg' %}" 
-                     alt="Project 3" />
+                <a href="/portfolio/poster-palace/" target="_blank" rel="noopener noreferrer">
+                    <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+                         src="{% static 'images/gallery-3.jpg' %}" 
+                         alt="Project 3 - Poster Palace" />
+                </a>
             </figure>
             
             <figure>
-                <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
-                     src="{% static 'images/gallery-4.jpg' %}" 
-                     alt="Project 4" />
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                    <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+                        src="{% static 'images/gallery-4.jpg' %}" 
+                        alt="Project 4 - Pen Publishing" />
+                </a>
             </figure>        
 
         </section>
@@ -36,7 +44,7 @@
     <br>
     <div class="mt-8">
         <a href="{% url 'portfolio:portfolio_list' %}" 
-           class="inline-block uppercase p-2 border-2 border-accent bg-accent text-xs rounded hover:bg-transparent hover:text-accent transition-colors duration-300 sm:text-lg sm:px-4">
+           class="inline-block uppercase p-2 border-2 border-accent bg-accent text-xs rounded hover:bg-transparent hover:text-text transition-colors duration-300 sm:text-lg sm:px-4">
             View All Projects
         </a>
     </div>

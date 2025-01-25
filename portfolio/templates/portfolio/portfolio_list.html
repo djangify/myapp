@@ -27,6 +27,7 @@
         {% endfor %}
     </div>
     <br>
+    
     <!-- Project Grid -->
     {% if not portfolios %}
         <div class="text-center py-8 gap-4">
@@ -37,10 +38,10 @@
             {% for portfolio in portfolios %}
             <article class="bg-primary rounded-lg overflow-hidden">
                 {% if portfolio.display_image %}
-                <div class="aspect-w-16 aspect-h-9">
+                <div class="h-48 w-full overflow-hidden"> <!-- Set fixed height -->
                     <img src="{{ portfolio.display_image }}" 
                          alt="{{ portfolio.title }}" 
-                         class="w-full h-full object-cover"/>
+                         class="w-full h-full object-cover"/> 
                 </div>
                 {% endif %}
                 
@@ -48,15 +49,16 @@
                     <h3 class="text-xl font-bold mb-6">{{ portfolio.title }}</h3>
                     <p class="text-gray-400 mb-8">{{ portfolio.short_description }}</p>
                     
-                    <!-- Technologies -->
-                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-16">
-                        {% for tech in technologies %}
+                    <!-- Technologies - using portfolio.technologies -->
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        {% for tech in portfolio.technologies.all %}
                         <a href="{% url 'portfolio:portfolio_by_technology' tech.slug %}" 
-                           class="px-6 py-3 text-sm bg-accent/10 border border-accent rounded-full text-accent hover:bg-accent hover:text-white transition-colors text-center">
+                           class="px-4 py-2 text-sm bg-accent/10 border border-accent rounded-full text-accent hover:bg-accent hover:text-white transition-colors">
                             {{ tech.name }}
                         </a>
                         {% endfor %}
                     </div>
+
                     <br>
                     <!-- Action Buttons -->
                     <div class="pt-6 mt-8 flex justify-between items-center border-t border-gray-700">
