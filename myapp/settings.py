@@ -44,10 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
+    'shop',
     'core',
     'portfolio',
     'news',
-    'shop',
     'contact',
 ]
 
@@ -239,7 +239,7 @@ SITE_ID = 1
 
 SITE_URL = "https://www.djangify.com"
 
-AUTH_USER_MODEL = 'shop.CustomUser'
+
 
 # Shop App Settings
 STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
