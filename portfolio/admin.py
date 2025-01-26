@@ -98,7 +98,4 @@ class PortfolioAdmin(admin.ModelAdmin):
 
     image_preview.short_description = "Preview"
 
-    class Media:
-        css = {
-            'all': ('admin/css/custom_admin.css',)
-        }
+ 

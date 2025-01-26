@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Orders{% endblock %}
+
+{% block content %}
+<section class="p-6 bg-secondary text-text md:p-16">
+    <div class="mb-12">
+        <h1 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg mb-4">
+            My Dashboard
+        </h1>
+        <h2 class="text-3xl font-bold mt-8 mb-6">Order History</h2>
+    </div>
+
+    {% if not orders %}
+        <div class="bg-primary rounded-lg p-8 text-center">
+            <p class="text-gray-400 mb-6">You haven't made any purchases yet.</p>
+            <a href="{% url 'shop:product_list' %}" 
+               class="inline-flex items-center justify-center px-6 py-3 bg-accent text-white rounded-md hover:bg-accent/90 transition-colors">
+                Browse Products
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    {% else %}
+        <div class="grid gap-6">
+            {% for order in orders %}
+            <div class="bg-primary rounded-lg p-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                    <!-- Order Info -->
+                    <div class="flex items-start gap-4">
+                        {% if order.product.display_image %}
+                        <img src="{{ order.product.display_image }}" 
+                             alt="{{ order.product.title }}" 
+                             class="w-24 h-24 object-cover rounded"/>
+                        {% endif %}
+                        
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">{{ order.product.title }}</h3>
+                            <p class="text-gray-400 mb-2">Order #{{ order.reference }}</p>
+                            <p class="text-accent">${{ order.amount }}</p>
+                            <p class="text-sm text-gray-400">
+                                Purchased on {{ order.created_at|date:"F j, Y" }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex flex-col gap-3">
+                        {% if order.status == 'completed' %}
+                            <a href="{% url 'shop:download_product' order.id %}" 
+                               class="inline-flex items-center justify-center px-6 py-3 bg-accent text-white rounded-md hover:bg-accent/90 transition-colors">
+                                Download
+                                <i class="fas fa-download ml-2"></i>
+                            </a>
+                        {% else %}
+                            <span class="inline-flex items-center justify-center px-6 py-3 bg-gray-700 text-gray-400 rounded-md cursor-not-allowed">
+                                {{ order.get_status_display }}
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% if order.downloads.exists %}
+                <div class="mt-4 pt-4 border-t border-gray-700">
+                    <p class="text-sm text-gray-400">
+                        Downloaded {{ order.downloads.first.download_count }} times
+                        {% if order.downloads.first.last_downloaded %}
+                            (Last download: {{ order.downloads.first.last_downloaded|date:"F j, Y" }})
+                        {% endif %}
+                    </p>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

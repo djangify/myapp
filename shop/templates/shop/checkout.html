@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
+{% block title %}Checkout - {{ product.title }}{% endblock %}
+
+{% block content %}
+<section class="p-6 bg-secondary text-text md:p-16">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg mb-4">
+            Checkout
+        </h1>
+        
+        <div class="grid gap-8 mt-8 lg:grid-cols-2">
+            <!-- Product Summary -->
+            <div class="bg-primary p-6 rounded-lg">
+                <h2 class="text-2xl font-bold mb-4">Order Summary</h2>
+                
+                <div class="flex items-start gap-4 mb-6">
+                    {% if product.display_image %}
+                    <img src="{{ product.display_image }}" 
+                         alt="{{ product.title }}" 
+                         class="w-24 h-24 object-cover rounded"/>
+                    {% endif %}
+                    
+                    <div>
+                        <h3 class="text-xl mb-2">{{ product.title }}</h3>
+                        <p class="text-gray-400">{{ product.short_description }}</p>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-700 pt-4">
+                    <div class="flex justify-between text-xl">
+                        <span>Total:</span>
+                        <span class="text-accent">${{ product.price }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Form -->
+            <div class="bg-primary p-6 rounded-lg">
+                <form id="payment-form" class="space-y-6">
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium mb-2">Card Information</label>
+                        <div id="card-element" class="p-4 bg-secondary rounded-md"></div>
+                        <div id="card-errors" class="mt-2 text-red-500 text-sm"></div>
+                    </div>
+
+                    <button type="submit" 
+                            class="w-full px-6 py-3 bg-accent text-white rounded-md hover:bg-accent/90 transition-colors flex items-center justify-center">
+                        <span id="button-text">Pay ${{ product.price }}</span>
+                        <div id="spinner" class="hidden">
+                            Processing...
+                        </div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% block extra_js %}
+<script>
+    const stripe = Stripe('{{ STRIPE_PUBLIC_KEY }}');
+    const elements = stripe.elements();
+    const card = elements.create('card');
+    card.mount('#card-element');
+
+    const form = document.getElementById('payment-form');
+    const cardErrors = document.getElementById('card-errors');
+    
+    card.addEventListener('change', ({error}) => {
+        if (error) {
+            cardErrors.textContent = error.message;
+        } else {
+            cardErrors.textContent = '';
+        }
+    });
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        
+        const {error, paymentIntent} = await stripe.confirmCardPayment('{{ client_secret }}', {
+            payment_method: {
+                card: card,
+            }
+        });
+
+        if (error) {
+            cardErrors.textContent = error.message;
+        } else {
+            window.location.href = "{% url 'shop:payment_success' order_id=1 %}";
+        }
+    });
+</script>
+{% endblock %}
+{% endblock %}

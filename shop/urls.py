@@ -1,6 +1,7 @@
 # Path: shop/urls.py
 from django.urls import path
 from . import views
+from . import webhooks
 
 app_name = 'shop'
 
@@ -11,5 +12,5 @@ urlpatterns = [
     path('payment-success/<int:order_id>/', views.payment_success, name='payment_success'),
     path('dashboard/', views.user_dashboard, name='dashboard'),
     path('download/<int:order_id>/', views.download_product, name='download_product'),
-    path('webhook/', views.webhook, name='webhook'),
+    path('webhook/stripe/', webhooks.stripe_webhook, name='stripe-webhook'),
 ]

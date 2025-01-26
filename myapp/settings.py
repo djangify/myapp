@@ -2,6 +2,7 @@ from pathlib import Path
 import environ
 import os
 import sys
+import stripe
 from environ import Env
 import pymysql # type: ignore
 
@@ -244,6 +245,9 @@ AUTH_USER_MODEL = 'shop.CustomUser'
 STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
 STRIPE_WEBHOOK_SECRET = env('STRIPE_WEBHOOK_SECRET')
+
+# Initialize Stripe
+stripe.api_key = STRIPE_SECRET_KEY
 
 
 # Password validation
