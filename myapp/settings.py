@@ -4,12 +4,14 @@ import os
 import sys
 import stripe
 from environ import Env
-import pymysql # type: ignore
+import pymysql 
 
 pymysql.install_as_MySQLdb()
 
 # Initialize environment variables
 env = environ.Env()
+
+SITE_ID = 1
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,10 +21,22 @@ logs_dir = BASE_DIR / "logs"
 ENV_FILE = ".env"
 environ.Env.read_env(os.path.join(BASE_DIR, ENV_FILE))
 
-ALLOWED_HOSTS = ['djangify.com', 'www.djangify.com']
+ALLOWED_HOSTS = ['djangify.com', 'www.djangify.com', 'news.djangify.com', 'dianecorriette.com',
+'www.dianecorriette.com', 'todiane.com', 'www.todiane.com']
 
-# Configure CSRF_TRUSTED_ORIGINS
-CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=[])
+# CSRF_TRUSTED_ORIGINS
+CSRF_TRUSTED_ORIGINS = [
+    "https://djangify.com",
+    "https://www.djangify.com",
+    "http://djangify.com",
+    "http://www.djangify.com",
+    "https://todiane.com",
+    "https://dianecorriette.com",
+    "http://dianecorriette.com",
+    "http://todiane.com",
+    "http://localhost",
+    "http://127.0.0.1",
+]
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -42,6 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'ckeditor',
     'ckeditor_uploader',
     'shop',

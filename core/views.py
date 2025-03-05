@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.template.loader import render_to_string
 
 def home(request):
     return render(request, "core/home.html")
