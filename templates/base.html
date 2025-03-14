@@ -11,12 +11,14 @@
         crossorigin="anonymous" 
         referrerpolicy="no-referrer"
     />
+
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     
     <link rel="icon" type="image/ico" href="{% static 'images/favicon.ico' %}">
-    <title>{% block title %}Django and TailwindCSS Developer{% endblock %}</title>
+    <title>{% block title %}Techical Virtual Assistant / Web Developer{% endblock %}</title>
   </head>
   <body class="text-lg 2xl:max-w-screen-2xl 2xl:mx-auto 2xl:bg-primary">
     {% include 'base/navbar.html' %}
@@ -29,7 +31,6 @@
     <!-- Scripts -->
     {% block extra_js %}
     <script src="{% static 'js/app.js' %}"></script>
-    
   {% endblock %}
     
   </body>

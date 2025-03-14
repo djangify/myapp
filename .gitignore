@@ -8,6 +8,8 @@ virtualenv
 passenger_wsgi.py
 /tmp/
 /public/
+Production/
+
 
 # Node/Tailwind
 node_modules/

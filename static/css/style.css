@@ -474,10 +474,11 @@ img.gallery {
 }
 
 :root {
-  --color-primary: 180deg 92% 18%;
-  --color-secondary: 180deg 92% 23%;
-  --color-accent: 209.66deg 91.75% 19.02%;
-  --color-text: 0deg 0% 100%;
+  --color-primary: 210deg 40% 98%;
+  --color-secondary: 216deg 33% 95%;
+  --color-accent: 215deg 19% 50%;
+  --color-text: 0deg 0% 20%;
+  /* Charcoal text */
 }
 
 img {

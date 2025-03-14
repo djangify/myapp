@@ -1,27 +1,47 @@
 {% load static %}
-<section class="flex flex-col gap-10 lg:flex-row lg:*:basis-full lg:gap-x-24 xl:gap-x-12">
+<section class="flex flex-col bg-slate-50 gap-10 lg:flex-row lg:*:basis-full lg:gap-x-24 xl:gap-x-12">
     <div class="flex flex-col gap-y-5 lg:gap-y-12 xl:self-center xl:gap-y-24">
         <div class="space-y-2 lg:space-y-4">
             <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
-                Professional Full-Stack Developer
+                Need A Technical Virtual Assistant?
             </h6>
             <h1 class="text-5xl font-bold lg:text-7xl">Diane Corriette</h1>
         </div>
-        <div class="flex flex-col gap-y-5 lg:gap-y-8 xl:pl-16 xl:relative xl:before:h-full xl:before xl:before:w-5 xl:before:top-0 xl:before:left-0">
+        <div class="flex flex-col bg-slate-50 gap-y-5 lg:gap-y-8 xl:pl-16 xl:relative xl:before:h-full xl:before xl:before:w-5 xl:before:top-0 xl:before:left-0">
             <ul class="flex gap-x-5">
-                <li class="hover:text-accent transition-colors cursor-pointer lg:text-2xl"><i class="fa-brands fa-facebook"></i></li>
-                <li class="hover:text-accent transition-colors cursor-pointer lg:text-2xl"><i class="fa-brands fa-twitter"></i></li>
-                <li class="hover:text-accent transition-colors cursor-pointer lg:text-2xl"><i class="fa-brands fa-dribbble"></i></li>
-                <li class="hover:text-accent transition-colors cursor-pointer lg:text-2xl"><i class="fa-brands fa-youtube"></i></li>
-            </ul>
+                <li class="hover:text-accent transition-colors cursor-pointer lg:text-2xl">
+                    <a href="https://www.linkedin.com/in/todianedev" target="_blank" rel="noopener noreferrer" 
+                    aria-label="LinkedIn Profile">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>
+                <li class="hover:text-accent transition-colors cursor-pointer lg:text-2xl">
+                    <a href="https://www.instagram.com/dicorriette" target="_blank"    rel="noopener noreferrer" 
+                    aria-label="Instagram Profile">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </li>
+                <li class="hover:text-accent transition-colors cursor-pointer lg:text-2xl">
+                    <a href="https://github.com/todiane" target="_blank">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </li>
+                <li class="hover:text-accent transition-colors cursor-pointer lg:text-2xl">
+                    <a href="https://www.credential.net/7cb0b0d6-fd26-4413-9519-95fb351e316d#acc.qsbug4P3" target="_blank"
+                    rel="noopener noreferrer" 
+                    aria-label="Full Stack Credentials">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                </li>
+             </ul>
             <p class="lg:text-lg">
-                Building Practical Solutions with Django and TailwindCSS.
-                Here, you'll find a selection of projects crafted with Django, Flask, AI, APIs, and TailwindCSS. These projects reflect my approach to web development—focused on practicality and functionality. 
+                Reclaim your time when you put me in charge of your tech. As a Tech VA, I will help you build your brand online, whether it's through setting up and/or maintaining your inbound marketing systems, booking your travel or managing your email. 
             </p>
             <p class="lg:text-lg">
-                Some products are available for purchase. If you see something that resonates with your business needs, feel free to get in touch.
+                Let me support you in developing solutions that will decrease your time and money spent on the technical aspects of online marketing. Get started. Book a 20-minute free consultation with me.
             </p>
-            <a class="uppercase p-2 border-2 border-accent bg-accent self-start text-xs rounded sm:text-lg sm:px-4" href="{% url 'portfolio:portfolio_list' %}">View Portfolio</a>
+            
+            <a class="uppercase p-2 font-bold border-2 border-accent bg-accent self-start text-xs rounded sm:text-lg sm:px-4" href="/#contact">Get In Touch</a>
         </div>
     </div>
 
@@ -29,3 +49,4 @@
         <img src="{% static 'images/showcase.jpg' %}" alt="professional developer portfolio" />
     </figure>
 </section>
+

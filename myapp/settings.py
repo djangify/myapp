@@ -21,21 +21,13 @@ logs_dir = BASE_DIR / "logs"
 ENV_FILE = ".env"
 environ.Env.read_env(os.path.join(BASE_DIR, ENV_FILE))
 
-ALLOWED_HOSTS = ['djangify.com', 'www.djangify.com', 'news.djangify.com', 'dianecorriette.com',
-'www.dianecorriette.com', 'todiane.com', 'www.todiane.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'localhost:8000']
 
 # CSRF_TRUSTED_ORIGINS
 CSRF_TRUSTED_ORIGINS = [
-    "https://djangify.com",
-    "https://www.djangify.com",
-    "http://djangify.com",
-    "http://www.djangify.com",
-    "https://todiane.com",
-    "https://dianecorriette.com",
-    "http://dianecorriette.com",
-    "http://todiane.com",
     "http://localhost",
     "http://127.0.0.1",
+    "http://localhost:8000",
 ]
 
 
@@ -43,7 +35,7 @@ CSRF_TRUSTED_ORIGINS = [
 SECRET_KEY = env("SECRET_KEY", default="your-secret-key-here")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 INTERNAL_IPS = ['127.0.0.1']
 
@@ -120,33 +112,6 @@ DATABASES = {
     },
 }
 
-# Security Settings
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-USE_X_FORWARDED_HOST = True
-USE_X_FORWARDED_PORT = True
-X_FRAME_OPTIONS = 'SAMEORIGIN'
-SECURE_SSL_REDIRECT = True
-
-# IP Rate limiting settings
-IP_RATE_LIMIT_MAX_ATTEMPTS = 20  # Maximum attempts per IP
-IP_RATE_LIMIT_TIMEOUT = 300  # Reset after 5 minutes (in seconds)
-
-# Session and CSRF settings
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-
-# WhiteNoise configuration (if you're using WhiteNoise)
-WHITENOISE_USE_FINDERS = True
-WHITENOISE_MANIFEST_STRICT = False
-
-# WhiteNoise configuration
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# Media File Headers
-MEDIA_FILE_SERVE_HEADERS = {
-    'Access-Control-Allow-Origin': '*',
-    'Cache-Control': 'no-cache, must-revalidate'
-}
 
 # Cache Control Headers for Media Files
 MEDIA_FILE_STORAGE_HEADERS = {
@@ -154,10 +119,6 @@ MEDIA_FILE_STORAGE_HEADERS = {
     'Pragma': 'no-cache',
     'Expires': '0'
 }
-
-# File Permissions (if you're handling file uploads)
-FILE_UPLOAD_PERMISSIONS = 0o644
-FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o755
 
 
 # Media settings
@@ -169,7 +130,7 @@ if not os.path.exists(MEDIA_ROOT):
     os.makedirs(MEDIA_ROOT)
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'  
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
@@ -253,10 +214,6 @@ COLLECT_STATIC = "collectstatic" in sys.argv
 
 SITE_ID = 1
 
-SITE_URL = "https://www.djangify.com"
-
-
-
 # Shop App Settings
 STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
@@ -288,53 +245,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
-
-
-# Add this logging configuration
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
-            'style': '{',
-        },
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
-        },
-    },
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs', 'django.log'),
-            'formatter': 'verbose',
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file', 'console'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-}
-
-
-if not os.path.exists(os.path.join(BASE_DIR, 'logs')):
-    os.makedirs(os.path.join(BASE_DIR, 'logs'))

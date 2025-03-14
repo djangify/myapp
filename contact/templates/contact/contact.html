@@ -1,88 +1,67 @@
-
 {% load static %}
-    <section class="p-6 flex flex-col gap-y-10 bg-primary text-text md:p-16 lg:gap-x-10 lg:flex-row *:basis-full">
-        <div class="flex flex-col gap-y-5">
-            <figure>
-                <img src="{% static 'images/form.jpg' %}" alt="Form Image" />
-            </figure>
+<section class="p-6 flex flex-col gap-y-10 bg-primary text-text md:p-16 lg:gap-x-10 lg:flex-row *:basis-full">
+    <div class="flex flex-col gap-y-5">
+        <figure>
+            <img src="{% static 'images/form.jpg' %}" alt="Form Image" />
+        </figure>
 
-            <form class="flex flex-col gap-y-2 *:px-4 *:py-2 *:rounded *:outline-none h-full" method="post">
-                {% csrf_token %}
-                <input
-                    class="bg-accent text-text placeholder:text-text/80 h-12 sm:h-16"
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    required
-                />
-                <input
-                    class="bg-accent text-text placeholder:text-text/80 h-12 sm:h-16"
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    required
-                />
-                <textarea
-                    class="bg-accent text-text placeholder:text-text/80 h-48 lg:h-full"
-                    name="message"
-                    placeholder="Message"
-                    required
-                ></textarea>
-                <input
-                    class="border-2 border-accent bg-accent text-text cursor-pointer h-12 sm:h-16"
-                    type="submit"
-                    value="Submit"
-                />
-            </form>
+        <form class="flex flex-col font-bold gap-y-2 *:px-4 *:py-2 *:rounded *:outline-none h-full" method="post">
+            {% csrf_token %}
+            <input
+                class="bg-accent text-text placeholder:text-text/80 h-12 sm:h-16"
+                type="text"
+                name="name"
+                placeholder="Name"
+                required
+            />
+            <input
+                class="bg-accent text-text placeholder:text-text/80 h-12 sm:h-16"
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+            />
+            <textarea
+                class="bg-accent text-text placeholder:text-text/80 h-48 lg:h-full"
+                name="message"
+                placeholder="Message"
+                required
+            ></textarea>
+            <input
+                class="border-2 border-accent bg-accent text-text cursor-pointer h-12 sm:h-16"
+                type="submit"
+                value="Submit"
+            />
+        </form>
+    </div>
+
+    <div class="flex flex-col gap-y-5 lg:self-center xl:gap-y-10 *:space-y-2">
+        <div>
+            <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-left-0 lg:text-lg">
+                let's talk
+            </h6>
+            <h2 class="text-2xl capitalize font-bold lg:text-3xl">
+                Ready to offload your technical challenges?
+            </h2>
         </div>
 
-        <div class="flex flex-col gap-y-5 lg:self-center xl:gap-y-10 *:space-y-2">
-            <div>
-                <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-left-0 lg:text-lg">
-                    let's talk
-                </h6>
-                <h2 class="text-2xl capitalize font-bold lg:text-3xl">
-                    Get In Touch
-                </h2>
-            </div>
-
-            <p>
-                Got a question about what I do or how I can help?
-            </p>
-
-            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-                <div class="grid grid-cols-[112px_1fr] grid-rows-2 gap-x-5 gap-y-2">
-                    <figure class="row-span-2">
-                        <img class="w-28" src="{% static 'images/contact-icon-1.png' %}" alt="Phone Icon" />
-                    </figure>
-                    <h6 class="self-end font-bold text-accent">Contact Form</h6>
-                    <p>Complete the form.</p>
-                </div>
-
-                <div class="grid grid-cols-[112px_1fr] grid-rows-2 gap-x-5 gap-y-2">
-                    <figure class="row-span-2">
-                        <img class="w-28" src="{% static 'images/contact-icon-2.png' %}" alt="Email Icon" />
-                    </figure>
-                    <h6 class="self-end font-bold text-accent">Email address</h6>
-                    <p>djangify@djangify.com</p>
-                </div>
-
-                <div class="grid grid-cols-[112px_1fr] grid-rows-2 gap-x-5 gap-y-2">
-                    <figure class="row-span-2">
-                        <img class="w-28" src="{% static 'images/contact-icon-3.png' %}" alt="Web Icon" />
-                    </figure>
-                    <h6 class="self-end font-bold text-accent">Website</h6>
-                    <p>www.djangify.com</p>
-                </div>
-
-                <div class="grid grid-cols-[112px_1fr] grid-rows-2 gap-x-5 gap-y-2">
-                    <figure class="row-span-2">
-                        <img class="w-28" src="{% static 'images/contact-icon-4.png' %}" alt="Address Icon" />
-                    </figure>
-                    <h6 class="self-end font-bold text-accent">Address</h6>
-                    <p>11 Solomon Street, Shropshire TF12</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
+        <p>
+            Contact me today for a free 20-minute consultation to discuss how I can help streamline your digital operations. For me, digital solutions are ultimately about human connection.
+        </p>
+        
+        <p class="font-bold">Let me know if you are looking for:</p>
+        <ul class="list-disc list-inside space-y-1">
+            <li>
+                <strong>Tech Tune-Up:</strong> A one-time package to assess, organise, and optimise your current digital systems.
+            </li>
+            <li>
+                <strong>Monthly Maintenance:</strong> Ongoing website and digital systems maintenance to keep everything running smoothly.
+            </li>
+            <li>
+                <strong>Complete Technical Management:</strong> Comprehensive technical support for all your digital needs, allowing you to focus entirely on your core business.
+            </li>
+        </ul>
+       
+       
+    </div>
+</section>

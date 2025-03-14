@@ -1,42 +1,59 @@
 {% load static %}
 <!-- Gallery Section -->
-<section class="p-6 bg-secondary text-text  md:p-16">
+<section class="p-6 bg-secondary text-text md:p-16">
     <main class="max-w-screen-2xl grid gap-y-6">
         <div class="grid gap-y-2">
-            <h1 class="text-2xl font-bold sm:text-3xl xl:text-5xl">My Portfolio</h1>
+            <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
+                My Portfolio
+            </h6>
+            <p>
+                I don't just manage technologies, I actively develop and maintain my own digital ventures. This means I can work with a smaller client base and deliver personalised attention. Take a look at my portfolio.
+            </p>
         </div>
         <br>
         <section class="grid gap-y-4 gap-x-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            <figure>
-                <a href="/portfolio/stream-english/" target="_blank" rel="noopener noreferrer">
-                    <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
-                         src="{% static 'images/gallery-1.png' %}" 
+            <figure class="relative overflow-hidden after after:w-full after:h-full after:z-10 after:top-0 after:left-0 after:bg-accent/60 after:rounded after:backdrop-blur-sm after:scale-x-0 after:transition hover:after:scale-x-100 after:origin-left hover:after:origin-right group">
+                <a href="/portfolio/our-spot/" target="_blank" rel="noopener noreferrer">
+                    <img class="w-full h-full object-cover transition-transform duration-300" 
+                         src="{% static 'images/gallery-1.jpg' %}" 
                          alt="Project 1 - Stream English" />
                 </a>
+                <figcaption class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 origin-left group-hover:origin-right text-text transition z-[11] scale-x-0 group-hover:scale-x-100 lg:font-bold xl:text-xl">
+                    Stream English - Courses, eCommerce, shop and blog created for an English Teacher
+                </figcaption>
             </figure>
             
-            <figure>
+            <figure class="relative overflow-hidden after after:w-full after:h-full after:z-10 after:top-0 after:left-0 after:bg-accent/60 after:rounded after:backdrop-blur-sm after:scale-x-0 after:transition hover:after:scale-x-100 after:origin-left hover:after:origin-right group">
                 <a href="/portfolio/our-spot/" target="_blank" rel="noopener noreferrer">
-                    <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+                    <img class="w-full h-full object-cover transition-transform duration-300" 
                          src="{% static 'images/gallery-2.jpg' %}" 
                          alt="Project 2 - Our Spot" />
                 </a>
+                <figcaption class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 origin-left group-hover:origin-right text-text transition z-[11] scale-x-0 group-hover:scale-x-100 lg:font-bold xl:text-xl">
+                    Show Your Spot - Photo sharing social media site.
+                </figcaption>
             </figure>
             
-            <figure>
+            <figure class="relative overflow-hidden after after:w-full after:h-full after:z-10 after:top-0 after:left-0 after:bg-accent/60 after:rounded after:backdrop-blur-sm after:scale-x-0 after:transition hover:after:scale-x-100 after:origin-left hover:after:origin-right group">
                 <a href="/portfolio/poster-palace/" target="_blank" rel="noopener noreferrer">
-                    <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+                    <img class="w-full h-full object-cover transition-transform duration-300" 
                          src="{% static 'images/gallery-3.jpg' %}" 
                          alt="Project 3 - Poster Palace" />
                 </a>
+                <figcaption class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 origin-left group-hover:origin-right text-text transition z-[11] scale-x-0 group-hover:scale-x-100 lg:font-bold xl:text-xl">
+                    Poster Palace - Example of an eCommerce website made with Django
+                </figcaption>
             </figure>
             
-            <figure>
+            <figure class="relative overflow-hidden after after:w-full after:h-full after:z-10 after:top-0 after:left-0 after:bg-accent/60 after:rounded after:backdrop-blur-sm after:scale-x-0 after:transition hover:after:scale-x-100 after:origin-left hover:after:origin-right group">
                 <a href="/portfolio/pen-and-i-publishing/" target="_blank" rel="noopener noreferrer">
-                    <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+                    <img class="w-full h-full object-cover transition-transform duration-300" 
                         src="{% static 'images/gallery-4.jpg' %}" 
                         alt="Project 4 - Pen Publishing" />
                 </a>
+                <figcaption class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 origin-left group-hover:origin-right text-text transition z-[11] scale-x-0 group-hover:scale-x-100 lg:font-bold xl:text-xl">
+                    Pen & I Publishing - Journal Prompts and Memoir Writing Tips
+                </figcaption>
             </figure>        
 
         </section>
@@ -44,7 +61,7 @@
     <br>
     <div class="mt-8">
         <a href="{% url 'portfolio:portfolio_list' %}" 
-           class="inline-block uppercase p-2 border-2 border-accent bg-accent text-xs rounded hover:bg-transparent hover:text-primary transition-colors duration-300 sm:text-lg sm:px-4">
+           class="inline-block font-bold uppercase p-2 border-2 border-accent bg-accent text-xs rounded hover:bg-transparent hover:text-primary transition-colors duration-300 sm:text-lg sm:px-4">
             View All Projects
         </a>
     </div>
