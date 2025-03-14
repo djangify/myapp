@@ -4,34 +4,42 @@
 <!-- news/templates/news/detail.html -->
 <section class="px-6 bg-secondary text-text md:p-16">
     {% include 'news/components/breadcrumb.html' %}
+    
     <!-- Hero Section -->
-    <section class="flex flex-col gap-10 lg:flex-row lg:*:basis-full lg:gap-x-24 xl:gap-x-12">
-        <div class="flex flex-col gap-y-5 lg:gap-y-12 xl:self-center xl:gap-y-24">
-            <div class="space-y-2 lg:space-y-4">
-                <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
-                    Article Details
-                </h6>
-                <h1 class="text-5xl font-bold lg:text-5xl">{{ post.title }}</h1>
+    <section class="flex flex-col gap-10 mt-8 lg:flex-row lg:*:basis-full lg:gap-x-24 xl:gap-x-12">
+        <div class="flex flex-col gap-y-5 lg:gap-y-8 xl:self-center">
+            <div class="space-y-4">
+                <h1 class="text-4xl font-bold lg:text-5xl">{{ post.title }}</h1>
+                <p class="text-gray-400 text-sm">
+                    {{ post.publish_date|date:"F j, Y" }} • {{ post.category.name }}
+                </p>
             </div>
             {% if post.introduction %}
-                <div class="lg:text-lg mb-12">{{ post.introduction|safe }}</div>
+                <div class="lg:text-lg mt-4">{{ post.introduction|safe }}</div>
             {% endif %}
         </div>
-        <figure class="h-[600px] lg:max-w-[550px] lg:relative lg:before:absolute lg:before:content-[''] lg:before:border-[20px] lg:before:rounded lg:before:border-accent lg:before:h-96 lg:before:w-96 lg:before:-top-12 lg:before:-left-12 lg:before:-z-10 lg:z-10">
-            {% if post.external_image_url %}
-                <img src="{{ post.external_image_url }}" 
-                     alt="{{ post.title }}" 
-                     class="w-full h-full object-cover rounded-lg" />
-            {% elif post.image %}
-                <img src="{{ post.image.url }}" 
-                     alt="{{ post.title }}" 
-                     class="w-full h-full object-cover rounded-lg" />
-            {% endif %}
+        
+        <figure class="h-[400px] lg:max-w-[550px]">
+            <div class="w-full h-full overflow-hidden rounded-lg bg-primary/20">
+                {% if post.external_image_url %}
+                    <img src="{{ post.external_image_url }}" 
+                        alt="{{ post.title }}" 
+                        class="w-full h-full object-cover" />
+                {% elif post.image %}
+                    <img src="{{ post.image.url }}" 
+                        alt="{{ post.title }}" 
+                        class="w-full h-full object-cover" />
+                {% else %}
+                    <div class="w-full h-full flex items-center justify-center bg-accent/10">
+                        <span class="text-accent">No Image Available</span>
+                    </div>
+                {% endif %}
+            </div>
         </figure>
     </section>
-    <br>
+    
     <!-- Content Section -->
-    <div class="container mx-auto max-w-4xl mt-16">
+    <div class="container mx-auto max-w-4xl mt-12 pt-12 border-t border-gray-700/30">
         {% if post.youtube_url %}
         <div class="mb-8">
             <div class="relative w-full" style="padding-top: 56.25%">
@@ -51,16 +59,16 @@
         </div>
 
         <!-- Navigation -->
-        <nav class="mt-16 border-t border-gray-700 pt-12">
+        <nav class="mt-16 border-t border-gray-700/30 pt-8">
             <div class="flex justify-between items-center">
                 {% if previous_post %}
-                <a href="{{ previous_post.get_absolute_url }}" class="group flex items-center text-sm mt-8 text-gray-400 hover:text-gray-200">
-                    <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <a href="{{ previous_post.get_absolute_url }}" class="group flex items-center text-sm text-gray-400 hover:text-accent transition-colors max-w-[45%]">
+                    <svg class="mr-2 h-3 w-3 text-gray-400 group-hover:text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
                     <div>
                         <span class="block text-xs text-gray-400">Previous</span>
-                        <span class="block">{{ previous_post.title|truncatechars:40 }}</span>
+                        <span class="block text-xs">{{ previous_post.title|truncatechars:25 }}</span>
                     </div>
                 </a>
                 {% else %}
@@ -68,12 +76,12 @@
                 {% endif %}
 
                 {% if next_post %}
-                <a href="{{ next_post.get_absolute_url }}" class="group flex items-center text-right text-sm text-gray-400 hover:text-gray-200">
+                <a href="{{ next_post.get_absolute_url }}" class="group flex items-center text-right text-sm text-gray-400 hover:text-accent transition-colors max-w-[45%]">
                     <div>
                         <span class="block text-xs text-gray-400">Next</span>
-                        <span class="block">{{ next_post.title|truncatechars:40 }}</span>
+                        <span class="block text-xs">{{ next_post.title|truncatechars:25 }}</span>
                     </div>
-                    <svg class="ml-3 h-5 w-5 text-gray-400 group-hover:text-gray-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="ml-2 h-3 w-3 text-gray-400 group-hover:text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
                 </a>
@@ -84,7 +92,7 @@
         </nav>
 
         <!-- Category Link -->
-        <div class="text-center py-12 mb-6">
+        <div class="text-center py-8">
             <a href="{{ post.category.get_absolute_url }}" class="inline-flex items-center px-6 py-3 text-sm border-2 border-accent rounded-full text-accent hover:bg-accent hover:text-white transition-colors">
                 <span class="mr-2">All articles in category:</span>
                 {{ post.category.name }}
@@ -92,25 +100,31 @@
         </div>
 
         <!-- Related Posts -->
-        <div class="mt-12 mb-24">
+        <div class="mt-16 mb-24 pt-8 border-t border-gray-700/30">
             <h2 class="text-2xl font-bold mb-8">Related Posts</h2>
-            <div class="flex flex-col md:flex-row justify-between gap-8">
+            <div class="flex flex-col md:flex-row justify-between gap-12">
                 {% for related in related_posts %}
-                <a href="{{ related.get_absolute_url }}" class="group w-full md:w-1/2">
-                    <div class="aspect-video w-full mb-4 overflow-hidden rounded-lg bg-gray-800">
+                <a href="{{ related.get_absolute_url }}" class="group w-full md:w-1/2 bg-primary/10 rounded-lg overflow-hidden hover:bg-primary/20 transition-colors">
+                    <div class="h-48 w-full overflow-hidden">
                         {% if related.external_image_url %}
                             <img src="{{ related.external_image_url }}" 
-                                alt="{{ related.title }}" 
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200">
+                                 alt="{{ related.title }}" 
+                                 class="w-half h-full object-cover group-hover:scale-105 transition-transform duration-200">
                         {% elif related.image %}
                             <img src="{{ related.image.url }}" 
-                                alt="{{ related.title }}" 
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200">
+                                 alt="{{ related.title }}" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200">
+                        {% else %}
+                            <div class="w-full h-full flex items-center justify-center bg-accent/10">
+                                <span class="text-accent">No Image</span>
+                            </div>
                         {% endif %}
                     </div>
-                    <p class="text-lg text-text group-hover:text-accent transition-colors duration-200">
-                        {{ related.title|truncatechars:60 }}
-                    </p>
+                    <div class="p-6">
+                        <p class="text-lg text-text group-hover:text-accent transition-colors duration-200">
+                            {{ related.title|truncatechars:60 }}
+                        </p>
+                    </div>
                 </a>
                 {% empty %}
                     <div class="w-full text-center text-gray-400 py-4">
