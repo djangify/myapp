@@ -23,9 +23,7 @@ class TechnologyAdmin(admin.ModelAdmin):
     ordering = ["name", "-created_at"]
 
 class PortfolioAdminForm(forms.ModelForm):
-    # No need to define widgets for ProseEditorField fields
-    # The fields will automatically use the ProseEditorWidget
-    
+    # No need to define widgets since we're using ProseEditorField
     class Meta:
         model = Portfolio
         fields = '__all__'
@@ -42,7 +40,7 @@ class PortfolioAdmin(admin.ModelAdmin):
         "created_at",
     )
     list_filter = ("status", "is_featured", "technologies", "created_at")
-    search_fields = ("title", "introduction", "tech_stack_description", "feature_description", "short_description")
+    search_fields = ("title", "short_description", "introduction", "conclusion")
     prepopulated_fields = {"slug": ("title",)}
     filter_horizontal = ("technologies",)
     inlines = [PortfolioImageInline]
@@ -51,21 +49,58 @@ class PortfolioAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ("Basic Information", {
-            "fields": ("title", "slug", "short_description", "status"),
-            "classes": ("wide", "extrapretty"),
-        }),
-        ("Project Content", {
             "fields": (
-                "introduction",
-                "tech_stack_description", 
-                "feature_description",
-                "featured_image", 
-                "featured_image_url", 
-                "technologies"
+                "title", 
+                "slug", 
+                "short_description", 
+                "project_timeline",
+                "status",
             ),
             "classes": ("wide", "extrapretty"),
         }),
-        ("Project Details", {
+        ("Project Overview", {
+            "fields": (
+                "introduction",
+                "business_logic", 
+                "target_audience",
+            ),
+            "classes": ("wide", "extrapretty"),
+        }),
+        ("Technical Details", {
+            "fields": (
+                "tech_stack_description", 
+                "architecture_description",
+                "technologies",
+            ),
+            "classes": ("wide", "extrapretty"),
+        }),
+        ("Development", {
+            "fields": (
+                "feature_description",
+                "development_process",
+                "challenges",
+                "bugs_and_fixes",
+            ),
+            "classes": ("wide", "extrapretty"),
+        }),
+        ("Results & Reflection", {
+            "fields": (
+                "outcome",
+                "lessons_learned", 
+                "future_improvements",
+                "conclusion",
+            ),
+            "classes": ("wide", "extrapretty"),
+        }),
+        ("Media", {
+            "fields": (
+                "featured_image", 
+                "featured_image_url",
+                "demo_video_url",
+            ),
+            "classes": ("wide", "extrapretty"),
+        }),
+        ("External Links", {
             "fields": (
                 "github_url",
                 "external_url",
@@ -87,3 +122,4 @@ class PortfolioAdmin(admin.ModelAdmin):
         return "No image"
 
     image_preview.short_description = "Preview"
+    

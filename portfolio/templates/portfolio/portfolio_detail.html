@@ -4,9 +4,8 @@
 {% block title %}{{ portfolio.meta_title|default:portfolio.title }} - Portfolio{% endblock %}
 
 {% block content %}
-<section class="px-6 bg-secondary text-text text-white md:p-16">
+<section class="px-6 bg-secondary text-text md:p-16">
     {% include 'portfolio/components/breadcrumb.html' %}
-    <br>
     <!-- Hero Section -->
     <section class="flex flex-col gap-10 lg:flex-row lg:*:basis-full lg:gap-x-24 xl:gap-x-12">
         <div class="flex flex-col gap-y-5 lg:gap-y-12 xl:self-center xl:gap-y-24">
@@ -15,6 +14,9 @@
                     Project Details
                 </h6>
                 <h1 class="text-5xl font-bold lg:text-7xl">{{ portfolio.title }}</h1>
+                {% if portfolio.project_timeline %}
+                <p class="text-accent">{{ portfolio.project_timeline }}</p>
+                {% endif %}
                 <p class="text-xl text-gray-400">{{ portfolio.short_description }}</p>
             </div>
             {% if portfolio.introduction %}
@@ -29,63 +31,218 @@
             {% endif %}
         </figure>
     </section>
-    <br>
 
-    <article class="container mx-auto max-w-4xl">
-        <!-- Technologies Used -->
-        <div class="flex flex-wrap gap-8 mb-16 pb-8 border-b border-gray-700">
-            {% for tech in portfolio.technologies.all %}
-                <a href="{% url 'portfolio:portfolio_by_technology' tech.slug %}" 
-                   class="px-6 py-3 text-sm bg-accent/10 border-2 border-accent rounded-full text-accent hover:bg-accent hover:text-white transition-colors">
-                    <i class="{{ tech.icon }} mr-3"></i> {{ tech.name }}
-                </a>
-            {% endfor %}
+    <article class="container mx-auto max-w-4xl mt-16">
+        <!-- Table of Contents - Include only on desktop -->
+        <div class="hidden lg:block lg:float-right lg:ml-8 lg:w-1/4 xl:w-1/3">
+            {% include 'portfolio/components/toc.html' %}
         </div>
-        <br>
+        
+        <!-- External Links - Top -->
+        <div class="flex flex-wrap gap-4 justify-center mb-16">
+            {% if portfolio.live_site_url %}
+            <a href="{{ portfolio.live_site_url }}" 
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center px-6 py-3 bg-accent text-white rounded-md hover:bg-accent/90 transition-colors">
+                <i class="fas fa-external-link-alt mr-2"></i> Live Site
+            </a>
+            {% endif %}
+            
+            {% if portfolio.github_url %}
+            <a href="{{ portfolio.github_url }}" 
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center px-6 py-3 border-2 border-accent text-accent rounded-md hover:bg-accent hover:text-white transition-colors">
+                <i class="fab fa-github mr-2"></i> GitHub Repository
+            </a>
+            {% endif %}
+            
+            {% if portfolio.external_url %}
+            <a href="{{ portfolio.external_url }}" 
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center px-6 py-3 bg-gray-700 text-white rounded-md hover:bg-gray-600 transition-colors">
+                <i class="fas fa-shopping-cart mr-2"></i> Marketplace
+            </a>
+            {% endif %}
+        </div>
+
+        <!-- Technologies Used -->
+        <div class="mb-16 pb-8 border-b border-gray-700">
+            <h2 class="text-2xl font-bold mb-6">Technologies Used</h2>
+            <div class="flex flex-wrap gap-4">
+                {% for tech in portfolio.technologies.all %}
+                    <a href="{% url 'portfolio:portfolio_by_technology' tech.slug %}" 
+                       class="px-6 py-3 text-sm bg-accent/10 border-2 border-accent rounded-full text-accent hover:bg-accent hover:text-white transition-colors">
+                        <i class="{{ tech.icon }} mr-3"></i> {{ tech.name }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Project Demo Video -->
+        {% if portfolio.demo_video_url %}
+        <div class="mb-16">
+            <h2 class="text-2xl font-bold mb-6">Project Demo</h2>
+            <div class="aspect-w-16 aspect-h-9">
+                <iframe 
+                    src="{{ portfolio.demo_video_url|safe }}" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    class="w-full h-[400px] rounded-lg">
+                </iframe>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Business Logic Section -->
+        {% if portfolio.business_logic %}
+        <div id="business-logic" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold mb-6">Problem Statement & Business Logic</h2>
+            <div class="prose prose-invert prose-accent max-w-none">
+                {{ portfolio.business_logic|safe }}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Target Audience Section -->
+        {% if portfolio.target_audience %}
+        <div id="target-audience" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold mb-6">Target Audience</h2>
+            <div class="prose prose-invert prose-accent max-w-none">
+                {{ portfolio.target_audience|safe }}
+            </div>
+        </div>
+        {% endif %}
 
         <!-- Tech Stack Section -->
         {% if portfolio.tech_stack_description %}
-            <div class="mb-16">
-                <h2 class="text-2xl font-bold mb-6">Technical Stack</h2>
-                <div class="prose prose-invert prose-accent max-w-none">
-                    {{ portfolio.tech_stack_description|safe }}
-                </div>
+        <div id="tech-stack" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold mb-6">Technical Stack</h2>
+            <div class="prose prose-invert prose-accent max-w-none">
+                {{ portfolio.tech_stack_description|safe }}
             </div>
+        </div>
         {% endif %}
-        <br>
+
+        <!-- Architecture Description -->
+        {% if portfolio.architecture_description %}
+        <div id="architecture" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold mb-6">Architecture & Design Patterns</h2>
+            <div class="prose prose-invert prose-accent max-w-none">
+                {{ portfolio.architecture_description|safe }}
+            </div>
+        </div>
+        {% endif %}
 
         <!-- Features Section -->
         {% if portfolio.feature_description %}
-            <div class="mb-16">
-                <h2 class="text-2xl font-bold mb-6">Key Features</h2>
-                <div class="prose prose-invert prose-accent max-w-none">
-                    {{ portfolio.feature_description|safe }}
-                </div>
+        <div id="features" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold mb-6">Key Features</h2>
+            <div class="prose prose-invert prose-accent max-w-none">
+                {{ portfolio.feature_description|safe }}
             </div>
+        </div>
+        {% endif %}
+
+        <!-- Development Process -->
+        {% if portfolio.development_process %}
+        <div id="development" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold mb-6">Development Process</h2>
+            <div class="prose prose-invert prose-accent max-w-none">
+                {{ portfolio.development_process|safe }}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Challenges -->
+        {% if portfolio.challenges %}
+        <div id="challenges" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold mb-6">Challenges & Solutions</h2>
+            <div class="prose prose-invert prose-accent max-w-none">
+                {{ portfolio.challenges|safe }}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Bugs and Fixes -->
+        {% if portfolio.bugs_and_fixes %}
+        <div id="bugs-fixes" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold mb-6">Bugs & Fixes</h2>
+            <div class="prose prose-invert prose-accent max-w-none">
+                {{ portfolio.bugs_and_fixes|safe }}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Outcome -->
+        {% if portfolio.outcome %}
+        <div id="outcome" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold mb-6">Project Outcome</h2>
+            <div class="prose prose-invert prose-accent max-w-none">
+                {{ portfolio.outcome|safe }}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Lessons Learned -->
+        {% if portfolio.lessons_learned %}
+        <div id="lessons" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold mb-6">Lessons Learned</h2>
+            <div class="prose prose-invert prose-accent max-w-none">
+                {{ portfolio.lessons_learned|safe }}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Future Improvements -->
+        {% if portfolio.future_improvements %}
+        <div id="improvements" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold mb-6">Future Improvements</h2>
+            <div class="prose prose-invert prose-accent max-w-none">
+                {{ portfolio.future_improvements|safe }}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Conclusion -->
+        {% if portfolio.conclusion %}
+        <div id="conclusion" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold mb-6">Conclusion</h2>
+            <div class="prose prose-invert prose-accent max-w-none">
+                {{ portfolio.conclusion|safe }}
+            </div>
+        </div>
         {% endif %}
     </article>
-    <br>
 
     <!-- Project Gallery -->
     {% if portfolio.images.exists %}
-        <section class="flex flex-col gap-y-6 max-w-screen-2xl">
-            <h2 class="text-2xl mb-8 font-bold sm:text-3xl xl:text-5xl">Project Gallery</h2>
-            <br>
-            <div class="grid gap-x-2 gap-y-2 md:grid-cols-2 lg:grid-cols-3">
-                {% for image in portfolio.images.all %}
-                    <div class="rounded-lg overflow-hidden group relative">
-                        <img src="{{ image.display_image }}" 
-                             alt="{{ image.caption|default:portfolio.title }}"
-                             class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
-                        {% if image.caption %}
-                            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 p-3 transform translate-y-full group-hover:translate-y-0 transition-transform">
-                                <p class="text-sm text-gray-200">{{ image.caption }}</p>
-                            </div>
-                        {% endif %}
-                    </div>
-                {% endfor %}
+    <section id="gallery" class="flex flex-col gap-y-6 mt-16 max-w-screen-2xl scroll-mt-24">
+        <h2 class="text-2xl mb-8 font-bold sm:text-3xl xl:text-5xl">Project Gallery</h2>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {% for image in portfolio.images.all %}
+            <div class="rounded-lg overflow-hidden group relative">
+                <img src="{{ image.display_image }}" 
+                     alt="{{ image.caption|default:portfolio.title }}"
+                     class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+                {% if image.caption %}
+                <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 p-3 transform translate-y-full group-hover:translate-y-0 transition-transform">
+                    <p class="text-sm text-gray-200">{{ image.caption }}</p>
+                </div>
+                {% endif %}
             </div>
-        </section>
+            {% endfor %}
+        </div>
+    </section>
     {% endif %}
+
+    <!-- Back to Portfolio -->
+    <div class="mt-16 text-center">
+        <a href="{% url 'portfolio:portfolio_list' %}" 
+           class="inline-flex items-center px-6 py-3 bg-accent text-white rounded-md hover:bg-accent/90 transition-colors">
+            <i class="fas fa-arrow-left mr-3"></i>
+            <span>Back to Portfolio</span>
+        </a>
+    </div>
 </section>
 {% endblock %}
