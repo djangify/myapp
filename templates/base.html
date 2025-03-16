@@ -16,6 +16,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/output.css' %}" />
     
     <link rel="icon" type="image/ico" href="{% static 'images/favicon.ico' %}">
     <title>{% block title %}Techical Virtual Assistant / Web Developer{% endblock %}</title>
@@ -28,10 +29,49 @@
 
     {% include 'base/footer.html' %}
 
-    <!-- Scripts -->
-    {% block extra_js %}
-    <script src="{% static 'js/app.js' %}"></script>
-  {% endblock %}
     
+    <!-- Cookie Consent -->
+        <!-- Cookie Consent -->
+      <aside id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white py-4 px-6 hidden z-50" role="dialog" aria-labelledby="cookie-title">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-sm">
+                <h2 id="cookie-title" class="sr-only">Cookie Consent</h2>
+                We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. 
+                <a href="#" class="text-accent hover:text-text underline transition-colors">Cookie Policy</a>
+                </div>
+            <div class="flex gap-4">
+                <button id="accept-cookies" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-colors" aria-label="Accept cookies">Accept</button>
+                <button id="decline-cookies" class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-sm transition-colors" aria-label="Decline cookies">Decline</button>
+            </div>
+        </div>
+      </aside>
+
+<!-- Scripts -->
+{% block extra_js %}
+<script src="{% static 'js/app.js' %}"></script>
+
+<!-- Cookie Consent Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const cookieConsent = localStorage.getItem('cookieConsent');
+      const banner = document.getElementById('cookie-banner');
+      
+      if (!cookieConsent) {
+          banner.classList.remove('hidden');
+      }
+      
+      document.getElementById('accept-cookies').addEventListener('click', function() {
+          localStorage.setItem('cookieConsent', 'accepted');
+          banner.classList.add('hidden');
+      });
+      
+      document.getElementById('decline-cookies').addEventListener('click', function() {
+          localStorage.setItem('cookieConsent', 'declined');
+          banner.classList.add('hidden');
+      });
+  });
+</script>
+{% endblock %}
+
   </body>
 </html>
