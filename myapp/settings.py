@@ -50,8 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    'ckeditor',
-    'ckeditor_uploader',
+    'django_prose_editor',
     'shop',
     'core',
     'portfolio',
@@ -105,8 +104,8 @@ DATABASES = {
         "PORT": env("DATABASE_PORT", default="3306"),
         "OPTIONS": {
             "charset": "utf8mb4",
-            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
             "use_unicode": True,
+            "init_command": "SET sql_mode='STRICT_TRANS_TABLES', character_set_connection=utf8mb4, collation_connection=utf8mb4_unicode_ci",
             "connect_timeout": 10,
             "autocommit": True,
         },
@@ -142,73 +141,30 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
-# CKEditor settings
-CKEDITOR_UPLOAD_SLUGIFY_FILENAME = True
-CKEDITOR_JQUERY_URL = None
 
-
-CKEDITOR_UPLOAD_PATH = "uploads/ckeditor/"
-CKEDITOR_ALLOW_NONIMAGE_FILES = True
-CKEDITOR_IMAGE_BACKEND = "pillow"
-CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
-CKEDITOR_RESTRICT_BY_USER = True
-CKEDITOR_BROWSE_SHOW_DIRS = True
-CKEDITOR_CONFIGS = {
-    "default": {
-        "toolbar": "full",
-        "height": 300,
-        "width": "100%",
-        "removePlugins": "stylesheetparser",
-        "extraPlugins": ",".join(
-            [
-                "uploadimage",
-                "image2",
-                "autolink",
-                "autoembed",
-                "embedsemantic",
-                "autogrow",
-                "widget",
-                "lineutils",
-                "clipboard",
-                "dialog",
-                "dialogui",
-                "elementspath",
+PROSE_EDITOR_CONFIG = {
+    'toolbar': [
+        'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+        'bold', 'italic', 'strike', 'underline',
+        'blockquote', 'code',
+        'link', 'image',
+        'ul', 'ol',
+        'align', 
+        'clean',
+    ],
+    'modules': {
+        'toolbar': {
+            'container': [
+                [{ 'header': [1, 2, 3, 4, 5, 6, False] }],  
+                ['bold', 'italic', 'underline', 'strike'],
+                [{ 'align': ['', 'center', 'right', 'justify'] }],  
+                ['blockquote', 'code-block'],
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                ['link', 'image'],
+                ['clean']
             ]
-        ),
-        "uploadUrl": "/ckeditor/upload/",
-        "filebrowserUploadUrl": "/ckeditor/upload/",
-        "filebrowserBrowseUrl": "/ckeditor/browse/",
-        "contentsCss": [
-            "p { margin: 0.5em 0; }",
-            "h1, h2, h3, h4, h5, h6 { font-family: 'Lato', sans-serif; }",
-        ],
-        "enterMode": 2,
-        "shiftEnterMode": 1,
-        "format_tags": "p;h1;h2;h3;pre",
-        "removeDialogTabs": "image:advanced;link:advanced",
-        "stylesSet": [
-            {
-                "name": "Paragraph",
-                "element": "p",
-                "attributes": {"style": "margin: 0.5em 0;"},
-            },
-            {
-                "name": "Heading 1",
-                "element": "h1",
-                "attributes": {"style": "font-family: 'Lato', sans-serif;"},
-            },
-            {
-                "name": "Heading 2",
-                "element": "h2",
-                "attributes": {"style": "font-family: 'Lato', sans-serif;"},
-            },
-            {
-                "name": "Heading 3",
-                "element": "h3",
-                "attributes": {"style": "font-family: 'Lato', sans-serif;"},
-            },
-        ],
-    },
+        }
+    }
 }
 
 COLLECT_STATIC = "collectstatic" in sys.argv

@@ -1,6 +1,7 @@
 # Path: portfolio/models.py
 from django.db import models
 from django.core.validators import FileExtensionValidator
+from django_prose_editor.fields import ProseEditorField
 
 class Technology(models.Model):
     TECH_CATEGORIES = [
@@ -41,20 +42,20 @@ class Portfolio(models.Model):
 
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
-    short_description = models.CharField(max_length=200)
+    short_description = ProseEditorField(max_length=200)
     
     # Content sections
-    introduction = models.TextField(
+    introduction = ProseEditorField(
         blank=True, 
         null=True,
         help_text="Introduction section describing the project overview"
     )
-    tech_stack_description = models.TextField(
+    tech_stack_description = ProseEditorField(
         blank=True, 
         null=True,
         help_text="Detailed description of the technical stack and architecture"
     )
-    feature_description = models.TextField(
+    feature_description = ProseEditorField(
         blank=True, 
         null=True,
         help_text="Description of key features and functionality"

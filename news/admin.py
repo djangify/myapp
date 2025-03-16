@@ -6,7 +6,6 @@ from django.core.exceptions import ValidationError
 import requests
 from .models import Category, Post
 from django import forms
-from ckeditor.widgets import CKEditorWidget
 
 
 @admin.register(Category)
@@ -16,8 +15,6 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ["name"]
 
 class PostAdminForm(forms.ModelForm):
-    introduction = forms.CharField(widget=CKEditorWidget(), required=False)
-    content = forms.CharField(widget=CKEditorWidget())
     
     class Meta:
         model = Post

@@ -1,16 +1,7 @@
-# Path: portfolio/admin.py
 from django.contrib import admin
 from django.utils.html import format_html
 from django import forms
-from ckeditor.widgets import CKEditorWidget
 from .models import Technology, Portfolio, PortfolioImage
-
-class PortfolioAdminForm(forms.ModelForm):
-    description = forms.CharField(widget=CKEditorWidget())
-    
-    class Meta:
-        model = Portfolio
-        fields = '__all__'
 
 class PortfolioImageInline(admin.TabularInline):
     model = PortfolioImage
@@ -32,9 +23,8 @@ class TechnologyAdmin(admin.ModelAdmin):
     ordering = ["name", "-created_at"]
 
 class PortfolioAdminForm(forms.ModelForm):
-    introduction = forms.CharField(widget=CKEditorWidget())
-    tech_stack_description = forms.CharField(widget=CKEditorWidget(), required=False)
-    feature_description = forms.CharField(widget=CKEditorWidget(), required=False)
+    # No need to define widgets for ProseEditorField fields
+    # The fields will automatically use the ProseEditorWidget
     
     class Meta:
         model = Portfolio
@@ -97,5 +87,3 @@ class PortfolioAdmin(admin.ModelAdmin):
         return "No image"
 
     image_preview.short_description = "Preview"
-
- 

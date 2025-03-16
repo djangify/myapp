@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from django.utils import timezone
-from ckeditor_uploader.fields import RichTextUploadingField
+from django_prose_editor.fields import ProseEditorField
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -36,14 +36,14 @@ class Post(models.Model):
     # Basic fields
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
-    introduction = RichTextUploadingField(
+    introduction = ProseEditorField(
         "Introduction", 
-        config_name="default",
         blank=True, 
         null=True,
         help_text="Introduction"
     )
-    content = RichTextUploadingField("Content", config_name="default")
+    content = ProseEditorField("Content")
+    
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="draft")
 
