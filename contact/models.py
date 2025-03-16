@@ -22,6 +22,13 @@ class ContactSubmission(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_read = models.BooleanField(default=False)
+
+    # Add IP address field
+    ip_address = models.GenericIPAddressField(blank=True, null=True)
+    # Add user agent field
+    user_agent = models.TextField(blank=True, null=True)
+    # Add blocked flag
+    is_blocked = models.BooleanField(default=False)
     
     class Meta:
         ordering = ['-created_at']

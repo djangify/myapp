@@ -17,20 +17,28 @@
 
         <form class="flex flex-col font-bold gap-y-2 *:px-4 *:py-2 *:rounded *:outline-none h-full" method="post" action="{% url 'contact:contact' %}">
             {% csrf_token %}
+            
+            <!-- Name field -->
             <input
                 class="bg-accent text-text placeholder:text-text/80 h-12 sm:h-16"
                 type="text"
                 name="name"
                 placeholder="Name"
                 required
+                {% if form.name.value %}value="{{ form.name.value }}"{% endif %}
             />
+            
+            <!-- Email field -->
             <input
                 class="bg-accent text-text placeholder:text-text/80 h-12 sm:h-16"
                 type="email"
                 name="email"
                 placeholder="Email"
                 required
+                {% if form.email.value %}value="{{ form.email.value }}"{% endif %}
             />
+            
+            <!-- Phone field -->
             <input
                 class="bg-accent text-text placeholder:text-text/80 h-12 sm:h-16"
                 type="tel"
@@ -39,37 +47,57 @@
                 pattern="[0-9]*"
                 inputmode="numeric"
                 title="Please enter numbers only"
+                {% if form.phone.value %}value="{{ form.phone.value }}"{% endif %}
             />
             
+            <!-- Service type dropdown -->
             <select
                 class="bg-accent text-text h-12 sm:h-16 appearance-none"
                 name="service_type"
                 required
             >
-                <option value="" disabled selected>I need...</option>
-                <option value="tech_tune_up">Tech Tune-Up</option>
-                <option value="short_term">One-off Short-Term Help</option>
-                <option value="long_term">Long Term Project Help</option>
-                <option value="other">Something Else</option>
+                <option value="" disabled {% if not form.service_type.value %}selected{% endif %}>I need...</option>
+                <option value="tech_tune_up" {% if form.service_type.value == 'tech_tune_up' %}selected{% endif %}>Tech Tune-Up</option>
+                <option value="short_term" {% if form.service_type.value == 'short_term' %}selected{% endif %}>One-off Short-Term Help</option>
+                <option value="long_term" {% if form.service_type.value == 'long_term' %}selected{% endif %}>Long Term Project Help</option>
+                <option value="other" {% if form.service_type.value == 'other' %}selected{% endif %}>Something Else</option>
             </select>
 
+            <!-- Message textarea -->
             <textarea
                 class="bg-accent text-text placeholder:text-text/80 h-48 lg:h-full"
                 name="message"
                 placeholder="Message"
                 required
-            ></textarea>
+            >{% if form.message.value %}{{ form.message.value }}{% endif %}</textarea>
             
+            <!-- Used before dropdown -->
             <select
                 class="bg-accent text-text h-12 sm:h-16 appearance-none"
                 name="used_before"
                 required
             >
-                <option value="" disabled selected>I have...</option>
-                <option value="yes">used Tech VA Services before</option>
-                <option value="no">NEVER used Tech VA Services before</option>
+                <option value="" disabled {% if not form.used_before.value %}selected{% endif %}>I have...</option>
+                <option value="yes" {% if form.used_before.value == 'yes' %}selected{% endif %}>used Tech VA Services before</option>
+                <option value="no" {% if form.used_before.value == 'no' %}selected{% endif %}>NEVER used Tech VA Services before</option>
             </select>
+            
+            <!-- reCAPTCHA field -->
+            <div class="g-recaptcha my-4" data-sitekey="{{ recaptcha_public_key }}"></div>
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+            
+            <!-- Display form errors -->
+            {% if form.errors %}
+            <div class="p-4 rounded bg-red-100 text-red-800 border border-red-400 mb-4">
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <p>{{ field }}: {{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            {% endif %}
 
+            <!-- Submit button -->
             <input
                 class="border-2 border-accent bg-accent text-text cursor-pointer h-12 sm:h-16"
                 type="submit"
@@ -77,6 +105,12 @@
             />
         </form>
     </div>
+
+    <!-- Rest of your contact section remains unchanged -->
+    <div class="flex flex-col gap-y-5 lg:self-center xl:gap-y-10 *:space-y-2">
+        <!-- Your existing content here -->
+    </div>
+</section>
 
     <div class="flex flex-col gap-y-5 lg:self-center xl:gap-y-10 *:space-y-2">
         <div>

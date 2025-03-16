@@ -115,6 +115,11 @@ abbr:where([title]) {
 Remove the default font size and weight for headings.
 */
 
+
+.prose p {
+  margin-bottom: 1.5em;
+}
+
 h1,
 h2,
 h3,
