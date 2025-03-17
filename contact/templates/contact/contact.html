@@ -98,10 +98,6 @@
                 {% endfor %}
             </div>
             {% endif %}
-
-            <!-- recaptcha -->
-            <!-- Add a hidden input for the token -->
-            <input type="hidden" name="g-recaptcha-response" id="recaptchaResponse">
             
             <!-- Submit button -->
             <input
@@ -109,25 +105,7 @@
                 type="submit"
                 value="Submit"
             />
-            <!-- recaptcha script -->
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    grecaptcha.ready(function() {
-                        // Execute reCAPTCHA with your site key
-                        grecaptcha.execute('6Ldc1vYgAAAAAPYzuxMO7jH7UWzsMgNcZBSJmfk', {action: 'submit'}).then(function(token) {
-                            // Add token to form
-                            document.getElementById('recaptchaResponse').value = token;
-                        });
-                    });
-                    
-                    // Refresh token every 90 seconds
-                    setInterval(function() {
-                        grecaptcha.execute('6Ldc1vYgAAAAAPYzuxMO7jH7UWzsMgNcZBSJmfk', {action: 'submit'}).then(function(token) {
-                            document.getElementById('recaptchaResponse').value = token;
-                        });
-                    }, 90000);
-                });
-            </script>
+ 
         </form>
     </div>
 
