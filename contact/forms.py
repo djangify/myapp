@@ -10,6 +10,4 @@ class ContactForm(forms.Form):
     service_type = forms.ChoiceField(choices=ContactSubmission.SERVICE_CHOICES, required=True)
     used_before = forms.ChoiceField(choices=ContactSubmission.USED_BEFORE_CHOICES, required=True)
     message = forms.CharField(widget=forms.Textarea, required=True)
-
-
  #  reCAPTCHA verification handled manually as import continues to fail

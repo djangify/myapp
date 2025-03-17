@@ -9,33 +9,34 @@ import requests
 
 def contact_view(request):
     recaptcha_public_key = settings.RECAPTCHA_PUBLIC_KEY
+    form = ContactForm(request.POST or None)
     
     if request.method == 'POST':
-        form = ContactForm(request.POST)
-        
-        # Manual reCAPTCHA verification
+        # Validate reCAPTCHA v3
         recaptcha_response = request.POST.get('g-recaptcha-response')
         if not recaptcha_response:
-            messages.error(request, 'Please complete the reCAPTCHA verification.')
+            messages.error(request, 'reCAPTCHA verification failed. Please try again or disable any browser extensions that might block reCAPTCHA.')
             return render(request, 'contact/contact.html', {'form': form, 'recaptcha_public_key': recaptcha_public_key})
-        
+
         # Verify with Google
         recaptcha_secret = settings.RECAPTCHA_PRIVATE_KEY
         data = {
             'secret': recaptcha_secret,
             'response': recaptcha_response
         }
+
+    try:
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        result = r.json()
         
-        try:
-            r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
-            result = r.json()
-            
-            if not result.get('success'):
-                messages.error(request, 'reCAPTCHA verification failed. Please try again.')
-                return render(request, 'contact/contact.html', {'form': form, 'recaptcha_public_key': recaptcha_public_key})
-        except Exception as e:
-            print(f"reCAPTCHA verification error: {str(e)}")
-            # Continue anyway if there's a connection issue with Google
+        # With v3, check success and score
+        if not result.get('success') or float(result.get('score', 0)) < 0.5:
+            print(f"reCAPTCHA failed: {result}")  # Log the result for debugging
+            messages.error(request, 'Our security check indicates you might be a bot. Please try again.')
+            return render(request, 'contact/contact.html', {'form': form, 'recaptcha_public_key': recaptcha_public_key})
+    except Exception as e:
+        print(f"reCAPTCHA verification error: {str(e)}")
+        # Continue anyway if there's a connection issue with Google
         
         if form.is_valid():
             # Get cleaned data
@@ -69,7 +70,7 @@ def contact_view(request):
             
             # Send email notification
             try:
-                # Email logic (unchanged)
+                # Email logic
                 subject = f'New Contact Form Submission: {name}'
                 
                 # Get the service type display name
@@ -104,11 +105,13 @@ def contact_view(request):
             except Exception as e:
                 print(f"Email sending error: {str(e)}")
             
+            # Redirect to thank you page with submission ID
             return redirect('contact:thanks', submission_id=submission.id)
-    else:
-        form = ContactForm()
+        else:
+            messages.error(request, 'Please correct the errors in the form.')
     
     return render(request, 'contact/contact.html', {'form': form, 'recaptcha_public_key': recaptcha_public_key})
+
 
 def thanks_view(request, submission_id):
     # Get the submission to display its details

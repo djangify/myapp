@@ -1,9 +1,14 @@
 {% load static %}
 <section id="contact" class="p-6 flex flex-col gap-y-10 bg-primary text-text md:p-16 lg:gap-x-10 lg:flex-row *:basis-full">
     <div class="flex flex-col gap-y-5">
-        <figure>
-            <img src="{% static 'images/form.jpg' %}" alt="Form Image" />
-        </figure>
+        <div>
+            <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-left-0 lg:text-lg">
+                Let's talk
+            </h6>
+            <h2 class="text-2xl capitalize font-bold lg:text-3xl">
+                Ready to offload your technical challenges?
+            </h2>
+        </div>
 
         {% if messages %}
         <div class="messages mb-4">
@@ -82,9 +87,6 @@
                 <option value="no" {% if form.used_before.value == 'no' %}selected{% endif %}>NEVER used Tech VA Services before</option>
             </select>
             
-            <!-- reCAPTCHA field -->
-            <div class="g-recaptcha my-4" data-sitekey="{{ recaptcha_public_key }}"></div>
-            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
             
             <!-- Display form errors -->
             {% if form.errors %}
@@ -97,29 +99,44 @@
             </div>
             {% endif %}
 
+            <!-- recaptcha -->
+            <!-- Add a hidden input for the token -->
+            <input type="hidden" name="g-recaptcha-response" id="recaptchaResponse">
+            
             <!-- Submit button -->
             <input
                 class="border-2 border-accent bg-accent text-text cursor-pointer h-12 sm:h-16"
                 type="submit"
                 value="Submit"
             />
+            <!-- recaptcha script -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    grecaptcha.ready(function() {
+                        // Execute reCAPTCHA with your site key
+                        grecaptcha.execute('6Ldc1vYgAAAAAPYzuxMO7jH7UWzsMgNcZBSJmfk', {action: 'submit'}).then(function(token) {
+                            // Add token to form
+                            document.getElementById('recaptchaResponse').value = token;
+                        });
+                    });
+                    
+                    // Refresh token every 90 seconds
+                    setInterval(function() {
+                        grecaptcha.execute('6Ldc1vYgAAAAAPYzuxMO7jH7UWzsMgNcZBSJmfk', {action: 'submit'}).then(function(token) {
+                            document.getElementById('recaptchaResponse').value = token;
+                        });
+                    }, 90000);
+                });
+            </script>
         </form>
     </div>
-
-    <!-- Rest of your contact section remains unchanged -->
-    <div class="flex flex-col gap-y-5 lg:self-center xl:gap-y-10 *:space-y-2">
-        <!-- Your existing content here -->
-    </div>
-</section>
 
     <div class="flex flex-col gap-y-5 lg:self-center xl:gap-y-10 *:space-y-2">
         <div>
             <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-left-0 lg:text-lg">
-                Let's talk
+                Book A Consultation
             </h6>
-            <h2 class="text-2xl capitalize font-bold lg:text-3xl">
-                Ready to offload your technical challenges?
-            </h2>
+
         </div>
 
         <p>
