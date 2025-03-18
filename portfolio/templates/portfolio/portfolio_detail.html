@@ -17,7 +17,7 @@
                 {% if portfolio.project_timeline %}
                 <p class="text-accent">{{ portfolio.project_timeline }}</p>
                 {% endif %}
-                <p class="text-xl text-gray-400">{{ portfolio.short_description }}</p>
+                <p class="text-xl text-gray-700">{{ portfolio.short_description|safe }}</p>
             </div>
             {% if portfolio.introduction %}
                 <div class="lg:text-lg">{{ portfolio.introduction|safe }}</div>
