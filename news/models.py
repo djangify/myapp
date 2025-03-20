@@ -46,6 +46,7 @@ class Post(models.Model):
     
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="draft")
+    is_featured = models.BooleanField(default=False, help_text="Show this post at the top of the listing")
 
     # Dates
     created = models.DateTimeField(auto_now_add=True)

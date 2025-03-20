@@ -28,7 +28,8 @@ class PostAdminForm(forms.ModelForm):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     form = PostAdminForm
-    list_display = ["title", "category", "status", "publish_date", "display_thumbnail"]
+    list_display = ["title", "category", "status", "is_featured", "publish_date", "display_thumbnail"]
+    list_editable = ["status", "is_featured"]
     list_filter = ["status", "category", "created", "publish_date"]
     search_fields = ["title", "introduction", "content", "meta_title", "meta_description"]
     prepopulated_fields = {"slug": ("title",)}

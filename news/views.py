@@ -5,20 +5,35 @@ from django.utils import timezone
 
 
 def news_list(request):
-    posts = Post.objects.filter(
-        status="published", publish_date__lte=timezone.now()
+    # Get the current page number
+    page = request.GET.get("page", "1")  # Default to page 1 if not specified
+    
+    # Get all published regular posts (non-featured)
+    regular_posts = Post.objects.filter(
+        status="published", 
+        publish_date__lte=timezone.now(),
+        is_featured=False
     ).select_related("category")
 
-    paginator = Paginator(posts, 12)
-    page = request.GET.get("page")
-    posts = paginator.get_page(page)
+    # Paginate regular posts
+    paginator = Paginator(regular_posts, 12)
+    regular_posts_page = paginator.get_page(page)
+    
+    # Only get featured posts if we're on page 1
+    featured_posts = []
+    if page == "1" or not page:
+        featured_posts = Post.objects.filter(
+            status="published", 
+            publish_date__lte=timezone.now(),
+            is_featured=True
+        ).select_related("category").order_by("-publish_date")[:4]  # Limit to 4 featured posts
 
     context = {
-        "posts": posts,
+        "featured_posts": featured_posts,
+        "posts": regular_posts_page,
         "categories": Category.objects.all(),
         "title": "News",
         "meta_description": "Latest news and updates from Djangify",
-        
     }
     return render(request, "news/list.html", context)
 
