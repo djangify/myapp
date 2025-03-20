@@ -144,16 +144,18 @@ STATICFILES_FINDERS = [
 ]
 
 
+# settings.py
 PROSE_EDITOR_CONFIG = {
     'toolbar': [
         'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
         'bold', 'italic', 'strike', 'underline',
-        'blockquote', 'code',
+        'blockquote', 'code-block',
         'link', 'image',
-        'ul', 'ol',
+        'list-ordered', 'list-bullet',
         'align', 
         'clean',
     ],
+    'theme': 'snow',  # Use snow theme for better styling
     'modules': {
         'toolbar': {
             'container': [
@@ -165,6 +167,20 @@ PROSE_EDITOR_CONFIG = {
                 ['link', 'image'],
                 ['clean']
             ]
+        },
+        'clipboard': {
+            'matchVisual': False  # Prevents unwanted whitespace
+        }
+    },
+    'placeholder': 'Compose your content...',
+    'formats': {
+        'header': {
+            '1': { 'font': 'Lato, sans-serif', 'size': '2em', 'font-weight': 'bold' },
+            '2': { 'font': 'Lato, sans-serif', 'size': '1.75em', 'font-weight': 'bold' },
+            '3': { 'font': 'Lato, sans-serif', 'size': '1.5em', 'font-weight': 'bold' },
+            '4': { 'font': 'Lato, sans-serif', 'size': '1.25em', 'font-weight': 'bold' },
+            '5': { 'font': 'Lato, sans-serif', 'size': '1.125em', 'font-weight': 'bold' },
+            '6': { 'font': 'Lato, sans-serif', 'size': '1em', 'font-weight': 'bold' }
         }
     }
 }
