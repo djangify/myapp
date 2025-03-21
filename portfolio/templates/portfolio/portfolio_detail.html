@@ -32,7 +32,7 @@
         </figure>
     </section>
 
-    <article class="container mx-auto max-w-4xl mt-16">
+    <article class="container mx-auto max-w-4xl mb-4 mt-16">
         <!-- Table of Contents - Include only on desktop -->
         <div class="hidden lg:block lg:float-right lg:ml-8 lg:w-1/4 xl:w-1/3">
             {% include 'portfolio/components/toc.html' %}
@@ -52,22 +52,22 @@
             <a href="{{ portfolio.github_url }}" 
                target="_blank" rel="noopener noreferrer"
                class="inline-flex items-center px-6 py-3 border-2 border-accent text-accent rounded-md hover:bg-accent hover:text-white transition-colors">
-                <i class="fab fa-github mr-2"></i> GitHub Repository
+                <i class="fab fa-github mr-2"></i> GitHub Repo
             </a>
             {% endif %}
             
             {% if portfolio.external_url %}
             <a href="{{ portfolio.external_url }}" 
                target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center px-6 py-3 bg-gray-700 text-white rounded-md hover:bg-gray-600 transition-colors">
-                <i class="fas fa-shopping-cart mr-2"></i> Marketplace
+               class="inline-flex items-center px-6 py-3 border-2 border-gray-900 bg-gray-300 rounded-md hover:bg-primary transition-colors font-bold">
+                <i class="fas fa-shopping-cart mr-2"></i> For Sale
             </a>
             {% endif %}
         </div>
 
         <!-- Technologies Used -->
         <div class="mb-16 pb-8 border-b border-gray-700">
-            <h2 class="text-2xl font-bold mb-6">Technologies Used</h2>
+            <h2 class="text-2xl font-bold py-4 mb-6">Technologies Used</h2>
             <div class="flex flex-wrap gap-4">
                 {% for tech in portfolio.technologies.all %}
                     <a href="{% url 'portfolio:portfolio_by_technology' tech.slug %}" 
