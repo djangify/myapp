@@ -57,18 +57,38 @@
         <div class="prose prose-lg text-text max-w-none">
             {{ post.content|safe }}
         </div>
-
+        <!-- Resource Downloads Section -->
+        {% if post.resource_type != 'none' and post.resource %}
+        <div class="mt-12 mb-8 p-6 bg-primary/10 rounded-lg border border-accent/30">
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Download Resource
+            </h3>
+            
+            <p class="mb-4">{{ post.resource_title|default:post.title }}</p>
+            
+            <a href="{{ post.resource.url }}" 
+            class="inline-flex items-center px-6 py-3 bg-gray-300  rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download {{ post.get_resource_type_display }}
+            </a>
+        </div>
+        {% endif %}
         <!-- Navigation -->
         <nav class="mt-16 border-t border-gray-700/30 pt-8">
             <div class="flex justify-between items-center">
                 {% if previous_post %}
-                <a href="{{ previous_post.get_absolute_url }}" class="group flex items-center text-sm text-gray-400 hover:text-accent transition-colors max-w-[45%]">
+                <a href="{{ previous_post.get_absolute_url }}" class="group flex items-center text-md text-gray-400 hover:text-accent transition-colors max-w-[45%]">
                     <svg class="mr-2 h-3 w-3 text-gray-400 group-hover:text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
                     <div>
-                        <span class="block text-xs text-gray-400">Previous</span>
-                        <span class="block text-xs">{{ previous_post.title|truncatechars:25 }}</span>
+                        <span class="block text-md text-gray-400">Previous</span>
+                        <span class="block text-md">{{ previous_post.title|truncatechars:25 }}</span>
                     </div>
                 </a>
                 {% else %}
@@ -76,10 +96,10 @@
                 {% endif %}
 
                 {% if next_post %}
-                <a href="{{ next_post.get_absolute_url }}" class="group flex items-center text-right text-sm text-gray-400 hover:text-accent transition-colors max-w-[45%]">
+                <a href="{{ next_post.get_absolute_url }}" class="group flex items-center text-right text-md text-gray-400 hover:text-accent transition-colors max-w-[45%]">
                     <div>
-                        <span class="block text-xs text-gray-400">Next</span>
-                        <span class="block text-xs">{{ next_post.title|truncatechars:25 }}</span>
+                        <span class="block text-sm text-gray-400">Next</span>
+                        <span class="block text-md">{{ next_post.title|truncatechars:25 }}</span>
                     </div>
                     <svg class="ml-2 h-3 w-3 text-gray-400 group-hover:text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
