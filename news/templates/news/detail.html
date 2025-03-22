@@ -98,7 +98,7 @@
                 {% if next_post %}
                 <a href="{{ next_post.get_absolute_url }}" class="group flex items-center text-right text-md text-gray-400 hover:text-accent transition-colors max-w-[45%]">
                     <div>
-                        <span class="block text-sm text-gray-400">Next</span>
+                        <span class="block text-md text-gray-400">Next</span>
                         <span class="block text-md">{{ next_post.title|truncatechars:25 }}</span>
                     </div>
                     <svg class="ml-2 h-3 w-3 text-gray-400 group-hover:text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -113,7 +113,7 @@
 
         <!-- Category Link -->
         <div class="text-center py-8">
-            <a href="{{ post.category.get_absolute_url }}" class="inline-flex items-center px-6 py-3 text-sm border-2 border-accent rounded-full text-accent hover:bg-accent hover:text-white transition-colors">
+            <a href="{{ post.category.get_absolute_url }}" class="inline-flex items-center px-6 py-3 text-md border-2 border-accent rounded-full text-accent hover:bg-accent hover:text-white transition-colors">
                 <span class="mr-2">All articles in category:</span>
                 {{ post.category.name }}
             </a>
