@@ -20,7 +20,7 @@
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 mb-16">
         {% for tech in technologies %}
         <a href="{% url 'portfolio:portfolio_by_technology' tech.slug %}" 
-           class="px-6 py-3 text-sm bg-accent/10 border border-accent rounded-full text-accent hover:bg-accent hover:text-white transition-colors text-center">
+           class="px-6 py-3 font-bold text-sm bg-accent/10 border border-primary rounded-full text-accent hover:bg-accent hover:text-white transition-colors text-center">
             {{ tech.name }}
         </a>
         {% endfor %}
