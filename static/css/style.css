@@ -60,8 +60,6 @@ html,
 body {
   margin: 0;
   /* 1 */
-  line-height: inherit;
-  /* 2 */
 }
 
 /*
@@ -120,16 +118,6 @@ Remove the default font size and weight for headings.
   margin-bottom: 1.5em;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  font-family: Lato, system-ui, sans-serif;
-}
 
 /*
 Reset links to optimize for opt-in styling instead of opt-out.
