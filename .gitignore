@@ -52,6 +52,7 @@ db.sqlite3
 db.sqlite3-journal
 media/
 staticfiles/
+export.json
 
 # OS specific
 .DS_Store
