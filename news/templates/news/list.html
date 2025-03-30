@@ -13,23 +13,6 @@
             Industry News. Informative Articles. Informal Blog Posts. All related to being a Tech VA and working in the world of online marketing. Click the CATEGORY name to see all posts under that topic.
         </p>
     </div>
-    
-    <!-- Search Bar -->
-    {% comment %}
-    <div class="flex justify-center mb-8">
-        <form method="get" action="{% url 'news:search' %}" class="w-full max-w-md">
-            <input
-                type="text"
-                id="search-bar"
-                name="q"
-                placeholder="Search articles..."
-                class="w-1/2 max-w-md px-4 py-2 text-md border-2 border-accent/30 rounded-md text-center text-text bg-primary placeholder:text-text/60 focus:outline-none focus:ring-2 focus:ring-accent"
-                value="{{ request.GET.q|default:'' }}"
-            />
-        </form>
-    </div>
-    {% endcomment %}
-    
     {% if featured_posts %}
         <div class="space-y-5 *:space-y-2 lg:self-center xl:space-y-5 mb-8">
             <h2 class="text-2xl font-bold mb-6">Featured Articles</h2>
@@ -94,7 +77,7 @@
     {% endif %}
 
     {% if posts %}
-        <div class="space-y-5 *:space-y-2 lg:self-center xl:space-y-5 mb-8">
+        <div class="space-y-5 *:space-y-2 lg:self-center xl:space-y-5 py-4 mb-8">
             <h2 class="text-2xl font-bold mb-6">Latest Articles</h2>
             <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {% for post in posts %}
@@ -152,43 +135,45 @@
             </div>
             
             <!-- Pagination -->
-            {% if posts.has_other_pages %}
-                <div class="flex justify-center mt-12">
-                    <div class="inline-flex rounded-md shadow-sm">
-                        {% if posts.has_previous %}
-                            <a href="?page={{ posts.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="px-4 py-2 rounded-l-md border border-accent text-accent hover:bg-accent hover:text-white transition-colors">
-                                Previous
-                            </a>
-                        {% else %}
-                            <span class="px-4 py-2 rounded-l-md border border-gray-600 text-gray-600 cursor-not-allowed">
-                                Previous
-                            </span>
-                        {% endif %}
-                        
-                        {% for i in posts.paginator.page_range %}
-                            {% if posts.number == i %}
-                                <span class="px-4 py-2 border-t border-b border-accent bg-accent text-white">
-                                    {{ i }}
-                                </span>
-                            {% else %}
-                                <a href="?page={{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="px-4 py-2 border-t border-b border-accent text-accent hover:bg-accent hover:text-white transition-colors">
-                                    {{ i }}
+            <div class="py-4 mb-8">
+                {% if posts.has_other_pages %}
+                    <div class="flex justify-center mt-12">
+                        <div class="inline-flex rounded-md shadow-sm">
+                            {% if posts.has_previous %}
+                                <a href="?page={{ posts.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="px-4 py-2 rounded-l-md border border-accent text-accent hover:bg-accent hover:text-white transition-colors">
+                                    Previous
                                 </a>
+                            {% else %}
+                                <span class="px-4 py-2 rounded-l-md border border-gray-600 text-gray-600 cursor-not-allowed">
+                                    Previous
+                                </span>
                             {% endif %}
-                        {% endfor %}
-                        
-                        {% if posts.has_next %}
-                            <a href="?page={{ posts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="px-4 py-2 rounded-r-md border border-accent text-accent hover:bg-accent hover:text-white transition-colors">
-                                Next
-                            </a>
-                        {% else %}
-                            <span class="px-4 py-2 rounded-r-md border border-gray-600 text-gray-600 cursor-not-allowed">
-                                Next
-                            </span>
-                        {% endif %}
+                            
+                            {% for i in posts.paginator.page_range %}
+                                {% if posts.number == i %}
+                                    <span class="px-4 py-2 border-t border-b border-accent bg-accent text-white">
+                                        {{ i }}
+                                    </span>
+                                {% else %}
+                                    <a href="?page={{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="px-4 py-2 border-t border-b border-accent text-accent hover:bg-accent hover:text-white transition-colors">
+                                        {{ i }}
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                            
+                            {% if posts.has_next %}
+                                <a href="?page={{ posts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="px-4 py-2 rounded-r-md border border-accent text-accent hover:bg-accent hover:text-white transition-colors">
+                                    Next
+                                </a>
+                            {% else %}
+                                <span class="px-4 py-2 rounded-r-md border border-gray-600 text-gray-600 cursor-not-allowed">
+                                    Next
+                                </span>
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
-            {% endif %}
+                {% endif %}
+            </div>
         </div>
     {% else %}
         <div class="text-center py-16 bg-primary rounded-lg">

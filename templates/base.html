@@ -8,22 +8,19 @@
     <!-- Basic Meta Tags -->
     <meta name="description" content="{% block meta_description %}Technical Virtual Assistant Services, Web Development with Django and TailwindCSS{% endblock %}">
     
-    <!-- Open Graph Tags (Facebook, LinkedIn) -->
-    <meta property="og:site_name" content="Djangify">
-    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
-    <meta property="og:url" content="{{ request.build_absolute_uri }}">
-    <meta property="og:title" content="{% block og_title %}{{ block.super }}{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}Technical Virtual Assistant Services, Web Development with Django and TailwindCSS{% endblock %}">
-    <meta property="og:image" content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/djangify-logo.png' %}{% endblock %}">
-    <meta property="og:image:width" content="{% block og_image_width %}1200{% endblock %}">
-    <meta property="og:image:height" content="{% block og_image_height %}630{% endblock %}">
-    
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@djangify">
-    <meta name="twitter:title" content="{% block twitter_title %}{{ block.super }}{% endblock %}">
-    <meta name="twitter:description" content="{% block twitter_description %}Technical Virtual Assistant Services, Web Development with Django and TailwindCSS{% endblock %}">
-    <meta name="twitter:image" content="{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/djangify-logo.png' %}{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}Technical Virtual Assistant, Web Development, Django, TailwindCSS{% endblock %}">
+
+    {% block open_graph_tags %}
+    <meta property="fb:app_id" content="2433552923679047" />
+    <meta property="og:title" content="Djangify - Tech VA" />
+    <meta
+      property="og:description"
+      content="Technical Virtual Assistant Services, Web Development with Django and TailwindCSS"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+    <meta property="og:image" content="{% static 'images/djangify-logo.png' %}" />
+    {% endblock %}
 
     <link 
         rel="stylesheet" 
@@ -37,18 +34,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/output.css' %}" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     
     <link rel="icon" type="image/ico" href="{% static 'images/favicon.ico' %}">
     <title>{% block title %}Techical Virtual Assistant / Web Developer{% endblock %}</title>
     {% block extra_meta %}{% endblock %}
   </head>
   <body class="text-lg 2xl:max-w-screen-2xl 2xl:mx-auto 2xl:bg-primary">
-    {% include 'components/navbar.html' %}
+    {% include 'base/navbar.html' %}
     
     {% block content %}
     {% endblock %}
 
-    {% include 'components/footer.html' %}
+    {% include 'base/footer.html' %}
 
     
     <!-- Cookie Consent -->

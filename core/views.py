@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from contact.forms import ContactForm
+from django.http import HttpResponse
+from django.views.decorators.http import require_GET
 
 def home(request):
     form = ContactForm()
@@ -56,3 +58,14 @@ def handler404(request, exception):
     }
     
     return render(request, 'error/404.html', context, status=404)
+
+@require_GET
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "Disallow: /admin/",
+        "Disallow: /accounts/",
+        "Allow: /",
+        f"Sitemap: {request.build_absolute_uri('/sitemap.xml')}"
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")
