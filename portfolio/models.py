@@ -1,7 +1,7 @@
 # Path: portfolio/models.py
 from django.db import models
 from django.core.validators import FileExtensionValidator
-from django_prose_editor.fields import ProseEditorField
+from tinymce.models import HTMLField
 
 class Technology(models.Model):
     TECH_CATEGORIES = [
@@ -42,71 +42,71 @@ class Portfolio(models.Model):
 
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
-    short_description = ProseEditorField(max_length=200)
+    short_description = HTMLField(max_length=200)
     project_timeline = models.CharField(max_length=100, blank=True, help_text="When the project was built, e.g., 'Jan-Mar 2023'")
     
     # Content sections
-    introduction = ProseEditorField(
+    introduction = HTMLField(
         blank=True, 
         null=True,
         help_text="Introduction section describing the project overview"
     )
-    business_logic = ProseEditorField(
+    business_logic = HTMLField(
         blank=True, 
         null=True,
         help_text="The problem statement and business logic of the project"
     )
-    target_audience = ProseEditorField(
+    target_audience = HTMLField(
         blank=True, 
         null=True,
         help_text="Description of who the project is designed for"
     )
-    tech_stack_description = ProseEditorField(
+    tech_stack_description = HTMLField(
         blank=True, 
         null=True,
         help_text="Detailed description of the technical stack and architecture"
     )
-    architecture_description = ProseEditorField(
+    architecture_description = HTMLField(
         blank=True, 
         null=True,
         help_text="Explanation of architecture and design patterns used"
     )
-    feature_description = ProseEditorField(
+    feature_description = HTMLField(
         blank=True, 
         null=True,
         help_text="Description of key features and functionality"
     )
-    development_process = ProseEditorField(
+    development_process = HTMLField(
         blank=True, 
         null=True,
         help_text="Approach and methodologies used during development"
     )
-    challenges = ProseEditorField(
+    challenges = HTMLField(
         blank=True, 
         null=True,
         help_text="Technical hurdles faced and how they were overcome"
     )
-    bugs_and_fixes = ProseEditorField(
+    bugs_and_fixes = HTMLField(
         blank=True, 
         null=True,
         help_text="Significant issues encountered and their resolutions"
     )
-    outcome = ProseEditorField(
+    outcome = HTMLField(
         blank=True, 
         null=True,
         help_text="How the project meets its objectives"
     )
-    lessons_learned = ProseEditorField(
+    lessons_learned = HTMLField(
         blank=True, 
         null=True,
         help_text="Technical and project management insights gained"
     )
-    future_improvements = ProseEditorField(
+    future_improvements = HTMLField(
         blank=True, 
         null=True,
         help_text="Planned or potential future enhancements"
     )
-    conclusion = ProseEditorField(
+    conclusion = HTMLField(
         blank=True, 
         null=True,
         help_text="Summary of the project experience"

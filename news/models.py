@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from django.utils import timezone
-from django_prose_editor.fields import ProseEditorField
+from tinymce.models import HTMLField
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -36,13 +36,13 @@ class Post(models.Model):
     # Basic fields
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
-    introduction = ProseEditorField(
+    introduction = HTMLField(
         "Introduction", 
         blank=True, 
         null=True,
         help_text="Introduction"
     )
-    content = ProseEditorField("Content")
+    content = HTMLField("Content")
     
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="draft")

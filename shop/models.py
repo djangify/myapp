@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
 from django.utils.text import slugify
-from django_prose_editor.fields import ProseEditorField
+from tinymce.models import HTMLField
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -46,8 +46,8 @@ class Product(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
-    short_description = ProseEditorField(max_length=200)
-    description = ProseEditorField()
+    short_description = HTMLField(max_length=200)
+    description = HTMLField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     
     # Digital product file
