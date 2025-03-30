@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block open_graph_tags %}
+<meta property="fb:app_id" content="2433552923679047" />
 <meta property="og:title" content="{{ post.title }}" />
 <meta property="og:description" content="{{ post.meta_description|default:post.content|striptags|truncatechars:160 }}" />
 <meta property="og:type" content="article" />
