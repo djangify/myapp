@@ -36,4 +36,8 @@ class ContactSubmission(models.Model):
         verbose_name_plural = 'Contact Submissions'
     
     def __str__(self):
-        return f"{self.name} - {self.created_at.strftime('%Y-%m-%d %H:%M')}"
+    # Limit the name to prevent excessively long representations
+        name = self.name
+        if len(name) > 50:
+            name = name[:47] + '...'
+        return f"{name} - {self.created_at.strftime('%Y-%m-%d %H:%M')}"
