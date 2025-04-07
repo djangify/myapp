@@ -5,6 +5,8 @@
 
 {% block content %}
 <div class="p-6 bg-secondary text-text py-12">
+     <!-- Include the breadcrumb here -->
+  {% include "core/components/breadcrumb.html" %}
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Table of Contents -->
         <div class="mb-12">
@@ -42,6 +44,7 @@
                     <li>Authentication cookies to maintain your login status</li>
                     <li>Shopping cart session cookies</li>
                 </ul>
+                <p></p>
                 <p class="mb-4">These cookies are strictly necessary and cannot be disabled as they ensure core website functionality and security.</p>
             </section>
 
@@ -81,6 +84,7 @@
                     <li><strong>Analytics:</strong> For website usage analysis and improvement</li>
                     <li><strong>Newsletter Service:</strong> For managing email subscriptions</li>
                 </ul>
+                <p></p>
                 <p class="mb-4">These third-party services have their own privacy and cookie policies which control how they use this information.</p>
             </section>
 
@@ -108,6 +112,7 @@
                     <li>Safari: Preferences → Privacy → Cookies</li>
                     <li>Edge: Settings → Privacy & Security → Cookies</li>
                 </ul>
+                <p></p>
                 <p class="mb-4">Please note that disabling essential cookies will affect the website's core functionality and shopping features.</p>
             </section>
 

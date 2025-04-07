@@ -5,11 +5,14 @@
 
 {% block content %}
 <div class="p-6 bg-secondary text-text py-12">
+     <!-- Include the breadcrumb here -->
+  {% include "core/components/breadcrumb.html" %}
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Table of Contents -->
         <div class="mb-12">
             <h1 class="text-4xl font-bold mb-8">Terms and Conditions</h1>
             <p class="text-text/80 mb-6">Last updated: January 2025</p>
+            <p></p>
             <div class="bg-primary p-6 rounded-lg">
                 <h2 class="text-lg font-semibold mb-4">Contents:</h2>
                 <ul class="space-y-2">
@@ -43,6 +46,7 @@
                     <li>Promptly update your account information when necessary</li>
                     <li>Accept responsibility for all activities under your account</li>
                 </ul>
+                <p></p>
                 <p class="mb-4">We reserve the right to suspend or terminate accounts for violations of these terms.</p>
             </section>
 
@@ -55,6 +59,7 @@
                     <li>Newsletter subscriptions</li>
                     <li>Web development services</li>
                 </ul>
+                <p></p>
                 <p class="mb-4">All product descriptions and specifications are subject to change without notice.</p>
             </section>
 
@@ -67,6 +72,7 @@
                     <li>Digital products are non-refundable unless defective</li>
                     <li>You must provide accurate billing information</li>
                 </ul>
+                <p></p>
                 <p class="mb-4">Refund requests will be evaluated on a case-by-case basis according to our refund policy.</p>
             </section>
 
@@ -79,6 +85,7 @@
                     <li>Educational materials and resources</li>
                     <li>Product documentation</li>
                 </ul>
+                <p></p>
                 <p class="mb-4">is the property of Djangify and protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without our express permission.</p>
             </section>
 
@@ -103,6 +110,8 @@
                     <li>Issues arising from third-party services</li>
                     <li>Technical problems beyond our control</li>
                 </ul>
+                <p></p>
+                <p class="mb-4">We do not guarantee that our services will be uninterrupted or error-free. We are not responsible for any damages resulting from the use or inability to use our services.</p>
                 <p class="mb-4">Our maximum liability shall be limited to the amount paid for the product or service in question.</p>
             </section>
 

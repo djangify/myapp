@@ -2,22 +2,51 @@ from django.shortcuts import render
 from contact.forms import ContactForm
 from django.http import HttpResponse
 from django.views.decorators.http import require_GET
+from django.urls import reverse
 
 def home(request):
     form = ContactForm()
     return render(request, "core/home.html", {'form': form})
 
-def privacy_view(request):
-    template_name = "core/policy/privacy.html"
-    return render(request, template_name)
+def policies_index_view(request):
+    """View function for the policies index page."""
+    breadcrumbs = [
+        {'title': 'Policies', 'url': None}
+    ]
+    template_name = "core/policy/policies_index.html"
+    return render(request, template_name, {'breadcrumbs': breadcrumbs})
 
-def terms_view(request):
-    template_name = "core/policy/terms.html"
-    return render(request, template_name)
+def privacy_view(request):
+    breadcrumbs = [
+        {'title': 'Policies', 'url': reverse('core:policies_index')},
+        {'title': 'Privacy Policy', 'url': None}
+    ]
+    template_name = "core/policy/privacy.html"
+    return render(request, template_name, {'breadcrumbs': breadcrumbs})
 
 def cookie_view(request):
+    breadcrumbs = [
+        {'title': 'Policies', 'url': reverse('core:policies_index')},
+        {'title': 'Cookie Policy', 'url': None}
+    ]
     template_name = "core/policy/cookies.html"
-    return render(request, template_name)
+    return render(request, template_name, {'breadcrumbs': breadcrumbs})
+
+def terms_view(request):
+    breadcrumbs = [
+        {'title': 'Policies', 'url': reverse('core:policies_index')},
+        {'title': 'Terms & Conditions', 'url': None}
+    ]
+    template_name = "core/policy/terms.html"
+    return render(request, template_name, {'breadcrumbs': breadcrumbs})
+
+def support_view(request):
+    breadcrumbs = [
+        {'title': 'Policies', 'url': reverse('core:policies_index')},
+        {'title': 'Support Policy', 'url': None}
+    ]
+    template_name = "core/policy/support.html"
+    return render(request, template_name, {'breadcrumbs': breadcrumbs})
 
 def handler500(request):
     return render(request, 'error/500.html', status=500)
