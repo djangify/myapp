@@ -13,7 +13,13 @@ class StaticViewSitemap(Sitemap):
                 'portfolio:portfolio_list', 'news:list']
 
     def location(self, item):
-        return reverse(item)
+        url = reverse(item)
+        # Remove any protocol prefix if it exists to prevent duplication
+        if url.startswith('http'):
+            url_parts = url.split('://', 1)
+            if len(url_parts) > 1:
+                return url_parts[1]
+        return url
 
 class PortfolioSitemap(Sitemap):
     priority = 1.0  # Highest priority as requested
