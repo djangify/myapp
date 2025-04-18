@@ -108,7 +108,7 @@ DATABASES = {
         "OPTIONS": {
             "charset": "utf8mb4",
             "use_unicode": True,
-            "init_command": "SET sql_mode='STRICT_TRANS_TABLES', character_set_connection=utf8mb4, collation_connection=utf8mb4_unicode_ci",
+            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
             "connect_timeout": 10,
             "autocommit": True,
         },
