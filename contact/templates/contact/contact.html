@@ -38,11 +38,13 @@
                 class="bg-accent text-text placeholder:text-text/80 h-12 sm:h-16"
                 type="email"
                 name="email"
-                placeholder="Email"
+                placeholder="Business Emails Only"
                 required
                 {% if form.email.value|default:'' %}value="{{ form.email.value }}"{% endif %}
             />
-            
+                {% if form.email.errors %}
+                    <p class="text-red-500 font-bold mt-1">ERROR: {{ form.email.errors.0 }}</p>
+                {% endif %}
             <!-- Phone field -->
             <input
                 class="bg-accent text-text placeholder:text-text/80 h-12 sm:h-16"
