@@ -133,6 +133,11 @@ class Post(models.Model):
         return None
     
     @property
+    def get_meta_title(self):
+        """Get meta title with fallback logic"""
+        return self.meta_title or self.title[:60]
+    
+    @property
     def get_meta_description(self):
         """Get meta description with fallback logic"""
         if self.meta_description:
@@ -140,7 +145,6 @@ class Post(models.Model):
         
         # Try introduction first (if it exists)
         if self.introduction:
-            # Strip HTML tags and truncate
             from django.utils.html import strip_tags
             clean_intro = strip_tags(self.introduction)
             return clean_intro[:160]
