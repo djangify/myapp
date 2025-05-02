@@ -140,7 +140,7 @@
                     <div class="flex justify-center mt-12">
                         <div class="inline-flex rounded-md shadow-sm">
                             {% if posts.has_previous %}
-                                <a href="?page={{ posts.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="px-4 py-2 rounded-l-md border border-accent text-accent hover:bg-accent hover:text-white transition-colors">
+                                <a href="?page={{ posts.previous_page_number }}{% if request.GET.q|default:"" %}&q={{ request.GET.q|default:"" }}{% endif %}" class="px-4 py-2 rounded-l-md border border-accent text-accent hover:bg-accent hover:text-white transition-colors">
                                     Previous
                                 </a>
                             {% else %}
@@ -155,14 +155,14 @@
                                         {{ i }}
                                     </span>
                                 {% else %}
-                                    <a href="?page={{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="px-4 py-2 border-t border-b border-accent text-accent hover:bg-accent hover:text-white transition-colors">
+                                    <a href="?page={{ i }}{% if request.GET.q|default:"" %}&q={{ request.GET.q|default:"" }}{% endif %}" class="px-4 py-2 border-t border-b border-accent text-accent hover:bg-accent hover:text-white transition-colors">
                                         {{ i }}
                                     </a>
                                 {% endif %}
                             {% endfor %}
                             
                             {% if posts.has_next %}
-                                <a href="?page={{ posts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="px-4 py-2 rounded-r-md border border-accent text-accent hover:bg-accent hover:text-white transition-colors">
+                                <a href="?page={{ posts.next_page_number }}{% if request.GET.q|default:"" %}&q={{ request.GET.q|default:"" }}{% endif %}" class="px-4 py-2 rounded-r-md border border-accent text-accent hover:bg-accent hover:text-white transition-colors">
                                     Next
                                 </a>
                             {% else %}
