@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
+from django.urls import reverse
 from django.utils.text import slugify
 from tinymce.models import HTMLField
 from django.contrib.auth.models import AbstractUser, BaseUserManager
@@ -88,6 +89,11 @@ class Product(models.Model):
     @property
     def display_image(self):
         return self.external_image_url or (self.image.url if self.image else None)
+    
+    def get_absolute_url(self):
+    # adjust the URL name & args to match your urls.py
+        return reverse('shop:product_detail', kwargs={'slug': self.slug})
+
 
 class Order(models.Model):
     STATUS_CHOICES = [

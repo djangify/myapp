@@ -1,7 +1,9 @@
 # Path: portfolio/models.py
 from django.db import models
 from django.core.validators import FileExtensionValidator
+from django.urls import reverse
 from tinymce.models import HTMLField
+from indexnow_django.mixins import IndexNowMixin
 
 class Technology(models.Model):
     TECH_CATEGORIES = [
@@ -33,7 +35,7 @@ class Technology(models.Model):
         return self.name
 
 
-class Portfolio(models.Model):
+class Portfolio(IndexNowMixin, models.Model):
     STATUS_CHOICES = [
         ('draft', 'Draft'),
         ('published', 'Published'),
@@ -171,6 +173,9 @@ class Portfolio(models.Model):
     def display_image(self):
         return self.featured_image_url or (self.featured_image.url if self.featured_image else None)
 
+    def get_absolute_url(self):
+        # again, match this to your URLconf
+        return reverse('portfolio:portfolio_detail', kwargs={'slug': self.slug})
 
 class PortfolioImage(models.Model):
     portfolio = models.ForeignKey(Portfolio, related_name='images', on_delete=models.CASCADE)
