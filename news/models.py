@@ -131,3 +131,25 @@ class Post(models.Model):
         if video_id:
             return f"https://www.youtube.com/embed/{video_id}"
         return None
+    
+    @property
+    def get_meta_description(self):
+        """Get meta description with fallback logic"""
+        if self.meta_description:
+            return self.meta_description
+        
+        # Try introduction first (if it exists)
+        if self.introduction:
+            # Strip HTML tags and truncate
+            from django.utils.html import strip_tags
+            clean_intro = strip_tags(self.introduction)
+            return clean_intro[:160]
+        
+        # Fall back to content
+        if self.content:
+            from django.utils.html import strip_tags
+            clean_content = strip_tags(self.content)
+            return clean_content[:160]
+        
+        # Last resort: use title
+        return self.title

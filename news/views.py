@@ -103,7 +103,7 @@ def post_detail(request, slug):
         "related_posts": related_posts,
         "categories": Category.objects.all(),
         "title": post.meta_title or post.title,
-        "meta_description": post.meta_description,
+        "meta_description": post.get_meta_description(), 
         "meta_keywords": post.meta_keywords,
         "user": request.user,
     }
