@@ -8,7 +8,7 @@ virtualenv
 passenger_wsgi.py
 /tmp/
 /public/
-Production/
+LOCAL/
 .env.local
 OLDsettings.py
 
