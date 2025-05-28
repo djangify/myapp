@@ -9,7 +9,8 @@ passenger_wsgi.py
 /tmp/
 /public/
 Production/
-
+.env.local
+OLDsettings.py
 
 # Node/Tailwind
 node_modules/
