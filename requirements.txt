@@ -18,6 +18,7 @@ packaging
 Pillow
 protobuf
 psycopg2-binary
+psycopg2
 pycparser
 requests
 soupsieve
@@ -26,3 +27,4 @@ stripe
 typing_extensions
 urllib3
 whitenoise
+django-ckeditor #included in migration so dont remove

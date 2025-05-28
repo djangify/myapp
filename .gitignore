@@ -10,6 +10,7 @@ passenger_wsgi.py
 /public/
 LOCAL/
 .env.local
+**/settings/local.py
 OLDsettings.py
 
 # Node/Tailwind

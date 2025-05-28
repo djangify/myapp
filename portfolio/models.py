@@ -3,7 +3,7 @@ from django.db import models
 from django.core.validators import FileExtensionValidator
 from django.urls import reverse
 from tinymce.models import HTMLField
-from indexnow_django.mixins import IndexNowMixin
+
 
 class Technology(models.Model):
     TECH_CATEGORIES = [
@@ -35,7 +35,7 @@ class Technology(models.Model):
         return self.name
 
 
-class Portfolio(IndexNowMixin, models.Model):
+class Portfolio(models.Model):
     STATUS_CHOICES = [
         ('draft', 'Draft'),
         ('published', 'Published'),
