@@ -28,13 +28,6 @@ urlpatterns = [
     path("shop/", include("shop.urls")),
     path("contact/", include("contact.urls")),
     path(
-        "media/<path:path>",
-        serve,
-        {
-            "document_root": settings.MEDIA_ROOT,
-        },
-    ),
-    path(
         "sitemap.xml",
         sitemap,
         {"sitemaps": sitemaps},
