@@ -12,49 +12,36 @@
         </div>
         <br>
         <section class="grid gap-y-4 gap-x-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            <figure class="relative overflow-hidden after after:w-full after:h-full after:z-10 after:top-0 after:left-0 after:bg-accent/60 after:rounded after:backdrop-blur-sm after:scale-x-0 after:transition hover:after:scale-x-100 after:origin-left hover:after:origin-right group">
+            <figure class="md:transition-all md:hover:scale-110 md:grayscale md:hover:grayscale-0">
                 <a href="{% url 'portfolio:portfolio_detail' slug='stream-english' %}" target="_blank" rel="noopener noreferrer">
                     <img class="w-full h-full object-cover transition-transform duration-300" 
                          src="{% static 'images/gallery-1.jpg' %}" 
                          alt="Project 1 - Stream English" />
                 </a>
-                <figcaption class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 origin-left group-hover:origin-right text-text transition z-[11] scale-x-0 group-hover:scale-x-100 lg:font-bold xl:text-xl">
-                    Stream <p>English</p>
-                </figcaption>
             </figure>
             
-            <figure class="relative overflow-hidden after after:w-full after:h-full after:z-10 after:top-0 after:left-0 after:bg-accent/60 after:rounded after:backdrop-blur-sm after:scale-x-0 after:transition hover:after:scale-x-100 after:origin-left hover:after:origin-right group">
+            <figure class="md:transition-all md:hover:scale-110 md:grayscale md:hover:grayscale-0">
                 <a href="{% url 'portfolio:portfolio_detail' slug='show-your-spot' %}" target="_blank" rel="noopener noreferrer">
                     <img class="w-full h-full object-cover transition-transform duration-300" 
                          src="{% static 'images/gallery-2.jpg' %}" 
                          alt="Project 2 - Our Spot" />
-                </a>
-                <figcaption class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 origin-left group-hover:origin-right text-text transition z-[11] scale-x-0 group-hover:scale-x-100 lg:font-bold xl:text-xl">
-                    Show Your <p>Spot</p>
-                </figcaption>
+                </a>    
             </figure>
             
-            <figure class="relative overflow-hidden after after:w-full after:h-full after:z-10 after:top-0 after:left-0 after:bg-accent/60 after:rounded after:backdrop-blur-sm after:scale-x-0 after:transition hover:after:scale-x-100 after:origin-left hover:after:origin-right group">
-                <a href="{% url 'portfolio:portfolio_detail' slug='poster-palace' %}" target="_blank" rel="noopener noreferrer">
+            <figure class="md:transition-all md:hover:scale-110 md:grayscale md:hover:grayscale-0">
+                <a href="{% url 'portfolio:portfolio_detail' slug='corrison-api-headless-cms-platform' %}" target="_blank" rel="noopener noreferrer">
                     <img class="w-full h-full object-cover transition-transform duration-300" 
-                         src="{% static 'images/gallery-3.jpg' %}" 
-                         alt="Project 3 - Poster Palace" />
-                </a>
-                <figcaption class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 origin-left group-hover:origin-right text-text transition z-[11] scale-x-0 group-hover:scale-x-100 lg:font-bold xl:text-xl">
-                    Poster <p>Palace</p>
-                </figcaption>
+                         src="{% static 'images/gallery-3.webp' %}" 
+                         alt="Project 3 - Corrison API" />
+                </a> 
             </figure>
             
-            <figure class="relative overflow-hidden after after:w-full after:h-full after:z-10 after:top-0 after:left-0 after:bg-accent/60 after:rounded after:backdrop-blur-sm after:scale-x-0 after:transition hover:after:scale-x-100 after:origin-left hover:after:origin-right group">
+            <figure class="md:transition-all md:hover:scale-110 md:grayscale md:hover:grayscale-0">
                 <a href="{% url 'portfolio:portfolio_detail' slug='pen-and-i-publishing' %}" target="_blank" rel="noopener noreferrer">
                     <img class="w-full h-full object-cover transition-transform duration-300" 
                         src="{% static 'images/gallery-4.jpg' %}" 
                         alt="Project 4 - Pen Publishing" />
                 </a>
-                <figcaption class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 origin-left group-hover:origin-right text-text transition z-[11] scale-x-0 group-hover:scale-x-100 lg:font-bold xl:text-xl">
-                    Pen & I
-                    <p>Publishing</p>
-                </figcaption>
             </figure>        
 
         </section>
