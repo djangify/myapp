@@ -35,8 +35,6 @@ html,
 :host {
   line-height: 1.5;
   /* 1 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
   -moz-tab-size: 4;
   /* 3 */
   -o-tab-size: 4;
@@ -468,10 +466,14 @@ img.gallery {
 
 :root {
   --color-primary: 210deg 40% 98%;
+  /* #f8fafc */
   --color-secondary: 216deg 33% 95%;
+  /* #216a95 */
   --color-accent: 215deg 19% 70%;
-  --color-text: 0deg 0% 20%;
+  /* #9ba3b4 */
+  --color-text: 0deg 0% 17%;
   /* Charcoal text */
+
 }
 
 img {
@@ -1558,10 +1560,6 @@ img {
 
   .sm\:grid-rows-\[min-content\] {
     grid-template-rows: min-content;
-  }
-
-  .sm\:grid-rows-subgrid {
-    grid-template-rows: subgrid;
   }
 
   .sm\:flex-row {
