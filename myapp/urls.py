@@ -1,8 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from django.conf import settings
 from django.urls import include
-from django.views.static import serve
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import (
     StaticViewSitemap,
