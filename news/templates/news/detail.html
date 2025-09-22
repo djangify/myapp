@@ -62,8 +62,9 @@
         </figure>
     </section>
     
-    <!-- Content Section -->
-    <div class="container prose prose-lg mx-auto max-w-4xl mt-12 pt-12 border-t border-gray-700/30">
+    <!-- Contents Section -->
+    <div class="container prose prose-lg  max-w-4xl mt-12 pt-12">
+
         {% if post.youtube_url %}
         <div class="mb-8">
             <div class="relative w-full" style="padding-top: 56.25%">
@@ -84,9 +85,16 @@
         <div class="prose prose-lg text-text max-w-none">
             {{ post.content|safe }}
         </div>
+         <div class="mb-6">
+            <p class="text-sm text-gray-600">Thanks, for sharing:</p>
+            {% include 'components/social_share.html' %}
+        </div>
+    </div>
+    <!-- Centered Container for Extras -->
+    <div class="container mx-auto max-w-4xl">
         <!-- Resource Downloads Section -->
         {% if post.resource_type != 'none' and post.resource %}
-        <div class="mt-12 mb-8 p-6 bg-primary/10 rounded-lg border border-accent/30">
+        <div class="mt-4 mb-8 p-6 bg-primary/10 rounded-lg border border-accent/30">
             <h3 class="text-xl font-bold mb-4 flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -145,17 +153,11 @@
                 {{ post.category.name }}
             </a>
         </div>
-
-        <div class="mb-6">
-            <p class="text-sm text-gray-600 mb-2">Thanks, for sharing:</p>
-            {% include 'components/social_share.html' %}
-        </div>
-
         <!-- Related Posts -->
         <div class="mt-12 mb-24">
             <h2 class="text-2xl py-4 font-bold mb-8">Related Posts</h2>
             <div class="grid grid-cols-2 gap-8">
-                {% for related in related_posts %}
+                 {% for related in related_posts|slice:":2" %}
                 <a href="{{ related.get_absolute_url }}" class="group">
                     <div class="h-48 overflow-hidden rounded-lg bg-primary/10 mb-4">
                         {% if related.external_image_url %}
@@ -183,7 +185,21 @@
                 {% endfor %}
             </div>
         </div>
-
+        <!-- SEO-friendly text links -->
+        {% if related_posts|length > 2 %}
+            <div class="mt-8 mb-16">
+            <h3 class="text-xl font-semibold mb-4">More from this category</h3>
+            <ul class="list-disc list-inside space-y-2">
+                {% for related in related_posts|slice:"2:8" %}
+                <li>
+                    <a href="{{ related.get_absolute_url }}" class="text-blue-600 hover:underline">
+                    {{ related.title }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            </div>
+        {% endif %}
         <!-- Advertisement Section -->
         {% if post.ad_type == 'banner' and post.ad_image %}
             {% if post.ad_url %}

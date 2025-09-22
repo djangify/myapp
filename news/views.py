@@ -7,26 +7,26 @@ from django.utils import timezone
 def news_list(request):
     # Get the current page number
     page = request.GET.get("page", "1")  # Default to page 1 if not specified
-    
+
     # Get all published regular posts (non-featured)
     regular_posts = Post.objects.filter(
-        status="published", 
-        publish_date__lte=timezone.now(),
-        is_featured=False
+        status="published", publish_date__lte=timezone.now(), is_featured=False
     ).select_related("category")
 
     # Paginate regular posts
     paginator = Paginator(regular_posts, 12)
     regular_posts_page = paginator.get_page(page)
-    
+
     # Only get featured posts if we're on page 1
     featured_posts = []
     if page == "1" or not page:
-        featured_posts = Post.objects.filter(
-            status="published", 
-            publish_date__lte=timezone.now(),
-            is_featured=True
-        ).select_related("category").order_by("-publish_date")[:4]  # Limit to 4 featured posts
+        featured_posts = (
+            Post.objects.filter(
+                status="published", publish_date__lte=timezone.now(), is_featured=True
+            )
+            .select_related("category")
+            .order_by("-publish_date")[:4]
+        )  # Limit to 4 featured posts
 
     context = {
         "featured_posts": featured_posts,
@@ -42,9 +42,7 @@ def category_list(request, slug):
     category = get_object_or_404(Category, slug=slug)
     posts = Post.objects.filter(
         category=category, status="published", publish_date__lte=timezone.now()
-    ).order_by(
-        "-publish_date"
-    )  # Add explicit ordering
+    ).order_by("-publish_date")  # Add explicit ordering
 
     paginator = Paginator(posts, 12)
     page = request.GET.get("page")
@@ -93,7 +91,7 @@ def post_detail(request, slug):
             status="published", publish_date__lte=timezone.now(), category=post.category
         )
         .exclude(id=post.id)
-        .select_related("category")[:2]
+        .select_related("category")[:8]
     )
 
     context = {
@@ -103,7 +101,7 @@ def post_detail(request, slug):
         "related_posts": related_posts,
         "categories": Category.objects.all(),
         "title": post.meta_title or post.title,
-        "meta_description": post.get_meta_description, 
+        "meta_description": post.get_meta_description,
         "meta_keywords": post.meta_keywords,
         "user": request.user,
     }
