@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}About – Tech VA, Systeme.io & ShopWired{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+  <!-- Hero Section: Image Left + Text Right -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+    <!-- Image -->
+    <div>
+      <img src="{% static 'images/tech-va.jpg' %}" alt="Tech VA helping businesses" 
+           class="w-full h-auto rounded-xl object-cover shadow-md" loading="lazy">
+    </div>
+
+    <!-- Text -->
+    <div class="space-y-6 max-w-prose mx-auto">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">Your Tech VA Partner</h1>
+      <p class="text-gray-700 text-lg leading-relaxed">
+        I’m Diane Corriette, a Technical Virtual Assistant and full stack developer.
+        I help small business owners simplify their online presence with <strong>Systeme.io</strong>,
+        <strong>AI-search readiness</strong>, and <strong>UK ecommerce solutions</strong> like ShopWired.
+      </p>
+      <p class="text-gray-700 text-lg leading-relaxed">
+        Whether you prefer step-by-step DIY PDFs or done-for-you Tech VA services, 
+        I make the technical side easier so you can focus on growing your business.
+      </p>
+    </div>
+  </div>
+
+  <!-- Four Info Boxes -->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+
+    <!-- My Journey -->
+    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
+      <h2 class="text-xl font-semibold text-indigo-700 mb-3">My Journey</h2>
+      <p class="text-gray-700 leading-relaxed">
+        I started in online marketing and community building back in 2007, 
+        grew membership sites, ran SEO services with Little Fish Digital Media, 
+        and retrained as a full stack developer specialising in ecommerce. 
+        Today, I combine those skills as a Tech VA to support small businesses.
+      </p>
+    </div>
+
+    <!-- Why Systeme.io -->
+    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
+      <h2 class="text-xl font-semibold text-indigo-700 mb-3">Why Systeme.io</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Systeme.io is one of the best all-in-one solutions I’ve found. 
+        It gives you funnels, websites, email, automation, and memberships all in one place. 
+        That means fewer tools, less cost, and simpler management.
+      </p>
+    </div>
+
+    <!-- Why ShopWired -->
+    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
+      <h2 class="text-xl font-semibold text-indigo-700 mb-3">Why ShopWired</h2>
+      <p class="text-gray-700 leading-relaxed">
+        For ecommerce, I recommend ShopWired, the best UK alternative to Shopify. 
+        It’s built for UK businesses, handles VAT properly, and has excellent support. 
+        As a developer with ecommerce expertise, I trust it for small business owners selling online.
+      </p>
+    </div>
+
+    <!-- What This Means -->
+    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
+      <h2 class="text-xl font-semibold text-indigo-700 mb-3">What This Means For You</h2>
+      <p class="text-gray-700 leading-relaxed">
+        You get choice: affordable DIY PDFs to guide you step by step, or 
+        done-for-you services where I set up your funnels, websites, or ecommerce store. 
+        Either way, your systems are simplified, professional, and AI-search ready.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section id="contact" class="scroll-mt-16">
+    {% include "contact/contact.html" %}
+  </section>
+
+</div>
+{% endblock %}

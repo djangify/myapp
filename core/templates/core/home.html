@@ -9,117 +9,104 @@
 </header>
 
 <main>
-    <!-- About Me Section -->
-     <section id="about" class="scroll-mt-16 p-6 flex flex-col gap-y-10 bg-secondary text-text lg:gap-x-10 lg:flex-row-reverse *:basis-full md:p-16 2xl:rounded">
-        <div class="space-y-5 *:space-y-2 lg:self-center xl:space-y-10">
-            <div>
-                <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
-                    About Me
-                </h6>
-                <h2 class="text-2xl capitalize font-bold lg:text-3xl">
-                    Technical Virtual Assistant Services
-                </h2>
-            </div>
-        
-            <div class="space-y-5 *:space-y-2 lg:self-center xl:space-y-10">
-                <p>
-                    I provide Tech VA services to help health and wellness professionals reduce their workload by handling the technical side of running a business. I take care of the time-consuming tech and admin tasks you don't want to deal with, like setting up or updating your website, connecting booking and payment systems, automating client follow-ups, or fixing things when they go wrong.
-                </p>
-                <p>
-                    The systems I build (for myself and others) are informed by over 10 years of watching technology evolve, fail, succeed, and transform.
-                </p>
-                <p>
-                    As a seasoned GenX online marketer, I specialise in helping businesses create and execute online marketing strategies that drive results. From inbound marketing to SaaS MVP products, I ensure your digital presence works for you.
-                </p>
-                <p>
-                    <a class="uppercase p-2 border-2 border-accent  self-start hover:text-accent transition-colors cursor-pointer text-xs rounded sm:text-lg mt-8 sm:px-4" href="/news/category/about-me/">About Me</a>
-                </p>
-            </div>
-        </div>
-        
-        <div class="grid gap-5 *:flex *:flex-col *:gap-y-5 *:items-center *:border-2 *:border-accent *:rounded *:p-8 sm:grid-cols-2">
-            <div>
-                <figure class="h-12">
-                    <img src="{% static 'images/service-1.png' %}" alt="Service 1" />
-                </figure>
-    
-                <h5 class="text-xl text-accent text-center">eCommerce</h5>
-                <p class="text-center">
-                    Let me help you organise your content, sell products and build brand authority. I can build you a custom site or use your platform e.g. Shopify, Etsy etc
-                </p>
-            </div>
-    
-            <div>
-                <figure class="h-12">
-                    <img src="{% static 'images/service-2.png' %}" alt="Service 2" />
-                </figure>
-    
-                <h5 class="text-xl text-accent text-center">Inbound Marketing</h5>
-                <p class="text-center">
-                    Lead generation pages, email marketing setup, search engine optimisation - are a few of the virtual assistant support services on offer. 
-                </p>
-            </div>
-    
-            <div>
-                <figure class="h-12">
-                    <img src="{% static 'images/service-3.png' %}" alt="Service 3" />
-                </figure>
-    
-                <h5 class="text-xl text-accent text-center">Web Developer</h5>
-                <p class="text-center">
-                    WordPress, Django/Python, Flask, Next.js, Tailwind CSS - if you think I can help you manage your website, get in touch.
-                </p>
-            </div>
-    
-            <div>
-                <figure class="h-12">
-                    <img src="{% static 'images/service-4.png' %}" alt="Service 4" />
-                </figure>
-    
-                <h5 class="text-xl text-accent text-center">MVP Development</h5>
-                <p class="text-center">
-                    Turn your idea into a tangible digital product. Get help with the planning, initial development and documentation process.
-                </p>
-            </div>
-        </div>
-    </section>
+  <!-- About Section -->
+  <section id="about" class="scroll-mt-16 p-6 flex flex-col gap-y-10 bg-secondary text-text lg:gap-x-10 lg:flex-row-reverse *:basis-full md:p-16 2xl:rounded">
+    <div class="space-y-5 *:space-y-2 lg:self-center xl:space-y-10">
+      <div>
+        <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
+          About Me
+        </h6>
+        <h2 class="text-2xl capitalize font-bold lg:text-3xl">
+          Tech VA + Systeme.io + AI Search Readiness
+        </h2>
+      </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="scroll-mt-16">
-        {% include 'contact/contact.html' %}
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="scroll-mt-16">
-        {% include 'base/gallery.html' %}
-    </section>
-    <!-- News Section -->
-    <section id="news" class="scroll-mt-16">
-        {% include 'base/news.html' %}
-    </section>
-
-    <!-- *-*-*-*-*-*-*-*-*-*-*-*-* Motto -->
-    <section class="p-6 mb-8 text-text md:p-16 2xl:rounded">
-        <div
-        class="p-2 flex flex-col gap-y-5 lg:w-3/4 lg:mx-auto lg:relative lg:after lg:after:h-2 lg:after:w-16 lg:after:-bottom-6 lg:after:left-2/4 lg:after:-translate-x-2/4"
-        >
-        <blockquote
-            cite="https://martinfowler.com/books/refactoring.html"
-        >
-            <p
-            class="before:content-['\201C'] after:content-['\201D'] text-xl text-center lg:text-2xl"
-            >
-            If you can get today’s work done today, but you do it in such a way that you can’t possibly get tomorrow’s work done tomorrow, then you lose.
-            </p>
-        </blockquote>
-        <p class="text-center font-bold">
-            — Martin Fowler, <cite>Refactoring: Improving the Design of Existing Code</cite>
+      <div class="space-y-5 *:space-y-2 lg:self-center xl:space-y-10">
+        <p>
+          I provide Tech VA services that help small business owners reclaim their time. Instead of juggling tools and troubleshooting, I set up streamlined systems with <strong>Systeme.io</strong> so your online presence works for you. From funnels and websites to lead capture and payment integration, I make the tech side easy.
         </p>
-        </div>
-    </section>
+        <p>
+          Alongside my services, I create practical DIY PDFs and checklists that guide you step by step — including how to get your website ready for AI search with cluster pages, FAQs, and schema.
+        </p>
+        <p>
+          This mix of <strong>DIY resources</strong> and <strong>done-for-you support</strong> means you can choose what fits your business and budget.
+        </p>
+        <p>
+          <a class="uppercase p-2 border-2 border-accent self-start hover:text-accent transition-colors cursor-pointer text-xs rounded sm:text-lg mt-8 sm:px-4" href="/about/">More About Me</a>
+        </p>
+      </div>
+    </div>
 
+    <div class="grid gap-5 *:flex *:flex-col *:gap-y-5 *:items-center *:border-2 *:border-accent *:rounded *:p-8 sm:grid-cols-2">
+      <div>
+        <figure class="h-12">
+          <img src="{% static 'images/service-1.png' %}" alt="Systeme.io Setup" />
+        </figure>
+        <h5 class="text-xl text-accent text-center">Systeme.io Setup</h5>
+        <p class="text-center">
+          Funnels, websites, and email sequences set up for you. Start fast with a reliable all-in-one tool.
+        </p>
+      </div>
 
+      <div>
+        <figure class="h-12">
+          <img src="{% static 'images/service-2.png' %}" alt="AI Search Readiness" />
+        </figure>
+        <h5 class="text-xl text-accent text-center">AI Search Readiness</h5>
+        <p class="text-center">
+          Cluster pages, FAQs, schema — structured content that gets found in AI search and featured snippets.
+        </p>
+      </div>
 
+      <div>
+        <figure class="h-12">
+          <img src="{% static 'images/service-3.png' %}" alt="DIY Resources" />
+        </figure>
+        <h5 class="text-xl text-accent text-center">DIY Resource Shop</h5>
+        <p class="text-center">
+          Affordable PDFs, guides, and toolkits that show you how to manage your business tech yourself.
+        </p>
+      </div>
 
+      <div>
+        <figure class="h-12">
+          <img src="{% static 'images/service-4.png' %}" alt="Tech VA Support" />
+        </figure>
+        <h5 class="text-xl text-accent text-center">Tech VA Support</h5>
+        <p class="text-center">
+          Ongoing troubleshooting, updates, and support so your systems keep running smoothly.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="scroll-mt-16">
+    {% include 'contact/contact.html' %}
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="scroll-mt-16">
+    {% include 'base/gallery.html' %}
+  </section>
+
+  <!-- News Section -->
+  <section id="news" class="scroll-mt-16">
+    {% include 'base/news.html' %}
+  </section>
+
+  <!-- Motto -->
+  <section class="p-6 mb-8 text-text md:p-16 2xl:rounded">
+    <div class="p-2 flex flex-col gap-y-5 lg:w-3/4 lg:mx-auto lg:relative lg:after lg:after:h-2 lg:after:w-16 lg:after:-bottom-6 lg:after:left-2/4 lg:after:-translate-x-2/4">
+      <blockquote cite="https://martinfowler.com/books/refactoring.html">
+        <p class="before:content-['\201C'] after:content-['\201D'] text-xl text-center lg:text-2xl">
+          If you can get today’s work done today, but you do it in such a way that you can’t possibly get tomorrow’s work done tomorrow, then you lose.
+        </p>
+      </blockquote>
+      <p class="text-center font-bold">
+        — Martin Fowler, <cite>Refactoring: Improving the Design of Existing Code</cite>
+      </p>
+    </div>
+  </section>
 </main>
 {% endblock %}

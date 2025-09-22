@@ -14,6 +14,11 @@ def home(request):
     return render(request, "core/home.html", {"form": form})
 
 
+def about(request):
+    form = ContactForm()
+    return render(request, "core/about.html", {"form": form})
+
+
 def policies_index_view(request):
     """View function for the policies index page."""
     breadcrumbs = [{"title": "Policies", "url": None}]

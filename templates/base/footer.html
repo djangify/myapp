@@ -1,51 +1,57 @@
 {% load static %}
-<div class="bg-secondary border-t border-gray-700">
-  <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
-      <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
-          <div class="px-5 py-2">
-              <a href="{% url 'core:home' %}" class="text-base text-text hover:text-accent transition-colors">
-                  Home
-              </a>
-          </div>
-          
-          <div class="px-5 py-2">
-              <a href="{% url 'shop:product_list' %}" class="text-base text-text hover:text-accent transition-colors">
-                  Shop
-              </a>
-          </div>
-          <div class="px-5 py-2">
-              <a href="{% url 'core:terms_conditions' %}" class="text-base text-text hover:text-accent transition-colors">
-                  Terms & Conditions
-              </a>
-          </div>
-          <div class="px-5 py-2">
-              <a href="{% url 'core:cookie_policy' %}" class="text-base text-text hover:text-accent transition-colors">
-                  Cookie Policy
-              </a>
-          </div>
-          <div class="px-5 py-2">
-              <a href="{% url 'core:policies_index' %}" class="text-base text-text hover:text-accent transition-colors">
-                  All Policies
-              </a>
-          </div>
-      </nav>
-      <div class="mt-8 flex justify-center space-x-6">
-          <a href="https://www.linkedin.com/in/todianedev" target="_blank" rel="noopener noreferrer" class="text-text hover:text-accent transition-colors">
-              <span class="sr-only">LinkedIn</span>
-              <i class="fa-brands fa-linkedin text-2xl"></i>
-          </a>
-          <a href="https://www.instagram.com/dicorriette" target="_blank" rel="noopener noreferrer" class="text-text hover:text-accent transition-colors">
-              <span class="sr-only">Instagram</span>
-              <i class="fa-brands fa-instagram text-2xl"></i>
-          </a>
-          <a href="https://github.com/todiane" target="_blank" rel="noopener noreferrer" class="text-text hover:text-accent transition-colors">
-              <span class="sr-only">GitHub</span>
-              <i class="fa-brands fa-github text-2xl"></i>
-          </a>
+<footer class="w-full bg-secondary border-t border-gray-700 text-text">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    
+    <!-- Grid Columns -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      
+      <!-- Logo + Info -->
+      <div>
+        <div class="flex items-center space-x-3 mb-4">
+          <img src="{% static 'images/djangify-logo.png' %}" alt="Djangify Logo" class="h-8">
+          <span class="text-xl font-semibold">Djangify</span>
+        </div>
+        <p class="text-sm text-gray-400">
+          Practical Tech VA support and tools to simplify your business tech.
+        </p>
       </div>
-      <br>
-      <p class="mt-16 text-center text-base text-gray-400">
-          &copy; 2024 Djangify. All rights reserved.
-      </p>
+      
+      <!-- Links -->
+      <div>
+        
+        <h3 class="font-semibold mb-4">Pages</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-accent transition-colors">Home</a></li>
+          <li><a href="#" class="hover:text-accent transition-colors">Shop</a></li>
+        </ul>
+      </div>
+      
+      <!-- Resources -->
+      <div>
+        <h3 class="font-semibold mb-4">Resources</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-accent transition-colors">Cluster Pages Guide</a></li>
+          <li><a href="#" class="hover:text-accent transition-colors">FAQ Snippets</a></li>
+        </ul>
+      </div>
+      
+      <!-- Pages -->
+      <div>
+        <h3 class="font-semibold mb-4">Policies</h3>
+        <ul class="space-y-2 text-sm">
+           <li><a href="#" class="hover:text-accent transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-accent transition-colors">Cookie Policy</a></li>
+          <li><a href="#" class="hover:text-accent transition-colors">Terms & Conditions</a></li>
+        </ul>
+      </div>
+      
+      
+    </div>
+    
+    <!-- Bottom -->
+    <div class="mt-8 text-center text-sm text-gray-400">
+      &copy; 2025 Djangify. All rights reserved.
+    </div>
   </div>
-</div>
+</footer>
