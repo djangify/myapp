@@ -30,40 +30,48 @@
     {% include 'news/components/breadcrumb.html' %}
     
     <!-- Hero Section -->
-    <section class="flex flex-col gap-10 mt-8 lg:flex-row lg:*:basis-full lg:gap-x-24 xl:gap-x-12">
-        <div class="flex flex-col gap-y-5 lg:gap-y-8 xl:self-center">
-            <div class="space-y-4">
-                <h1 class="text-4xl font-bold lg:text-5xl">{{ post.title }}</h1>
-                <p class="text-gray-400 text-sm">
-                    {{ post.publish_date|date:"F j, Y" }} • {{ post.category.name }}
-                </p>
+    <section class="mt-8">
+    <!-- Social Share -->
+    <div class="mb-4">
+        {% include 'components/social_share.html' %}
+    </div>
+
+    <!-- Image -->
+    <figure class="w-full lg:w-1/2">
+        <div class="w-full md:max-h-[400px] overflow-hidden rounded-lg bg-primary/20">
+            {% if post.external_image_url %}
+            <img src="{{ post.external_image_url }}" 
+                alt="{{ post.title }}" 
+                class="w-full h-auto md:h-full object-cover" />
+            {% elif post.image %}
+            <img src="{{ post.image.url }}" 
+                alt="{{ post.title }}" 
+                class="w-half h-auto max-h-[400px] object-cover mx-auto lg:max-w-4xl lg:rounded-lg" /> 
+            {% else %}
+            <div class="w-full h-64 flex items-center justify-center bg-accent/10">
+                <span class="text-accent">No Image Available</span>
             </div>
-            {% if post.introduction %}
-                <div class="prose prose-lg lg:text-lg mt-4">{{ post.introduction|safe }}</div>
             {% endif %}
         </div>
-        
-        <figure class="h-[400px] lg:max-w-[650px]">
-            <div class="w-full h-full overflow-hidden rounded-lg bg-primary/20">
-                {% if post.external_image_url %}
-                    <img src="{{ post.external_image_url }}" 
-                        alt="{{ post.title }}" 
-                        class="w-full h-full object-cover" />
-                {% elif post.image %}
-                    <img src="{{ post.image.url }}" 
-                        alt="{{ post.title }}" 
-                        class="w-full h-full object-cover" />
-                {% else %}
-                    <div class="w-full h-full flex items-center justify-center bg-accent/10">
-                        <span class="text-accent">No Image Available</span>
-                    </div>
-                {% endif %}
-            </div>
-        </figure>
-    </section>
+    </figure>
+
+    <!-- Title + Meta -->
+    <h1 class="text-3xl font-bold pt-8">{{ post.title }}</h1>
+    <p class="text-gray-400 text-sm pt-4">
+        {{ post.publish_date|date:"F j, Y" }} • 
+        <a href="{{ post.category.get_absolute_url }}" class="text-accent hover:underline">
+            {{ post.category.name }}
+        </a>
+    </p>
+
+    <!-- Introduction -->
+    {% if post.introduction %}
+        <div class="mt-4 prose prose-lg lg:text-lg">{{ post.introduction|safe }}</div>
+    {% endif %}
+</section>
     
     <!-- Contents Section -->
-    <div class="container prose prose-lg  max-w-4xl mt-12 pt-12">
+    <div class="container prose prose-lg  max-w-4xl">
 
         {% if post.youtube_url %}
         <div class="mb-8">
@@ -78,10 +86,7 @@
             </div>
         </div>
         {% endif %}
-        <div class="mb-6">
-            <p class="text-sm text-gray-600 mb-2">Thanks, for sharing:</p>
-            {% include 'components/social_share.html' %}
-        </div>
+        
         <div class="prose prose-lg text-text max-w-none">
             {{ post.content|safe }}
         </div>

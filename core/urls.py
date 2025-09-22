@@ -13,6 +13,11 @@ urlpatterns = [
         TemplateView.as_view(template_name="core/tech-va.html"),
         name="tech_va",
     ),
+    path(
+        "ai-search-readiness/",
+        TemplateView.as_view(template_name="core/ai-search-readiness.html"),
+        name="ai_search",
+    ),
     # policies
     path("policy/privacy/", views.privacy_view, name="privacy_policy"),
     path("policy/cookies/", views.cookie_view, name="cookie_policy"),

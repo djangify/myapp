@@ -19,6 +19,7 @@ class StaticViewSitemap(Sitemap):
             "news:list",
             "core:about",
             "core:tech_va",
+            "core:ai-search-readiness",
         ]
 
     def location(self, item):
