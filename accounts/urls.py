@@ -13,11 +13,6 @@ urlpatterns = [
     path("profile/", views.profile_view, name="profile"),
     path("dashboard/", views.dashboard_view, name="dashboard"),
     path(
-        "favourite-prompt/<int:prompt_id>/",
-        views.add_favourite_prompt,
-        name="favourite_prompt",
-    ),
-    path(
         "favourite-product/<slug:product_slug>/",
         views.add_favourite_product,
         name="add_to_wishlist",
