@@ -23,7 +23,6 @@ urlpatterns = [
     path("", include("core.urls")),
     path("portfolio/", include("portfolio.urls")),
     path("news/", include("news.urls")),
-    path("shop/", include("shop.urls")),
     path("contact/", include("contact.urls")),
     path(
         "sitemap.xml",

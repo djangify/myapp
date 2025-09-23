@@ -23,7 +23,6 @@ INSTALLED_APPS = [
     "contact",
     "core",
     "news",
-    "shop",
     "portfolio",
 ]
 
