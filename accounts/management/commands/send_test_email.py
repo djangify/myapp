@@ -11,7 +11,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         email = kwargs["email"]
-        subject = "Test Email from Inspirational Guidance"
+        subject = "Test Email from Djangify"
         message = "This is a test email to confirm your email delivery is working."
         try:
             send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [email])

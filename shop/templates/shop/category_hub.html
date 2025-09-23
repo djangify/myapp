@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container mx-auto px-6 py-12">
   <h1 class="text-3xl font-bold mb-6">Shop by Category</h1>
-  <h2 class="text-xl mb-4 text-gray-700">Browse all collections in the Inspirational Guidance shop</h2>
+  <h2 class="text-xl mb-4 text-gray-700">Browse all collections in The Djangify shop</h2>
   <p class="mb-8 text-gray-600">
     Explore our shop categories to find planners, guides, and workbooks designed to support your personal growth journey.
   </p>
@@ -25,12 +25,12 @@
   </div>
      {# --- banner ad goes to shop --- #}
     
-        <a href="https://inspirationalguidance.com/shop/product/the-path-to-personal-growth-planner-self-coaching/" target="_blank">
+        {% comment %} <a href="https://inspirationalguidance.com/shop/product/the-path-to-personal-growth-planner-self-coaching/" target="_blank">
         <img src="https://inspirationalguidance.com/media/public/news/ads/goal-setting-and-tracking-planner.webp" alt="the path to personal growth planner">
-    </a>
+    </a> {% endcomment %}
     <!-- Core Themes -->
     <section class="mt-16 mb-16">
-      <h2 class="text-2xl font-semibold text-gray-900">Core Themes to Explore at Inspirational Guidance</h2>
+      <h2 class="text-2xl font-semibold text-gray-900">Core Themes to Explore at Djangify</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
         <a href="{% url 'core:self_authorship' %}" class="block bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow">
           <h3 class="text-lg font-semibold text-teal-700">Self Authorship</h3>

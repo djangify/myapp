@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     "core",
     "news",
     "portfolio",
+    "accounts",
+    "shop",
 ]
 
 MIDDLEWARE = [
@@ -96,17 +98,21 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Login URLs
 LOGIN_URL = "/accounts/login/"
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/accounts/dashboard/"
 LOGOUT_REDIRECT_URL = "/"
 
 # Session settings
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # 1 week
 SESSION_SAVE_EVERY_REQUEST = True
 
+DEFAULT_FROM_EMAIL = "noreply@djangify.com"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
 # Stripe settings
 STRIPE_PUBLISHABLE_KEY = env("STRIPE_PUBLISHABLE_KEY", default="pk_test_placeholder")
 STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY", default="sk_test_placeholder")
 STRIPE_WEBHOOK_SECRET = env("STRIPE_WEBHOOK_SECRET", default="whsec_placeholder")
+CART_SESSION_ID = "cart"
 
 TINYMCE_DEFAULT_CONFIG = {
     "height": 650,

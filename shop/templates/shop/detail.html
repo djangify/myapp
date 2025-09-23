@@ -8,7 +8,7 @@
   {% else %}
     <meta property="og:description" content="{{ product.description|truncatewords:25 }}" />
   {% endif %}
-  <meta property="og:image" content="{{ product.get_image_url|default:'https://inspirationalguidance.com/static/images/placeholder.png' }}" />
+  <meta property="og:image" content="{{ product.get_image_url|default:'https://djangify.com/static/images/tech-va.jpg' }}" />
   <meta property="og:url" content="{{ request.build_absolute_uri }}" />
   <meta property="og:type" content="product" />
 
@@ -36,7 +36,7 @@
   "sku": "{{ product.public_id|default:product.id }}",
   "brand": {
     "@type": "Brand",
-    "name": "Inspirational Guidance"
+    "name": "Djangify"
   },
   "offers": {
     "@type": "Offer",

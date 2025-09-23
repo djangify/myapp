@@ -24,6 +24,8 @@ urlpatterns = [
     path("portfolio/", include("portfolio.urls")),
     path("news/", include("news.urls")),
     path("contact/", include("contact.urls")),
+    path("accounts/", include("accounts.urls")),
+    path("shop/", include("shop.urls")),
     path(
         "sitemap.xml",
         sitemap,

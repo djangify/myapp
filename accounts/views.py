@@ -9,11 +9,9 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
 from django.urls import reverse
-from prompt.models import WritingPrompt
 from shop.models import Product, OrderItem
 from .forms import UserRegistrationForm, UserProfileForm
 from .models import EmailVerificationToken, MemberResource
-from prompt.models_tracker import WritingGoal, WritingSession
 
 
 def register_view(request):
@@ -58,7 +56,7 @@ def send_verification_email(request, user):
             "email": user.email,
         }
 
-        subject = "Verify your email for Inspirational Guidance"
+        subject = "Verify your email for Djangify"
         html_message = render_to_string(
             "accounts/email/email_verification_email.html", context
         )
@@ -150,9 +148,6 @@ def logout_view(request):
 def dashboard_view(request):
     user = request.user
 
-    # Get Goal Summary
-    goal_count = WritingGoal.objects.filter(user=user, active=True).count()
-
     # Get purchased products
     purchased_count = (
         OrderItem.objects.filter(order__user=user).values("product").distinct().count()
@@ -169,20 +164,10 @@ def dashboard_view(request):
         "order", "-created_at"
     )
 
-    # Writing goals
-    active_goals = WritingGoal.objects.filter(user=user, active=True)
-
-    # Recent writing sessions
-    recent_sessions = WritingSession.objects.filter(user=user).order_by("-date")[:3]
-
     context = {
         "purchased_count": purchased_count,
-        "favourite_prompts": favourite_prompts,
         "favourite_products": favourite_products,
         "member_resources": member_resources,
-        "active_goals": active_goals,
-        "recent_sessions": recent_sessions,
-        "goal_count": goal_count,
     }
 
     return render(request, "accounts/dashboard.html", context)

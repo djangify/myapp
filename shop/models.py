@@ -1,11 +1,11 @@
-# inspirational / shop / models.py
+# myapp / shop / models.py
 from django.db import models
 from django.urls import reverse
 from django.conf import settings
 import uuid
 from decimal import Decimal
-from inspirational.storage import secure_storage, public_storage
-from inspirational.utils import custom_slugify
+from myapp.storage import secure_storage, public_storage
+from myapp.utils import custom_slugify
 from tinymce.models import HTMLField
 
 
