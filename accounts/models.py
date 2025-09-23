@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import timezone
-from prompt.models import WritingPrompt
 import uuid
 from datetime import timedelta
 
@@ -13,9 +12,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     verified = models.BooleanField(default=False)
     bio = models.TextField(max_length=500, blank=True)
-    favourite_prompts = models.ManyToManyField(
-        WritingPrompt, blank=True, related_name="favorited_by"
-    )
+
     favourite_products = models.ManyToManyField(
         "shop.Product", blank=True, related_name="favorited_by"
     )
