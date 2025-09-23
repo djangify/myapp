@@ -141,7 +141,7 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     messages.success(request, "You have been logged out successfully.")
-    return redirect("core:homepage")
+    return redirect("core:home")
 
 
 @login_required
@@ -152,9 +152,6 @@ def dashboard_view(request):
     purchased_count = (
         OrderItem.objects.filter(order__user=user).values("product").distinct().count()
     )
-
-    # Get saved prompts
-    favourite_prompts = user.profile.favourite_prompts.all()
 
     # Get saved products
     favourite_products = user.profile.favourite_products.all()
@@ -188,31 +185,6 @@ def profile_view(request):
 
 
 @login_required
-def add_favourite_prompt(request, prompt_id):
-    prompt = get_object_or_404(WritingPrompt, id=prompt_id)
-    user_profile = request.user.profile
-
-    if prompt in user_profile.favourite_prompts.all():
-        user_profile.favourite_prompts.remove(prompt)
-        messages.success(request, "Prompt removed from your profile.")
-    else:
-        user_profile.favourite_prompts.add(prompt)
-        messages.success(request, "Prompt added to your profile.")
-
-    # If the request is AJAX, return a JSON response
-    if request.headers.get("x-requested-with", "").lower() == "xmlhttprequest":
-        return JsonResponse(
-            {
-                "status": "success",
-                "is_favourite": prompt in user_profile.favourite_prompts.all(),
-            }
-        )
-
-    # Otherwise redirect back to referring page
-    return redirect(request.META.get("HTTP_REFERER", "core:homepage"))
-
-
-@login_required
 def add_favourite_product(request, product_slug):
     product = get_object_or_404(Product, slug=product_slug)
     user_profile = request.user.profile
@@ -236,7 +208,7 @@ def add_favourite_product(request, product_slug):
         )
 
     # Fallback: normal browser form submission
-    return redirect(request.META.get("HTTP_REFERER", "core:homepage"))
+    return redirect(request.META.get("HTTP_REFERER", "core:home"))
 
 
 def public_resources_preview(request):
