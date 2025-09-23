@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Get Your Local Business Ready for AI Search{% endblock %}
+
+{% block open_graph_tags %}
+  <meta property="og:title" content="Get Your Local Business Ready for AI Search" />
+  <meta property="og:description" content="Learn how local shops, restaurants, and service providers can prepare for Google AI Overviews, Bing Copilot, and ChatGPT Browse. Optimise your Google Business Profile, reviews, FAQs, and schema." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}/static/images/local-ai-search-hero.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Get Your Local Business Ready for AI Search">
+  <meta name="twitter:description" content="Learn how local shops, restaurants, and service providers can prepare for AI search by updating profiles, reviews, FAQs, and schema.">
+  <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}/static/images/local-ai-search.jpg">
+{% endblock %}
+
+{% block content %}
+<div class="bg-secondary">
+  <section class="max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 py-12">
+    
+    <!-- Header -->
+    <header class="mb-8">
+      <h1 class="text-4xl mb-4 px-6 font-bold">Get Your Local Business Ready for AI Search</h1>
+      <p class="p-4 mt-8 px-6 text-xl italic border-l-4 mb-4">
+        Local search has changed. Instead of just showing a map or directory listing, Google, Bing, and AI tools now deliver direct answers. This guide helps your local business prepare by optimising your Google Business Profile, reviews, FAQs, and schema so you’re chosen when customers search.
+      </p>
+    </header>
+
+    <!-- Quote -->
+    <blockquote class="px-6 text-xl italic">
+      <p class="py-4">“AI search doesn’t just show who’s nearby — it rewards businesses that keep their information accurate, trusted, and clear.”</p>
+    </blockquote>
+
+    <!-- What is AI search readiness -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12 px-6 *:rounded *:p-8 *:border-2 *:border-accent">
+      <div class="lg:col-span-2 rounded-xl mt-8 p-6">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-3">What Does AI Search Readiness Mean for Local Businesses?</h2>
+        <p class="text-gray-700 mt-2">
+          Being AI-search ready means structuring your business information so AI tools can easily recognise, trust, and recommend it in answers. For local shops, restaurants, and tradespeople, this means updating your Google Business Profile, gathering reviews, writing FAQs, and applying schema markup. When your information is AI-friendly, you’re more likely to appear in local recommendations, voice search results, and answer boxes.
+        </p>
+      </div>
+      <aside class="bg-slate-50 mt-8 rounded-xl border border-indigo-100 p-6">
+        <h3 class="text-xl font-semibold text-teal-800 mb-2">Why It Matters</h3>
+        <p class="text-teal-800/90">
+          Customers now ask AI tools “What’s the best café near me?” or “Which plumber is open now?” If your details aren’t structured for AI, your business may not be recommended — even if you’re the best option in town.
+        </p>
+      </aside>
+    </div>
+
+    <!-- Step cards -->
+    <section>
+      <h2 class="text-2xl px-6 mt-12 font-semibold text-gray-900">Steps to Get Local AI-Search Ready</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 px-6">
+        <a href="/news/update-google-business-profile/" class="block bg-white rounded-lg border p-6 hover:shadow-lg">
+          <div class="text-sm font-semibold text-gray-500">Step 1</div>
+          <h3 class="text-xl font-semibold text-gray-900 mt-1">Update Your Google Business Profile</h3>
+          <p class="text-gray-700 mt-2">Keep your hours, services, photos, and contact details accurate.</p>
+        </a>
+        <a href="/news/local-cluster-pages/" class="block bg-white rounded-lg border p-6 hover:shadow-lg">
+          <div class="text-sm font-semibold text-gray-500">Step 2</div>
+          <h3 class="text-xl font-semibold text-gray-900 mt-1">Build Local Cluster Pages</h3>
+          <p class="text-gray-700 mt-2">Organise your services, service areas, or specialties into clear hubs.</p>
+        </a>
+        <a href="/news/local-faq-snippets/" class="block bg-white rounded-lg border p-6 hover:shadow-lg">
+          <div class="text-sm font-semibold text-gray-500">Step 3</div>
+          <h3 class="text-xl font-semibold text-gray-900 mt-1">Add Customer FAQs</h3>
+          <p class="text-gray-700 mt-2">Answer questions people ask AI tools about your services.</p>
+        </a>
+        <a href="/news/local-reviews-ai-search/" class="block bg-white rounded-lg border p-6 hover:shadow-lg">
+          <div class="text-sm font-semibold text-gray-500">Step 4</div>
+          <h3 class="text-xl font-semibold text-gray-900 mt-1">Collect and Showcase Reviews</h3>
+          <p class="text-gray-700 mt-2">Positive ratings and reviews are a strong signal for AI recommendations.</p>
+        </a>
+        <a href="/news/local-schema-markup/" class="block bg-white rounded-lg border p-6 hover:shadow-lg">
+          <div class="text-sm font-semibold text-gray-500">Step 5</div>
+          <h3 class="text-xl font-semibold text-gray-900 mt-1">Apply Local Schema Markup</h3>
+          <p class="text-gray-700 mt-2">Use structured data like LocalBusiness, FAQ, and Review schema.</p>
+        </a>
+        <a href="/news/formatting-for-ai-search-readiness/" class="block bg-white rounded-lg border p-6 hover:shadow-lg">
+          <div class="text-sm font-semibold text-gray-500">Step 6</div>
+          <h3 class="text-xl font-semibold text-gray-900 mt-1">Format for AI</h3>
+          <p class="text-gray-700 mt-2">Use short paragraphs, headings, and summaries that AI can parse quickly.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Quick Answers -->
+    <section class="px-6 mt-12">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-3">Quick Answers for Local Businesses</h2>
+      <div class="space-y-6 mt-6">
+        <div>
+          <h3 class="text-lg mt-8 font-semibold">What is AI search readiness for local businesses?</h3>
+          <p class="mt-2 text-gray-700">AI search readiness for local businesses means ensuring your business details, website, and reviews are easy for AI tools to understand and recommend. This includes updating your Google Business Profile, adding clear FAQs, using schema markup, and keeping customer reviews active and positive.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold">Will AI search reduce my local shop or clinic’s traffic?</h3>
+          <p class="mt-2 text-gray-700">AI may reduce clicks by showing answers directly, but it can also increase visibility if your business is chosen. The goal is to be recommended directly by AI — which means keeping your listings, reviews, and FAQs accurate so you’re trusted as the best answer.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold">Do reviews really affect AI search results?</h3>
+          <p class="mt-2 text-gray-700">Yes. Positive reviews and ratings signal trust and quality. AI tools look at review patterns, average ratings, and freshness of feedback. A steady flow of genuine reviews helps your business appear in recommendations.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold">How can small businesses compete with big brands in AI search?</h3>
+          <p class="mt-2 mb-12 text-gray-700">AI values relevance and trust over size. Local businesses can win by answering niche queries (“best vegan café in Bristol”), keeping details accurate, and showcasing strong reviews. Bigger brands often miss these specific, localised opportunities.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Articles -->
+    <section class="px-6 mt-12">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-3">Additional Articles Worth Reading</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 px-6">
+        <a href="/news/how-local-businesses-can-get-ai-search-ready/" class="block bg-white rounded-lg border p-6 hover:shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 mt-1">How Local Businesses Can Get AI Ready</h3>
+          <p class="text-gray-700 mt-2">How to get your local business ready for AI Search in 2025 and beyond.</p>
+        </a>
+        <a href="/news/google-business-profile-ai/" class="block bg-white rounded-lg border p-6 hover:shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 mt-1">Google Business Profile in the Age of AI</h3>
+          <p class="text-gray-700 mt-2">How to keep your GBP optimised for AI-driven answers.</p>
+        </a>
+        <a href="/news/local-ai-vs-big-brands/" class="block bg-white rounded-lg border p-6 hover:shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 mt-1">Competing With Chains</h3>
+          <p class="text-gray-700 mt-2">How small local shops can still win against larger brands in AI search.</p>
+        </a>
+        <a href="/news/category/local-ai-search/" class="block bg-white rounded-lg border p-6 hover:shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 mt-1">Blog Category</h3>
+          <p class="text-gray-700 mt-2">See all articles on local AI search readiness.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="mt-8 px-6">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-3">Frequently Asked Questions</h2>
+      <div class="max-w-3xl">
+        <details class="border border-gray-200 rounded-lg p-4 mb-4">
+          <summary class="font-semibold cursor-pointer">Do online directories like Yelp still matter in AI search?</summary>
+          <p class="mt-3 text-gray-700">Yes. Directories like Yelp, TripAdvisor, and industry-specific sites provide trusted third-party signals. AI often cross-checks these to confirm business accuracy. Consistent listings across directories strengthen your visibility.</p>
+        </details>
+        <details class="border border-gray-200 rounded-lg p-4 mb-4">
+          <summary class="font-semibold cursor-pointer">Can I prepare my business for AI search without coding?</summary>
+          <p class="mt-3 text-gray-700">Yes — most local businesses can get AI-ready with no coding. Use free schema generators, update your Google Business Profile, and add FAQs directly to your site. These small steps make a big impact.</p>
+        </details>
+        <details class="border border-gray-200 rounded-lg p-4 mb-4">
+          <summary class="font-semibold cursor-pointer">Does AI search readiness replace local SEO?</summary>
+          <p class="mt-3 text-gray-700">No. AI readiness builds on local SEO. Your Google Business Profile, reviews, and on-page SEO still matter — AI simply layers on top, pulling structured info for direct answers.</p>
+        </details>
+        <details class="border border-gray-200 rounded-lg p-4 mb-4">
+          <summary class="font-semibold cursor-pointer">How can I make sure AI shows accurate information about my business?</summary>
+          <p class="mt-3 text-gray-700">Keep your details consistent across platforms (GBP, Yelp, website). Update hours, services, and contact details regularly. Respond to reviews, as AI tools treat engagement as a sign of accuracy and trustworthiness.</p>
+        </details>
+      </div>
+
+      <!-- FAQ schema -->
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do online directories like Yelp still matter in AI search?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Directories like Yelp, TripAdvisor, and industry-specific sites provide trusted third-party signals. AI cross-checks these to confirm business accuracy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I prepare my business for AI search without coding?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — most local businesses can get AI-ready with no coding. Use schema generators, update GBP, and add FAQs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does AI search readiness replace local SEO?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. AI readiness builds on local SEO. GBP, reviews, and on-page SEO still matter — AI just layers on top."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I make sure AI shows accurate information about my business?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Keep your details consistent across GBP, Yelp, and your website. Update hours, services, and contact details regularly."
+            }
+          }
+        ]
+      }
+      </script>
+    </section>
+
+    <!-- Free Download / Product CTA -->
+    <section class="mt-8 px-6">
+      <div class="bg-slate-50 border border-indigo-100 rounded-2xl p-6">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-6 items-center">
+          <!-- Left: Text -->
+          <div class="md:col-span-3">
+            <h2 class="text-2xl font-semibold">Free Download: Local AI Search Checklist</h2>
+            <p class="mt-2">Get a simple, step-by-step checklist to make your shop, restaurant, or service AI-search ready today.</p>
+            <div class="mt-4 flex gap-3">
+              <a href="https://djangify.com/media/news/resources/local-ai-search-readiness-checklist.pdf" 
+                 class="inline-flex items-center rounded-lg bg-accent uppercase px-5 py-3 border-2 border-accent text-white font-medium hover:text-primary hover:bg-white transition-colors">
+                Get the PDF
+              </a>
+              <a href="/shop/" 
+                 class="inline-flex items-center rounded-lg bg-white uppercase px-5 py-3 border-2 border-accent font-medium hover:text-accent transition-colors">
+                Explore Our Shop
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </section>
+</div>
+{% endblock %}
