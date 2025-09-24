@@ -71,10 +71,4 @@ ADMINS = [
 # Static files optimization for production
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# Cache configuration (optional - uncomment if you want to use Redis/Memcached)
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-#         'LOCATION': 'redis://127.0.0.1:6379/1',
-#     }
-# }
+SITE_URL = env("SITE_URL", default="https://www.djangify.com")

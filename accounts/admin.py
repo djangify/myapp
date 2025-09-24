@@ -21,13 +21,7 @@ class CustomUserAdmin(UserAdmin):
         "first_name",
         "last_name",
         "is_staff",
-        "get_favourite_count",
     )
-
-    def get_favourite_count(self, obj):
-        return obj.profile.favourite_prompts.count()
-
-    get_favourite_count.short_description = "Favourite Prompts"
 
 
 # Re-register UserAdmin with our custom version

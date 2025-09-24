@@ -3,6 +3,14 @@ Local development settings for [Project Name].
 """
 
 from .base import *
+import os
+import environ
+
+# Load .env.local
+env = environ.Env()
+env.read_env(os.path.join(BASE_DIR, ".env.local"))
+
+SITE_URL = env("SITE_URL", default="http://localhost:8000")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -44,4 +52,4 @@ SESSION_COOKIE_SECURE = False
 SESSION_COOKIE_HTTPONLY = True
 
 # Email backend for development
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
