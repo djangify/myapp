@@ -28,11 +28,11 @@
     
     <!-- Project Grid -->
     {% if not portfolios %}
-        <div class="text-center py-8">
+        <div class="text-center py-8 ">
             <p class="text-lg text-gray-400">No portfolio items available yet.</p>
         </div>
     {% else %}
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="latest-grid endpage-grid grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {% for portfolio in portfolios %}
             <article class="bg-primary rounded-lg overflow-hidden flex flex-col h-full">
                 {% if portfolio.display_image %}

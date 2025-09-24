@@ -104,7 +104,7 @@
         </div>
 
         <!-- Thumbnails -->
-        <div class="flex mt-4 gap-4">
+        <div class="flex mt-4 gap-5">
           <img
             src="{{ product.get_image_url|default:'/static/images/placeholder.png' }}"
             data-src="{{ product.get_image_url|default:'/static/images/placeholder.png' }}"
@@ -207,7 +207,7 @@
               ✅ You purchased this product on {{ order_item.order.created|date:"j M Y" }} (Order ID: {{ order_item.order.order_id }})
             </div>
             {% endif %}
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-gray-600">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 text-sm text-gray-600">
               <div class="flex items-center"><span class="text-green-500 mr-2">✔</span>Secure Payment</div>
               <div class="flex items-center"><span class="text-blue-500 mr-2">↩</span>Easy Downloads</div>
               <div class="flex items-center">

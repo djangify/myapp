@@ -10,7 +10,7 @@
         <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg mb-4">
             Projects Using
         </h6>
-        <div class="flex items-center gap-4 mt-8">
+        <div class="flex items-center gap-5 mt-8">
             <span class="inline-flex items-center px-6 py-3 text-lg bg-accent/10 rounded-full text-accent border-2 border-accent">
                 <i class="{{ technology.icon }} mr-3"></i>
                 <h1 class="text-3xl font-bold">{{ technology.name }}</h1>
@@ -28,7 +28,7 @@
     </div>
     
     <!-- Portfolio Grid -->
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div class="latest-grid endpage-grid grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {% for portfolio in portfolios %}
         <article class="bg-primary rounded-lg overflow-hidden flex flex-col h-full">
             {% if portfolio.display_image %}

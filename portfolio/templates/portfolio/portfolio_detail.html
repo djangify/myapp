@@ -39,7 +39,7 @@
         </div>
         
         <!-- External Links - Top -->
-        <div class="flex flex-wrap gap-4 justify-center mb-16">
+        <div class="flex flex-wrap gap-5 justify-center mb-16">
             {% if portfolio.live_site_url %}
             <a href="{{ portfolio.live_site_url }}" 
                target="_blank" rel="noopener noreferrer"
@@ -68,7 +68,7 @@
         <!-- Technologies Used -->
         <div class="mb-16 pb-8 border-b border-gray-700">
             <h2 class="text-2xl font-bold py-4 mb-6">Technologies Used</h2>
-            <div class="flex flex-wrap gap-4">
+            <div class="flex flex-wrap gap-5">
                 {% for tech in portfolio.technologies.all %}
                     <a href="{% url 'portfolio:portfolio_by_technology' tech.slug %}" 
                        class="px-6 py-3 text-sm bg-accent/10 border-2 border-accent rounded-full text-accent hover:bg-accent hover:text-white transition-colors">
@@ -219,7 +219,7 @@
     {% if portfolio.images.exists %}
     <section id="gallery" class="flex flex-col gap-y-6 mt-16 max-w-screen-2xl scroll-mt-24">
         <h2 class="text-2xl mb-8 font-bold sm:text-3xl xl:text-5xl">Project Gallery</h2>
-        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {% for image in portfolio.images.all %}
             <div class="rounded-lg overflow-hidden group relative">
                 <img src="{{ image.display_image }}" 
