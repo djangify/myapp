@@ -42,7 +42,7 @@
     {% endblock %}
 
     {% include 'base/footer.html' %}
-
+{% comment %} 
     
     <!-- Cookie Consent -->
     <aside id="cookie-banner" class="cookie-banner hidden" role="dialog" aria-labelledby="cookie-title">
@@ -57,12 +57,14 @@
         <button id="decline-cookies" class="cookie-btn decline">Decline</button>
       </div>
     </div>
-  </aside>
+  </aside> {% endcomment %}
 
 
 <!-- Scripts -->
 {% block extra_js %}
 <script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/favourite-products.js' %}"></script>
+
 
 <!-- Cookie Consent Script -->
 <script>
