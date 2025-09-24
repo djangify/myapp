@@ -2161,17 +2161,15 @@ img {
 @media (min-width: 768px) {
   .card-content {
     padding: 1.5rem;
+    /* tablet */
   }
-
-  /* tablet */
 }
 
 @media (min-width: 1024px) {
   .card-content {
     padding: 2rem;
+    /* desktop */
   }
-
-  /* desktop */
 }
 
 /* === Featured Articles === */
@@ -2192,13 +2190,26 @@ img {
 }
 
 /* Ensure featured cards wrap all their children */
+/* Featured card – same styling as card-content */
 .featured-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: hidden;
-  /* prevent bleed outside */
+  padding: 1rem;
+  background: #fff;
+  border-radius: 0.5rem;
+  /* optional: match small cards */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  /* optional: match small cards */
+}
 
+@media (min-width: 768px) {
+  .featured-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .featured-card {
+    padding: 2rem;
+  }
 }
 
 /* Make sure images don’t break out of cards */
@@ -2266,7 +2277,6 @@ img {
 }
 
 /* Mobile: add gap between stacked featured posts */
-/* Add spacing between main featured post and stacked posts on mobile */
 @media (max-width: 1023px) {
   .featured-stack {
     margin-top: 1.5rem;
