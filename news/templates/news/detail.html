@@ -120,7 +120,7 @@
         <!-- Centered Container for Extras -->
     <div class="container mx-auto max-w-4xl">
         <!-- Navigation -->
-        <nav class="mt-16 border-t border-gray-700/30 pt-8">
+        <nav class="post-nav mt-16 mb-12 border-t border-gray-700/30 pt-8">
             <div class="flex justify-between items-center">
                 {% if previous_post %}
                 <a href="{{ previous_post.get_absolute_url }}" class="group flex items-center text-md text-gray-400 hover:text-accent transition-colors max-w-[45%]">
@@ -160,11 +160,11 @@
             </a>
         </div>
         <!-- Related Posts -->
-        <div class="mt-12 mb-24">
+        <div class="card-content mt-12 mb-24">
             <h2 class="text-2xl py-4 font-bold mb-8">Related Posts</h2>
-            <div class="grid grid-cols-2 gap-8">
+            <div class="grid grid-cols-2 gap-y-12 gap-x-8">
                  {% for related in related_posts|slice:":2" %}
-                <a href="{{ related.get_absolute_url }}" class="group">
+                <a href="{{ related.get_absolute_url }}" class="group px-4">
                     <div class="h-48 overflow-hidden rounded-lg bg-primary/10 mb-4">
                         {% if related.external_image_url %}
                             <img src="{{ related.external_image_url }}" 
@@ -191,6 +191,7 @@
                 {% endfor %}
             </div>
         </div>
+        
         <!-- SEO-friendly text links -->
         {% if related_posts|length > 2 %}
             <div class="mt-8 mb-16">
@@ -198,7 +199,7 @@
             <ul class="list-disc list-inside space-y-2">
                 {% for related in related_posts|slice:"2:8" %}
                 <li>
-                    <a href="{{ related.get_absolute_url }}" class="text-blue-600 hover:underline">
+                    <a href="{{ related.get_absolute_url }}" class="text-accent hover:underline">
                     {{ related.title }}
                     </a>
                 </li>

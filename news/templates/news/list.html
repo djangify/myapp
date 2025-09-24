@@ -22,7 +22,7 @@
                 <div class="featured-grid">
                     {% with main_post=featured_posts.0 %}
                     <!-- Large featured post -->
-                    <article class="bg-white rounded shadow-lg overflow-hidden">
+                    <article class="bg-white rounded shadow-md overflow-hidden">
                         <a href="{{ main_post.get_absolute_url }}">
                             <img src="{{ main_post.get_image_url }}" alt="{{ main_post.title }}" class="featured-image">
                         </a>
@@ -36,7 +36,7 @@
 
                             <!-- Long excerpt (tablet/desktop only) -->
                             <p class="text-gray-600 card-text mb-4 excerpt-long">
-                                {{ main_post.content|striptags|truncatewords:100 }}
+                                {{ main_post.content|striptags|truncatewords:120 }}
                             </p>
 
                             <a href="{{ main_post.get_absolute_url }}" class="text-accent hover:text-indigo-700 font-semibold">
@@ -73,7 +73,8 @@
         <!-- Regular Blog Posts -->
         {% if posts %}
         <h2 class="text-2xl font-bold mb-8">Latest Articles</h2>
-        <div class="endpage-grid grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="latest-grid endpage-grid mt-8">
+        {% comment %} <div class="endpage-grid grid grid-cols-1 md:grid-cols-2 gap-5"> {% endcomment %}
             {% for post in posts %}
             <article class="bg-white rounded shadow-lg overflow-hidden flex flex-col">
                 <a href="{{ post.get_absolute_url }}">

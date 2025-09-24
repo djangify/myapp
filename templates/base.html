@@ -45,20 +45,20 @@
 
     
     <!-- Cookie Consent -->
-        
-      <aside id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white py-4 px-6 hidden z-50" role="dialog" aria-labelledby="cookie-title">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="text-sm">
-                <h2 id="cookie-title" class="sr-only">Cookie Consent</h2>
-                We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. 
-                <a href="{% url 'core:cookie_policy' %}" class="text-accent hover:text-text underline transition-colors">Cookie Policy</a>
-                </div>
-            <div class="flex gap-4">
-                <button id="accept-cookies" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-colors" aria-label="Accept cookies">Accept</button>
-                <button id="decline-cookies" class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-sm transition-colors" aria-label="Decline cookies">Decline</button>
-            </div>
-        </div>
-      </aside>
+    <aside id="cookie-banner" class="cookie-banner hidden" role="dialog" aria-labelledby="cookie-title">
+    <div class="cookie-container">
+      <div class="cookie-text">
+        <h2 id="cookie-title" class="sr-only">Cookie Consent</h2>
+        We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. 
+        <a href="{% url 'core:cookie_policy' %}" class="cookie-link">Cookie Policy</a>
+      </div>
+      <div class="cookie-actions">
+        <button id="accept-cookies" class="cookie-btn accept">Accept</button>
+        <button id="decline-cookies" class="cookie-btn decline">Decline</button>
+      </div>
+    </div>
+  </aside>
+
 
 <!-- Scripts -->
 {% block extra_js %}
@@ -66,27 +66,37 @@
 
 <!-- Cookie Consent Script -->
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-      const cookieConsent = localStorage.getItem('cookieConsent');
-      const banner = document.getElementById('cookie-banner');
-      
-      if (!cookieConsent) {
-          banner.classList.remove('hidden');
-      }
-      
-      document.getElementById('accept-cookies').addEventListener('click', function() {
-          localStorage.setItem('cookieConsent', 'accepted');
-          banner.classList.add('hidden');
-      });
-      
-      document.getElementById('decline-cookies').addEventListener('click', function() {
-          localStorage.setItem('cookieConsent', 'declined');
-          banner.classList.add('hidden');
-      });
+  document.addEventListener("DOMContentLoaded", function () {
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("accept-cookies");
+    const declineBtn = document.getElementById("decline-cookies");
+
+    // Show banner if not already accepted
+    if (!localStorage.getItem("cookiesAccepted")) {
+      banner.style.display = "block";
+    }
+
+    // Accept button
+    if (acceptBtn) {
+      acceptBtn.onclick = function () {
+        localStorage.setItem("cookiesAccepted", "true");
+        banner.style.display = "none";
+      };
+    }
+
+    // Decline button (optional — same hiding behavior)
+    if (declineBtn) {
+      declineBtn.onclick = function () {
+        localStorage.setItem("cookiesAccepted", "declined");
+        banner.style.display = "none";
+      };
+    }
   });
 </script>
 
 
+
+<script src="{% static 'js/messages.js' %}"></script>
 {% endblock %}
 
   </body>

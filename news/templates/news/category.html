@@ -3,12 +3,12 @@
 
 <!-- news/templates/news/category.html -->
 {% block content %}
-<div class="container p-6 text-text bg-secondary mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ category.name }}</h1>
+<div class="container  p-6 text-text bg-secondary mx-auto px-4 py-8">
+    <h1 class="px-6 mt-8 text-4xl font-bold text-gray-900 mb-4">{{ category.name }}</h1>
     <br>
-    <a href="{% url 'news:list' %}" class="text-blue-600 hover:text-accent mb-8 inline-block">← Back to News</a>
+    <a href="{% url 'news:list' %}" class="text-blue-600 hover:text-accent mb-8 px-6 inline-block">← Back to News</a>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+    <div class="latest-grid endpage-grid mt-8">
         {% for post in posts %}
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                 <div class="w-full h-48 overflow-hidden">
