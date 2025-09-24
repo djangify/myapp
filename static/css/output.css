@@ -2008,27 +2008,61 @@ img {
   }
 }
 
-/* Keep post images consistent (16:9 aspect ratio) */
+/* ADDED CSS FOR DJANGIFY.COM  */
+
+/* === Post images === */
 .post-image {
   width: 100%;
   aspect-ratio: 16/9;
-  /* modern CSS, keeps height proportional */
+  /* keeps height proportional */
   object-fit: cover;
   display: block;
 }
 
+/* Large featured post image - responsive */
+.featured-image {
+  width: 100%;
+  max-height: 250px;
+  /* default for small screens */
+  object-fit: cover;
+  display: block;
+}
+
+@media (min-width: 768px) {
+
+  /* tablets */
+  .featured-image {
+    max-height: 400px;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  /* desktop */
+  .featured-image {
+    max-height: 550px;
+  }
+}
+
+/* === Text utilities === */
 .card-text {
   line-height: 1.6;
   /* roughly Tailwind leading-relaxed */
 }
 
-/* Extra spacing before footer on list pages */
-.endpage-grid {
-  margin-bottom: 6rem;
-  /* adjust as needed */
+.leading-normal {
+  line-height: 1.5;
 }
 
-/* === Margin utilities === */
+.leading-relaxed {
+  line-height: 1.625;
+}
+
+.leading-loose {
+  line-height: 2;
+}
+
+/* === Spacing utilities === */
 .mt-4 {
   margin-top: 1rem;
 }
@@ -2073,7 +2107,6 @@ img {
   margin-bottom: 6rem;
 }
 
-/* === Padding utilities === */
 .pt-4 {
   padding-top: 1rem;
 }
@@ -2114,31 +2147,129 @@ img {
   padding-bottom: 4rem;
 }
 
-/* === Line-height utilities === */
-.leading-normal {
-  line-height: 1.5;
+/* === Extra spacing before footer === */
+.endpage-grid {
+  margin-bottom: 6rem;
 }
 
-/* default */
-.leading-relaxed {
-  line-height: 1.625;
+/* === Generic card padding === */
+.card-content {
+  padding: 1rem;
+  /* mobile */
 }
 
-.leading-loose {
-  line-height: 2;
+@media (min-width: 768px) {
+  .card-content {
+    padding: 1.5rem;
+  }
+
+  /* tablet */
 }
 
-/* Featured articles grid */
+@media (min-width: 1024px) {
+  .card-content {
+    padding: 2rem;
+  }
+
+  /* desktop */
+}
+
+/* === Featured Articles === */
 .featured-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr;
+  /* mobile: 1 column */
   gap: 1.5rem;
-  /* spacing between big + small */
+  /* vertical spacing on mobile */
 }
 
-/* Stack two smaller posts */
+@media (min-width: 1024px) {
+  .featured-grid {
+    grid-template-columns: 2fr 1fr;
+    /* desktop: big left, stack on right */
+    gap: 1.5rem;
+  }
+}
+
+/* Ensure featured cards wrap all their children */
+.featured-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  /* prevent bleed outside */
+
+}
+
+/* Make sure images don’t break out of cards */
+.featured-card img,
+.featured-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .featured-stack {
   display: grid;
-  grid-template-rows: 1fr 1fr;
   gap: 1.5rem;
+  /* vertical spacing between two small posts */
+}
+
+@media (min-width: 1024px) {
+  .featured-stack {
+    grid-template-rows: 1fr 1fr;
+    /* keep them stacked on desktop */
+  }
+}
+
+/* === Latest Articles === */
+.latest-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* mobile */
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .latest-grid {
+    grid-template-columns: 1fr 1fr;
+    /* tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .latest-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    /* desktop */
+  }
+}
+
+/* By default show short version */
+.excerpt-short {
+  display: block;
+}
+
+.excerpt-long {
+  display: none;
+}
+
+@media (min-width: 768px) {
+
+  /* On tablet+ show long, hide short */
+  .excerpt-short {
+    display: none;
+  }
+
+  .excerpt-long {
+    display: block;
+  }
+}
+
+/* Mobile: add gap between stacked featured posts */
+/* Add spacing between main featured post and stacked posts on mobile */
+@media (max-width: 1023px) {
+  .featured-stack {
+    margin-top: 1.5rem;
+    /* adjust as needed */
+  }
 }
