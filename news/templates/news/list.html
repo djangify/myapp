@@ -3,183 +3,160 @@
 {% block content %}
 
 <!-- news/templates/news/list.html -->
-<div class="bg-secondary p-6 text-text min-h-screen mx-auto px-4 py-8">
-    <div class="space-y-5 *:space-y-2 lg:self-center xl:space-y-5 mb-8">
-        <h1 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
-            News. Articles. Blog Posts.
-        </h1>
-        
-        <p class="mt-18 text-gray-600 max-w-4xl">
-            Industry News. Informative Articles. Informal Blog Posts. All related to being a Tech VA and working in the world of online marketing. Click the CATEGORY name to see all posts under that topic.
+<div class="container mx-auto px-4 py-8">
+    <!-- Page Heading -->
+    <div class="mb-12">
+        <h1 class="text-3xl font-bold mb-4">News · Articles · Blog Posts</h1>
+        <p class="text-gray-600 max-w-3xl">
+            Industry News. Informative Articles. Informal Blog Posts. All related to being a Tech VA 
+            and working in the world of online marketing. Click the CATEGORY name to see all posts 
+            under that topic.
         </p>
     </div>
+
     {% if featured_posts %}
-        <div class="space-y-5 *:space-y-2 lg:self-center xl:space-y-5 mb-8">
-            <h2 class="text-2xl font-bold mb-6">Featured Articles</h2>
-            <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                {% for post in featured_posts %}
-                    <article class="bg-primary rounded-lg shadow-lg overflow-hidden h-full flex flex-col border-2 border-accent">
-                        {% if "?" not in post.slug and "&" not in post.slug %}
-                            <a href="{{ post.get_absolute_url }}" class="block h-48 overflow-hidden">
-                        {% else %}
-                            <div class="block h-48 overflow-hidden">
+    <!-- Featured Section -->
+    <section class="mb-12">
+        <div class="lg:grid lg:grid-cols-4 lg:gap-12 xl:gap-16 mb-16">
+            
+            {% with main_post=featured_posts.0 %}
+            <!-- Large Featured Post -->
+            <div class="col-span-2 mb-8">
+                <p class="text-2xl font-semibold text-accent">Featured</p>
+                <a href="{{ main_post.get_absolute_url }}">
+                    <h2 class="mt-3 mb-4 text-3xl font-bold tracking-tight text-gray-900">
+                        {{ main_post.title }}
+                    </h2>
+                </a>
+                
+                {% if main_post.external_image_url %}
+                    <img src="{{ main_post.external_image_url }}" alt="{{ main_post.title }}" 
+                         class="w-full h-64 object-cover rounded-lg shadow-md mb-4">
+                {% elif main_post.get_image_url %}
+                    <img src="{{ main_post.get_image_url }}" alt="{{ main_post.title }}" 
+                         class="w-full h-64 object-cover rounded-lg shadow-md mb-4">
+                {% elif main_post.youtube_url %}
+                    <img src="https://img.youtube.com/vi/{{ main_post.get_youtube_video_id }}/maxresdefault.jpg" 
+                         alt="{{ main_post.title }}"
+                         class="w-full h-64 object-cover rounded-lg shadow-md mb-4"
+                         onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ main_post.get_youtube_video_id }}/hqdefault.jpg';">
+                {% endif %}
+                
+                <p class="text-gray-600 mb-4">
+                    {{ main_post.content|striptags|truncatewords:50 }}
+                </p>
+                <a href="{{ main_post.get_absolute_url }}" 
+                   class="inline-flex items-center text-accent hover:text-indigo-700 font-semibold">
+                   Read Full Article →
+                </a>
+            </div>
+            {% endwith %}
+
+            <!-- Two Smaller Featured Posts -->
+            <div class="col-span-2 flex flex-col gap-6">
+                {% for post in featured_posts|slice:"1:3" %}
+                <div class="bg-white border border-accent rounded-lg shadow-sm overflow-hidden">
+                    <a href="{{ post.get_absolute_url }}">
+                        <h3 class="text-lg font-semibold p-4 hover:text-accent">
+                            {{ post.title }}
+                        </h3>
+                        {% if post.external_image_url %}
+                            <img src="{{ post.external_image_url }}" alt="{{ post.title }}" 
+                                 class="post-image">
+                        {% elif post.get_image_url %}
+                            <img src="{{ post.get_image_url }}" alt="{{ post.title }}" 
+                                 class="post-image">
+                        {% elif post.youtube_url %}
+                            <img src="https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/maxresdefault.jpg" 
+                                 alt="{{ post.title }}"
+                                 class="w-full h-40 object-cover"
+                                 onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/hqdefault.jpg';">
                         {% endif %}
-                                {% if post.external_image_url %}
-                                    <img src="{{ post.external_image_url }}" 
-                                         alt="{{ post.title }}" 
-                                         class="w-full h-full object-cover">
-                                {% elif post.get_image_url %}
-                                    <img src="{{ post.get_image_url }}" 
-                                         alt="{{ post.title }}" 
-                                         class="w-full h-full object-cover">
-                                {% elif post.youtube_url %}
-                                    <img src="https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/maxresdefault.jpg" 
-                                         alt="{{ post.title }}"
-                                         class="w-full h-full object-cover"
-                                         onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/hqdefault.jpg';">
-                                {% else %}
-                                    <div class="w-full h-full bg-accent/20 flex items-center justify-center">
-                                        <span class="text-accent">No Image Available</span>
-                                    </div>
-                                {% endif %}
-                        {% if "?" not in post.slug and "&" not in post.slug %}
-                            </a>
-                        {% else %}
-                            </div>
-                        {% endif %}
-                        
-                        <div class="p-6 flex-grow flex flex-col">
-                            <div class="flex justify-between items-center mb-4">
-                                <h2 class="text-xl font-bold">{{ post.title }}</h2>
-                                <span class="bg-accent border-2 p-2 text-white text-xs px-2 py-1 rounded">Featured</span>
-                            </div>
-                            <div class="flex items-center text-sm text-gray-500 mt-2 mb-4">
-                                <a href="{% url 'news:category' post.category.slug %}" class="text-accent font-bold hover:text-blue-800">
-                                    CATEGORY: {{ post.category.name }}
-                                </a>
-                            </div>
-                            <p class="text-gray-400 mb-6">
-                                {{ post.content|striptags|truncatewords:25 }}
-                            </p>
-                            
-                            {% if "?" not in post.slug and "&" not in post.slug %}
-                                <a href="{{ post.get_absolute_url }}" class="mt-auto pt-4 border-t border-gray-700 text-accent hover:text-white inline-flex items-center">
-                                    <span class="text-gray-900 hover:text-blue-800">Read More →</span>
-                                </a>
-                            {% else %}
-                                <span class="mt-auto pt-4 border-t border-gray-700 text-gray-400">Coming Soon</span>
-                            {% endif %}
-                        </div>
-                    </article>
+                    </a>
+                </div>
                 {% endfor %}
             </div>
         </div>
+    </section>
     {% endif %}
 
+    <!-- Regular Blog Posts -->
     {% if posts %}
-        <div class="space-y-5 *:space-y-2 lg:self-center xl:space-y-5 py-4 mb-8">
-            <h2 class="text-2xl font-bold mb-6">Latest Articles</h2>
-            <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                {% for post in posts %}
-                    <article class="bg-primary rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
-                        {% if "?" not in post.slug and "&" not in post.slug %}
-                            <a href="{{ post.get_absolute_url }}" class="block h-48 overflow-hidden">
-                        {% else %}
-                            <div class="block h-48 overflow-hidden">
-                        {% endif %}
-                                {% if post.external_image_url %}
-                                    <img src="{{ post.external_image_url }}" 
-                                         alt="{{ post.title }}" 
-                                         class="w-full h-full object-cover">
-                                {% elif post.get_image_url %}
-                                    <img src="{{ post.get_image_url }}" 
-                                         alt="{{ post.title }}" 
-                                         class="w-full h-full object-cover">
-                                {% elif post.youtube_url %}
-                                    <img src="https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/maxresdefault.jpg" 
-                                         alt="{{ post.title }}"
-                                         class="w-full h-full object-cover"
-                                         onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/hqdefault.jpg';">
-                                {% else %}
-                                    <div class="w-full h-full bg-accent/20 flex items-center justify-center">
-                                        <span class="text-accent">No Image Available</span>
-                                    </div>
-                                {% endif %}
-                        {% if "?" not in post.slug and "&" not in post.slug %}
-                            </a>
-                        {% else %}
-                            </div>
-                        {% endif %}
-                        
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h2 class="text-xl font-bold mb-4">{{ post.title }}</h2>
-                            <div class="flex items-center text-sm text-gray-500 mt-2 mb-4">
-                                <a href="{% url 'news:category' post.category.slug %}" class="text-accent font-bold hover:text-blue-800">
-                                   CATEGORY: {{ post.category.name }}
-                                </a>
-                            </div>
-                            <p class="text-gray-400 mb-6">
-                                {{ post.content|striptags|truncatewords:25 }}
-                            </p>
-                            
-                            {% if "?" not in post.slug and "&" not in post.slug %}
-                                <a href="{{ post.get_absolute_url }}" class="mt-auto pt-4 border-t border-gray-700 text-accent hover:text-white inline-flex items-center">
-                                    <span class="text-gray-900 hover:text-blue-800">Read More →</span>
-                                </a>
-                            {% else %}
-                                <span class="mt-auto pt-4 border-t border-gray-700 text-gray-400">Coming Soon</span>
-                            {% endif %}
-                        </div>
-                    </article>
-                {% endfor %}
-            </div>
-            
-            <!-- Pagination -->
-            <div class="py-4 mb-8">
-                {% if posts.has_other_pages %}
-                    <div class="flex justify-center mt-12">
-                        <div class="inline-flex rounded-md shadow-sm">
-                            {% if posts.has_previous %}
-                                <a href="?page={{ posts.previous_page_number }}{% if request.GET.q|default:"" %}&q={{ request.GET.q|default:"" }}{% endif %}" class="px-4 py-2 rounded-l-md border border-accent text-accent hover:bg-accent hover:text-white transition-colors">
-                                    Previous
-                                </a>
-                            {% else %}
-                                <span class="px-4 py-2 rounded-l-md border border-gray-600 text-gray-600 cursor-not-allowed">
-                                    Previous
-                                </span>
-                            {% endif %}
-                            
-                            {% for i in posts.paginator.page_range %}
-                                {% if posts.number == i %}
-                                    <span class="px-4 py-2 border-t border-b border-accent bg-accent text-white">
-                                        {{ i }}
-                                    </span>
-                                {% else %}
-                                    <a href="?page={{ i }}{% if request.GET.q|default:"" %}&q={{ request.GET.q|default:"" }}{% endif %}" class="px-4 py-2 border-t border-b border-accent text-accent hover:bg-accent hover:text-white transition-colors">
-                                        {{ i }}
-                                    </a>
-                                {% endif %}
-                            {% endfor %}
-                            
-                            {% if posts.has_next %}
-                                <a href="?page={{ posts.next_page_number }}{% if request.GET.q|default:"" %}&q={{ request.GET.q|default:"" }}{% endif %}" class="px-4 py-2 rounded-r-md border border-accent text-accent hover:bg-accent hover:text-white transition-colors">
-                                    Next
-                                </a>
-                            {% else %}
-                                <span class="px-4 py-2 rounded-r-md border border-gray-600 text-gray-600 cursor-not-allowed">
-                                    Next
-                                </span>
-                            {% endif %}
-                        </div>
-                    </div>
+    <h2 class="text-2xl font-bold mb-8">Latest Articles</h2>
+    <div class="endpage-grid grid grid-cols-1 md:grid-cols-2 gap-5">
+        {% for post in posts %}
+        <article class="bg-white rounded shadow-lg overflow-hidden flex flex-col">
+            <a href="{{ post.get_absolute_url }}">
+                {% if post.external_image_url %}
+                    <img src="{{ post.external_image_url }}" alt="{{ post.title }}" class="post-image">
+                {% elif post.get_image_url %}
+                    <img src="{{ post.get_image_url }}" alt="{{ post.title }}" class="post-image">
+                {% elif post.youtube_url %}
+                    <img src="https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/maxresdefault.jpg"
+                         alt="{{ post.title }}"
+                         class="w-full h-48 object-cover"
+                         onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/hqdefault.jpg';">
                 {% endif %}
+            </a>
+            <div class="p-6 flex flex-col flex-grow">
+                <h2 class="text-xl font-bold mb-2">{{ post.title }}</h2>
+                <p class="text-gray-600 mb-4 card-text">{{ post.content|striptags|truncatewords:25 }}</p>
+                <a href="{{ post.get_absolute_url }}" 
+                   class="mt-8 text-accent hover:text-indigo-700 font-semibold">
+                   Read More →
+                </a>
             </div>
+        </article>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if posts.has_other_pages %}
+    <div class="flex justify-center mt-12">
+        <div class="inline-flex rounded-md shadow-sm">
+            {% if posts.has_previous %}
+                <a href="?page={{ posts.previous_page_number }}" 
+                   class="px-4 py-2 rounded-l-md border border-accent text-accent hover:bg-accent hover:text-white transition-colors">
+                   Previous
+                </a>
+            {% else %}
+                <span class="px-4 py-2 rounded-l-md border border-gray-300 text-gray-400 cursor-not-allowed">
+                   Previous
+                </span>
+            {% endif %}
+            
+            {% for i in posts.paginator.page_range %}
+                {% if posts.number == i %}
+                    <span class="px-4 py-2 border-t border-b border-accent bg-accent text-white">
+                        {{ i }}
+                    </span>
+                {% else %}
+                    <a href="?page={{ i }}" 
+                       class="px-4 py-2 border-t border-b border-accent text-accent hover:bg-accent hover:text-white transition-colors">
+                       {{ i }}
+                    </a>
+                {% endif %}
+            {% endfor %}
+            
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}" 
+                   class="px-4 py-2 rounded-r-md border border-accent text-accent hover:bg-accent hover:text-white transition-colors">
+                   Next
+                </a>
+            {% else %}
+                <span class="px-4 py-2 rounded-r-md border border-gray-300 text-gray-400 cursor-not-allowed">
+                   Next
+                </span>
+            {% endif %}
         </div>
+    </div>
+    {% endif %}
+
     {% else %}
-        <div class="text-center py-16 bg-primary rounded-lg">
-            <h2 class="text-2xl font-bold mb-4">No Articles Found</h2>
-            <p class="text-gray-400">Check back soon for new content!</p>
-        </div>
+    <div class="text-center py-16 bg-white rounded-lg">
+        <h2 class="text-2xl font-bold mb-4">No Articles Found</h2>
+        <p class="text-gray-400">Check back soon for new content!</p>
+    </div>
     {% endif %}
 </div>
 {% endblock %}
