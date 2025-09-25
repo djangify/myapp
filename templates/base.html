@@ -52,7 +52,7 @@
 
     
     <!-- Cookie Consent -->
-   <aside id="cookie-banner" class="cookie-banner hidden" role="dialog" aria-labelledby="cookie-title">
+   {% comment %} <aside id="cookie-banner" class="cookie-banner hidden" role="dialog" aria-labelledby="cookie-title">
     <div class="cookie-container">
       <div class="cookie-text">
         <h2 id="cookie-title" class="sr-only">Cookie Consent</h2>
@@ -65,12 +65,12 @@
       </div>
     </div>
   </aside>  
-
+ {% endcomment %}
 
 <!-- Scripts -->
 {% block extra_js %}
+
 <script src="{% static 'js/app.js' %}"></script>
-<script src="{% static 'js/favourite-products.js' %}"></script>
 <script src="{% static 'js/messages.js' %}"></script>
 
  {% if messages %}

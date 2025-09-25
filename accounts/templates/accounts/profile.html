@@ -17,7 +17,7 @@
         <label class="block text-sm font-medium text-gray-700 mb-1"
           >Username</label
         >
-        <p class="text-gray-900 rounded-md border border-gray-300 py-2 px-3">
+        <p class="text-gray-900 rounded-md border border-gray-300 py-2 px-6">
           {{ user.username }}
         </p>
       </div>
@@ -26,7 +26,7 @@
         <label class="block text-sm font-medium text-gray-700 mb-1"
           >Email</label
         >
-        <p class="text-gray-900 rounded-md border border-gray-300 py-2 px-3">
+        <p class="text-gray-900 rounded-md border border-gray-300 py-2 px-6">
           {{ user.email }}
         </p>
       </div>
@@ -41,17 +41,19 @@
       </label>
       {{ form.bio }}
       <p class="text-gray-500 text-xs mt-1">
-        Share a bit about yourself and your writing interests
+        Share a bit about yourself.
       </p>
     </div>
 
     <div class="flex justify-end mt-6">
-      <button
-        type="submit"
-        class="bg-teal-700 hover:bg-teal-800 text-white font-medium py-2 px-4 rounded-md transition duration-200"
-      >
-        Save Changes
-      </button>
+      <div class="inline-block">
+        <button
+          type="submit"
+          class="btn-accent"
+        >
+          Save Changes
+        </button>
+      </div>
     </div>
   </form>
 </div>

@@ -1497,3 +1497,76 @@ p {
 .loggedin-navbar .nav-links a:hover {
   color: #0f766e;
 }
+
+
+/* === User Dropdown with Caret === */
+#user-dropdown {
+  background: #fff;
+  border: 1px solid hsl(var(--color-accent));
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 0.5rem 0;
+  min-width: 12rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 0.75rem;
+  /* space for caret */
+}
+
+#user-dropdown::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  /* sits above dropdown */
+  right: 1.5rem;
+  /* position arrow under button */
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent hsl(var(--color-accent)) transparent;
+}
+
+#user-dropdown::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: 1.5rem;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+}
+
+#user-dropdown a,
+#user-dropdown button {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  color: hsl(var(--color-text));
+  text-align: left;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#user-dropdown a:hover,
+#user-dropdown button:hover {
+  background: hsl(var(--color-accent) / 0.1);
+  /* light accent hover */
+  color: hsl(var(--color-accent));
+}
+
+#user-menu-button svg {
+  color: #374151;
+  /* Tailwind gray-700 */
+}
+
+/* Fix download icon size */
+.download-icon {
+  width: 14px;
+  /* or 12px if you want even smaller */
+  height: 14px;
+  stroke: hsl(var(--color-accent));
+  margin-right: 0.4rem;
+  flex-shrink: 0;
+  /* stops it stretching */
+}

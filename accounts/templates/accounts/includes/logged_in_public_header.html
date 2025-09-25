@@ -1,8 +1,7 @@
 {% load static %}
-
 <header class="loggedin-navbar bg-white border-b border-gray-200">
   <div class="container mx-auto px-4">
-    <div class="flex items-center justify-between py-4">
+    <div class="flex justify-between pt-6 pb-6">
 
       <!-- Logo -->
       <a href="{% url 'core:home' %}" class="flex items-center gap-2 font-semibold text-gray-900">
@@ -12,9 +11,6 @@
 
       <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center nav-links">
-        <a href="{% url 'shop:product_list' %}" class="hover:text-teal-700">Shop</a>
-        <a href="/blog/" class="hover:text-teal-700">Blog</a>
-        
 
         <!-- Cart -->
         <a href="{% url 'shop:cart_detail' %}" class="relative hover:text-teal-700">
@@ -31,55 +27,72 @@
           {% endwith %}
         </a>
 
-        <!-- Dashboard Button + Dropdown -->
+        <!-- User Dropdown -->
         <div class="relative">
-          <button type="button" id="user-menu-button" class="flex items-center gap-2">
-            <span class="dashboard-btn">Dashboard</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          <button
+            type="button"
+            id="user-menu-button"
+            class="flex items-center"
+          >
+            
+            <span class="font-medium mr-1 hidden sm:inline">
+              {{ user.username }}
+            </span>
+            <!-- Chevron -->
+            <svg xmlns="http://www.w3.org/2000/svg" 
+                 class="chevron-icon" 
+                 viewBox="0 0 24 24" 
+                 fill="none" 
+                 stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div id="user-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-md py-2 z-50">
-            <a href="{% url 'accounts:dashboard' %}" class="block px-4 py-2 hover:bg-gray-100">Dashboard</a>
-            <a href="{% url 'shop:purchases' %}" class="block px-4 py-2 hover:bg-gray-100">My Orders</a>
-            <a href="{% url 'accounts:profile' %}" class="block px-4 py-2 hover:bg-gray-100">Profile Info</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100"> Support</a>
-            <a href="{% url 'accounts:logout' %}" class="block px-4 py-2 text-red-600 hover:bg-red-50">Sign out</a>
+
+          <!-- start hidden -->
+          <div id="user-dropdown" class="absolute right-0 mt-2 hidden" style="display: none; z-index: 9999;">
+
+            
+            <a href="{% url 'accounts:dashboard' %}" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md font-medium">Dashboard</a>
+            <a href="{% url 'shop:purchases' %}" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md font-medium">My Orders</a>
+            <a href="{% url 'accounts:profile' %}" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md font-medium">Profile Info</a>
+            <a href="/news/" class="block font-medium py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md {% if '/blog/' in request.path %}text-teal-700 {% endif %}">Blog</a>
+            <a href="{% url 'shop:product_list' %}" class="block font-medium py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md {% if '/shop/' in request.path %}text-teal-700 {% endif %}">Shop</a>
+            <a href="#" class="block font-medium py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md">Support</a>
+            <a href="{% url 'accounts:logout' %}" class="block font-medium py-2 px-4 text-red-600 hover:bg-red-50 rounded-md">Sign out</a>
           </div>
         </div>
-      </nav>
-
-      <!-- Mobile Hamburger -->
-      <button type="button" class="md:hidden" id="mobile-menu-button">
-        <svg class="h-6 w-6 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div class="hidden md:hidden" id="mobile-menu">
-      <nav class="space-y-2 py-3">
-        <a href="{% url 'accounts:dashboard' %}" class="block px-4 py-2 hover:bg-gray-100">Dashboard</a>
-        <a href="{% url 'shop:purchases' %}" class="block px-4 py-2 hover:bg-gray-100">My Orders</a>
-        <a href="{% url 'accounts:profile' %}" class="block px-4 py-2 hover:bg-gray-100">Profile Info</a>
-        <a href="/blog/" class="block px-4 py-2 hover:bg-gray-100">Blog</a>
-        <a href="{% url 'shop:product_list' %}" class="block px-4 py-2 hover:bg-gray-100">Shop</a>
-        <a href="/support" class="block px-4 py-2 hover:bg-gray-100">Contact Support</a>
-        <a href="{% url 'accounts:logout' %}" class="block px-4 py-2 text-red-600 hover:bg-red-50">Sign out</a>
       </nav>
     </div>
   </div>
 </header>
 
 <script>
-  // toggle mobile menu
-  document.getElementById("mobile-menu-button").addEventListener("click", function () {
-    document.getElementById("mobile-menu").classList.toggle("hidden");
+  const dropdown = document.getElementById("user-dropdown");
+  const button = document.getElementById("user-menu-button");
+  const chevron = button.querySelector("svg");
+
+  // toggle open/close
+  button.addEventListener("click", function (e) {
+    e.stopPropagation();
+    const isHidden = dropdown.classList.contains("hidden");
+    if (isHidden) {
+      dropdown.classList.remove("hidden");
+      dropdown.style.display = "block";
+      chevron.classList.add("rotate-180");
+    } else {
+      dropdown.classList.add("hidden");
+      dropdown.style.display = "none";
+      chevron.classList.remove("rotate-180");
+    }
   });
 
-  // toggle user dropdown
-  document.getElementById("user-menu-button").addEventListener("click", function () {
-    document.getElementById("user-dropdown").classList.toggle("hidden");
+  // close on outside click
+  document.addEventListener("click", function (event) {
+    if (!dropdown.contains(event.target) && !button.contains(event.target)) {
+      dropdown.classList.add("hidden");
+      dropdown.style.display = "none";
+      chevron.classList.remove("rotate-180");
+    }
   });
 </script>
