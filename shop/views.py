@@ -174,7 +174,7 @@ def checkout(request):
 
         payment_intent_data = {
             "amount": int(total_price * 100),
-            "currency": "usd",
+            "currency": "gbp",
             "payment_method_types": ["card"],
             "metadata": {
                 "user_id": (

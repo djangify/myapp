@@ -4,10 +4,10 @@
 {% block title %}About – Tech VA, Systeme.io & ShopWired{% endblock %}
 
 {% block content %}
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<div class="pageformat">
 
   <!-- Hero Section: Image Left + Text Right -->
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+  <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 px-6">
     <!-- Image -->
     <div>
       <img src="{% static 'images/tech-va.jpg' %}" alt="Tech VA helping businesses" 
@@ -30,7 +30,7 @@
   </div>
 
   <!-- Four Info Boxes -->
-  <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+  <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6  px-6">
 
     <!-- My Journey -->
     <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
@@ -72,12 +72,14 @@
         Either way, your systems are simplified, professional, and AI-search ready.
       </p>
     </div>
-  </section>
+  </div>
 
   <!-- Contact Form -->
-  <section id="contact" class="scroll-mt-16">
-    {% include "contact/contact.html" %}
-  </section>
+  <div class="mt-8">
+    <section id="contact" class="scroll-mt-16">
+      {% include "contact/contact.html" %}
+    </section>
+  </div>
 
 </div>
 {% endblock %}

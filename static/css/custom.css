@@ -583,6 +583,17 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
 .grid-cols-1 {
   grid-template-columns: 1fr;
 }
@@ -1143,4 +1154,63 @@
   border-radius: 9999px;
   min-width: 18px;
   text-align: center;
+}
+
+/* === Standard Page Format === */
+.pageformat {
+  max-width: 72rem;
+  /* keeps content neat */
+  margin: 0 auto;
+  /* center horizontally */
+  padding: 4rem 1rem;
+  /* top/bottom spacing + side padding */
+  background: #fff;
+  /* white background for consistency */
+  border-radius: 0.75rem;
+  /* slightly rounded edges */
+}
+
+.pageformat h1 {
+  font-size: 2.25rem;
+  /* ~text-3xl */
+  font-weight: 700;
+  color: hsl(var(--color-text));
+  margin-bottom: 1.5rem;
+}
+
+.pageformat h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: hsl(var(--color-accent));
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.pageformat p {
+  font-size: 1.125rem;
+  /* ~text-lg */
+  line-height: 1.7;
+  color: #374151;
+  /* gray-700 */
+  margin-bottom: 1.25rem;
+}
+
+/* === Cluster Boxes (two side-by-side) === */
+.clusterbox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.clusterbox>div {
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid hsl(var(--color-accent) / 0.4);
+  background: #fff;
+}
+
+/* Second box with primary background */
+.clusterbox>div:nth-child(2) {
+  background: hsl(var(--color-primary));
 }
