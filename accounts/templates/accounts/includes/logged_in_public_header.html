@@ -1,52 +1,53 @@
 {% load static %}
+
 <header class="loggedin-navbar bg-white border-b border-gray-200">
   <div class="container mx-auto px-4">
     <div class="flex items-center justify-between py-4">
+
       <!-- Logo -->
-      <a href="{% url 'core:home' %}" class="flex items-center gap-2 text-gray-900 font-semibold">
+      <a href="{% url 'core:home' %}" class="flex items-center gap-2 font-semibold text-gray-900">
         <img src="{% static 'images/djangify-logo.png' %}" class="h-8 w-auto" alt="Djangify Logo">
         Djangify
       </a>
 
       <!-- Desktop Nav -->
-      <div class="hidden md:flex items-center space-x-6">
+      <nav class="hidden md:flex items-center nav-links">
         <a href="{% url 'shop:product_list' %}" class="hover:text-teal-700">Shop</a>
         <a href="/blog/" class="hover:text-teal-700">Blog</a>
-        <a href="/support" class="hover:text-teal-700">Contact Support</a>
+        
 
-        <!-- Cart Icon -->
-        <a href="{% url 'shop:cart_detail' %}" class="relative text-gray-700 hover:text-teal-700">
+        <!-- Cart -->
+        <a href="{% url 'shop:cart_detail' %}" class="relative hover:text-teal-700">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.2 6h12.4M10 21a1 1 0 11-2 0 1 1 0 012 0zm8 0a1 1 0 11-2 0 1 1 0 012 0z" />
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.2 6h12.4M10 21a1 1 0 11-2 0 1 1 0zm8 0a1 1 0 11-2 0 1 1 0z" />
           </svg>
           {% with total_items=cart|length %}
             {% if total_items > 0 %}
-              <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">{{ total_items }}</span>
+              <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">
+                {{ total_items }}
+              </span>
             {% endif %}
           {% endwith %}
         </a>
 
-        <!-- Dashboard button -->
-        <a href="{% url 'accounts:dashboard' %}" class="dashboard-btn">Dashboard</a>
-
-        <!-- User Dropdown -->
-        <div class="relative" id="user-menu">
-          <button type="button" class="flex items-center text-gray-700 hover:text-teal-700" id="user-menu-button">
-            <div class="h-8 w-8 rounded-full bg-teal-100 flex items-center justify-center text-teal-700 mr-2">
-              {{ user.username.0|upper }}
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <!-- Dashboard Button + Dropdown -->
+        <div class="relative">
+          <button type="button" id="user-menu-button" class="flex items-center gap-2">
+            <span class="dashboard-btn">Dashboard</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div id="user-dropdown" class="hidden absolute right-0 z-10 mt-2 w-48 bg-white shadow-md rounded-md py-2">
+          <div id="user-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-md py-2 z-50">
+            <a href="{% url 'accounts:dashboard' %}" class="block px-4 py-2 hover:bg-gray-100">Dashboard</a>
             <a href="{% url 'shop:purchases' %}" class="block px-4 py-2 hover:bg-gray-100">My Orders</a>
             <a href="{% url 'accounts:profile' %}" class="block px-4 py-2 hover:bg-gray-100">Profile Info</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100"> Support</a>
             <a href="{% url 'accounts:logout' %}" class="block px-4 py-2 text-red-600 hover:bg-red-50">Sign out</a>
           </div>
         </div>
-      </div>
+      </nav>
 
       <!-- Mobile Hamburger -->
       <button type="button" class="md:hidden" id="mobile-menu-button">
@@ -72,9 +73,12 @@
 </header>
 
 <script>
+  // toggle mobile menu
   document.getElementById("mobile-menu-button").addEventListener("click", function () {
     document.getElementById("mobile-menu").classList.toggle("hidden");
   });
+
+  // toggle user dropdown
   document.getElementById("user-menu-button").addEventListener("click", function () {
     document.getElementById("user-dropdown").classList.toggle("hidden");
   });
