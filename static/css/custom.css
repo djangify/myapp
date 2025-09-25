@@ -544,7 +544,9 @@
   /* p-6 */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.2s ease;
-  background: #fff;
+  background: #f8fafc;
+  line-height: 1.7;
+
 }
 
 .shop-category:hover {
@@ -882,6 +884,50 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
+/* === CHECKOUT BUTTON === */
+.btn-checkout {
+  background: #059669;
+  /* keep green as base */
+  color: #fff;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-checkout:hover {
+  background: hsl(var(--color-accent));
+  /* use accent on hover */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* === STRIPE CARD ELEMENT === */
+.stripe-card-element {
+  background: #fff;
+  border: 2px solid #e5e7eb;
+  /* gray-200 */
+  border-radius: 0.75rem;
+  /* rounded-xl */
+  padding: 1rem;
+  width: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stripe-card-element--focus {
+  border-color: hsl(var(--color-accent));
+  box-shadow: 0 0 0 3px hsl(var(--color-accent) / 0.2);
+}
+
+.stripe-card-element--invalid {
+  border-color: #dc2626;
+  /* red-600 */
+}
+
+
 /* Secondary: Share */
 .btn-secondary {
   background: hsl(var(--color-text) / 0.1);
@@ -1213,4 +1259,81 @@
 /* Second box with primary background */
 .clusterbox>div:nth-child(2) {
   background: hsl(var(--color-primary));
+}
+
+/* custom.css */
+
+.btn-green {
+  background-color: #16a34a;
+  /* Tailwind green-600 */
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  display: inline-block;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-green:hover {
+  background-color: #15803d;
+  /* Tailwind green-700 */
+}
+
+.btn-blue {
+  background-color: #1d4ed8;
+  /* Tailwind blue-700 */
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  display: inline-block;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-blue:hover {
+  background-color: #1e40af;
+  /* Tailwind blue-800 */
+}
+
+/* Success Page Styles */
+.success-container {
+  background: #fff;
+  border-radius: 1rem;
+  /* rounded-xl */
+  padding: 3rem;
+  /* p-12 */
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.success-icon {
+  color: #16a34a;
+  /* Tailwind green-600 */
+  width: 6rem;
+  /* w-24 */
+  height: 6rem;
+  /* h-24 */
+  margin: 0 auto 1.5rem auto;
+}
+
+.success-title {
+  font-size: 2.25rem;
+  /* text-4xl */
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111827;
+  /* gray-900 */
+}
+
+.success-text {
+  font-size: 1.125rem;
+  /* text-lg */
+  line-height: 1.75rem;
+  color: #374151;
+  /* gray-700 */
+  margin-bottom: 2rem;
 }

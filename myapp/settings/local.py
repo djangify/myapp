@@ -53,3 +53,9 @@ SESSION_COOKIE_HTTPONLY = True
 
 # Email backend for development
 # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# Stripe settings
+STRIPE_PUBLISHABLE_KEY = env("STRIPE_PUBLISHABLE_KEY", default="pk_test_placeholder")
+STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY", default="sk_test_placeholder")
+STRIPE_WEBHOOK_SECRET = env("STRIPE_WEBHOOK_SECRET", default="whsec_placeholder")
+CART_SESSION_ID = "cart"

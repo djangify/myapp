@@ -1,6 +1,7 @@
 # shop/urls.py
 from django.urls import path
 from . import views, webhooks
+from django.views.generic import TemplateView
 
 app_name = "shop"
 
@@ -26,4 +27,5 @@ urlpatterns = [
     path("orders/<str:order_id>/", views.order_detail, name="order_detail"),
     path("purchases/", views.purchases, name="purchases"),
     path("product/<int:product_id>/review/", views.add_review, name="add_review"),
+    path("success-preview/", TemplateView.as_view(template_name="shop/success.html")),
 ]

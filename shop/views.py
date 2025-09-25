@@ -172,26 +172,23 @@ def checkout(request):
             messages.error(request, "Invalid cart total")
             return redirect("shop:cart_detail")
 
-        payment_intent_data = {
-            "amount": int(total_price * 100),
-            "currency": "gbp",
-            "payment_method_types": ["card"],
-            "metadata": {
-                "user_id": (
-                    str(request.user.id) if request.user.is_authenticated else "guest"
-                ),
+        # Create a new PaymentIntent each time user loads checkout
+        intent = stripe.PaymentIntent.create(
+            amount=int(total_price * 100),  # Stripe works in pence/cents
+            currency=getattr(settings, "STRIPE_CURRENCY", "gbp"),
+            payment_method_types=["card"],
+            metadata={
+                "user_id": str(request.user.id)
+                if request.user.is_authenticated
+                else "guest",
                 "is_guest": str(not request.user.is_authenticated),
             },
-        }
-
-        if request.user.is_authenticated:
-            payment_intent_data["receipt_email"] = request.user.email
-        elif "guest_details" in request.session:
-            payment_intent_data["receipt_email"] = request.session["guest_details"][
-                "email"
-            ]
-
-        intent = stripe.PaymentIntent.create(**payment_intent_data)
+            receipt_email=(
+                request.user.email
+                if request.user.is_authenticated
+                else request.session.get("guest_details", {}).get("email")
+            ),
+        )
 
         context = {
             "client_secret": intent.client_secret,
@@ -201,15 +198,15 @@ def checkout(request):
             "is_guest": not request.user.is_authenticated,
             "payment_intent_id": intent.id,
         }
-
         return render(request, "shop/checkout.html", context)
 
     except stripe.error.StripeError as e:
-        logger.error(f"Stripe error: {str(e)}")
+        logger.error(f"Stripe error during checkout: {str(e)}")
         messages.error(request, f"Payment processing error: {str(e)}")
         return redirect("shop:cart_detail")
+
     except Exception as e:
-        logger.error(f"Checkout error: {str(e)}")
+        logger.error(f"Unexpected checkout error: {str(e)}")
         messages.error(request, "An error occurred during checkout. Please try again.")
         return redirect("shop:cart_detail")
 

@@ -43,7 +43,7 @@
     {% endblock %}
 
     {% include 'base/footer.html' %}
-{% comment %} 
+
     
     <!-- Cookie Consent -->
     <aside id="cookie-banner" class="cookie-banner hidden" role="dialog" aria-labelledby="cookie-title">
@@ -58,7 +58,7 @@
         <button id="decline-cookies" class="cookie-btn decline">Decline</button>
       </div>
     </div>
-  </aside> {% endcomment %}
+  </aside> 
 
 
 <!-- Scripts -->
@@ -69,33 +69,34 @@
 
 <!-- Cookie Consent Script -->
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     const banner = document.getElementById("cookie-banner");
     const acceptBtn = document.getElementById("accept-cookies");
     const declineBtn = document.getElementById("decline-cookies");
 
-    // Show banner if not already accepted
-    if (!localStorage.getItem("cookiesAccepted")) {
-      banner.style.display = "block";
-    }
+    if (banner) {
+        // Show banner if not already accepted
+        if (!localStorage.getItem("cookiesAccepted")) {
+            banner.style.display = "block";
+        }
 
-    // Accept button
-    if (acceptBtn) {
-      acceptBtn.onclick = function () {
-        localStorage.setItem("cookiesAccepted", "true");
-        banner.style.display = "none";
-      };
-    }
+        if (acceptBtn) {
+            acceptBtn.onclick = function () {
+                localStorage.setItem("cookiesAccepted", "true");
+                banner.style.display = "none";
+            };
+        }
 
-    // Decline button (optional — same hiding behavior)
-    if (declineBtn) {
-      declineBtn.onclick = function () {
-        localStorage.setItem("cookiesAccepted", "declined");
-        banner.style.display = "none";
-      };
+        if (declineBtn) {
+            declineBtn.onclick = function () {
+                localStorage.setItem("cookiesAccepted", "declined");
+                banner.style.display = "none";
+            };
+        }
     }
-  });
+});
 </script>
+
 
 
 
