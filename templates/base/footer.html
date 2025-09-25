@@ -20,8 +20,8 @@
       <div>
         <h3 class="font-semibold mb-4">Pages</h3>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:text-accent transition-colors">Home</a></li>
-          <li><a href="#" class="hover:text-accent transition-colors">Shop</a></li>
+          <li><a href="{% url 'core:home' %}" class="hover:text-accent transition-colors">Home</a></li>
+          <li><a href="/shop/" class="hover:text-accent transition-colors">Shop</a></li>
           {% if not request.user.is_authenticated %}
               <li><a href="{% url 'accounts:register' %}" class="text-slate-400 hover:text-white">Register</a></li>
               <li><a href="{% url 'accounts:login' %}" class="text-slate-400 hover:text-white">Login</a></li>
@@ -36,8 +36,9 @@
       <div>
         <h3 class="font-semibold mb-4">Resources</h3>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:text-accent transition-colors">Cluster Pages Guide</a></li>
-          <li><a href="#" class="hover:text-accent transition-colors">FAQ Snippets</a></li>
+          <li><a href="{% url 'core:local_ai_search' %}" class="hover:text-accent transition-colors">Local AI Search</a></li>
+          <li><a href="{% url 'core:ai_search' %}" class="hover:text-accent transition-colors">AI Search Readiness</a></li>
+          <li><a href="{% url 'core:tech_va' %}" class="hover:text-accent transition-colors">Tech VA</a></li>
         </ul>
       </div>
       
@@ -45,9 +46,11 @@
       <div>
         <h3 class="font-semibold mb-4">Policies</h3>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:text-accent transition-colors">Privacy Policy</a></li>
-          <li><a href="#" class="hover:text-accent transition-colors">Cookie Policy</a></li>
-          <li><a href="#" class="hover:text-accent transition-colors">Terms & Conditions</a></li>
+          <li><a href="{% url 'core:privacy_policy' %}" class="hover:text-accent transition-colors">Privacy Policy</a></li>
+          <li><a href="{% url 'core:cookie_policy' %}" class="hover:text-accent transition-colors">Cookie Policy</a></li>
+          <li><a href="{% url 'core:terms_conditions' %}" class="hover:text-accent transition-colors">Terms & Conditions</a></li>
+          <li><a href="{% url 'core:affiliate_policy' %}" class="hover:text-accent transition-colors">Affiliate/Ads</a></li>
+          
         </ul>
       </div>
     </div>

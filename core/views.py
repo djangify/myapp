@@ -44,6 +44,15 @@ def cookie_view(request):
     return render(request, template_name, {"breadcrumbs": breadcrumbs})
 
 
+def affiliate_view(request):
+    breadcrumbs = [
+        {"title": "Affiliate", "url": reverse("core:policies_index")},
+        {"title": "Affiliate Policy", "url": None},
+    ]
+    template_name = "core/policy/affiliate.html"
+    return render(request, template_name, {"breadcrumbs": breadcrumbs})
+
+
 def terms_view(request):
     breadcrumbs = [
         {"title": "Policies", "url": reverse("core:policies_index")},
