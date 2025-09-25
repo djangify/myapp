@@ -17,12 +17,12 @@
 
             {% if featured_posts %}
                 <section class="mb-12">
-                <h2 class="text-2xl font-bold mb-8 border ">Featured Articles</h2>
+                <h2 class="text-2xl font-bold mb-8">Featured Articles</h2>
 
                 <div class="featured-grid">
                     {% with main_post=featured_posts.0 %}
                     <!-- Large featured post -->
-                    <article class="bg-white rounded shadow-md overflow-hidden">
+                    <article class="bg-white rounded  overflow-hidden">
                         <a href="{{ main_post.get_absolute_url }}">
                             <img src="{{ main_post.get_image_url }}" alt="{{ main_post.title }}" class="featured-image">
                         </a>

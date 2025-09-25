@@ -37,8 +37,14 @@
     {% block extra_meta %}{% endblock %}
   </head>
   <body class="text-lg 2xl:max-w-screen-2xl 2xl:mx-auto 2xl:bg-primary">
-    {% include 'base/navbar.html' %}
-    
+   
+    {% if request.user.is_authenticated %}
+      {% include "accounts/includes/logged_in_public_header.html" %}
+    {% else %}
+      {% include "base/navbar.html" %}
+    {% endif %}
+
+
     {% block content %}
     {% endblock %}
 
@@ -46,7 +52,7 @@
 
     
     <!-- Cookie Consent -->
-    <aside id="cookie-banner" class="cookie-banner hidden" role="dialog" aria-labelledby="cookie-title">
+   <aside id="cookie-banner" class="cookie-banner hidden" role="dialog" aria-labelledby="cookie-title">
     <div class="cookie-container">
       <div class="cookie-text">
         <h2 id="cookie-title" class="sr-only">Cookie Consent</h2>
@@ -58,49 +64,34 @@
         <button id="decline-cookies" class="cookie-btn decline">Decline</button>
       </div>
     </div>
-  </aside> 
+  </aside>  
 
 
 <!-- Scripts -->
 {% block extra_js %}
 <script src="{% static 'js/app.js' %}"></script>
 <script src="{% static 'js/favourite-products.js' %}"></script>
+<script src="{% static 'js/messages.js' %}"></script>
 
+ {% if messages %}
+      <section aria-label="Notifications" role="alert">
+          {% include 'partials/_messages.html' %}
+      </section>
+    {% endif %}
 
 <!-- Cookie Consent Script -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const banner = document.getElementById("cookie-banner");
-    const acceptBtn = document.getElementById("accept-cookies");
-    const declineBtn = document.getElementById("decline-cookies");
+ <script>
+      if (!localStorage.getItem("cookiesAccepted")) {
+        document.getElementById("cookie-banner").style.display = "block";
+      }
 
-    if (banner) {
-        // Show banner if not already accepted
-        if (!localStorage.getItem("cookiesAccepted")) {
-            banner.style.display = "block";
-        }
-
-        if (acceptBtn) {
-            acceptBtn.onclick = function () {
-                localStorage.setItem("cookiesAccepted", "true");
-                banner.style.display = "none";
-            };
-        }
-
-        if (declineBtn) {
-            declineBtn.onclick = function () {
-                localStorage.setItem("cookiesAccepted", "declined");
-                banner.style.display = "none";
-            };
-        }
-    }
-});
-</script>
+      document.getElementById("accept-cookies").onclick = function () {
+        localStorage.setItem("cookiesAccepted", "true");
+        document.getElementById("cookie-banner").style.display = "none";
+      };
+    </script>
 
 
-
-
-<script src="{% static 'js/messages.js' %}"></script>
 {% endblock %}
 
   </body>

@@ -34,7 +34,7 @@
     {% else %}
         <div class="latest-grid endpage-grid grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {% for portfolio in portfolios %}
-            <article class="bg-primary rounded-lg overflow-hidden flex flex-col h-full">
+            <article class="portfolio-card">
                 {% if portfolio.display_image %}
                 <div class="h-48 w-full overflow-hidden">
                     <img src="{{ portfolio.display_image }}" 
@@ -47,20 +47,10 @@
                     <h3 class="text-xl font-bold mb-4">{{ portfolio.title }}</h3>
                     <p class="text-gray-400 mb-6">{{ portfolio.short_description|safe }}</p>
                     
-                    <!-- Technologies - using portfolio.technologies -->
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        {% for tech in portfolio.technologies.all %}
-                        <a href="{% url 'portfolio:portfolio_by_technology' tech.slug %}" 
-                           class="px-4 py-2 text-sm bg-accent/10 border border-accent rounded-full text-accent hover:bg-accent hover:text-white transition-colors">
-                            {{ tech.name }}
-                        </a>
-                        {% endfor %}
-                    </div>
-
                     <!-- Action Button - Just the View Details button -->
                     <div class="pt-6 mt-auto border-t border-gray-700">
                         <a href="{% url 'portfolio:portfolio_detail' portfolio.slug %}" 
-                           class="w-full inline-flex items-center justify-center px-6 py-3 bg-accent text-white rounded-md hover:bg-accent/90 transition-colors">
+                           class="btn-accent">
                             View Details
                             <i class="fas fa-arrow-right ml-3"></i>
                         </a>

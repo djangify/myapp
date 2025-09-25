@@ -20,11 +20,13 @@
     
     <!-- Back to Projects Link -->
     <div class="mb-12 pb-8 border-b border-gray-700">
-        <a href="{% url 'portfolio:portfolio_list' %}" 
-           class="inline-flex items-center px-6 py-3 mt-8 bg-accent text-white rounded-md hover:bg-accent/90 transition-colors">
-            <i class="fas fa-arrow-left mr-3"></i>
-            <span>All Projects</span>
-        </a>
+        <div class="inline-block">
+            <a href="{% url 'portfolio:portfolio_list' %}" 
+            class="btn-accent">
+                <i class="fas fa-arrow-left mr-3"></i>
+                <span>All Projects</span>
+            </a>
+        </div>
     </div>
     
     <!-- Portfolio Grid -->
@@ -48,7 +50,7 @@
                 <!-- Action Button - Just the View Details button -->
                 <div class="pt-6 mt-6 border-t border-gray-700">
                     <a href="{% url 'portfolio:portfolio_detail' portfolio.slug %}" 
-                       class="w-full inline-flex items-center justify-center px-6 py-3 bg-accent text-white rounded-md hover:bg-accent/90 transition-colors">
+                       class="btn-accent">
                         View Details
                         <i class="fas fa-arrow-right ml-3"></i>
                     </a>
@@ -59,7 +61,7 @@
         <div class="col-span-full text-center p-12 bg-primary rounded-lg">
             <p class="text-gray-400 mb-8">No projects found using {{ technology.name }}.</p>
             <a href="{% url 'portfolio:portfolio_list' %}" 
-               class="inline-flex items-center px-6 py-3 bg-accent text-white rounded-md hover:bg-accent/90 transition-colors">
+               class="btn-accent">
                 <i class="fas fa-arrow-left mr-3"></i>
                 <span>Back to All Projects</span>
             </a>
