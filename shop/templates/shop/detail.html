@@ -104,9 +104,9 @@
 
         <!-- Price -->
         <div class="shop-price">
-          ${{ product.current_price }}
+          £{{ product.current_price }}
           {% if product.is_on_sale %}
-          <span class="old-price">${{ product.price }}</span>
+          <span class="old-price">£{{ product.price }}</span>
           {% endif %}
         </div>
 
@@ -170,9 +170,9 @@
               {{ item.description|striptags|truncatewords:20 }}
             </p>
             <div class="flex items-center justify-between">
-              <span class="text-lg font-bold text-gray-900">${{ item.current_price }}</span>
+              <span class="text-lg font-bold text-gray-900">£{{ item.current_price }}</span>
               {% if item.is_on_sale %}
-              <span class="text-sm text-slate-500 line-through">${{ item.price }}</span>
+              <span class="text-sm text-slate-500 line-through">£{{ item.price }}</span>
               {% endif %}
             </div>
           </div>
