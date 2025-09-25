@@ -32,7 +32,7 @@
           <button
             type="button"
             id="user-menu-button"
-            class="flex items-center"
+            class="flex items-center gap-1"
           >
             
             <span class="font-medium mr-1 hidden sm:inline">
@@ -40,7 +40,7 @@
             </span>
             <!-- Chevron -->
             <svg xmlns="http://www.w3.org/2000/svg" 
-                 class="chevron-icon" 
+                 class="chevron-icon w-4 h-4 transition-transform duration-200 ml-1" 
                  viewBox="0 0 24 24" 
                  fill="none" 
                  stroke="currentColor">
@@ -68,24 +68,24 @@
 </header>
 
 <script>
-  const dropdown = document.getElementById("user-dropdown");
-  const button = document.getElementById("user-menu-button");
-  const chevron = button.querySelector("svg");
+ const dropdown = document.getElementById("user-dropdown");
+const button = document.getElementById("user-menu-button");
+const chevron = button.querySelector(".chevron-icon");
 
-  // toggle open/close
-  button.addEventListener("click", function (e) {
-    e.stopPropagation();
-    const isHidden = dropdown.classList.contains("hidden");
-    if (isHidden) {
-      dropdown.classList.remove("hidden");
-      dropdown.style.display = "block";
-      chevron.classList.add("rotate-180");
-    } else {
-      dropdown.classList.add("hidden");
-      dropdown.style.display = "none";
-      chevron.classList.remove("rotate-180");
-    }
-  });
+// toggle open/close
+button.addEventListener("click", function (e) {
+  e.stopPropagation();
+  const isHidden = dropdown.classList.contains("hidden");
+  if (isHidden) {
+    dropdown.classList.remove("hidden");
+    dropdown.style.display = "block";
+    chevron.classList.add("rotate-180");  // rotate down
+  } else {
+    dropdown.classList.add("hidden");
+    dropdown.style.display = "none";
+    chevron.classList.remove("rotate-180"); // reset
+  }
+});
 
   // close on outside click
   document.addEventListener("click", function (event) {

@@ -1570,3 +1570,17 @@ p {
   flex-shrink: 0;
   /* stops it stretching */
 }
+
+.shop-actions-inline {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.shop-actions-inline button {
+  flex: 1;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
