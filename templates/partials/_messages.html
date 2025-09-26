@@ -4,7 +4,7 @@
     <div class="alert
                 {% if message.tags == 'success' %}alert-success
                 {% elif message.tags == 'error' %}alert-error
-                {% else %}alert-info{% endif %} relative"
+                {% else %}alert-info{% endif %}"
          role="alert">
       <strong class="font-bold">
         {% if message.tags == 'success' %}Success!
@@ -12,13 +12,6 @@
         {% else %}Notice{% endif %}
       </strong>
       <span class="ml-2">{{ message }}</span>
-
-      <!-- Dismiss Button -->
-      <button type="button"
-              class="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
-              onclick="this.parentElement.remove()">
-        &times;
-      </button>
     </div>
   {% endfor %}
 </div>

@@ -1163,7 +1163,6 @@
   margin-top: 1rem;
 }
 
-
 .shop-remove {
   color: #dc2626;
   font-size: 0.875rem;
@@ -1850,4 +1849,103 @@ footer p {
   border-radius: 0.75rem;
   padding: 2rem;
   margin-bottom: 2rem;
+}
+
+/* === Review Star Rating (interactive form) === */
+.star-rating {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  /* ensures stars light left-to-right */
+  font-size: 1.5rem;
+  gap: 0.25rem;
+}
+
+.star-rating input {
+  display: none;
+  /* hide radios */
+}
+
+.star-rating label {
+  color: #d1d5db;
+  /* default gray */
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+/* When clicked: highlight this star and all before it */
+.star-rating input:checked~label {
+  color: #fbbf24;
+  /* amber-400 */
+}
+
+/* On hover: preview highlight */
+.star-rating label:hover,
+.star-rating label:hover~label {
+  color: #fcd34d;
+  /* lighter yellow preview */
+}
+
+/* === Read-Only Stars (average rating & past reviews) === */
+.star {
+  color: #d1d5db;
+  /* empty star */
+  transition: color 0.2s;
+}
+
+.star.filled {
+  color: #fbbf24;
+  /* filled star */
+}
+
+
+/* Hover effect */
+.review-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.75rem;
+  /* padding inside the box */
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+
+/* === Support Page Form Styling === */
+.support-form {
+  max-width: 700px;
+  /* keeps form nicely centered, not too wide */
+  margin: 0 auto;
+  /* center on page */
+}
+
+.support-form label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #374151;
+  /* gray-700 */
+}
+
+.support-form input[type="text"],
+.support-form input[type="email"],
+.support-form textarea {
+  width: 100%;
+  min-height: 45px;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  resize: vertical;
+  background: #fff;
+  box-sizing: border-box;
+  /* prevent overspill */
+}
+
+.support-form textarea {
+  min-height: 140px;
 }
