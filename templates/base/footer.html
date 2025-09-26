@@ -1,25 +1,25 @@
 {% load static %}
-<footer class="w-full bg-secondary border-t border-gray-700 text-text px-4 pt-6 pb-6 mt-12">
-  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
+<footer class="bg-secondary border-t border-gray-700 text-text">
+  <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-12 py-8">
     
     <!-- Grid Columns -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12">
+    <div class="footer-grid">
       
       <!-- Logo + Info -->
-      <div>
-        <div class="flex items-center space-x-3 mb-4">
+      <div class="brand-block">
+        <div class="flex space-x-3 mb-3">
           <img src="{% static 'images/djangify-logo.png' %}" alt="Djangify Logo" class="h-8">
           <span class="text-xl font-semibold">Djangify</span>
         </div>
-        <p class="text-sm text-gray-400">
-          Practical Tech VA support and tools to simplify your business tech.
+        <p class="text-gray-400">
+          Technical Virtual Assistant (Tech VA) support and information on AI search readiness.
         </p>
       </div>
       
       <!-- Links -->
       <div>
-        <h3 class="font-semibold mb-4">Pages</h3>
-        <ul class="space-y-2 text-sm">
+        <h3 class="font-semibold mb-3">Pages</h3>
+        <ul class="space-y-1">
           <li><a href="{% url 'core:home' %}" class="hover:text-accent transition-colors">Home</a></li>
           <li><a href="{% url 'shop:cart_detail' %}" class="hover:text-accent transition-colors">Shop</a></li>
           <li><a href="{% url 'news:list' %}" class="hover:text-accent transition-colors">Blog</a></li>
@@ -35,8 +35,8 @@
       
       <!-- Resources -->
       <div>
-        <h3 class="font-semibold mb-4">Resources</h3>
-        <ul class="space-y-2 text-sm">
+        <h3 class="font-semibold mb-3">Resources</h3>
+        <ul class="space-y-1">
           <li><a href="{% url 'core:local_ai_search' %}" class="hover:text-accent transition-colors">Local AI Search</a></li>
           <li><a href="{% url 'core:ai_search' %}" class="hover:text-accent transition-colors">AI Search Readiness</a></li>
           <li><a href="{% url 'core:tech_va' %}" class="hover:text-accent transition-colors">Tech VA</a></li>
@@ -46,20 +46,20 @@
       
       <!-- Policies -->
       <div>
-        <h3 class="font-semibold mb-4">Policies</h3>
-        <ul class="space-y-2 text-sm">
+        <h3 class="font-semibold mb-3">Policies</h3>
+        <ul class="space-y-1">
           <li><a href="{% url 'core:privacy_policy' %}" class="hover:text-accent transition-colors">Privacy Policy</a></li>
           <li><a href="{% url 'core:cookie_policy' %}" class="hover:text-accent transition-colors">Cookie Policy</a></li>
           <li><a href="{% url 'core:terms_conditions' %}" class="hover:text-accent transition-colors">Terms & Conditions</a></li>
           <li><a href="{% url 'core:affiliate_policy' %}" class="hover:text-accent transition-colors">Affiliate/Ads</a></li>
-          
         </ul>
       </div>
     </div>
     
-    <!-- Bottom -->
-    <div class="mt-8 text-center text-sm text-gray-400">
+    <!-- Bottom Copyright -->
+    <div class="footer-bottom">
       &copy; 2025 Djangify. All rights reserved.
     </div>
+    
   </div>
 </footer>
