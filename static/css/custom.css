@@ -1949,3 +1949,53 @@ footer p {
 .support-form textarea {
   min-height: 140px;
 }
+
+/* === Post Extras Layout === */
+.postextras {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-bottom: 6rem;
+}
+
+@media (max-width: 768px) {
+  .postextras {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+/* === Post Extras Section Styling === */
+
+.postextras {
+  @apply px-4 md:px-8 xl:px-0 text-base leading-relaxed;
+}
+
+.postextras .post-nav a {
+  @apply text-sm sm:text-base;
+}
+
+.postextras .category-pill {
+  @apply inline-flex flex-wrap justify-center text-center items-center px-4 py-2 text-sm sm:text-base border-2 border-accent rounded-full text-accent hover:bg-accent hover:text-white transition-colors max-w-full break-words;
+}
+
+/* Related posts responsive grid */
+.postextras .related-posts {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* mobile: stack */
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .postextras .related-posts {
+    grid-template-columns: 1fr 1fr;
+    /* tablet and up: side by side */
+    gap: 2rem;
+  }
+}
+}
+
+.postextras h2,
+.postextras h3 {
+  @apply text-2xl font-bold mb-6;
+}
