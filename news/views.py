@@ -14,7 +14,7 @@ def news_list(request):
     ).select_related("category")
 
     # Paginate regular posts
-    paginator = Paginator(regular_posts, 12)
+    paginator = Paginator(regular_posts, 24)
     regular_posts_page = paginator.get_page(page)
 
     # Only get featured posts if we're on page 1

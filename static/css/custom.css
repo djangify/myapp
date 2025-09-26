@@ -1812,3 +1812,39 @@ footer ul li {
 footer p {
   margin-bottom: 0.5rem;
 }
+
+/* === Social Share Buttons === */
+.social-share a {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #6b7280;
+  /* Tailwind gray-500 */
+  border-radius: 6px;
+  /* subtle rounding */
+  transition: background 0.2s ease;
+}
+
+/* Space between social share buttons */
+.social-share a {
+  margin-right: 0.75rem;
+  /* ~12px, same as Tailwind space-x-3 */
+}
+
+.social-share a:last-child {
+  margin-right: 0;
+  /* remove extra space after last button */
+}
+
+.social-share a:hover {
+  background: #4b5563;
+  /* Tailwind gray-600 */
+}
+
+.social-share svg {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+}
