@@ -2007,3 +2007,43 @@ img {
     background-color: hsl(var(--color-primary) / var(--tw-bg-opacity));
   }
 }
+
+/* === Message Alert Styles === */
+.alert-success {
+  background-color: #d1fae5;
+  /* Tailwind green-100 */
+  border: 1px solid #047857;
+  /* Tailwind green-600 */
+  color: #065f46;
+  /* Tailwind green-700 */
+}
+
+.alert-error {
+  background-color: #fee2e2;
+  /* Tailwind red-100 */
+  border: 1px solid #991b1b;
+  /* Tailwind red-800 */
+  color: #7f1d1d;
+  /* Tailwind red-900 */
+}
+
+.alert-info {
+  background-color: #dbeafe;
+  /* Tailwind blue-100 */
+  border: 1px solid #2563eb;
+  /* Tailwind blue-600 */
+  color: #1e3a8a;
+  /* Tailwind blue-700 */
+}
+
+/* Shared alert styling */
+.alert {
+  padding: 0.75rem 1rem;
+  /* px-4 py-3 */
+  border-radius: 0.5rem;
+  /* rounded */
+  margin-bottom: 1rem;
+  /* mb-4 */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  /* shadow-lg */
+}

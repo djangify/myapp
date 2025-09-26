@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         message.remove();
       }, 300);
     });
-  }, 2000);
+  }, 3000);
 
   // Confirmation dialog function
   window.showConfirmation = function (message, onConfirm) {

@@ -7,6 +7,7 @@ app_name = "core"
 urlpatterns = [
     path("", views.home, name="home"),
     path("about/", views.about, name="about"),
+    path("support/", views.support, name="support"),
     # cluster pages
     path(
         "tech-va/",

@@ -37,6 +37,11 @@
     {% block extra_meta %}{% endblock %}
   </head>
   <body class="text-lg 2xl:max-w-screen-2xl 2xl:mx-auto 2xl:bg-primary">
+     {% if messages %}
+      <section aria-label="Notifications" role="alert">
+          {% include 'partials/_messages.html' %}
+      </section>
+    {% endif %}
    
     {% if request.user.is_authenticated %}
       {% include "accounts/includes/logged_in_public_header.html" %}
@@ -73,11 +78,7 @@
 <script src="{% static 'js/app.js' %}"></script>
 <script src="{% static 'js/messages.js' %}"></script>
 
- {% if messages %}
-      <section aria-label="Notifications" role="alert">
-          {% include 'partials/_messages.html' %}
-      </section>
-    {% endif %}
+
 
 <!-- Cookie Consent Script -->
  <script>

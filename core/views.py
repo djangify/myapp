@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from contact.forms import ContactForm
 from django.http import HttpResponse
 from django.views.decorators.http import require_GET
@@ -7,6 +7,8 @@ from news.models import Post, Category
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
 from django.http import Http404
+from django.contrib import messages
+from .forms import SupportForm
 
 
 def home(request):
@@ -114,3 +116,12 @@ def robots_txt(request):
         f"Sitemap: {request.build_absolute_uri('/sitemap.xml')}",
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
+
+
+def support(request):
+    form = SupportForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        form.save()  # saves to DB + emails + auto-ack
+        messages.success(request, "Thank you! Your message has been sent.")
+        return redirect("core:support")
+    return render(request, "core/support.html", {"form": form})

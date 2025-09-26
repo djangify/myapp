@@ -1,10 +1,8 @@
 /* ADDED CSS FOR DJANGIFY.COM  */
-
 /* === Post images === */
 .post-image {
   width: 100%;
   aspect-ratio: 16/9;
-  /* keeps height proportional */
   object-fit: cover;
   display: block;
 }
@@ -13,7 +11,6 @@
 .featured-image {
   width: 100%;
   max-height: 250px;
-  /* default for small screens */
   object-fit: cover;
   display: block;
 }
@@ -155,7 +152,6 @@
 /* === Generic card padding === */
 .card-content {
   padding: 1rem;
-  /* mobile */
 }
 
 @media (min-width: 768px) {
@@ -176,9 +172,8 @@
 .featured-grid {
   display: grid;
   grid-template-columns: 1fr;
-  /* mobile: 1 column */
   gap: 1.5rem;
-  /* vertical spacing on mobile */
+
 }
 
 @media (min-width: 1024px) {
@@ -189,7 +184,6 @@
   }
 }
 
-/* Ensure featured cards wrap all their children */
 /* Featured card – same styling as card-content */
 .featured-card {
   padding: 1rem;
@@ -1847,4 +1841,13 @@ footer p {
   width: 20px;
   height: 20px;
   color: #fff;
+}
+
+/* Support Page */
+.support-card {
+  background: #fff;
+  border: 1px solid hsl(var(--color-accent) / 0.3);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
 }
