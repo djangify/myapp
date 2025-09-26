@@ -58,7 +58,7 @@
             <a href="{% url 'accounts:profile' %}" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md font-medium">Profile Info</a>
             <a href="/news/" class="block font-medium py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md {% if '/blog/' in request.path %}text-teal-700 {% endif %}">Blog</a>
             <a href="{% url 'shop:product_list' %}" class="block font-medium py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md {% if '/shop/' in request.path %}text-teal-700 {% endif %}">Shop</a>
-            <a href="#" class="block font-medium py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md">Support</a>
+            <a href="{% url 'core:support' %}" class="block font-medium py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md">Support</a>
             <a href="{% url 'accounts:logout' %}" class="block font-medium py-2 px-4 text-red-600 hover:bg-red-50 rounded-md">Sign out</a>
           </div>
         </div>

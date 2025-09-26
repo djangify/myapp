@@ -1,17 +1,24 @@
 {% if messages %}
-<div class="fixed top-1/4 left-1/2 transform -translate-x-1/2 z-50" id="messages-container">
+<div class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50" id="messages-container">
   {% for message in messages %}
-    <div class="alert 
+    <div class="alert
                 {% if message.tags == 'success' %}alert-success
                 {% elif message.tags == 'error' %}alert-error
-                {% else %}alert-info{% endif %}"
+                {% else %}alert-info{% endif %} relative"
          role="alert">
       <strong class="font-bold">
         {% if message.tags == 'success' %}Success!
         {% elif message.tags == 'error' %}Error!
         {% else %}Notice{% endif %}
       </strong>
-      <span class="block sm:inline ml-2">{{ message }}</span>
+      <span class="ml-2">{{ message }}</span>
+
+      <!-- Dismiss Button -->
+      <button type="button"
+              class="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+              onclick="this.parentElement.remove()">
+        &times;
+      </button>
     </div>
   {% endfor %}
 </div>

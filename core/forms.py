@@ -40,7 +40,7 @@ class SupportForm(forms.Form):
         ack_message = (
             f"Hi {cleaned['name']},\n\n"
             "Thank you for reaching out to Djangify Support. "
-            "Your request has been received and our team will respond within 24 hours (Mon–Fri).\n\n"
+            "Your request has been received and our team will respond within 48 hours (Mon–Fri).\n\n"
             "Here’s a copy of your message:\n"
             f"Subject: {cleaned['subject']}\n"
             f"Message: {cleaned['message']}\n\n"
