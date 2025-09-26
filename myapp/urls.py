@@ -8,6 +8,8 @@ from .sitemaps import (
     TechnologySitemap,
     NewsSitemap,
     NewsCategorySitemap,
+    ShopSitemap,
+    ShopCategorySitemap,
 )
 from django.conf import settings
 from django.conf.urls.static import static
@@ -18,6 +20,8 @@ sitemaps = {
     "technology": TechnologySitemap,
     "blog": NewsSitemap,
     "category": NewsCategorySitemap,
+    "shop": ShopSitemap,
+    "shop_category": ShopCategorySitemap,
 }
 
 urlpatterns = [

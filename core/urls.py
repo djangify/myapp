@@ -23,6 +23,11 @@ urlpatterns = [
         TemplateView.as_view(template_name="core/local-business-ai-search.html"),
         name="local_ai_search",
     ),
+    path(
+        "pdf-creation",
+        TemplateView.as_view(template_name="core/pdf-creation.html"),
+        name="pdf_creation",
+    ),
     # policies
     path("policy/privacy/", views.privacy_view, name="privacy_policy"),
     path("policy/cookies/", views.cookie_view, name="cookie_policy"),

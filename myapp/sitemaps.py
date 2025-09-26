@@ -1,7 +1,8 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 from portfolio.models import Portfolio, Technology
-from news.models import Post, Category
+from news.models import Post, Category as NewsCategory
+from shop.models import Product, Category
 from django.utils import timezone
 
 
@@ -19,7 +20,9 @@ class StaticViewSitemap(Sitemap):
             "news:list",
             "core:about",
             "core:tech_va",
-            "core:ai-search-readiness",
+            "core:local_ai_search",
+            "core:ai_search",
+            "core:pdf_creation",
         ]
 
     def location(self, item):
@@ -33,7 +36,7 @@ class StaticViewSitemap(Sitemap):
 
 
 class PortfolioSitemap(Sitemap):
-    priority = 1.0  # Highest priority as requested
+    priority = 0.5
     changefreq = "weekly"
 
     def items(self):
@@ -60,7 +63,7 @@ class TechnologySitemap(Sitemap):
 
 
 class NewsSitemap(Sitemap):
-    priority = 0.7
+    priority = 1.0
     changefreq = "daily"
 
     def items(self):
@@ -78,10 +81,35 @@ class NewsCategorySitemap(Sitemap):
     changefreq = "weekly"
 
     def items(self):
-        return Category.objects.all()
+        return NewsCategory.objects.all()
 
     def location(self, obj):
         return reverse("news:category", kwargs={"slug": obj.slug})
+
+
+class ShopSitemap(Sitemap):
+    priority = 0.9
+    changefreq = "weekly"
+
+    def items(self):
+        return Product.objects.filter(status="publish", is_active=True)
+
+    def lastmod(self, obj):
+        return obj.updated
+
+    def location(self, obj):
+        return reverse("shop:product_detail", kwargs={"slug": obj.slug})
+
+
+class ShopCategorySitemap(Sitemap):
+    priority = 0.6
+    changefreq = "weekly"
+
+    def items(self):
+        return Category.objects.all()
+
+    def location(self, obj):
+        return reverse("shop:category", kwargs={"slug": obj.slug})
 
 
 # Combine all sitemaps in a dictionary
@@ -91,4 +119,6 @@ sitemaps = {
     "technology": TechnologySitemap,
     "news": NewsSitemap,
     "news_category": NewsCategorySitemap,
+    "shop": ShopSitemap,
+    "shop_category": ShopCategorySitemap,
 }
