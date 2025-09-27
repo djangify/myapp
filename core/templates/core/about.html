@@ -6,31 +6,30 @@
 {% block content %}
 <div class="pageformat">
 
-  <!-- Hero Section: Image Left + Text Right -->
-  <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 px-6">
-    <!-- Image -->
-    <div>
-      <img src="{% static 'images/tech-va.jpg' %}" alt="Tech VA helping businesses" 
-           class="w-full h-auto rounded-xl object-cover shadow-md" loading="lazy">
-    </div>
-
-    <!-- Text -->
-    <div class="space-y-6 max-w-prose mx-auto">
-      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">Your Tech VA Partner</h1>
-      <p class="text-gray-700 text-lg leading-relaxed">
-        I’m Diane Corriette, a Technical Virtual Assistant and full stack developer.
-        I help small business owners simplify their online presence with <strong>Systeme.io</strong>,
-        <strong>AI-search readiness</strong>, and <strong>UK ecommerce solutions</strong> like ShopWired.
-      </p>
-      <p class="text-gray-700 text-lg leading-relaxed">
-        Whether you prefer step-by-step DIY PDFs or done-for-you Tech VA services, 
-        I make the technical side easier so you can focus on growing your business.
-      </p>
-    </div>
+  <div class="responsive-grid">
+  <!-- Image -->
+  <div class="max-w-md mx-auto md:mx-0">
+    <img src="{% static 'images/tech-va.jpg' %}" alt="Tech VA helping businesses" 
+         class="w-full h-auto rounded-xl object-cover shadow-md" loading="lazy">
   </div>
 
+  <!-- Text -->
+  <div class="space-y-6">
+    <h1 class="leading-normal">Your Tech VA Partner</h1>
+    <p class="text-gray-700 mt-4 text-lg leading-relaxed">
+      I’m Diane Corriette, a Technical Virtual Assistant and full stack developer.
+      I help small business owners simplify their online presence with <strong>Systeme.io</strong>,
+      <strong>AI-search readiness</strong>, and <strong>UK ecommerce solutions</strong> like ShopWired.
+    </p>
+    <p class="text-gray-700 text-lg leading-relaxed">
+      Whether you prefer step-by-step DIY PDFs or done-for-you Tech VA services, 
+      I make the technical side easier so you can focus on growing your business.
+    </p>
+  </div>
+</div>
+
   <!-- Four Info Boxes -->
-  <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6  px-6">
+  <div class="responsive-grid">
 
     <!-- My Journey -->
     <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">

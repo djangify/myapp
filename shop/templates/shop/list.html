@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="container mx-auto bg-white px-6 py-12">
+<div class="pageformat">
 
     <!-- Shop Heading -->
     <h1 class="text-3xl mt-8 text-center mb-4 font-semibold">
@@ -42,12 +42,9 @@
         </a>
         {% endfor %}
     </div>
-
-
-
     <!-- Product Grid -->
     {% if products %}
-    <div class="shop-grid">
+    <div class="shop-grid-3">
         {% for product in products %}
         <div class="shop-card">
             <a href="{{ product.get_absolute_url }}">
