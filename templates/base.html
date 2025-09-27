@@ -57,7 +57,7 @@
 
     
     <!-- Cookie Consent -->
-   {% comment %} <aside id="cookie-banner" class="cookie-banner hidden" role="dialog" aria-labelledby="cookie-title">
+   <aside id="cookie-banner" class="cookie-banner hidden" role="dialog" aria-labelledby="cookie-title">
     <div class="cookie-container">
       <div class="cookie-text">
         <h2 id="cookie-title" class="sr-only">Cookie Consent</h2>
@@ -70,27 +70,66 @@
       </div>
     </div>
   </aside>  
- {% endcomment %}
-
 <!-- Scripts -->
 {% block extra_js %}
-
 <script src="{% static 'js/app.js' %}"></script>
 <script src="{% static 'js/messages.js' %}"></script>
 
+ <!-- Cookie Consent Script (show once, then never again) -->
+<!-- Cookie Consent Script (works first time, then gone) -->
+<script>
+(function () {
+  function ready(fn) {
+    if (document.readyState !== 'loading') { fn(); }
+    else { document.addEventListener('DOMContentLoaded', fn); }
+  }
 
+  ready(function () {
+    try {
+      var banner = document.getElementById('cookie-banner');
+      if (!banner) return;
 
-<!-- Cookie Consent Script -->
- <script>
-      if (!localStorage.getItem("cookiesAccepted")) {
-        document.getElementById("cookie-banner").style.display = "block";
+      var accept = document.getElementById('accept-cookies');
+      var decline = document.getElementById('decline-cookies');
+
+      // If already decided, remove banner entirely and bail
+      var decision = null;
+      try { decision = localStorage.getItem('cookieConsent'); } catch (e) {}
+      if (decision === 'accepted' || decision === 'declined') {
+        if (banner.parentNode) banner.parentNode.removeChild(banner);
+        return;
       }
 
-      document.getElementById("accept-cookies").onclick = function () {
-        localStorage.setItem("cookiesAccepted", "true");
-        document.getElementById("cookie-banner").style.display = "none";
-      };
-    </script>
+      // Show the banner (ignore classes; force visible)
+      banner.style.display = 'block';
+      banner.setAttribute('aria-hidden', 'false');
+
+      function hideAndRemember(value) {
+        try { localStorage.setItem('cookieConsent', value); } catch (e) {}
+        // Remove from DOM so it *cannot* linger due to CSS
+        if (banner && banner.parentNode) {
+          banner.parentNode.removeChild(banner);
+        }
+      }
+
+      if (accept) accept.addEventListener('click', function (e) {
+        e.preventDefault();
+        hideAndRemember('accepted');
+      });
+
+      if (decline) decline.addEventListener('click', function (e) {
+        e.preventDefault();
+        hideAndRemember('declined');
+      });
+    } catch (err) {
+      // Fail-closed: if something unexpected happens, don't block the page
+      console.error('Cookie banner error:', err);
+    }
+  });
+})();
+</script>
+
+
 
 
 {% endblock %}

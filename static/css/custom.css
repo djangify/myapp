@@ -1765,10 +1765,28 @@ p {
 
 /* === Footer === */
 footer {
-  background: hsl(var(--color-secondary));
+  background: hsl(var(--color-primary));
   /* ✅ full-width background */
-  padding: 2rem 1rem;
+  padding: 4rem 1rem 1rem 1rem;
+  /* top | right | bottom | left */
   color: hsl(var(--color-text));
+  margin-top: 4rem;
+  /* ⬆️ creates spacing above the footer */
+}
+
+footer .footer-container {
+  max-width: 72rem;
+  /* keeps it neat like your .pageformat */
+  margin: 0 auto;
+  /* ⬅️ centers the content */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* centers items inside */
+  gap: 2rem;
+  /* space between columns */
+  text-align: left;
+
 }
 
 .footer-grid {
@@ -1798,7 +1816,7 @@ footer {
   text-align: center;
   margin-top: 1.5rem;
   font-size: 1rem;
-  color: #9ca3af;
+  color: hsl(var(--color-accent)) !important;
   /* ✅ no background, only text colour */
 }
 
