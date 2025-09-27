@@ -2100,3 +2100,37 @@ footer p {
 .responsive-card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+/* Dashboard resource/product images */
+.resource-image {
+  width: 100%;
+  height: 180px;
+  /* smaller than shop */
+  object-fit: contain;
+  background: #fafafa;
+  padding: 0.5rem;
+}
+
+/* Generic link style inside dashboard cards */
+.text-link {
+  color: hsl(var(--color-accent));
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.text-link:hover {
+  text-decoration: underline;
+}
+
+/* Account status text colours */
+.status-active {
+  color: hsl(var(--color-green)) !important;
+  /* teal tone */
+  font-weight: 700;
+}
+
+.status-unverified {
+  color: hsl(var(--color-yellow)) !important;
+  /* golden/brown tone */
+  font-weight: 900;
+}

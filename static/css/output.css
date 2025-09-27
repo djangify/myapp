@@ -457,7 +457,19 @@ video {
   --color-text: 0deg 0% 17%;
   /* Charcoal text */
 
+  /* Status colours */
+  --color-green: 142deg 72% 35%;
+  /* #16a34a emerald */
+  --color-red: 0deg 72% 50%;
+  /* #dc2626 red-600 */
+  --color-yellow: 45deg 100% 50%;
+  /* #facc15 amber-400 */
+  --color-blue: 217deg 91% 60%;
+  /* #3b82f6 blue-500 */
 }
+
+
+
 
 img {
   height: 100%;
