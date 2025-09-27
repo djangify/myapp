@@ -2,7 +2,7 @@
 {% if favourite_products %}
 <div class="responsive-grid">
   {% for product in favourite_products %}
-  <div class="flex-col text-center">
+  <div class="responsive-card flex-col text-center">
     <img src="{{ product.get_image_url }}" 
          alt="{{ product.title }}" 
          class="resource-image rounded mb-3">

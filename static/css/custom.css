@@ -1749,33 +1749,29 @@ p {
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* always 2 columns on mobile */
   gap: 1.5rem;
-  /* tighter gap */
 }
 
 .footer-grid>div {
   min-width: 0;
-  /* prevents overflow */
 }
 
-/* On larger screens (≥1024px), switch to 4 columns */
 @media (min-width: 1024px) {
   .footer-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 3rem;
-    background: hsl(var(--color-secondary));
   }
 }
 
-/* === Footer  === */
+/* === Footer === */
 footer {
+  background: hsl(var(--color-secondary));
+  /* ✅ full-width background */
   padding: 2rem 1rem;
-
+  color: hsl(var(--color-text));
 }
 
 .footer-grid {
-
   font-size: 1rem;
 }
 
@@ -1803,16 +1799,25 @@ footer {
   margin-top: 1.5rem;
   font-size: 1rem;
   color: #9ca3af;
-  background: hsl(var(--color-secondary));
+  /* ✅ no background, only text colour */
 }
 
 footer ul li {
   margin-bottom: 0.25rem;
-
 }
 
 footer p {
   margin-bottom: 0.5rem;
+}
+
+/* Full-width footer */
+.site-footer {
+  background: hsl(var(--color-secondary));
+  width: 100vw;
+  /* full viewport width */
+  margin-left: calc(50% - 50vw);
+  /* break out of centered container */
+  margin-right: calc(50% - 50vw);
 }
 
 /* === Social Share Buttons === */
@@ -2133,4 +2138,27 @@ footer p {
   color: hsl(var(--color-yellow)) !important;
   /* golden/brown tone */
   font-weight: 900;
+}
+
+/* Free resources grid — 1 → 2 → 3 columns */
+.resources-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* mobile: single column */
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .resources-grid {
+    grid-template-columns: repeat(2, 1fr);
+    /* tablets: 2 columns */
+  }
+}
+
+@media (min-width: 1024px) {
+  .resources-grid {
+    grid-template-columns: repeat(3, 1fr);
+    /* desktop: 3 columns */
+  }
 }
