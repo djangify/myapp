@@ -11,18 +11,17 @@
             Projects Using
         </h6>
         <div class="flex items-center gap-5 mt-8">
-            <span class="inline-flex items-center px-6 py-3 text-lg  text-accent ">
+            <span class="inline-flex items-center text-lg text-accent">
                 <i class="{{ technology.icon }} mr-3"></i>
-                <h1 class="text-3xl font-bold">{{ technology.name }}</h1>
+                <h2 class="leading-normal">{{ technology.name }}</h2>
             </span>
         </div>
     </div>
     
     <!-- Back to Projects Link -->
-    <div class="mb-12 pb-8 border-b border-gray-700">
+    <div class="mb-12 pb-8 border-b border-gray-200">
         <div class="inline-block">
-            <a href="{% url 'portfolio:portfolio_list' %}" 
-            class="btn-accent">
+            <a href="{% url 'portfolio:portfolio_list' %}" class="btn-accent">
                 <i class="fas fa-arrow-left mr-3"></i>
                 <span>All Projects</span>
             </a>
@@ -30,29 +29,26 @@
     </div>
     
     <!-- Portfolio Grid -->
-    <div class="latest-grid endpage-grid grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div class="shop-grid-3">
         {% for portfolio in portfolios %}
-        <article class="bg-primary rounded-lg overflow-hidden flex flex-col h-full">
+        <article class="shop-card">
             {% if portfolio.display_image %}
-            <div class="h-48 w-full overflow-hidden">
+            <div>
                 <img src="{{ portfolio.display_image }}" 
                      alt="{{ portfolio.title }}" 
-                     class="w-full h-full object-cover"/>
+                     class="shop-image"/>
             </div>
             {% endif %}
             
-            <div class="p-8 flex-grow flex flex-col justify-between">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">{{ portfolio.title }}</h3>
-                    <p class="text-gray-400 mb-6">{{ portfolio.short_description|safe }}</p>
-                </div>
+            <div class="shop-card-content">
+                <h3 class="shop-title">{{ portfolio.title }}</h3>
+                <p class="shop-description">{{ portfolio.short_description|safe }}</p>
                 
-                <!-- Action Button - Just the View Details button -->
-                <div class="pt-6 mt-6 border-t border-gray-700">
+                <div class="shop-footer mt-4">
                     <a href="{% url 'portfolio:portfolio_detail' portfolio.slug %}" 
-                       class="btn-accent">
+                       class="btn-accent w-full text-center">
                         View Details
-                        <i class="fas fa-arrow-right ml-3"></i>
+                        <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
             </div>
@@ -60,8 +56,7 @@
         {% empty %}
         <div class="col-span-full text-center p-12 bg-primary rounded-lg">
             <p class="text-gray-400 mb-8">No projects found using {{ technology.name }}.</p>
-            <a href="{% url 'portfolio:portfolio_list' %}" 
-               class="btn-accent">
+            <a href="{% url 'portfolio:portfolio_list' %}" class="btn-accent">
                 <i class="fas fa-arrow-left mr-3"></i>
                 <span>Back to All Projects</span>
             </a>

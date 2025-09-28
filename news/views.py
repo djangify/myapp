@@ -44,7 +44,7 @@ def category_list(request, slug):
         category=category, status="published", publish_date__lte=timezone.now()
     ).order_by("-publish_date")  # Add explicit ordering
 
-    paginator = Paginator(posts, 12)
+    paginator = Paginator(posts, 36)
     page = request.GET.get("page")
     posts = paginator.get_page(page)
 
@@ -53,7 +53,7 @@ def category_list(request, slug):
         "posts": posts,
         "categories": Category.objects.all(),
         "title": f"{category.name} - News",
-        "meta_description": f"Latest news and updates about {category.name} from Stream English",
+        "meta_description": f"Latest news and updates about {category.name} from Djangify",
     }
 
     return render(request, "news/category.html", context)
