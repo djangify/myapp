@@ -4,7 +4,7 @@
 {% block title %}Support Policy - Djangify{% endblock %}
 
 {% block content %}
-<div class="p-6 bg-secondary text-text py-12">
+<div class="pageformat">
         <!-- Include the breadcrumb here -->
   {% include "core/components/breadcrumb.html" %}
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,11 +50,10 @@
                 <p class="mb-4">The following websites and domains operate under the Djangify umbrella:</p>
                 <ul class="list-disc pl-6 mb-4">
                     <li>Djangify.com - Our main domain</li>
-                    <li>Inspirational Guidance - inspirationalguidance.com</li> 
                     <li>Pen And I Publishing - penandipublishing.co.uk</li>
                 </ul>
                 <p></p>
-                <p class="mb-4">You can verify if a website is affiliated with Djangify by checking our <a href="{% url 'portfolio:portfolio_list' %}" class="text-accent hover:underline">portfolio page</a> or by contacting us directly at djangify@djangify.com.</p>
+                <p class="mb-4">You can verify if a website is affiliated with Djangify by contacting us directly at djangify @djangify.com.</p>
             </section>
 
             <section id="support-options" class="mb-12">
@@ -63,9 +62,8 @@
                 <ul class="list-disc pl-6 mb-4">
                     <li>First, check the documentation specific to the website you purchased from</li>
                     <li>Each affiliated website has its own dedicated support resources</li>
-                    <li>Use the contact form on the specific website where you made your purchase</li>
-                    <li>Email the site administrator directly at admin@[sitedomain] (e.g., admin@showyourspot.com)</li>
-                    <li>You may also CC djangify@djangify.com on any support requests</li>
+                    <li>Use the contact form (best option) on the specific website where you made your purchase</li>
+                    <li>Email us directly djangify@djangify.com for any support requests</li>
                 </ul>
                 <p>
                 <p class="mb-4">Our goal is to respond to all support inquiries within 48 hours during business days.</p>
@@ -76,7 +74,7 @@
                 <p class="mb-4">For general inquiries or verification of Djangify-affiliated websites:</p>
                 <ul class="list-disc pl-6 mb-4">
                     <li>Email: djangify@djangify.com</li>
-                    <li>Contact Form: <a href="/#contact" class="text-accent hover:underline">Contact Us</a></li>
+                    
                 </ul>
                 <p></p>
                 <p class="mb-4">For site-specific support, please use the contact information provided on the respective website.</p>

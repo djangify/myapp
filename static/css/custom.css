@@ -2304,3 +2304,9 @@ footer p {
     justify-content: flex-end;
   }
 }
+
+.policy-card svg {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+}
