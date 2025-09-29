@@ -361,6 +361,45 @@
   height: 16px;
 }
 
+/* Base: mobile-first, stacked */
+.post-nav .flex {
+  display: flex;
+  flex-direction: column;
+  /* stack on mobile */
+  gap: 1.5rem;
+}
+
+.post-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* center aligned by default */
+  text-align: center;
+}
+
+/* Desktop breakpoint: side by side */
+@media (min-width: 640px) {
+  .post-nav .flex {
+    flex-direction: row;
+    justify-content: space-between;
+    /* spread apart */
+    align-items: center;
+  }
+
+  .post-nav a {
+    max-width: 45%;
+    justify-content: flex-start;
+    /* reset default */
+    text-align: left;
+  }
+
+  .post-nav a:last-child {
+    margin-left: auto;
+    justify-content: flex-end;
+    text-align: right;
+  }
+}
+
 /* === SHOP SECTION === */
 
 /* Product grid container */
@@ -995,19 +1034,22 @@
 
 .auth-card button {
   width: 100%;
-  background: hsl(var(--color-accent));
-  color: #fff;
+
+  background: hsl(var(--color-accent) / 0.9);
+  color: hsl(var(--color-text));
   padding: 0.75rem;
   font-size: 1rem;
-  border: none;
-  border-radius: 0.5rem;
+  border: hsl(var(--color-accent));
+  border-radius: 1rem;
   font-weight: 600;
   cursor: pointer;
   margin-top: 0.5rem;
 }
 
 .auth-card button:hover {
-  background: hsl(var(--color-primary) / 0.9);
+  background: hsl(var(--color-secondary));
+  color: hsl(var(--color-text));
+
 }
 
 .auth-card p {
@@ -1911,8 +1953,53 @@ footer p {
 }
 
 .postextras .category-pill {
-  @apply inline-flex flex-wrap justify-center text-center items-center px-4 py-2 text-sm sm:text-base border-2 border-accent rounded-full text-accent hover:bg-accent hover:text-white transition-colors max-w-full break-words;
+  display: inline-block;
+  /* inline on larger screens */
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 2px solid hsl(var(--color-accent));
+  border-radius: 0.5rem;
+  color: hsl(var(--color-text));
+  background: hsl(var(--color-secondary));
+  text-align: center;
+  max-width: 100%;
+  word-break: break-word;
+  white-space: normal;
+  transition: all 0.2s ease;
+  margin: 0.25rem;
+
 }
+
+.postextras .category-pill:hover {
+  background: hsl(var(--color-accent));
+  color: #fff;
+}
+
+/* Center the pill container on larger screens */
+.postextras .category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* centers pills */
+  gap: 0.5rem;
+  /* space between pills */
+}
+
+/* Stack + button style for mobile */
+@media (max-width: 480px) {
+  .postextras .category-pill {
+    display: block;
+    width: 100%;
+    margin: 0 0 0.75rem 0;
+    /* reset margins for stacked layout */
+    border-radius: 0.5rem;
+    /* button-like */
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
 
 /* Related posts responsive grid */
 .postextras .related-posts {

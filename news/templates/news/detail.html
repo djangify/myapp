@@ -31,46 +31,47 @@
     
     <!-- Hero Section -->
     <section class="mt-8">
-    <!-- Social Share -->
-    <div class="mb-4">
-        {% include 'base/social_share.html' %}
-    </div>
-
-    <!-- Image -->
-    <figure class="w-full lg:w-1/2">
-        <div class="w-full md:max-h-[400px] overflow-hidden rounded-lg bg-primary/20">
-            {% if post.external_image_url %}
-            <img src="{{ post.external_image_url }}" 
-                alt="{{ post.title }}" 
-                class="w-full h-auto md:h-full object-cover" />
-            {% elif post.image %}
-            <img src="{{ post.image.url }}" 
-                alt="{{ post.title }}" 
-                class="w-half h-auto max-h-[400px] object-cover mx-auto lg:max-w-4xl lg:rounded-lg" /> 
-            {% else %}
-            <div class="w-full h-64 flex items-center justify-center bg-accent/10">
-                <span class="text-accent">No Image Available</span>
-            </div>
-            {% endif %}
+        <!-- Social Share -->
+        <div class="mb-4">
+            {% include 'base/social_share.html' %}
         </div>
-    </figure>
 
-    <!-- Title + Meta -->
-    <h1 class="text-2xl leading-normal font-semibold pt-8">{{ post.title }}</h1>
-    <p class="text-gray-400 text-sm pt-4">
-        {{ post.publish_date|date:"F j, Y" }} • 
-        <a href="{{ post.category.get_absolute_url }}" class="text-accent hover:underline">
-            {{ post.category.name }}
-        </a>
-    </p>
+        <!-- Image -->
+        <figure class="w-full lg:w-1/2">
+            <div class="w-full md:max-h-[400px] overflow-hidden rounded-lg bg-primary/20">
+                {% if post.external_image_url %}
+                <img src="{{ post.external_image_url }}" 
+                    alt="{{ post.title }}" 
+                    class="w-full h-auto md:h-full object-cover" />
+                {% elif post.image %}
+                <img src="{{ post.image.url }}" 
+                    alt="{{ post.title }}" 
+                    class="w-half h-auto max-h-[400px] object-cover mx-auto lg:max-w-4xl lg:rounded-lg" /> 
+                {% else %}
+                <div class="w-full h-64 flex items-center justify-center bg-accent/10">
+                    <span class="text-accent">No Image Available</span>
+                </div>
+                {% endif %}
+            </div>
+        </figure>
 
-    <!-- Introduction -->
-    {% if post.introduction %}
-        <div class="mt-4 prose prose-lg lg:text-lg leading-relaxed">{{ post.introduction|safe }}</div>
-    {% endif %}
-</section>
+        <!-- Title + Meta -->
+        <h1 class="leading-normal">{{ post.title }}</h1>
+        <p class="text-gray-400 text-sm pt-4">
+            {{ post.publish_date|date:"F j, Y" }} • 
+            <a href="{{ post.category.get_absolute_url }}" class="text-accent hover:underline">
+                {{ post.category.name }}
+            </a>
+        </p>
+
+        <!-- Introduction -->
+        {% if post.introduction %}
+            <div class="mt-4 prose prose-lg lg:text-lg leading-relaxed">{{ post.introduction|safe }}</div>
+        {% endif %}
+    </section>
     
     <!-- Contents Section -->
+        <!-- Contents Section -->
     <div class="container prose prose-lg  max-w-4xl">
 
         {% if post.youtube_url %}
@@ -117,7 +118,10 @@
             </a>
         </div>
         {% endif %}
+        
+        <!-- Pagination -->
         {% include "news/components/extras.html" %}
+
         {% include "news/components/newsads.html" %}
         
     </div>

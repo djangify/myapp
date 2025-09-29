@@ -1,28 +1,30 @@
 <!-- news/components/extras.html -->
 <div class="postextras px-4 md:px-8 xl:px-0 pb-24 text-base leading-relaxed">
 
-    <!-- Navigation -->
-  <nav class="post-nav mt-16 mb-12 border-t border-gray-700/30 pt-8">
+  <!-- Navigation -->
+  <nav class="post-nav mt-12 mb-12">
     <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
       {% if previous_post %}
       <a href="{{ previous_post.get_absolute_url }}"
-         class="group flex items-center text-sm sm:text-base text-gray-400 hover:text-accent transition-colors w-full sm:max-w-[45%]">
+         >
         <svg class="mr-2 h-4 w-4 text-gray-400 group-hover:text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
         <div>
           <span class="block text-sm text-gray-400">PREVIOUS:</span>
-          <span class="block text-md">{{ previous_post.title|truncatechars:25 }}</span>
+          <span class="block text-sm">{{ previous_post.title|truncatechars:25 }}</span>
         </div>
       </a>
       {% endif %}
 
       {% if next_post %}
       <a href="{{ next_post.get_absolute_url }}"
-         class="group flex items-center text-sm sm:text-base text-gray-400 hover:text-accent transition-colors w-full  justify-end">
+         <a href="{{ next_post.get_absolute_url }}"
+          >
+
         <div class="text-right">
-          <span class="block text-sm text-gray-400">NEXT: </span>
-          <span class="block text-md">{{ next_post.title|truncatechars:25 }}</span>
+          <span class="block text-sm text-gray-400">NEXT:</span>
+          <span class="block text-sm">{{ next_post.title|truncatechars:25 }}</span>
         </div>
         <svg class="ml-2 h-4 w-4 text-gray-400 group-hover:text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -32,10 +34,9 @@
     </div>
   </nav>
 
-  <!-- Category Link Pill -->
-  <div class="text-center py-8">
-    <a href="{{ post.category.get_absolute_url }}"
-       class="inline-flex flex-wrap justify-center text-center items-center px-6 sm:px-8 py-2 text-sm sm:text-base border-2 border-accent rounded-full text-accent hover:bg-accent hover:text-white transition-colors max-w-full break-words">
+  <!-- Category Link Pill (separated from nav) -->
+  <div class="category-pills text-center my-8">
+    <a href="{{ post.category.get_absolute_url }}" class="category-pill">
       <span class="mr-2">All articles in category:</span>
       {{ post.category.name }}
     </a>
