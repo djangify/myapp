@@ -20,7 +20,7 @@
                 </div>
                 
                 <div class="flex flex-row">
-                    <dt class="text-accent font-bold w-1/3">Email:  </dt>
+                    <dt class="text-accent font-bold w-1/3">Email:</dt>
                     <dd class="w-2/3 pl-4">{{ submission.email }}</dd>
                 </div>
                 
@@ -40,6 +40,25 @@
                     <dt class="text-accent font-bold w-1/3">Used Digital Marketing Services Before:</dt>
                     <dd class="w-2/3 pl-4">{{ submission.get_used_before_display }}</dd>
                 </div>
+
+                {% if submission.ip_address %}
+                <div class="flex flex-row">
+                    <dt class="text-accent font-bold w-1/3">IP Address:</dt>
+                    <dd class="w-2/3 pl-4">{{ submission.ip_address }}</dd>
+                </div>
+                {% else %}
+                <div class="flex flex-row">
+                    <dt class="text-accent font-bold w-1/3">IP Address:</dt>
+                    <dd class="w-2/3 pl-4">Unknown</dd>
+                </div>
+                {% endif %}
+
+                {% if submission.user_agent %}
+                <div class="flex flex-row">
+                    <dt class="text-accent font-bold w-1/3">Browser Info:</dt>
+                    <dd class="w-2/3 pl-4">{{ submission.user_agent }}</dd>
+                </div>
+                {% endif %}
             </dl>
         </div>
         
@@ -52,7 +71,6 @@
           <p class="mb-12 text-lg">I'll be in touch within 3 working days to discuss how I can help with your needs.</p>
           <br>
           <div class="mt-8">
-           
                 <a class="uppercase border-2 font-bold bg-accent border-accent p-2 m-2 text-xs text-text rounded sm:text-lg sm:px-4" href="{% url 'core:home' %}">
                     <span>Back to Home</span>
                     <i class="fa-solid fa-angles-right text-text ml-2 group-hover:translate-x-2 transition-transform"></i>

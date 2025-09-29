@@ -1213,6 +1213,42 @@
   border-radius: 0.5rem;
 }
 
+.blogformat iframe {
+  max-width: 100%;
+  border-radius: 0.75rem;
+  /* match cards */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Blog hero media (image or video) */
+.blogformat .hero-media {
+  max-width: 1000px;
+  /* larger, but still within the card */
+  margin: 0 auto 2rem auto;
+  /* center + spacing below */
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+/* Responsive YouTube video wrapper */
+.blogformat .hero-video-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+  /* 16:9 aspect ratio */
+}
+
+.blogformat .hero-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+
+
 /* === Cluster Boxes (two side-by-side) === */
 .clusterbox {
   display: grid;
