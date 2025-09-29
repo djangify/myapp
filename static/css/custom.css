@@ -2310,3 +2310,46 @@ footer p {
   height: 2rem;
   flex-shrink: 0;
 }
+
+/* === Contact Section Tighter Styling === */
+#contact p,
+#contact li {
+  line-height: 1.5;
+  /* tighter lines */
+  margin-bottom: 0.75rem;
+  /* less space between lines */
+}
+
+#contact form {
+  gap: 0.75rem;
+  /* reduce form field spacing */
+}
+
+#contact h2,
+#contact h6 {
+  margin-bottom: 0.5rem;
+  /* less space under headings */
+}
+
+/* Default link style (no underline) */
+a {
+  color: hsl(var(--color-accent));
+  text-decoration: none;
+}
+
+a:hover {
+  color: hsl(var(--color-text));
+  text-decoration: none;
+}
+
+/* Utility class: force blue underline */
+.link-underline {
+  color: #1d4ed8;
+  /* Tailwind blue-700 */
+  text-decoration: underline;
+}
+
+.link-underline:hover {
+  color: #1e40af;
+  /* Tailwind blue-800 on hover */
+}

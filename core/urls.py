@@ -29,6 +29,11 @@ urlpatterns = [
         TemplateView.as_view(template_name="core/pdf-creation.html"),
         name="pdf_creation",
     ),
+    path(
+        "digital-marketing-specialist",
+        TemplateView.as_view(template_name="core/digital-marketing-specialist.html"),
+        name="digital_marketing_specialist",
+    ),
     # policies
     path("policy/privacy/", views.privacy_view, name="privacy_policy"),
     path("policy/cookies/", views.cookie_view, name="cookie_policy"),
