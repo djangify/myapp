@@ -64,6 +64,15 @@ def terms_view(request):
     return render(request, template_name, {"breadcrumbs": breadcrumbs})
 
 
+def ai_writing_view(request):
+    breadcrumbs = [
+        {"title": "Policies", "url": reverse("core:policies_index")},
+        {"title": "AI Writing Policy", "url": None},
+    ]
+    template_name = "core/policy/ai-writing-policy.html"
+    return render(request, template_name, {"breadcrumbs": breadcrumbs})
+
+
 def support_view(request):
     breadcrumbs = [
         {"title": "Policies", "url": reverse("core:policies_index")},
