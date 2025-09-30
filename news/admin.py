@@ -1,11 +1,12 @@
-# news/admin.py
+from django import forms
 from django.contrib import admin
 from django.utils.html import format_html
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
+from django.contrib.admin.widgets import AdminTextareaWidget
 import requests
+
 from .models import Category, Post
-from django import forms
 
 
 @admin.register(Category)
@@ -14,24 +15,37 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
     search_fields = ["name"]
 
+
 class PostAdminForm(forms.ModelForm):
-    
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = "__all__"
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Make introduction not required
-        self.fields['introduction'].required = False
+        # remove TinyMCE from ad_code
+        if "ad_code" in self.fields:
+            self.fields["ad_code"].widget = AdminTextareaWidget(
+                attrs={"rows": 6, "class": "vLargeTextField"}
+            )
+
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     form = PostAdminForm
-    list_display = ["title", "category", "status", "is_featured", "publish_date", "display_thumbnail"]
-    list_editable = ["status", "is_featured"]
-    list_filter = ["status", "category", "created", "publish_date"]
-    search_fields = ["title", "introduction", "content", "meta_title", "meta_description"]
+
+    list_display = [
+        "title",
+        "category",
+        "status",
+        "is_featured",
+        "publish_date",
+        "display_thumbnail",
+        "has_ad",
+    ]
+    list_editable = ["is_featured"]
+    list_filter = ["status", "category", "is_featured", "created", "publish_date"]
+    search_fields = ["title", "content", "meta_title", "meta_description"]
     prepopulated_fields = {"slug": ("title",)}
     date_hierarchy = "publish_date"
     readonly_fields = ["display_media"]
@@ -44,10 +58,11 @@ class PostAdmin(admin.ModelAdmin):
                     "title",
                     "slug",
                     "category",
-                    "introduction",
+                    # "introduction",  # hidden but kept for future use
                     "content",
                     "status",
                     "publish_date",
+                    "is_featured",
                 ),
             },
         ),
@@ -86,6 +101,15 @@ class PostAdmin(admin.ModelAdmin):
             },
         ),
     )
+
+    @admin.display(boolean=True, description="Ad")
+    def has_ad(self, obj):
+        return (
+            (obj.ad_type != "none")
+            or bool((obj.ad_code or "").strip())
+            or bool(obj.ad_image)
+            or bool(obj.ad_url)
+        )
 
     def display_thumbnail(self, obj):
         image_url = obj.get_thumbnail_url()
@@ -138,8 +162,13 @@ class PostAdmin(admin.ModelAdmin):
             if not content_type.startswith("image/"):
                 raise ValidationError("URL must point to an image file")
 
-            if not any(content_type.endswith(ext) for ext in ["/jpeg", "/jpg", "/png"]):
-                raise ValidationError("Only JPG and PNG images are allowed")
+            if content_type not in [
+                "image/jpeg",
+                "image/jpg",
+                "image/png",
+                "image/webp",
+            ]:
+                raise ValidationError("Only JPG, PNG, and WEBP images are allowed")
 
         except requests.RequestException:
             raise ValidationError("Could not validate image URL")

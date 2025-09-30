@@ -65,7 +65,7 @@
                 {{ post.category.name }}
             </a>
         </p>
-
+         {% include "news/components/newsads.html" %}
         <!-- Introduction -->
         {% if post.introduction %}
             <div class="mt-4 prose prose-lg lg:text-lg leading-relaxed">{{ post.introduction|safe }}</div>

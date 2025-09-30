@@ -1247,6 +1247,43 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
+/* === Restore bullets/numbers inside content === */
+.pageformat ul,
+.blogformat ul,
+.prose ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+  /* indent for bullets */
+  padding-left: 1rem;
+}
+
+.pageformat ol,
+.blogformat ol,
+.prose ol {
+  list-style: decimal;
+  margin-left: 1.5rem;
+  /* indent for numbers */
+  padding-left: 1rem;
+}
+
+.pageformat li,
+.blogformat li,
+.prose li {
+  margin-bottom: 0.5rem;
+  /* spacing between list items */
+}
+
+/* === Fix breadcrumb list style === */
+nav[aria-label="Breadcrumb"] ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav[aria-label="Breadcrumb"] li {
+  margin: 0;
+  /* reset spacing */
+}
 
 
 /* === Cluster Boxes (two side-by-side) === */
@@ -2042,14 +2079,14 @@ footer p {
   display: grid;
   grid-template-columns: 1fr;
   /* mobile: stack */
-  gap: 2rem;
+  gap: 1rem;
 }
 
 @media (min-width: 768px) {
   .postextras .related-posts {
     grid-template-columns: 1fr 1fr;
     /* tablet and up: side by side */
-    gap: 2rem;
+    gap: 1rem;
   }
 }
 }
@@ -2100,9 +2137,8 @@ footer p {
   display: grid;
   grid-template-columns: 1fr;
   /* default: single column on mobile */
-  gap: 1.5rem;
-  /* like Tailwind gap-6 */
-  margin-bottom: 2rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 640px) {
@@ -2124,9 +2160,8 @@ footer p {
   display: grid;
   grid-template-columns: 1fr;
   /* default: single column on mobile */
-  gap: 1.5rem;
-  /* like Tailwind gap-6 */
-  margin-bottom: 2rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 1024px) {
