@@ -1157,12 +1157,18 @@
   /* keeps content neat */
   margin: 0 auto;
   /* center horizontally */
+  margin-top: 2rem;
+  /* space below navbar */
+  margin-bottom: 2rem;
+  /* space above footer */
   padding: 4rem 2rem;
   /* top/bottom spacing + side padding */
-  background: #fff;
+  background: #f8fafc;
   /* white background for consistency */
   border-radius: 0.75rem;
   /* slightly rounded edges */
+  border: 1px solid #e5e7eb;
+  /* same border as navbar */
 }
 
 .pageformat h1 {
@@ -1285,6 +1291,20 @@ nav[aria-label="Breadcrumb"] li {
   /* reset spacing */
 }
 
+/* === Portfolio Detail Section Spacing Fix === */
+.portfolio-detail article>div,
+.portfolio-detail article>section {
+  margin-bottom: 2rem !important;
+  /* tighten spacing */
+  padding-bottom: 0 !important;
+  /* remove extra padding */
+}
+
+/* Last section should have no gap */
+.portfolio-detail article>div:last-child,
+.portfolio-detail article>section:last-child {
+  margin-bottom: 0 !important;
+}
 
 /* === Cluster Boxes (two side-by-side) === */
 .clusterbox {
