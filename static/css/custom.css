@@ -712,7 +712,7 @@
 /* Product image block */
 .shop-detail-image {
   background: #fff;
-  border: 1px solid hsl(var(--color-text) / 0.2);
+  /* border: 1px solid hsl(var(--color-text) / 0.2); */
   border-radius: 0.75rem;
   padding: 1rem;
   text-align: center;
@@ -1258,6 +1258,44 @@
   height: 100%;
   border-radius: 0.75rem;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.blogformat .btn-secondary {
+  width: auto;
+  /* stop it filling container */
+  padding: 0.5rem 0.9rem;
+  /* shrink padding */
+  font-size: 0.9rem;
+}
+
+.blogformat a.download-btn {
+  display: inline-flex;
+  width: auto;
+  padding: 0.4rem 0.8rem;
+  /* smaller */
+  font-size: 0.9rem;
+  border-radius: 0.375rem;
+  background: hsl(var(--color-accent) / 0.1);
+  color: hsl(var(--color-accent));
+  font-weight: 600;
+}
+
+/* Constrain the download box inside blog posts */
+.blogformat .download-box {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: hsl(var(--color-primary) / 0.1);
+  border: 1px solid hsl(var(--color-accent) / 0.3);
+  border-radius: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  /* stack heading, text, button */
+  align-items: center;
+  /* center horizontally */
+  text-align: center;
+  /* center text */
 }
 
 /* === Proper list styles for content === */

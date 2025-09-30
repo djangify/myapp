@@ -158,12 +158,12 @@
     {% if related_products %}
     <div class="shop-related mt-20">
       <h2 class="text-2xl font-bold text-gray-900 mb-8">Related Products</h2>
-      <div class="latest-grid">
+      <div class="shop-grid-3">
         {% for item in related_products %}
         <div class="featured-card">
           <a href="{{ item.get_absolute_url }}">
             {% if item.get_image_url %}
-            <img src="{{ item.get_image_url }}" alt="{{ item.title }}" class="post-image">
+            <img src="{{ item.get_image_url }}" alt="{{ item.title }}" class="shop-image">
             {% else %}
             <div class="w-full h-48 bg-slate-100 flex items-center justify-center text-slate-500">
               No Image
@@ -176,9 +176,9 @@
                 {{ item.title }}
               </a>
             </h3>
-            <p class="text-sm text-gray-600 mb-3">
+            {% comment %} <p class="text-sm text-gray-600 mb-3">
               {{ item.description|striptags|truncatewords:20 }}
-            </p>
+            </p> {% endcomment %}
             <div class="flex items-center justify-between">
               <span class="text-lg font-bold text-gray-900">£{{ item.current_price }}</span>
               {% if item.is_on_sale %}
