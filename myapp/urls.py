@@ -32,12 +32,12 @@ urlpatterns = [
     path("contact/", include("contact.urls")),
     path("accounts/", include("accounts.urls")),
     path("shop/", include("shop.urls")),
-    path(
-        "sitemap.xml",
-        sitemap,
-        {"sitemaps": sitemaps},
-        name="django.contrib.sitemaps.views.sitemap",
-    ),
+    # path(
+    #     "sitemap.xml",
+    #     sitemap,
+    #     {"sitemaps": sitemaps},
+    #     name="django.contrib.sitemaps.views.sitemap",
+    # ),
     path("tinymce/", include("tinymce.urls")),
 ]
 

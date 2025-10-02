@@ -2,10 +2,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% block extra_meta %}
+    <meta name="robots" content="noindex, nofollow">
+    {% endblock %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Meta Description -->
     <meta name="description" content="{% block meta_description %}Digital Marketing Specalist, AI search{% endblock %}">
+    
 
     <meta name="keywords" content="{% block meta_keywords %}Digital Marketing Specalist, Small business marketing systems, AI search readiness guide, All-in-one marketing platforms, Landing page setup for small business, Digital marketing PDFs for small business{% endblock %}">
 
