@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="p-2 text-lg flex justify-between items-center bg-primary">
+<nav class="p-2 text-lg flex justify-between items-center bg-primary 2xl:max-w-screen-2xl 2xl:mx-auto">
     <figure class="p-2 flex justify-between items-center">
         <a class="text-accent" href="/">
             <img src="{% static 'images/djangify-logo.png' %}" alt="Djangify Logo" class="h-8">
@@ -8,12 +8,7 @@
     <ul class="nav fixed inset-0 top-14 flex flex-col items-center justify-center bg-primary -translate-y-full transition-transform sm:flex-row sm:scale-y-100 sm:backdrop-blur-0 sm:static sm:p-2 sm:bg-transparent sm:translate-y-0">
         <li class="m-2"><a class="nav--link text-text hover:text-accent focus:text-accent active:text-accent border-b-2 border-transparent active:border-accent" href="/">Home</a></li>
         <li class="m-2"><a class="nav--link text-text hover:text-accent focus:text-accent active:text-accent active:scale-95 transition-transform duration-150" href="/#about">About</a></li>
-        <li class="m-2">
-            <a class="nav--link text-text hover:text-accent focus:text-primary active:text-accent active:scale-95 transition-transform duration-150"
-            href="{% url 'portfolio:portfolio_list' %}">
-            Portfolio
-            </a>
-        </li>
+        
         <li class="m-2">
             <a class="nav--link text-text sm:hover:text-accent sm:before:bg-accent"
             href="{% url 'news:list' %}">
