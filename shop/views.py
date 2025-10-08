@@ -26,30 +26,42 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 logger = logging.getLogger("shop")
 
 
-def product_list(request):
+def product_list(request, template_name="core/home.html"):
+    """
+    Main product listing view.
+    Handles search, category filtering, and pagination.
+    Default template is now core/home.html (shop/list.html removed).
+    """
     categories = Category.objects.all()
     query = request.GET.get("q", "").strip()
+    category_slug = request.GET.get("category")
 
     products = Product.objects.filter(
         is_active=True, status__in=["publish", "soon", "full"]
     ).order_by("order", "-created")
 
+    current_category = None
+    if category_slug:
+        current_category = get_object_or_404(Category, slug=category_slug)
+        products = products.filter(category=current_category)
+
     if query:
         products = products.filter(
             Q(title__icontains=query) | Q(description__icontains=query)
         )
+
     paginator = Paginator(products, 20)
     page = request.GET.get("page")
     products = paginator.get_page(page)
 
     return render(
         request,
-        "shop/list.html",
+        template_name,
         {
             "products": products,
             "categories": categories,
-            "current_category": None,
-            "stripe_publishable_key": settings.STRIPE_PUBLISHABLE_KEY,
+            "current_category": current_category,
+            "stripe_publishable_key": getattr(settings, "STRIPE_PUBLISHABLE_KEY", ""),
             "query": query,
         },
     )
@@ -108,7 +120,7 @@ def cart_add(request, product_id):
         return redirect("shop:cart_detail")
     except Exception as e:
         messages.error(request, "There was an error adding the item to your cart.")
-        return redirect("shop:product_list")
+        return redirect("core:home")
 
 
 def category_hub(request):
@@ -123,7 +135,7 @@ def cart_detail(request):
     except Exception as e:
         print(f"Error in cart detail: {str(e)}")
         messages.error(request, "There was an error displaying your cart.")
-        return redirect("shop:product_list")
+        return redirect("core:home")
 
 
 @require_POST
@@ -355,7 +367,7 @@ def category_list(request, slug):
 
     return render(
         request,
-        "shop/list.html",
+        "core/home.html",
         {
             "products": products,
             "categories": categories,

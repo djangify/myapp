@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from contact.forms import ContactForm
 from django.http import HttpResponse
 from django.views.decorators.http import require_GET
 from django.urls import reverse
@@ -9,16 +8,14 @@ from django.shortcuts import get_object_or_404
 from django.http import Http404
 from django.contrib import messages
 from .forms import SupportForm
+from shop.views import product_list
 
 
 def home(request):
-    form = ContactForm()
-    return render(request, "core/home.html", {"form": form})
-
-
-def about(request):
-    form = ContactForm()
-    return render(request, "core/about.html", {"form": form})
+    """
+    Homepage uses the product_list view from shop/views.py.
+    """
+    return product_list(request)
 
 
 def policies_index_view(request):

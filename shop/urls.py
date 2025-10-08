@@ -6,7 +6,7 @@ from django.views.generic import TemplateView
 app_name = "shop"
 
 urlpatterns = [
-    path("", views.product_list, name="product_list"),
+    # path("", views.product_list, name="product_list"),
     path("category/<slug:slug>/", views.category_list, name="category"),
     path("category/", views.category_hub, name="category_hub"),  # <-- hub
     path("product/<slug:slug>/", views.product_detail, name="product_detail"),

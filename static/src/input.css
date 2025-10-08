@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* -------------------------------
+   Global Typography + Link Styles
+---------------------------------- */
+@layer base {
+  h1 {
+    @apply text-4xl font-bold text-[color:var(--color-text)];
+  }
+
+  h2 {
+    @apply text-3xl font-semibold text-[color:var(--color-text)];
+  }
+
+  p {
+    @apply text-lg text-[color:var(--color-text)] leading-relaxed;
+  }
+
+  a {
+    @apply text-[color:var(--color-accent)] hover:text-[color:var(--color-secondary)] transition-colors;
+  }
+}
+
+/* -------------------------------
+   Global Utilities (optional)
+---------------------------------- */
+@layer utilities {
+  .fade-transition {
+    @apply transition-opacity duration-[2000ms] ease-in-out;
+  }
+}
+
+/* -------------------------------
+   Tailwind v4 Theme Variables
+   (Djangify brand colors)
+---------------------------------- */
+@theme {
+  /* Core brand palette */
+  --color-brand-primary: #a4b0c1;
+  --color-brand-secondary: #a4b0c1;
+  --color-brand-accent: #9ba3b4;
+  --color-brand-dark: ##475569;
+  --color-brand-light: #f8fafc;
+
+  /* Font */
+  --color-font-main: #2b2b2b;
+  /* primary text */
+
+  /* Extended palette for badges and alerts */
+  --color-badge-rose: #fecdd3;
+  /* light rose */
+  --color-badge-mint: #bbf7d0;
+  /* mint green (optional contrast) */
+  --color-badge-yellow: #fef9c3;
+  /* soft yellow */
+  --color-badge-red-light: #fee2e2;
+  /* light red for SALE */
+  --color-badge-red-text: #7f1d1d;
+  /* readable red text */
+}
+
+/* Example usage:
+   bg-[color:var(--color-primary)]
+   text-[color:var(--color-text)]
+   hover:bg-[color:var(--color-secondary)]
+*/

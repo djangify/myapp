@@ -18,7 +18,7 @@
         <!-- Shop -->
         {% if product %}
             <li class="flex items-center">
-                <a href="{% url 'shop:product_list' %}" class="text-text hover:text-accent transition-colors">Shop</a>
+                <a href="{% url 'core:home' %}" class="text-text hover:text-accent transition-colors">Shop</a>
                 <i class="fa-solid fa-angle-right mx-2 text-gray-400"></i>
             </li>
             <li class="text-accent font-medium">{{ product.title|truncatechars:40 }}</li>

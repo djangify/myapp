@@ -1,68 +1,69 @@
 {% load static %}
-<footer class="bg-secondary">
-  <div class="footer-container">
-    
-    <!-- Grid Columns -->
-    <div class="footer-grid">
+<footer class="bg-primary text-[color:var(--color-font-main)] mt-16">
+  <div class="max-w-7xl mx-auto px-6 py-12 space-y-12">
+
+    <!-- Top Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 text-sm">
       
-      <!-- Logo + Info -->
-      <div class="brand-block">
-        <div class="flex space-x-3 mb-3">
-          <img src="{% static 'images/djangify-logo.png' %}" alt="Djangify Logo" class="h-8">
-          <span class="text-lg font-semibold">Djangify</span>
+      <!-- Brand + Info -->
+      <div class="space-y-3">
+        <div class="flex items-center space-x-3">
+          <img src="{% static 'images/djangify-logo.png' %}" alt="Djangify Logo" class="h-8 w-auto">
+          <span class="text-lg font-semibold text-[color:var(--color-font-main)]">Djangify</span>
         </div>
-        <p class="prose text-sm">
+        <p class="text-sm leading-relaxed text-[color:var(--color-brand-light)]/80">
           Digital Marketing Specialist. Making digital marketing simple, practical, and sustainable for small businesses by focusing on the essential systems that create steady sales.
-        </p> 
+        </p>
       </div>
-      
-      <!-- Links -->
-      <div>
-        <h3 class="font-semibold mb-3">Pages</h3>
+
+      <!-- Pages -->
+      <div class="space-y-3">
+        <h3 class="font-semibold text-[color:var(--color-font-main)]">Pages</h3>
         <ul class="space-y-1">
-          <li><a href="{% url 'core:home' %}" class="hover:text-accent transition-colors">Home</a></li>
-          <li><a href="{% url 'shop:product_list' %}" class="hover:text-accent transition-colors">Shop</a></li>
-          <li><a href="{% url 'news:list' %}" class="hover:text-accent transition-colors">Blog</a></li>
-          <li><a href="{% url 'core:about' %}" class="hover:text-accent transition-colors">About</a></li>
+          <li>
+            <a href="{% url 'core:home' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Home</a>
+          </li>
+          {% comment %} <li>
+            <a href="{% url 'core:home' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Shop</a>
+          </li> {% endcomment %}
           {% if not request.user.is_authenticated %}
-              <li><a href="{% url 'accounts:register' %}" class="text-slate-400 hover:text-white">Register</a></li>
-              <li><a href="{% url 'accounts:login' %}" class="text-slate-400 hover:text-white">Login</a></li>
+            <li><a href="{% url 'accounts:register' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Register</a></li>
+            <li><a href="{% url 'accounts:login' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Login</a></li>
           {% endif %}
           {% if request.user.is_authenticated %}
-              <li><a href="{% url 'accounts:logout' %}" class="text-slate-400 hover:text-white">Logout</a></li>
+            <li><a href="{% url 'accounts:logout' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Logout</a></li>
           {% endif %}
         </ul>
       </div>
-      
-      <!-- Resources -->
-      <div>
-        <h3 class="font-semibold mb-3">Resources</h3>
+
+      <!-- Important -->
+      <div class="space-y-3">
+        <h3 class="font-semibold text-[color:var(--color-font-main)]">Important</h3>
         <ul class="space-y-1">
-          <li><a href="{% url 'core:local_ai_search' %}" class="hover:text-accent transition-colors">Local AI Search</a></li>
-          <li><a href="{% url 'core:ai_search' %}" class="hover:text-accent transition-colors">AI Search Readiness</a></li>
-          <li><a href="{% url 'core:digital_marketing_specialist' %}" class="hover:text-accent transition-colors">Digital Marketing</a></li>
-          <li><a href="{% url 'core:pdf_creation' %}" class="hover:text-accent transition-colors">PDF Creation</a></li>
+          <li><a href="{% url 'core:support_policy' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Support Policy</a></li>
+          <li><a href="{% url 'core:terms_conditions' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Terms & Conditions</a></li>
+          <li><a href="{% url 'core:privacy_policy' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Privacy Policy</a></li>
         </ul>
       </div>
-      
-      <!-- Policies -->
-      <div>
-        <h3 class="font-semibold mb-3">Policies</h3>
+
+      <!-- Other Policies -->
+      <div class="space-y-3">
+        <h3 class="font-semibold text-[color:var(--color-font-main)]">Other Policies</h3>
         <ul class="space-y-1">
-          <li><a href="{% url 'core:affiliate_policy' %}" class="hover:text-accent transition-colors">Affiliate/Ads</a></li>
-          <li><a href="{% url 'core:ai_writing_policy' %}" class="hover:text-accent transition-colors">AI Policy</a></li>
-          <li><a href="{% url 'core:cookie_policy' %}" class="hover:text-accent transition-colors">Cookie Policy</a></li>
-          <li><a href="{% url 'core:privacy_policy' %}" class="hover:text-accent transition-colors">Privacy Policy</a></li>
-          <li><a href="{% url 'core:support_policy' %}" class="hover:text-accent transition-colors">Support Policy</a></li>
-          <li><a href="{% url 'core:terms_conditions' %}" class="hover:text-accent transition-colors">Terms & Conditions</a></li>
+          <li><a href="{% url 'core:affiliate_policy' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Affiliate/Ads</a></li>
+          <li><a href="{% url 'core:ai_writing_policy' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">AI Policy</a></li>
+          <li><a href="{% url 'core:cookie_policy' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Cookie Policy</a></li>
         </ul>
       </div>
     </div>
-    
+
+    <!-- Divider -->
+    <div class="border-t border-[color:var(--color-brand-primary)]/30"></div>
+
     <!-- Bottom Copyright -->
-    <div class="footer-bottom">
+    <div class="text-center text-sm text-[color:var(--color-brand-light)]/70">
       &copy; 2025 Djangify. Digital Marketing Specialist. All rights reserved.
     </div>
-    
+
   </div>
 </footer>
