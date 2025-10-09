@@ -1,13 +1,20 @@
 /* Hero Image Styling */
+/* Hero Image Wrapper */
 .hero-image-wrapper {
-  max-width: 480px;
   margin: 0 auto;
-  margin-right: 0;
-  /* default for center alignment */
-  border-radius: 0.5rem;
+  padding: 0;
 }
 
-/* Move image slightly to the right on large screens */
+/* Improve proportions and centering */
+.hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  object-fit: cover;
+}
+
+/* On large screens: tighten layout and prevent huge spacing */
 @media (min-width: 1024px) {
   .hero-image-wrapper {
     margin-left: auto;
@@ -15,32 +22,36 @@
   }
 }
 
-/* Create breathing room on smaller screens */
-@media (max-width: 1024px) {
+/* On tablets and below: add breathing room */
+@media (max-width: 1023px) {
   .hero-image-wrapper {
     margin-top: 1.5rem;
-    /* top spacing before text */
     margin-bottom: 1.5rem;
-    /* equal bottom spacing */
   }
 }
 
-/* Fine-tune spacing on very small screens */
+/* On very small screens: ensure padding and no edge clipping */
 @media (max-width: 640px) {
+  section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .hero-image-wrapper {
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
 }
 
-/* Ensure the image stays proportional */
-.hero-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 0.5rem;
-  object-fit: contain;
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero-image-wrapper {
+    margin-top: 0;
+    max-width: 380px;
+  }
 }
+
+
+
 
 /* === NEWS DETAIL PAGE MEDIA === */
 .newsformat .hero-media {
@@ -80,4 +91,25 @@
   object-fit: cover;
   border-radius: 0.75rem;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Remove extra vertical gap between rows on medium and large screens */
+@media (min-width: 768px) {
+  .featured-grid {
+    row-gap: 0;
+    /* removes vertical spacing between rows */
+  }
+
+  /* Optional: tighten top and bottom margins between cards */
+  .featured-grid>* {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (min-width: 768px) @media (min-width: 768px) and (max-width: 1024px) {
+  .featured-grid {
+    row-gap: 0.5rem;
+    /* tighten vertical gap on iPad size */
+  }
 }

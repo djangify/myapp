@@ -29,40 +29,56 @@ logger = logging.getLogger("shop")
 def product_list(request, template_name="core/home.html"):
     """
     Main product listing view.
-    Handles search, category filtering, and pagination.
-    Default template is now core/home.html (shop/list.html removed).
+    Displays 4 latest products at the top (by publish date)
+    and excludes them from the main 8-product paginated grid below.
     """
     categories = Category.objects.all()
     query = request.GET.get("q", "").strip()
     category_slug = request.GET.get("category")
 
-    products = Product.objects.filter(
+    # Base queryset
+    base_products = Product.objects.filter(
         is_active=True, status__in=["publish", "soon", "full"]
-    ).order_by("order", "-created")
+    ).order_by("-created")
 
     current_category = None
     if category_slug:
         current_category = get_object_or_404(Category, slug=category_slug)
-        products = products.filter(category=current_category)
+        base_products = base_products.filter(category=current_category)
 
     if query:
-        products = products.filter(
+        base_products = base_products.filter(
             Q(title__icontains=query) | Q(description__icontains=query)
         )
 
-    paginator = Paginator(products, 20)
+    # Top 4 latest products
+    latest_products = base_products[:4]
+    latest_ids = latest_products.values_list("id", flat=True)
+
+    # Exclude those from bottom section
+    remaining_products = base_products.exclude(id__in=latest_ids)
+
+    # Paginate the remaining products (8 per page)
+    paginator = Paginator(remaining_products, 8)
     page = request.GET.get("page")
     products = paginator.get_page(page)
+
+    # Featured products (limit 2)
+    featured_products = Product.objects.filter(
+        featured=True, is_active=True, status="publish"
+    ).order_by("order", "-created")[:2]
 
     return render(
         request,
         template_name,
         {
+            "latest_products": latest_products,
             "products": products,
             "categories": categories,
             "current_category": current_category,
             "stripe_publishable_key": getattr(settings, "STRIPE_PUBLISHABLE_KEY", ""),
             "query": query,
+            "featured_products": featured_products,
         },
     )
 

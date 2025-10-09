@@ -16,6 +16,15 @@
     @apply text-lg text-[color:var(--color-text)] leading-relaxed;
   }
 
+  ul,
+  ol {
+    @apply text-lg text-[color:var(--color-text)] leading-relaxed list-inside;
+  }
+
+  li {
+    @apply text-lg text-[color:var(--color-text)] leading-relaxed;
+  }
+
   a {
     @apply text-[color:var(--color-accent)] hover:text-[color:var(--color-secondary)] transition-colors;
   }
