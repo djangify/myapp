@@ -4,27 +4,29 @@
 {% block title %}Privacy Policy - Djangify{% endblock %}
 
 {% block content %}
-<div class="pageformat">
-    <!-- Include the breadcrumb here -->
-    {% include "core/components/breadcrumb.html" %}
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="w-full">
+  <div class="flex flex-col mt-8 gap-10 lg:flex-row lg:*:basis-full lg:gap-x-24 xl:gap-x-12 2xl:max-w-screen-2xl 2xl:mx-auto px-6 lg:px-12 py-12">
+    <!-- Left Column -->
+    <div class="flex flex-col gap-y-5 lg:gap-y-12 xl:self-center xl:gap-y-24">
+      {% include "core/components/breadcrumb.html" %}
+
         <!-- Table of Contents -->
-        <div class="mb-12">
-            <h1 class="text-4xl font-bold mb-8">Privacy Policy</h1>
-            <p class="text-text/80 mb-6">Last updated: January 2025</p>
+        <div class="mb-4">
+            <h1 class="text-4xl font-bold text-[color:var(--color-brand-primary)] mb-8">Privacy Policy</h1>
+            <p class="text-[color:var(--color-font-main)]/80 mb-6">Last updated: January 2025</p>
             <p>
-            <div class="bg-primary p-6 rounded-lg">
-                <h2 class="text-lg font-semibold mb-4">Contents:</h2>
-                <ol class="space-y-2">
-                    <li><a href="#overview" class="text-accent hover:text-text transition-colors">Overview</a></li>
-                    <li><a href="#information-collection" class="text-accent hover:text-text transition-colors">Information We Collect</a></li>
-                    <li><a href="#information-use" class="text-accent hover:text-text transition-colors">How We Use Your Information</a></li>
-                    <li><a href="#information-sharing" class="text-accent hover:text-text transition-colors">Information Sharing</a></li>
-                    <li><a href="#user-rights" class="text-accent hover:text-text transition-colors">Your Rights</a></li>
-                    <li><a href="#data-security" class="text-accent hover:text-text transition-colors">Data Security</a></li>
-                    <li><a href="#children" class="text-accent hover:text-text transition-colors">Children's Privacy</a></li>
-                    <li><a href="#updates" class="text-accent hover:text-text transition-colors">Updates to This Policy</a></li>
-                    <li><a href="#contact" class="text-accent hover:text-text transition-colors">Contact Information</a></li>
+            <div class="bg-[color:var(--color-brand-light)] border border-[color:var(--color-brand-accent)] p-6 rounded-lg shadow-sm">
+          <h2 class="text-lg font-semibold text-[color:var(--color-brand-primary)] mb-4">Contents:</h2>
+                <ol class="space-y-2 text-[color:var(--color-font-main)]">
+                    <li><a href="#overview" class="text-[color:var(--color-brand-accent)] hover:text-text transition-colors">Overview</a></li>
+                    <li><a href="#information-collection" class="text-[color:var(--color-brand-accent)] hover:text-text transition-colors">Information We Collect</a></li>
+                    <li><a href="#information-use" class="text-[color:var(--color-brand-accent)] hover:text-text transition-colors">How We Use Your Information</a></li>
+                    <li><a href="#information-sharing" class="text-[color:var(--color-brand-accent)] hover:text-text transition-colors">Information Sharing</a></li>
+                    <li><a href="#user-rights" class="text-[color:var(--color-brand-accent)] hover:text-text transition-colors">Your Rights</a></li>
+                    <li><a href="#data-security" class="text-[color:var(--color-brand-accent)] hover:text-text transition-colors">Data Security</a></li>
+                    <li><a href="#children" class="text-[color:var(--color-brand-accent)] hover:text-text transition-colors">Children's Privacy</a></li>
+                    <li><a href="#updates" class="text-[color:var(--color-brand-accent)] hover:text-text transition-colors">Updates to This Policy</a></li>
+                    <li><a href="#contact" class="text-[color:var(--color-brand-accent)] hover:text-text transition-colors">Contact Information</a></li>
                 </ol>
             </div>
         </div>

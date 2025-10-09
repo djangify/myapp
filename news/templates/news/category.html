@@ -7,7 +7,7 @@
     <!-- Category title -->
     <h1 class="leading-normal">{{ category.name }}</h1>
     <br>
-    <a href="{% url 'news:list' %}" class="text-blue-600 hover:text-accent mb-8 px-6 inline-block">← Back to News</a>
+    <a href="{% url 'news:list' %}" class="text-blue-600 hover:text-[color:var(--color-brand-accent)] mb-8 px-6 inline-block">← Back to News</a>
 
     <!-- Posts grid -->
     <div class="latest-grid endpage-grid mt-8">
@@ -29,7 +29,7 @@
                              onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/hqdefault.jpg';">
                     {% else %}
                         <div class="w-full h-full bg-accent/20 flex items-center justify-center">
-                            <span class="text-accent">No Image Available</span>
+                            <span class="text-[color:var(--color-brand-accent)]">No Image Available</span>
                         </div>
                     {% endif %}
                 </div>
@@ -58,7 +58,7 @@
         <div class="pagination mt-12">
             {% if posts.has_previous %}
                 <a href="?page={{ posts.previous_page_number }}" 
-                    class="px-4 py-2 rounded-l-md border border-accent text-accent hover:bg-accent hover:text-white transition-colors">
+                    class="px-4 py-2 rounded-l-md border border-accent text-[color:var(--color-brand-accent)] hover:bg-accent hover:text-white transition-colors">
                     Previous
                 </a>
             {% else %}
@@ -72,7 +72,7 @@
                     <span class="px-4 py-2 border-t border-b border-accent bg-accent text-white">{{ i }}</span>
                 {% else %}
                     <a href="?page={{ i }}" 
-                        class="px-4 py-2 border-t border-b border-accent text-accent hover:bg-accent hover:text-white transition-colors">
+                        class="px-4 py-2 border-t border-b border-accent text-[color:var(--color-brand-accent)] hover:bg-accent hover:text-white transition-colors">
                         {{ i }}
                     </a>
                 {% endif %}
@@ -80,7 +80,7 @@
 
             {% if posts.has_next %}
                 <a href="?page={{ posts.next_page_number }}" 
-                    class="px-4 py-2 rounded-r-md border border-accent text-accent hover:bg-accent hover:text-white transition-colors">
+                    class="px-4 py-2 rounded-r-md border border-accent text-[color:var(--color-brand-accent)] hover:bg-accent hover:text-white transition-colors">
                     Next
                 </a>
             {% else %}

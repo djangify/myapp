@@ -52,7 +52,7 @@
                 <img src="{{ post.image.url }}" alt="{{ post.title }}" />
             {% else %}
                 <div class="w-full h-64 flex items-center justify-center bg-accent/10">
-                    <span class="text-accent">No Media Available</span>
+                    <span class="text-[color:var(--color-brand-accent)]">No Media Available</span>
                 </div>
             {% endif %}
         </div>
@@ -61,7 +61,7 @@
         <h1 class="leading-normal">{{ post.title }}</h1>
         <p class="text-gray-400 text-sm pt-4">
             {{ post.publish_date|date:"F j, Y" }} • 
-            <a href="{{ post.category.get_absolute_url }}" class="text-accent hover:underline">
+            <a href="{{ post.category.get_absolute_url }}" class="text-[color:var(--color-brand-accent)] hover:underline">
                 {{ post.category.name }}
             </a>
         </p>
@@ -89,7 +89,7 @@
     {% if post.resource_type != 'none' and post.resource %}
     <div class="download-box mb-4">
         <h3 class="text-xl font-bold mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-[color:var(--color-brand-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
             Download Resource

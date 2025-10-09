@@ -115,3 +115,98 @@
   flex-shrink: 0;
   /* stops it stretching */
 }
+
+/* Blog-specific tweaks */
+.blogformat {
+  padding-left: 2rem;
+  /* more left padding */
+}
+
+.blogformat a {
+  color: hsl(var(--color-accent));
+  font-weight: 500;
+
+}
+
+.blogformat a:hover {
+  color: hsl(var(--color-text));
+}
+
+.blogformat img {
+  display: block;
+  margin: 2rem auto;
+  max-width: 100%;
+  border-radius: 0.5rem;
+}
+
+.blogformat iframe {
+  max-width: 100%;
+  border-radius: 0.75rem;
+  /* match cards */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Blog hero media (image or video) */
+.blogformat .hero-media {
+  max-width: 1000px;
+  /* larger, but still within the card */
+  margin: 0 auto 2rem auto;
+  /* center + spacing below */
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+/* Responsive YouTube video wrapper */
+.blogformat .hero-video-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+  /* 16:9 aspect ratio */
+}
+
+.blogformat .hero-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.blogformat .btn-secondary {
+  width: auto;
+  /* stop it filling container */
+  padding: 0.5rem 0.9rem;
+  /* shrink padding */
+  font-size: 0.9rem;
+}
+
+.blogformat a.download-btn {
+  display: inline-flex;
+  width: auto;
+  padding: 0.4rem 0.8rem;
+  /* smaller */
+  font-size: 0.9rem;
+  border-radius: 0.375rem;
+  background: hsl(var(--color-accent) / 0.1);
+  color: hsl(var(--color-accent));
+  font-weight: 600;
+}
+
+/* Constrain the download box inside blog posts */
+.blogformat .download-box {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: hsl(var(--color-primary) / 0.1);
+  border: 1px solid hsl(var(--color-accent) / 0.3);
+  border-radius: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  /* stack heading, text, button */
+  align-items: center;
+  /* center horizontally */
+  text-align: center;
+  /* center text */
+}
