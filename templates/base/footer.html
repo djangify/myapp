@@ -1,5 +1,5 @@
 {% load static %}
-<footer class="bg-primary text-[color:var(--color-font-main)] mt-16">
+<footer class="bg-[color:var(--color-brand-accent)] text-[color:var(--color-font-main)] mt-16">
   <div class="max-w-7xl mx-auto px-6 py-12 space-y-12">
 
     <!-- Top Grid -->
@@ -11,7 +11,7 @@
           <img src="{% static 'images/djangify-logo.png' %}" alt="Djangify Logo" class="h-8 w-auto">
           <span class="text-lg font-semibold text-[color:var(--color-font-main)]">Djangify</span>
         </div>
-        <p class="text-sm leading-relaxed text-[color:var(--color-brand-light)]/80">
+        <p class="text-sm leading-relaxed text-[color:var(--color-font-main)]">
           Digital Marketing Specialist. Making digital marketing simple, practical, and sustainable for small businesses by focusing on the essential systems that create steady sales.
         </p>
       </div>
@@ -20,18 +20,13 @@
       <div class="space-y-3">
         <h3 class="font-semibold text-[color:var(--color-font-main)]">Pages</h3>
         <ul class="space-y-1">
-          <li>
-            <a href="{% url 'core:home' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Home</a>
-          </li>
-          {% comment %} <li>
-            <a href="{% url 'core:home' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Shop</a>
-          </li> {% endcomment %}
+          <li><a href="{% url 'core:home' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Home</a></li>
           {% if not request.user.is_authenticated %}
-            <li><a href="{% url 'accounts:register' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Register</a></li>
-            <li><a href="{% url 'accounts:login' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Login</a></li>
+            <li><a href="{% url 'accounts:register' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Register</a></li>
+            <li><a href="{% url 'accounts:login' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Login</a></li>
           {% endif %}
           {% if request.user.is_authenticated %}
-            <li><a href="{% url 'accounts:logout' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Logout</a></li>
+            <li><a href="{% url 'accounts:logout' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Logout</a></li>
           {% endif %}
         </ul>
       </div>
@@ -40,9 +35,9 @@
       <div class="space-y-3">
         <h3 class="font-semibold text-[color:var(--color-font-main)]">Important</h3>
         <ul class="space-y-1">
-          <li><a href="{% url 'core:support_policy' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Support Policy</a></li>
-          <li><a href="{% url 'core:terms_conditions' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Terms & Conditions</a></li>
-          <li><a href="{% url 'core:privacy_policy' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Privacy Policy</a></li>
+          <li><a href="{% url 'core:support_policy' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Support Policy</a></li>
+          <li><a href="{% url 'core:terms_conditions' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Terms & Conditions</a></li>
+          <li><a href="{% url 'core:privacy_policy' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Privacy Policy</a></li>
         </ul>
       </div>
 
@@ -50,18 +45,18 @@
       <div class="space-y-3">
         <h3 class="font-semibold text-[color:var(--color-font-main)]">Other Policies</h3>
         <ul class="space-y-1">
-          <li><a href="{% url 'core:affiliate_policy' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Affiliate/Ads</a></li>
-          <li><a href="{% url 'core:ai_writing_policy' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">AI Policy</a></li>
-          <li><a href="{% url 'core:cookie_policy' %}" class="hover:text-[color:var(--color-brand-primary)] transition-colors">Cookie Policy</a></li>
+          <li><a href="{% url 'core:affiliate_policy' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Affiliate/Ads</a></li>
+          <li><a href="{% url 'core:ai_writing_policy' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">AI Policy</a></li>
+          <li><a href="{% url 'core:cookie_policy' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Cookie Policy</a></li>
         </ul>
       </div>
     </div>
 
     <!-- Divider -->
-    <div class="border-t border-[color:var(--color-brand-primary)]/30"></div>
+    <div class="border-t border-[color:var(--color-brand-accent)]/30"></div>
 
     <!-- Bottom Copyright -->
-    <div class="text-center text-sm text-[color:var(--color-brand-light)]/70">
+    <div class="text-center text-sm text-[color:var(--color-font-main)]">
       &copy; 2025 Djangify. Digital Marketing Specialist. All rights reserved.
     </div>
 

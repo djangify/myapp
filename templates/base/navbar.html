@@ -1,58 +1,56 @@
 {% load static %}
-<!-- Full-width wrapper to ensure the background spans the screen -->
-<div class="w-full bg-[color:var(--color-primary)] text-[color:var(--color-text)]">
-  <nav class="flex items-center justify-between p-3 text-base max-w-7xl mx-auto">
-  
+
+<nav class="border-b border-[color:var(--color-brand-accent)] bg-white shadow-md sticky top-0 z-[60]">
+  <div class="2xl:max-w-screen-2xl 2xl:mx-auto mx-auto px-6 lg:px-10 flex justify-between items-center h-20">
+
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-3">
-      <img src="{% static 'images/djangify-logo.png' %}" alt="Djangify Logo" class="h-8 w-auto">
-      <span class="text-lg font-semibold text-[color:var(--color-text)]">Djangify</span>
+    <a href="/" class="flex items-center gap-2">
+      <img src="{% static 'images/djangify-logo.png' %}" alt="Djangify Logo" class="h-10 w-auto">
+      <span class="hidden md:flex text-[color:var(--color-font-main)] font-semibold uppercase tracking-wide">Djangify</span>
     </a>
 
-    <!-- Nav Links -->
-    <ul class="fixed inset-0 top-14 flex flex-col items-center justify-center bg-[color:var(--color-primary)] -translate-y-full transition-transform sm:static sm:flex-row sm:translate-y-0 sm:p-0 sm:bg-transparent">
-      <li class="m-2">
-        <a href="/" class="text-[color:var(--color-text)] hover:text-[color:var(--color-secondary)] border-b-2 border-transparent hover:border-[color:var(--color-secondary)] transition-colors">Home</a>
-      </li>
-      <li class="m-2">
-        <a href="/#contact" class="text-[color:var(--color-text)] hover:text-[color:var(--color-secondary)] border-b-2 border-transparent hover:border-[color:var(--color-secondary)] transition-colors">Contact</a>
-      </li>
-      <li class="m-2">
-        <a href="{% url 'accounts:login' %}" class="text-[color:var(--color-text)] hover:text-[color:var(--color-secondary)] border-b-2 border-transparent hover:border-[color:var(--color-secondary)] transition-colors">Login</a>
-      </li>
+    <!-- Desktop Navigation -->
+    <ul class="hidden md:flex items-center gap-10 text-sm font-medium uppercase">
+      <li><a href="/" class="text-[color:var(--color-font-main)] hover:text-[color:var(--color-brand-primary)] transition">Home</a></li>
+      <li><a href="/shop/" class="text-[color:var(--color-font-main)] hover:text-[color:var(--color-brand-primary)] transition">Shop</a></li>
+      <li><a href="/#contact" class="text-[color:var(--color-font-main)] hover:text-[color:var(--color-brand-primary)] transition">Contact</a></li>
     </ul>
 
-    <!-- Right Side Icons -->
-    <div class="flex items-center gap-4">
-      <!-- Mobile Hamburger -->
-      <button class="sm:hidden flex flex-col justify-center items-center space-y-1">
-        <span class="block h-0.5 w-6 bg-[color:var(--color-text)]"></span>
-        <span class="block h-0.5 w-6 bg-[color:var(--color-text)]"></span>
-        <span class="block h-0.5 w-6 bg-[color:var(--color-text)]"></span>
-      </button>
-
-      <!-- Shop/Login Button -->
+    <!-- Right Side Buttons -->
+    <div class="flex items-center gap-5">
       <a href="{% url 'accounts:login' %}"
-         class="uppercase border-2 border-[color:var(--color-secondary)] text-[color:var(--color-text)] hover:text-[color:var(--color-secondary)] transition-colors cursor-pointer px-3 py-2 text-xs font-semibold rounded sm:text-sm sm:px-4">
-        <span>Login</span>
-        <i class="fa-solid fa-angles-right text-[color:var(--color-text)] ml-2 group-hover:translate-x-1 transition-transform"></i>
+         class="uppercase border-2 border-[color:var(--color-brand-primary)] text-[color:var(--color-brand-primary)] text-xs sm:text-sm px-5 py-2 rounded font-semibold hover:bg-[color:var(--color-brand-primary)] hover:text-[color:var(--color-brand-light)] transition">
+        Login
+        <i class="fa-solid fa-angles-right ml-2"></i>
       </a>
 
-      <!-- Cart Icon -->
-      <a href="{% url 'shop:cart_detail' %}" class="relative text-[color:var(--color-text)] hover:text-[color:var(--color-secondary)] transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.2 6h12.4M10 21a1 1 0 11-2 0 1 1 0 012 0zm8 0a1 1 0 11-2 0 1 1 0 012 0z" />
-        </svg>
-        {% with total_items=cart|length %}
-        {% if total_items > 0 %}
-          <span class="absolute -top-2 -right-2 bg-[color:var(--color-secondary)] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-            {{ total_items }}
-          </span>
-        {% endif %}
-        {% endwith %}
-      </a>
+      <!-- Hamburger Menu (mobile only) -->
+      <button id="menu-toggle" aria-label="Toggle menu"
+              class="md:hidden flex flex-col justify-between w-8 h-6 focus:outline-none">
+        <span class="block h-0.5 w-full bg-[color:var(--color-font-main)] rounded"></span>
+        <span class="block h-0.5 w-full bg-[color:var(--color-font-main)] rounded"></span>
+        <span class="block h-0.5 w-full bg-[color:var(--color-font-main)] rounded"></span>
+      </button>
     </div>
+  </div>
 
-  </nav>
-</div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu"
+       class="hidden fixed inset-0 z-40 flex-col items-center justify-center bg-[color:var(--color-brand-light)] text-[color:var(--color-font-main)] py-4 space-y-4 border-t border-[color:var(--color-brand-accent)] backdrop-blur-md md:hidden">
+    <a href="/" class="block w-full text-center py-2 text-lg hover:text-[color:var(--color-brand-primary)] transition">Home</a>
+    <a href="/shop/" class="block w-full text-center py-2 text-lg hover:text-[color:var(--color-brand-primary)] transition">Shop</a>
+    <a href="/#contact" class="block w-full text-center py-2 text-lg hover:text-[color:var(--color-brand-primary)] transition">Contact</a>
+  </div>
+
+  <!-- Toggle Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("menu-toggle");
+      const menu = document.getElementById("mobile-menu");
+      const links = menu.querySelectorAll("a");
+
+      toggle.addEventListener("click", () => menu.classList.toggle("hidden"));
+      links.forEach(link => link.addEventListener("click", () => menu.classList.add("hidden")));
+    });
+  </script>
+</nav>
