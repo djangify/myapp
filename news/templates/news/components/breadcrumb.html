@@ -1,36 +1,33 @@
-{% if breadcrumbs or post %}
-<nav class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3 mb-6" aria-label="Breadcrumb">
-    <ol class="flex items-center text-sm text-gray-600 gap-2">
-        <!-- Home -->
-        <li class="flex items-center">
-            <a href="{% url 'core:home' %}" class="text-text hover:text-[color:var(--color-brand-accent)] transition-colors">Home</a>
-            <i class="fa-solid fa-angle-right mx-2 text-gray-400"></i>
-        </li>
+<nav class="w-full px-4 mt-4 mb-4 sm:px-6 lg:px-8 py-3  bg-white" aria-label="Breadcrumb">
+  <ol class="flex flex-wrap items-center justify-center gap-2 text-sm text-[color:var(--color-font-main)]/70">
 
-        <!-- Generic breadcrumbs (if provided in context) -->
-        {% if breadcrumbs %}
-            {% for breadcrumb in breadcrumbs %}
-                {% if not forloop.last %}
-                    <li class="flex items-center">
-                        <a href="{{ breadcrumb.url }}" class="text-text hover:text-[color:var(--color-brand-accent)] transition-colors">{{ breadcrumb.title }}</a>
-                        <i class="fa-solid fa-angle-right mx-2 text-gray-400"></i>
-                    </li>
-                {% else %}
-                    <li class="text-gray-700 font-medium">{{ breadcrumb.title }}</li>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
+    <li class="flex items-center">
+      <a href="{% url 'core:home' %}" class="hover:text-[color:var(--color-brand-accent)] font-medium transition">Home</a>
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mx-2 text-[color:var(--color-brand-accent)]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </li>
 
-        <!-- Blog/News (if post context exists) -->
-        {% if post %}
-            {% if post.category %}
-                <li class="flex items-center">
-                    <a href="{% url 'news:category' post.category.slug %}" class="text-text hover:text-[color:var(--color-brand-accent)] transition-colors">{{ post.category.name }}</a>
-                    <i class="fa-solid fa-angle-right mx-2 text-gray-400"></i>
-                </li>
-            {% endif %}
-            <li class="text-[color:var(--color-brand-accent)] font-medium">{{ post.title|truncatechars:40 }}</li>
-        {% endif %}
-    </ol>
+    <li class="flex items-center">
+      <a href="{% url 'news:list' %}" class="hover:text-[color:var(--color-brand-accent)] font-medium transition">News</a>
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mx-2 text-[color:var(--color-brand-accent)]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </li>
+
+    {% if post.category %}
+    <li class="flex items-center">
+      <a href="{{ post.category.get_absolute_url }}" class="hover:text-[color:var(--color-brand-accent)] font-medium transition">
+        {{ post.category.name }}
+      </a>
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mx-2 text-[color:var(--color-brand-accent)]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </li>
+    {% endif %}
+
+    {% if post %}
+    <li class="text-[color:var(--color-brand-accent)] font-semibold truncate">{{ post.title|truncatechars:50 }}</li>
+    {% endif %}
+  </ol>
 </nav>
-{% endif %}

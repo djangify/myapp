@@ -12,7 +12,8 @@
     <!-- Desktop Navigation -->
     <ul class="hidden md:flex items-center gap-10 text-sm font-medium uppercase">
       <li><a href="/" class="text-[color:var(--color-font-main)] hover:text-[color:var(--color-brand-primary)] transition">Home</a></li>
-      <li><a href="/shop/" class="text-[color:var(--color-font-main)] hover:text-[color:var(--color-brand-primary)] transition">Shop</a></li>
+      <li><a href="{% url 'core:home' %}#shop" class="text-[color:var(--color-font-main)] hover:text-[color:var(--color-brand-primary)] transition">Shop</a></li>
+      <li><a href="{% url 'news:list' %}" class="text-[color:var(--color-font-main)] hover:text-[color:var(--color-brand-primary)] transition">Blog</a></li>
       <li><a href="/#contact" class="text-[color:var(--color-font-main)] hover:text-[color:var(--color-brand-primary)] transition">Contact</a></li>
     </ul>
 
@@ -37,7 +38,7 @@
   <!-- Mobile Menu -->
   <div id="mobile-menu"
        class="hidden fixed inset-0 z-40 flex-col items-center justify-center bg-[color:var(--color-brand-light)] text-[color:var(--color-font-main)] py-4 space-y-4 border-t border-[color:var(--color-brand-accent)] backdrop-blur-md md:hidden">
-    <a href="/" class="block w-full text-center py-2 text-lg hover:text-[color:var(--color-brand-primary)] transition">Home</a>
+    <a href="/" class="block w-full text-center py-2 text-lg hover:text-[color:var(--color-brand-secondary)] transition">Home</a>
     <a href="/shop/" class="block w-full text-center py-2 text-lg hover:text-[color:var(--color-brand-primary)] transition">Shop</a>
     <a href="/#contact" class="block w-full text-center py-2 text-lg hover:text-[color:var(--color-brand-primary)] transition">Contact</a>
   </div>

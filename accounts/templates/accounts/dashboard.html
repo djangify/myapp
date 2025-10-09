@@ -1,27 +1,38 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
-<div class="px-6 md:px-16 py-12 text-[--color-font-main] space-y-16">
+<section class="w-full py-12">
+  <div class="max-w-6xl mx-auto px-6 space-y-16">
 
-  <!-- Welcome -->
-  <h1>Welcome back, {{ user.first_name|default:user.username }}</h1>
+    <!-- Welcome Header -->
+    <div class="bg-white rounded-xl  border border-[color:var(--color-brand-accent)]/40 p-8 text-center">
+      <h1 class="text-3xl font-bold text-[color:var(--color-brand-primary)] mb-2">
+        Welcome back, {{ user.first_name|default:user.username }}
+      </h1>
+      <p class="text-[color:var(--color-font-main)]/80 mb-8">
+        Here’s an overview of your account and quick access to your saved items.
+      </p>
+    
+      {% include 'accounts/includes/dashboard_quick_actions.html' %}
+    </div>
 
-  <!-- Quick stats and Quick actions -->
-  {% include 'accounts/includes/dashboard_quick_actions.html' %}
+    <!-- Wishlist -->
+    <div class="bg-white rounded-xl  border border-[color:var(--color-brand-accent)]/40 p-8">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)] mb-6">
+        Your Wish List
+      </h2>
+      {% include 'accounts/includes/dashboard_wishlist.html' %}
+    </div>
 
+    <!-- Free Resources -->
+    <div class="bg-white rounded-xl  border border-[color:var(--color-brand-accent)]/40 p-8">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)] mb-6">
+        Free Member Resources
+      </h2>
+      {% include 'accounts/includes/profile_resources.html' %}
+    </div>
 
-
-  <!-- Wishlist -->
-  <div>
-    <h2 class="leading-normal">Your Wish List</h2>
-    {% include 'accounts/includes/dashboard_wishlist.html' %}
   </div>
-
-  <!-- Free Resources -->
-  <div>
-    <h2 class="leading-normal">Free Member Resources</h2>
-    {% include 'accounts/includes/profile_resources.html' %}
-  </div>
-
-</div>
+</section>
 {% endblock %}

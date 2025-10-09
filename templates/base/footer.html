@@ -12,21 +12,22 @@
           <span class="text-lg font-semibold text-[color:var(--color-font-main)]">Djangify</span>
         </div>
         <p class="text-sm leading-relaxed text-[color:var(--color-font-main)]">
-          Digital Marketing Specialist. Making digital marketing simple, practical, and sustainable for small businesses by focusing on the essential systems that create steady sales.
-        </p>
+        Djangify delivers digital business guides that help creators launch profitable online products and build sustainable income streams.
+      </p>
       </div>
 
       <!-- Pages -->
       <div class="space-y-3">
         <h3 class="font-semibold text-[color:var(--color-font-main)]">Pages</h3>
         <ul class="space-y-1">
-          <li><a href="{% url 'core:home' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Home</a></li>
+          <li><a href="{% url 'core:home' %}" class="hover:text-[color:var(--color-brand-light)] transition-colors">Home</a></li>
+          <li><a href="{% url 'news:list' %}" class="hover:text-[color:var(--color-brand-light)] transition-colors">blog</a></li>
           {% if not request.user.is_authenticated %}
-            <li><a href="{% url 'accounts:register' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Register</a></li>
-            <li><a href="{% url 'accounts:login' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Login</a></li>
+            <li><a href="{% url 'accounts:register' %}" class="hover:text-[color:var(--color-brand-light)] transition-colors">Register</a></li>
+            <li><a href="{% url 'accounts:login' %}" class="hover:text-[color:var(--color-brand-light)] transition-colors">Login</a></li>
           {% endif %}
           {% if request.user.is_authenticated %}
-            <li><a href="{% url 'accounts:logout' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Logout</a></li>
+            <li><a href="{% url 'accounts:logout' %}" class="hover:text-[color:var(--color-brand-light)] transition-colors">Logout</a></li>
           {% endif %}
         </ul>
       </div>
@@ -35,9 +36,9 @@
       <div class="space-y-3">
         <h3 class="font-semibold text-[color:var(--color-font-main)]">Important</h3>
         <ul class="space-y-1">
-          <li><a href="{% url 'core:support_policy' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Support Policy</a></li>
-          <li><a href="{% url 'core:terms_conditions' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Terms & Conditions</a></li>
-          <li><a href="{% url 'core:privacy_policy' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Privacy Policy</a></li>
+          <li><a href="{% url 'core:support_policy' %}" class="hover:text-[color:var(--color-brand-light)] transition-colors">Support Policy</a></li>
+          <li><a href="{% url 'core:terms_conditions' %}" class="hover:text-[color:var(--color-brand-light)] transition-colors">Terms & Conditions</a></li>
+          <li><a href="{% url 'core:privacy_policy' %}" class="hover:text-[color:var(--color-brand-light)] transition-colors">Privacy Policy</a></li>
         </ul>
       </div>
 
@@ -45,9 +46,9 @@
       <div class="space-y-3">
         <h3 class="font-semibold text-[color:var(--color-font-main)]">Other Policies</h3>
         <ul class="space-y-1">
-          <li><a href="{% url 'core:affiliate_policy' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Affiliate/Ads</a></li>
-          <li><a href="{% url 'core:ai_writing_policy' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">AI Policy</a></li>
-          <li><a href="{% url 'core:cookie_policy' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Cookie Policy</a></li>
+          <li><a href="{% url 'core:affiliate_policy' %}" class="hover:text-[color:var(--color-brand-light)] transition-colors">Affiliate/Ads</a></li>
+          <li><a href="{% url 'core:ai_writing_policy' %}" class="hover:text-[color:var(--color-brand-light)] transition-colors">AI Policy</a></li>
+          <li><a href="{% url 'core:cookie_policy' %}" class="hover:text-[color:var(--color-brand-light)] transition-colors">Cookie Policy</a></li>
         </ul>
       </div>
     </div>
@@ -57,7 +58,7 @@
 
     <!-- Bottom Copyright -->
     <div class="text-center text-sm text-[color:var(--color-font-main)]">
-      &copy; 2025 Djangify. Digital Marketing Specialist. All rights reserved.
+      &copy; 2025 Djangify. <a href="/">Digital Business Guides. </a> All rights reserved.
     </div>
 
   </div>

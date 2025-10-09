@@ -8,9 +8,9 @@
     <!-- Left Column -->
     <div class="2xl:max-w-screen-2xl 2xl:mx-auto flex flex-col gap-y-5 lg:gap-y-12 xl:self-center xl:gap-y-24">
       <div class="space-y-2 lg:space-y-4">
-        <h6 class="text-sm pl-6 uppercase relative before:content-[''] before:absolute before:h-1 before:w-4 before:bg-[color:var(--color-brand-accent)] before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg text-[color:var(--color-font-main)]">
+        {% comment %} <h6 class="text-sm pl-6 uppercase relative before:content-[''] before:absolute before:h-1 before:w-4 before:bg-[color:var(--color-brand-accent)] before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg text-[color:var(--color-font-main)]">
           Practical Digital Guides
-        </h6>
+        </h6> {% endcomment %}
         <h1 class="text-4xl font-semibold lg:text-7xl text-[color:var(--color-brand-primary)]">
           For creative entrepreneurs getting started online
         </h1>
@@ -19,20 +19,17 @@
 
     <!-- Right Column -->
     <div class="flex flex-col justify-center">
-      <p class="lg:text-lg mt-8 mb-8 text-[color:var(--color-font-main)] leading-relaxed">
-        Djangify creates simple, actionable digital guides that help creators and entrepreneurs build an online presence with clarity and confidence. Every product focuses on what matters most — turning ideas into income through practical systems and repeatable steps.
-      </p>
+      
+        <!-- Image -->
+    <figure class="hero-image">
+      <img
+        src="{% static 'images/hero-img.png' %}"
+        alt="AI search readiness for modern websites"
+        class="max-w-full h-auto"
+        loading="eager"
+      />
+    </figure>
 
-      <div class="flex gap-5">
-        <a href="/shop/"
-          class="uppercase bg-[color:var(--color-brand-primary)] text-[color:var(--color-brand-light)] border border-[color:var(--color-brand-primary)] px-6 py-3 rounded-md hover:bg-[color:var(--color-brand-accent)] transition-colors">
-          Visit the Shop
-        </a>
-        <a href="/#contact"
-          class="uppercase bg-[color:var(--color-brand-accent)] text-[color:var(--color-brand-light)] border border-[color:var(--color-brand-accent)] px-6 py-3 rounded-md hover:bg-[color:var(--color-brand-secondary)] transition-colors">
-          Work With Me
-        </a>
-      </div>
     </div>
   </div>
 </section>

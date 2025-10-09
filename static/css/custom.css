@@ -42,171 +42,42 @@
   object-fit: contain;
 }
 
-/* Dashboard resource/product images */
-.resource-image {
-  width: 100%;
-  height: 180px;
-  /* smaller than shop */
-  object-fit: contain;
-  background: #fafafa;
-  padding: 0.5rem;
-}
-
-.resources-grid img {
-  width: 100%;
-  height: auto;
-  max-height: 220px;
-  /* cap size */
-  object-fit: contain;
-  background: #fafafa;
-  border-radius: 0.5rem;
-}
-
-/* Account status text colours */
-.status-active {
-  color: hsl(var(--color-green)) !important;
-  /* teal tone */
-  font-weight: 700;
-}
-
-.status-unverified {
-  color: hsl(var(--color-yellow)) !important;
-  /* golden/brown tone */
-  font-weight: 900;
-}
-
-/* Free resources grid — 1 → 2 → 3 columns */
-.resources-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  /* mobile: single column */
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-@media (min-width: 640px) {
-  .resources-grid {
-    grid-template-columns: repeat(2, 1fr);
-    /* tablets: 2 columns */
-  }
-}
-
-@media (min-width: 1024px) {
-  .resources-grid {
-    grid-template-columns: repeat(3, 1fr);
-    /* desktop: 3 columns */
-  }
-}
-
-.wishlist-card img {
-  width: 100%;
-  height: auto;
-  max-height: 200px;
-  object-fit: contain;
-}
-
-/* Fix download icon size */
-.download-icon {
-  width: 14px;
-  /* or 12px if you want even smaller */
-  height: 14px;
-  stroke: hsl(var(--color-accent));
-  margin-right: 0.4rem;
-  flex-shrink: 0;
-  /* stops it stretching */
-}
-
-/* Blog-specific tweaks */
-.blogformat {
-  padding-left: 2rem;
-  /* more left padding */
-}
-
-.blogformat a {
-  color: hsl(var(--color-accent));
-  font-weight: 500;
-
-}
-
-.blogformat a:hover {
-  color: hsl(var(--color-text));
-}
-
-.blogformat img {
-  display: block;
-  margin: 2rem auto;
-  max-width: 100%;
-  border-radius: 0.5rem;
-}
-
-.blogformat iframe {
-  max-width: 100%;
-  border-radius: 0.75rem;
-  /* match cards */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Blog hero media (image or video) */
-.blogformat .hero-media {
-  max-width: 1000px;
-  /* larger, but still within the card */
+/* === NEWS DETAIL PAGE MEDIA === */
+.newsformat .hero-media {
+  max-width: 900px;
+  /* slightly smaller for better balance */
   margin: 0 auto 2rem auto;
-  /* center + spacing below */
+  /* centered with spacing */
   border-radius: 0.75rem;
   overflow: hidden;
 }
 
 /* Responsive YouTube video wrapper */
-.blogformat .hero-video-wrapper {
+.newsformat .hero-video-wrapper {
   position: relative;
   padding-top: 56.25%;
   /* 16:9 aspect ratio */
+  overflow: hidden;
+  border-radius: 0.75rem;
 }
 
-.blogformat .hero-video-wrapper iframe {
+.newsformat .hero-video-wrapper iframe {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  border: none;
   border-radius: 0.75rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-.blogformat .btn-secondary {
-  width: auto;
-  /* stop it filling container */
-  padding: 0.5rem 0.9rem;
-  /* shrink padding */
-  font-size: 0.9rem;
-}
-
-.blogformat a.download-btn {
-  display: inline-flex;
-  width: auto;
-  padding: 0.4rem 0.8rem;
-  /* smaller */
-  font-size: 0.9rem;
-  border-radius: 0.375rem;
-  background: hsl(var(--color-accent) / 0.1);
-  color: hsl(var(--color-accent));
-  font-weight: 600;
-}
-
-/* Constrain the download box inside blog posts */
-.blogformat .download-box {
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background: hsl(var(--color-primary) / 0.1);
-  border: 1px solid hsl(var(--color-accent) / 0.3);
-  border-radius: 0.5rem;
-
-  display: flex;
-  flex-direction: column;
-  /* stack heading, text, button */
-  align-items: center;
-  /* center horizontally */
-  text-align: center;
-  /* center text */
+/* Slightly smaller hero images */
+.newsformat img.hero-image {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }

@@ -1,89 +1,108 @@
 {% extends "base.html" %}
 {% load widget_tweaks %}
+
 {% block content %}
+<section class="w-full bg-[color:var(--color-brand-light)] py-12">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col gap-10 lg:flex-row lg:gap-x-16 xl:gap-x-20">
 
+    <div class="flex-1 flex flex-col gap-y-12">
+      <!-- Header -->
+      <div class="text-center lg:text-left">
+        <h1 class="text-3xl font-bold text-[color:var(--color-brand-primary)] mb-4">
+          Support Center
+        </h1>
+        <p class="text-xl text-[color:var(--color-font-main)]/80">
+          Need help? I am here to assist you.
+        </p>
+      </div>
 
+      <!-- Contact Info -->
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-lg border border-[color:var(--color-brand-accent)]/40 shadow-sm p-6">
+          <h2 class="text-xl font-semibold text-[color:var(--color-brand-primary)] mb-4">Get in Touch</h2>
+          <div class="space-y-3 text-[color:var(--color-font-main)]/80">
+            <p><strong>Email:</strong> djangify@djangify.com</p>
+            <p><strong>Response Time:</strong> Within 48 hours (weekdays)</p>
+            <p><strong>Support Hours:</strong> Monday – Friday, 9AM – 4PM GMT</p>
+          </div>
+        </div>
 
-<section class="flex flex-col mt-8 gap-10 lg:flex-row lg:*:basis-full lg:gap-x-24 xl:gap-x-12 2xl:max-w-screen-2xl 2xl:mx-auto">
-  <div class="flex flex-col gap-y-5 lg:gap-y-12 xl:self-center xl:gap-y-24">
-    <div class="space-y-2 lg:space-y-4">
-      <h1 class="text-3xl font-semibold text-gray-900 mb-4">Support Center</h1>
-      <p class="text-xl text-gray-600">Need help? I am here to assist you.</p>
-    </div>
+        <div class="bg-white rounded-lg border border-[color:var(--color-brand-accent)]/40 shadow-sm p-6">
+          <h2 class="text-xl font-semibold text-[color:var(--color-brand-primary)] mb-4">What I Can Help With</h2>
+          <ul class="list-disc pl-5 space-y-2 text-[color:var(--color-font-main)]/80">
+            <li>Account and billing questions</li>
+            <li>Issues with downloads</li>
+            <li>Anything related to your product</li>
+            <li>Technical problems</li>
+            <li>Product orders</li>
+          </ul>
+        </div>
+      </div>
 
-  <!-- Contact Information -->
-  <div class="grid md:grid-cols-2 gap-8 mb-12">
-    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-      <h2 class="text-xl font-semibold text-gray-900 mb-4">Get in Touch</h2>
-      <div class="space-y-3 text-gray-600">
-        <p><strong>Email:</strong> djangify@djangify.com</p>
-        <p><strong>Response Time:</strong> Within 48 hours (week days)</p>
-        <p><strong>Support Hours:</strong> Monday - Friday, 9AM - 4PM GMT</p>
+      <!-- Contact Form -->
+      <div class="bg-[color:var(--color-brand-primary)]/5 border border-[color:var(--color-brand-accent)]/40 rounded-xl shadow-sm p-8">
+        <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)] mb-6">
+          Send Me A Message
+        </h2>
+
+        <form method="post" class="space-y-6">
+          {% csrf_token %}
+
+          <div>
+            <label for="id_name" class="block font-medium text-[color:var(--color-font-main)] mb-2">Name *</label>
+            {{ form.name|add_class:"w-full px-4 py-2 border border-[color:var(--color-brand-accent)] rounded-md focus:ring-2 focus:ring-[color:var(--color-brand-secondary)] focus:border-[color:var(--color-brand-secondary)]" }}
+          </div>
+
+          <div>
+            <label for="id_email" class="block font-medium text-[color:var(--color-font-main)] mb-2">Email *</label>
+            {{ form.email|add_class:"w-full px-4 py-2 border border-[color:var(--color-brand-accent)] rounded-md focus:ring-2 focus:ring-[color:var(--color-brand-secondary)] focus:border-[color:var(--color-brand-secondary)]" }}
+          </div>
+
+          <div>
+            <label for="id_subject" class="block font-medium text-[color:var(--color-font-main)] mb-2">Subject *</label>
+            {{ form.subject|add_class:"w-full px-4 py-2 border border-[color:var(--color-brand-accent)] rounded-md focus:ring-2 focus:ring-[color:var(--color-brand-secondary)] focus:border-[color:var(--color-brand-secondary)]" }}
+          </div>
+
+          <div>
+            <label for="id_message" class="block font-medium text-[color:var(--color-font-main)] mb-2">Message *</label>
+            {{ form.message|add_class:"w-full h-40 px-4 py-2 border border-[color:var(--color-brand-accent)] rounded-md focus:ring-2 focus:ring-[color:var(--color-brand-secondary)] focus:border-[color:var(--color-brand-secondary)]" }}
+          </div>
+
+          <button type="submit"
+            class="mt-4 px-6 py-3 bg-[color:var(--color-brand-secondary)] text-white font-semibold rounded-lg hover:bg-[color:var(--color-brand-primary)] transition">
+            Send Message
+          </button>
+        </form>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)] mb-6">Common Questions</h2>
+
+        <div class="space-y-6">
+          <div class="bg-white border border-[color:var(--color-brand-accent)]/30 rounded-lg p-6">
+            <h3 class="font-medium text-[color:var(--color-font-main)] mb-2">How do I reset my password?</h3>
+            <p class="text-[color:var(--color-font-main)]/80">
+              Go to the login page and click “Forgot Password” to receive a reset link.
+            </p>
+          </div>
+
+          <div class="bg-white border border-[color:var(--color-brand-accent)]/30 rounded-lg p-6">
+            <h3 class="font-medium text-[color:var(--color-font-main)] mb-2">How do I access my products?</h3>
+            <p class="text-[color:var(--color-font-main)]/80">
+              After logging in, visit your dashboard. There is a button to gain access.
+            </p>
+          </div>
+
+          <div class="bg-white border border-[color:var(--color-brand-accent)]/30 rounded-lg p-6">
+            <h3 class="font-medium text-[color:var(--color-font-main)] mb-2">Can I cancel my appointment?</h3>
+            <p class="text-[color:var(--color-font-main)]/80">
+              Yes, you can cancel appointments from your dashboard or by contacting support.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-      <h2 class="text-xl font-semibold text-gray-900 mb-4">What I Can Help With</h2>
-      <ul class="space-y-2 text-gray-600 list-disc pl-4">
-        <li>Account and billing questions</li>
-        <li>Issues with downloads</li>
-        <li>Anything related to your product</li>
-        <li>Technical problems</li>
-        <li>Product orders </li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Contact Form -->
-  <div class="support-form">
-    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Send Me A Message</h2>
-
-    <form method="post" class="space-y-6">
-  {% csrf_token %}
-
-  <div>
-    <label for="id_name" class="block font-medium text-gray-700 mb-4">Name *</label>
-    {{ form.name|add_class:"w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:border-teal-500" }}
-  </div>
-
-  <div>
-    <label for="id_email" class="block  font-medium text-gray-700 mb-4">Email *</label>
-    {{ form.email|add_class:"w-full h-32 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:border-teal-500" }}
-  </div>
-
-    <div>
-      <label for="id_subject" class="block  font-medium text-gray-700 mb-2">Subject *</label>
-      {{ form.subject|add_class:"w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:border-teal-500" }}
-    </div>
-
-    <div>
-      <label for="id_message" class="block  font-medium text-gray-700 mb-2">Message *</label>
-      {{ form.message|add_class:"w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:border-teal-500" }}
-    </div>
-
-    <div class="inline-block">
-      <button type="submit" class="btn-accent">
-        Send Message
-      </button>
-    </div>
-  </form>
-  </div>
-
-  <!-- FAQ Section -->
-  <div class="mt-12">
-    <h2 class="text-2xl font-semibold text-gray-900">Common Questions</h2>
-      <div class="rounded-lg p-6">
-        <h3 class="font-medium text-gray-900">How do I reset my password?</h3>
-        <p class="text-gray-600">Go to the login page and click "Forgot Password" to receive a reset link.</p>
-      </div>
-      <div class="bg-gray-50 rounded-lg p-6">
-        <h3 class="font-medium text-gray-900">How do I access my products?</h3>
-        <p class="text-gray-600">After logging in, visit your dashboard. There is a button to gain access.</p>
-      </div>
-      <div class="bg-gray-50 rounded-lg p-6">
-        <h3 class="font-medium text-gray-900 mb-2">Can I cancel my appointment?</h3>
-        <p class="text-gray-600">Yes, you can cancel appointments from your dashboard or by contacting support.</p>
-      </div>
   </div>
 </section>
 {% endblock %}

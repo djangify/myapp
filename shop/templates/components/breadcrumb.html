@@ -1,45 +1,35 @@
-<nav class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3 mb-6" aria-label="Breadcrumb">
-    <ol class="flex items-center text-sm text-gray-600 gap-2">
-        <!-- Home -->
-        <li class="flex items-center">
-            <a href="{% url 'core:home' %}" class="text-text hover:text-[color:var(--color-brand-accent)] transition-colors">Home</a>
-            <i class="fa-solid fa-angle-right mx-2 text-gray-400"></i>
-        </li>
+<nav class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 mb-8" aria-label="Breadcrumb">
+  <ol class="flex items-center text-sm text-[color:var(--color-font-main)] gap-2">
 
-        
+    <!-- Home -->
+    <li class="flex items-center">
+      <a href="{% url 'core:home' %}" class="hover:text-[color:var(--color-brand-accent)] transition-colors">Home</a>
+      <i class="fa-solid fa-angle-right mx-2 text-[color:var(--color-brand-accent)]/70"></i>
+    </li>
 
-        <!-- Shop -->
-        {% if product %}
-            <li class="flex items-center">
-                <a href="{% url 'core:home' %}" class="text-text hover:text-[color:var(--color-brand-accent)] transition-colors">Shop</a>
-                <i class="fa-solid fa-angle-right mx-2 text-gray-400"></i>
-            </li>
-            <li class="text-[color:var(--color-brand-accent)] font-medium">{{ product.title|truncatechars:40 }}</li>
-        {% endif %}
+    <!-- Shop -->
+    <li class="flex items-center">
+      <a href="{% url 'core:home' %}#shop" class="hover:text-[color:var(--color-brand-accent)] transition-colors">Shop</a>
+      {% if product.category %}
+      <i class="fa-solid fa-angle-right mx-2 text-[color:var(--color-brand-accent)]/70"></i>
+      {% endif %}
+    </li>
 
-        <!-- Blog/News -->
-        {% if post %}
-            {% if post.category %}
-                <li class="flex items-center">
-                    <a href="{% url 'news:category' post.category.slug %}" class="text-text hover:text-[color:var(--color-brand-accent)] transition-colors">{{ post.category.name }}</a>
-                    <i class="fa-solid fa-angle-right mx-2 text-gray-400"></i>
-                </li>
-            {% endif %}
-            <li class="text-[color:var(--color-brand-accent)] font-medium">{{ post.title|truncatechars:40 }}</li>
-        {% endif %}
+    <!-- Category -->
+    {% if product.category %}
+    <li class="flex items-center">
+      <a href="{{ product.category.get_absolute_url }}" class="hover:text-[color:var(--color-brand-accent)] transition-colors">
+        {{ product.category.name }}
+      </a>
+      <i class="fa-solid fa-angle-right mx-2 text-[color:var(--color-brand-accent)]/70"></i>
+    </li>
+    {% endif %}
 
-        <!-- Generic breadcrumbs (static pages etc.) -->
-        {% if breadcrumbs %}
-            {% for breadcrumb in breadcrumbs %}
-                {% if not forloop.last %}
-                    <li class="flex items-center">
-                        <a href="{{ breadcrumb.url }}" class="text-text hover:text-[color:var(--color-brand-accent)] transition-colors">{{ breadcrumb.title }}</a>
-                        <i class="fa-solid fa-angle-right mx-2 text-gray-400"></i>
-                    </li>
-                {% else %}
-                    <li class="text-gray-700 font-medium">{{ breadcrumb.title }}</li>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    </ol>
+    <!-- Current Product -->
+    {% if product %}
+    <li class="text-[color:var(--color-brand-accent)] font-semibold">
+      {{ product.title|truncatechars:50 }}
+    </li>
+    {% endif %}
+  </ol>
 </nav>
