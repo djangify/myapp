@@ -116,11 +116,18 @@ def handler404(request, exception):
 def robots_txt(request):
     lines = [
         "User-agent: *",
-        "Disallow: /sitemap.xml",
-        "Disallow: /",  #  block everything
-        # If you want to exclude accounts only (when re-enabled later):
-        # "Disallow: /accounts/",
-        # f"Sitemap: {request.build_absolute_uri('/sitemap.xml')}",
+        # Block sensitive areas
+        "Disallow: /accounts/",
+        "Disallow: /admin/",
+        "Disallow: /login/",
+        "Disallow: /logout/",
+        "Disallow: /register/",
+        "Disallow: /dashboard/",
+        "Disallow: /cart/",
+        "Disallow: /checkout/",
+        # Allow everything else
+        "Disallow: /portfolio/",
+        f"Sitemap: {request.build_absolute_uri('/sitemap.xml')}",
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
 
