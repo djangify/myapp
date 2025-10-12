@@ -1,0 +1,254 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Why Every Small Business Needs a Tech VA (Technical Virtual Assistant){% endblock %}
+
+{% block open_graph_tags %}
+  <meta property="og:title" content="Why Every Small Business Needs a Tech VA" />
+  <meta property="og:description" content="Discover how a Tech VA (Technical Virtual Assistant) helps small businesses get AI-search ready, save time, and simplify their digital stack." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}/static/images/tech-va-hero.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Why Every Small Business Needs a Tech VA">
+  <meta name="twitter:description" content="Discover how a Tech VA (Technical Virtual Assistant) helps small businesses get AI-search ready, save time, and simplify their digital stack.">
+  <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}/static/images/tech-va.jpg">
+{% endblock %}
+
+
+{% block content %}
+<div class="pageformat">
+
+  <!-- Header -->
+  <header>
+    <h1 class="leading-normal">Why Every Small Business Needs a Tech VA</h1>
+    <p>
+      A Tech VA (Technical Virtual Assistant) helps you simplify, streamline, and scale your business by taking care of the technical tasks that slow you down. From creating cluster pages to adding FAQ snippets, a Tech VA ensures your website is <strong>AI-search ready</strong> so customers actually find you.
+    </p>
+  </header>
+    <!-- What is a Tech VA -->
+    <div class="intro-grid mt-16">
+      <div>
+        <h2>What Does a Tech VA Do?</h2>
+        <ul class="list-disc ml-6">
+          <li>Set up and clean up websites (fix broken links, improve performance).</li>
+          <li>Create cluster pages and organise your content for AI search.</li>
+          <li>Add FAQ snippets and schema markup to boost visibility.</li>
+          <li>Manage your digital stack: tools, integrations, and automations.</li>
+          <li>Provide DIY resources (checklists, guides) or done-for-you services.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Why Hire a Tech VA?</h3>
+        <p>
+          Because time is money. Instead of wrestling with code or plugins, you get to focus on clients and growth while your site gets optimised for today’s AI-driven search landscape.
+        </p>
+      </div>
+    </div>
+
+  <!-- How a Tech VA helps STEPS -->
+  <section>
+    <h2 class="leading-normal">How a Tech VA Helps You Get AI-Search Ready</h2>
+    <div class="responsive-grid">
+      <a href="/news/is-a-tech-va-right-for-your-business/" class="shop-category">
+        <div>Step 1</div>
+        <h3>Is a Tech VA Right for Your Business?</h3>
+        <p>Understand what a Tech VA does and how to decide if you need one.</p>
+      </a>
+      <a href="/news/signs-your-business-needs-a-tech-va/" class="shop-category">
+        <div>Step 2</div>
+        <h3>6 Signs You Need a Tech VA</h3>
+        <p>Spot the red flags that mean it’s time to delegate your tech tasks.</p>
+      </a>
+      <a href="/news/the-true-cost-of-diy-online-marketing-solutions/" class="shop-category">
+        <div>Step 3</div>
+        <h3>The True Cost of DIY</h3>
+        <p>Why doing everything yourself often costs more than hiring help.</p>
+      </a>
+      <a href="/news/managing-your-digital-stack/" class="shop-category">
+        <div>Step 4</div>
+        <h3>Managing Your Digital Stack</h3>
+        <p>Get control of your tools and integrations with a Tech VA’s support.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Quick Answers -->
+  <section class="mt-16">
+    <h2>Quick Answers About Tech VAs</h2>
+    <div class="space-y-6 ">
+      <div>
+        <h3>What is a Tech VA?</h3>
+        <p>A Tech VA, short for <strong>Technical Virtual Assistant</strong>, handles the technical side of your business — websites, tools, integrations, and AI-search readiness tasks.</p>
+      </div>
+      <div>
+        <h3>What tasks can I delegate?</h3>
+        <p>Content organisation, schema markup, FAQ snippets, website fixes, and managing your tools are just a few examples.</p>
+      </div>
+      <div>
+        <h3>Do I need technical knowledge to work with a Tech VA?</h3>
+        <p>Not at all. Your Tech VA takes care of the technical details so you can focus on running your business.</p>
+      </div>
+      <div>
+        <h3>How much does a Tech VA cost?</h3>
+        <p>Prices vary. Some offer DIY PDFs and toolkits (affordable), while done-for-you services cost more but save significant time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Articles -->
+  <section class="mt-16">
+    <h2>Featured Articles</h2>
+    <div class="responsive-grid">
+      <div class="shop-category">
+        <h3><a href="/news/is-a-tech-va-right-for-your-business/">Is a Tech VA Right For Your Business?</a></h3>
+        <p>Explore when and why to bring in a Tech VA to support your growth.</p>
+      </div>
+      <div class="shop-category">
+        <h3><a href="/news/what-work-does-a-tech-va-undertake/">Tasks To Delegate To A Tech VA</a></h3>
+        <p>Here are some of the many tasks you can delegate to a technical virtual assistant.</p>
+      </div>
+      <div class="shop-category">
+        <h3><a href="/news/how-a-tech-va-can-help-your-business/">How a Tech VA Can Help Your Business</a></h3>
+        <p>A Tech VA is a step up from the traditional virtual assistant.</p>
+      </div>
+      <div class="shop-category">
+        <h3><a href="#">More Articles Coming Soon</a></h3>
+        <p>Check back for more insights on working with a Tech VA.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Download -->
+  <section class="mt-16">
+    <div class="bg-slate-50 border border-indigo-100 rounded-2xl p-6">
+      <h2>Free Download: Tech VA Task Checklist</h2>
+      <p>Not sure what to delegate? Grab this free one-page checklist of common Tech VA tasks that save business owners hours.</p>
+      <div class="mt-4 flex gap-4">
+        <a href="https://djangify.com/media/news/resources/tech-va-checklist.pdf" class="btn-primary">Get the PDF</a>
+        <a href="/shop/" class="btn-secondary">Explore Our Shop</a>
+      </div>
+    </div>
+  </section>
+
+<!-- FAQ -->
+<section id="faq" class="mt-16  *:items-center *:rounded *:p-4">
+  <h2 class="text-2xl font-semibold mb-6">Frequently Asked Questions</h2>
+  <div class="max-w-3xl space-y-4">
+
+    <details class="bg-white rounded-lg shadow-sm p-4">
+      <summary class="font-semibold cursor-pointer">How does a Tech VA help with AI search?</summary>
+      <p class="mt-3 text-gray-700 px-4">
+        A Tech VA helps prepare your website for AI-driven search results by structuring your content in ways
+        search engines can easily understand. This usually means creating cluster pages around your core topics,
+        writing FAQs that mirror real customer questions, and adding schema markup to highlight those answers
+        in search engines. Together, these steps increase your chances of being featured in AI Overviews,
+        rich snippets, and voice search results, giving you more visibility without relying on paid ads.
+      </p>
+    </details>
+
+    <details class="bg-white rounded-lg shadow-sm p-4">
+      <summary class="font-semibold cursor-pointer">Can a Tech VA set up Systeme.io for me?</summary>
+      <p class="mt-3 text-gray-700 px-4">
+        Yes. Many Tech VAs, including Djangify, can set up Systeme.io for you from start to finish. This includes
+        creating sales funnels, connecting payment gateways, and building automated email sequences so you can
+        start selling products or services online without juggling multiple tools. If you’re not confident with
+        tech setup, having a VA handle Systeme.io means you avoid common mistakes and can focus on your business,
+        knowing that your marketing systems are running smoothly in the background.
+      </p>
+    </details>
+
+    <details class="bg-white rounded-lg shadow-sm p-4">
+      <summary class="font-semibold cursor-pointer">What tasks should I delegate to a Tech VA?</summary>
+      <p class="mt-3 text-gray-700 px-4">
+        A Tech VA is most valuable when handling time-consuming but essential tasks that keep your business
+        running. You might delegate website fixes, content organisation, schema markup, and setting up lead
+        capture forms. They can also manage your email tools, integrate services like Calendly or Stripe, and
+        create templates or checklists so you have systems in place. By outsourcing these jobs, you get to stay
+        focused on strategy, sales, and customer relationships instead of worrying about whether your site is
+        technically correct or AI-search ready.
+      </p>
+    </details>
+
+    <details class="bg-white rounded-lg shadow-sm p-4">
+      <summary class="font-semibold cursor-pointer">Do I need to know tech to work with a Tech VA?</summary>
+      <p class="mt-3 text-gray-700 px-4">
+        Not at all. The whole point of hiring a Tech VA is to take technical tasks off your plate so you can
+        concentrate on running your business. A good Tech VA will explain what they’re doing in plain language,
+        set up the tools you need, and give you simple instructions if there’s anything you need to manage
+        yourself. Whether it’s AI search readiness, Systeme.io setup, or general website fixes, they’ll bridge
+        the gap between technology and business so you don’t have to become a tech expert.
+      </p>
+    </details>
+
+  </div>
+
+  <!-- FAQ schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does a Tech VA help with AI search?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Tech VA helps prepare your website for AI-driven search results by structuring your content in ways search engines can easily understand. This usually means creating cluster pages around your core topics, writing FAQs that mirror real customer questions, and adding schema markup to highlight those answers in search engines. Together, these steps increase your chances of being featured in AI Overviews, rich snippets, and voice search results, giving you more visibility without relying on paid ads."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can a Tech VA set up Systeme.io for me?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Many Tech VAs, including Djangify, can set up Systeme.io for you from start to finish. This includes creating sales funnels, connecting payment gateways, and building automated email sequences so you can start selling products or services online without juggling multiple tools. If you’re not confident with tech setup, having a VA handle Systeme.io means you avoid common mistakes and can focus on your business, knowing that your marketing systems are running smoothly in the background."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What tasks should I delegate to a Tech VA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Tech VA is most valuable when handling time-consuming but essential tasks that keep your business running. You might delegate website fixes, content organisation, schema markup, and setting up lead capture forms. They can also manage your email tools, integrate services like Calendly or Stripe, and create templates or checklists so you have systems in place. By outsourcing these jobs, you get to stay focused on strategy, sales, and customer relationships instead of worrying about whether your site is technically correct or AI-search ready."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to know tech to work with a Tech VA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not at all. The whole point of hiring a Tech VA is to take technical tasks off your plate so you can concentrate on running your business. A good Tech VA will explain what they’re doing in plain language, set up the tools you need, and give you simple instructions if there’s anything you need to manage yourself. Whether it’s AI search readiness, Systeme.io setup, or general website fixes, they’ll bridge the gap between technology and business so you don’t have to become a tech expert."
+        }
+      }
+    ]
+  }
+  </script>
+</section>
+
+  <!-- Related Cluster Pages -->
+  <section class="mt-16">
+    <h2 class="text-2xl font-semibold mb-6">Related Cluster Pages</h2>
+    
+    <div class="cluster-grid">
+      <a href="https://djangify.com/tech-va/" class="shop-category">
+        <h3>Tech VA</h3>
+        <p>Support for small businesses to simplify and delegate tech tasks.</p>
+      </a>
+      <a href="https://djangify.com/pdf-creation" class="shop-category">
+        <h3>PDF Creation</h3>
+        <p>Turn your expertise into DIY guides and resources.</p>
+      </a>
+      <a href="https://djangify.com/ai-search-readiness/" class="shop-category">
+        <h3>AI Search Readiness</h3>
+        <p>Prepare your website to perform in AI-driven search.</p>
+      </a>
+      <a href="https://djangify.com/local-business-ai-search/" class="shop-category">
+        <h3>Local Business AI Search</h3>
+        <p>Get your local business found in AI-powered search results.</p>
+      </a>
+    </div>
+  </section>
+</div>
+{% endblock %}

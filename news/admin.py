@@ -58,7 +58,7 @@ class PostAdmin(admin.ModelAdmin):
                     "title",
                     "slug",
                     "category",
-                    # "introduction",  # hidden but kept for future use
+                    "introduction",  # hidden but kept for future use
                     "content",
                     "status",
                     "publish_date",
