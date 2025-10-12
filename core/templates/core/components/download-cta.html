@@ -1,0 +1,39 @@
+{% load static %}
+<!-- Free Download / Product CTA -->
+    <section class="mt-16 mb-12 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-8 bg-[color:var(--color-brand-light)] border border-[color:var(--color-brand-accent)] rounded-2xl p-6 sm:p-8 md:p-10 shadow-sm">
+      <!-- Text Section -->
+      <div class="md:col-span-2 space-y-4">
+        <h2 class="text-2xl md:text-3xl font-semibold text-[color:var(--color-brand-primary)] leading-snug">
+          Free Download: AI Search Readiness Checklist
+        </h2>
+        <p class="text-[color:var(--color-font-main)] md:text-lg">
+          Discover how to make your website AI-ready. This quick-action checklist helps you structure your pages, add FAQs, and use schema so search engines and AI tools recognise your expertise. Ideal for creators, service providers, and small business owners who want more visibility without paid ads.
+        </p>
+        <ul class="list-disc list-inside text-[color:var(--color-font-main)] space-y-1 md:text-base">
+          <li> Identify your 3–5 core topics</li>
+          <li> Build SEO cluster pages that AI can understand</li>
+          <li> Add schema and FAQs for rich results</li>
+          <li> Fix the technical basics that hold sites back</li>
+        </ul>
+        <div class="flex flex-wrap gap-3 pt-3">
+          <a href="/media/public/pdf/ai-search-checklist.pdf"
+            class="inline-flex items-center uppercase border-2 border-[color:var(--color-brand-primary)] bg-[color:var(--color-brand-primary)] text-[color:var(--color-brand-light)] sm:text-sm px-5 py-4 rounded font-semibold hover:bg-[color:var(--color-brand-secondary)] transition">
+            Download The Checklist
+          </a>
+          <a href="{% url 'core:home' %}#latest-products"
+            class="inline-flex items-center px-5 py-4 rounded-md border border-[color:var(--color-brand-accent)] text-[color:var(--color-brand-dark)] bg-[color:var(--color-brand-light)] font-medium hover:bg-[color:var(--color-brand-secondary)] hover:text-[color:var(--color-brand-light)] transition uppercase">
+            Explore Our Shop
+          </a>
+        </div>
+      </div>
+      <!-- Image Preview -->
+      <div class="hero-image-wrapper flex justify-center lg:justify-end mt-8 lg:mt-0">
+        <div class="rounded-xl overflow-hidden border border-[color:var(--color-brand-accent)] bg-[color:var(--color-brand-light)] w-full max-w-[380px] md:max-w-[380px] lg:max-w-[420px] mx-auto">
+          <img src="{% static 'images/creative-solo.webp' %}" 
+              alt="AI Search Readiness Checklist Preview"
+              class="hero-image object-cover w-full h-auto">
+        </div>
+      </div>
+    </div>
+  </section>

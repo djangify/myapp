@@ -1,35 +1,16 @@
 {% load static %}
-
-<!-- Full-width background wrapper -->
-<section class="w-full bg-[color:var(--color-brand-light)]">
-  <!-- Constrained content container -->
-  <div class="flex flex-col gap-10 lg:flex-row lg:*:basis-full lg:gap-x-24 xl:gap-x-12 2xl:max-w-screen-2xl 2xl:mx-auto py-12 px-6 lg:py-20">
-  
-    <!-- Left Column -->
-    <div class="2xl:max-w-screen-2xl 2xl:mx-auto flex flex-col gap-y-5 lg:gap-y-12 xl:self-center xl:gap-y-24">
-      <div class="space-y-2 lg:space-y-4">
-        {% comment %} <h6 class="text-sm pl-6 uppercase relative before:content-[''] before:absolute before:h-1 before:w-4 before:bg-[color:var(--color-brand-accent)] before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg text-[color:var(--color-font-main)]">
-          Practical Digital Guides
-        </h6> {% endcomment %}
-        <h1 class="text-4xl font-semibold lg:text-7xl text-[color:var(--color-brand-primary)]">
-          For creative entrepreneurs getting started online
-        </h1>
-      </div>
-    </div>
-
-    <!-- Right Column -->
-    <div class="flex flex-col justify-center">
-      
-        <!-- Image -->
-    <figure class="hero-image">
-      <img
-        src="{% static 'images/hero-img.png' %}"
-        alt="AI search readiness for modern websites"
-        class="max-w-full h-auto"
-        loading="eager"
-      />
-    </figure>
-
-    </div>
+<section
+  class="relative w-full overflow-hidden bg-cover bg-center"
+  style="background-image: url('{% static "images/hero-bg.webp" %}'); background-position: 50% 70%; background-size: cover;"
+>
+  <div class="relative flex flex-col items-center justify-center text-center py-20 px-6 lg:py-28 max-w-5xl mx-auto z-10">
+    
+    <h1 class=" text-4xl lg:text-5xl font-bold uppercase text-[color:var(--color-brand-primary)] leading-relaxed mb-6">
+      Simple Systems for Selling Online
+    </h1>
+    <p class="text-lg lg:text-xl leading-relaxed font-semibold max-w-3xl">
+      Turn what you create into something that sells.
+      Djangify gives creators and entrepreneurs the tools and digital guides to start, simplify, or improve how they sell online with clear steps that actually work.
+    </p>
   </div>
 </section>

@@ -1,0 +1,85 @@
+{% load static %}
+<!-- About Info and 2 Featured PRODUCTS -->
+  <section class="w-full mt-8 sm:px-4 ">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+        <!-- Text / About Box -->
+        <div class="border-2 border-[color:var(--color-brand-accent)] p-6  flex flex-col justify-center hover:shadow-md transition">
+          <h2 class="text-3xl font-semibold text-[color:var(--color-brand-secondary)] mb-6">
+            From Ideas To Income
+          </h2>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            You have the ideas — Djangify gives you the systems to sell them online.Whether you are starting from scratch or refining what already works, our short digital guides show you exactly how to build, optimise, and grow your online presence. Each resource is built in-house by a developer who believes in keeping things simple.
+          </p>
+           <p class="text-gray-700 leading-relaxed mb-4">
+            Every ebook and system is designed to help you take consistent action, earn sustainably, and stay in control of your digital business.
+          </p>
+        </div>
+        <!-- Featured Products -->
+        {% for product in featured_products|slice:":2" %}
+          <div class="border-2 border-[color:var(--color-brand-accent)] flex flex-col justify-between hover:shadow-md transition overflow-hidden rounded-md">
+            <!-- Image (matches top 4 product aspect ratio) -->
+            <a href="{{ product.get_absolute_url }}" class="block">
+              <figure class="py-4 mx-2 flex items-center justify-center overflow-hidden bg-white rounded-md" style="height:350px;">
+
+                {% if product.get_image_url %}
+                  <img src="{{ product.get_image_url }}" alt="{{ product.title }}" class="object-contain w-full h-full">
+                {% else %}
+                  <img src="{% static 'images/djangify-logo.png' %}" alt="{{ product.title }}" class="object-contain w-full h-full">
+                {% endif %}
+              </figure>
+            </a>
+
+            <!-- Text + Info -->
+            <div class="p-4 flex flex-col flex-grow justify-between text-center">
+              <h3 class="text-lg font-semibold text-[color:var(--color-brand-primary)] mb-2">{{ product.title }}</h3>
+              
+              <p class="text-sm mb-3">
+                {% if product.section_description %}
+                  {{ product.section_description|striptags|truncatechars:120 }}
+                {% elif product.description %}
+                  {{ product.description|striptags|truncatechars:120 }}
+                {% else %}
+                  <span class="text-gray-500 text-sm italic">No description available.</span>
+                {% endif %}
+              </p>
+
+              <!-- Rating -->
+              <div class="text-gray-600 text-sm mb-3">
+                <div class="flex items-center justify-center mt-2 text-yellow-500 space-x-1">
+                  {% if product.average_rating %}
+                    {% for i in "12345"|make_list %}
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path 
+                          d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.562-.954L10 0l2.948 5.956 6.562.954-4.755 4.635 1.123 6.545z"
+                          {% if forloop.counter <= product.average_rating %}
+                            class="fill-current"
+                          {% else %}
+                            class="text-gray-300"
+                          {% endif %}
+                        ></path>
+                      </svg>
+                    {% endfor %}
+                    <span class="text-sm text-gray-600">({{ product.reviews.count }})</span>
+                  {% else %}
+                    <span class="text-gray-500 text-sm italic">No reviews yet</span>
+                  {% endif %}
+                </div>
+              </div>
+
+              <!-- Button -->
+              <a href="{{ product.get_absolute_url }}"
+                class="text-sm uppercase border border-[color:var(--color-brand-secondary)] text-[color:var(--color-brand-secondary)] px-3 py-1.5 rounded hover:bg-[color:var(--color-brand-secondary)] hover:text-[color:var(--color-brand-light)] transition inline-block mx-auto w-auto">
+                View
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+
+        {% if featured_products|length < 2 %}
+        <!-- Empty filler to balance grid when fewer than 2 products -->
+        <div class="hidden lg:block"></div>
+        {% endif %}
+      </div>
+    </div>
+  </section>

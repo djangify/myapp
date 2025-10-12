@@ -4,8 +4,6 @@ from django.urls import include
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import (
     StaticViewSitemap,
-    PortfolioSitemap,
-    TechnologySitemap,
     NewsSitemap,
     NewsCategorySitemap,
     ShopSitemap,
@@ -16,8 +14,6 @@ from django.conf.urls.static import static
 
 sitemaps = {
     "static": StaticViewSitemap,
-    "portfolio": PortfolioSitemap,
-    "technology": TechnologySitemap,
     "blog": NewsSitemap,
     "category": NewsCategorySitemap,
     "shop": ShopSitemap,
@@ -27,7 +23,6 @@ sitemaps = {
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("core.urls", namespace="core")),
-    path("portfolio/", include("portfolio.urls")),
     path("news/", include("news.urls")),
     # path("contact/", include("contact.urls")),
     path("accounts/", include("accounts.urls")),
