@@ -36,7 +36,7 @@
             <li><a href="{% url 'accounts:login' %}" class="hover:text-[color:var(--color-brand-secondary)] text-sm transition-colors">Login</a></li>
           {% endif %}
           {% if request.user.is_authenticated %}
-            <li><a href="{% url 'accounts:logout' %}" class="hover:text-[color:var(--color-brand-secondary)] transition-colors">Logout</a></li>
+            <li><a href="{% url 'accounts:logout' %}" class="text-sm hover:text-[color:var(--color-brand-secondary)] transition-colors">Logout</a></li>
           {% endif %}
         </ul>
       </div>

@@ -1,39 +1,50 @@
 {% load static %}
 <!-- Free Download / Product CTA -->
-    <section class="mt-16 mb-12 px-4 sm:px-6">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-8 bg-[color:var(--color-brand-light)] border border-[color:var(--color-brand-accent)] rounded-2xl p-6 sm:p-8 md:p-10 shadow-sm">
-      <!-- Text Section -->
-      <div class="md:col-span-2 space-y-4">
-        <h2 class="text-2xl md:text-3xl font-semibold text-[color:var(--color-brand-primary)] leading-snug">
-          Free Download: AI Search Readiness Checklist
-        </h2>
-        <p class="text-[color:var(--color-font-main)] md:text-lg">
-          Discover how to make your website AI-ready. This quick-action checklist helps you structure your pages, add FAQs, and use schema so search engines and AI tools recognise your expertise. Ideal for creators, service providers, and small business owners who want more visibility without paid ads.
-        </p>
-        <ul class="list-disc list-inside text-[color:var(--color-font-main)] space-y-1 md:text-base">
-          <li> Identify your 3–5 core topics</li>
-          <li> Build SEO cluster pages that AI can understand</li>
-          <li> Add schema and FAQs for rich results</li>
-          <li> Fix the technical basics that hold sites back</li>
-        </ul>
-        <div class="flex flex-wrap gap-3 pt-3">
-          <a href="/media/public/pdf/ai-search-checklist.pdf"
-            class="inline-flex items-center uppercase border-2 border-[color:var(--color-brand-primary)] bg-[color:var(--color-brand-primary)] text-[color:var(--color-brand-light)] sm:text-sm px-5 py-4 rounded font-semibold hover:bg-[color:var(--color-brand-secondary)] transition">
-            Download The Checklist
-          </a>
-          <a href="{% url 'core:home' %}#latest-products"
-            class="inline-flex items-center px-5 py-4 rounded-md border border-[color:var(--color-brand-accent)] text-[color:var(--color-brand-dark)] bg-[color:var(--color-brand-light)] font-medium hover:bg-[color:var(--color-brand-secondary)] hover:text-[color:var(--color-brand-light)] transition uppercase">
-            Explore Our Shop
-          </a>
-        </div>
-      </div>
-      <!-- Image Preview -->
-      <div class="hero-image-wrapper flex justify-center lg:justify-end mt-8 lg:mt-0">
-        <div class="rounded-xl overflow-hidden border border-[color:var(--color-brand-accent)] bg-[color:var(--color-brand-light)] w-full max-w-[380px] md:max-w-[380px] lg:max-w-[420px] mx-auto">
-          <img src="{% static 'images/creative-solo.webp' %}" 
-              alt="AI Search Readiness Checklist Preview"
-              class="hero-image object-cover w-full h-auto">
-        </div>
+<section class="mt-16 mb-12 px-4 sm:px-6">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-8 bg-[color:var(--color-brand-light)] border border-[color:var(--color-brand-accent)] rounded-2xl p-6 sm:p-8 md:p-10 shadow-sm">
+    
+    <!-- Text Section -->
+    <div class="md:col-span-2 space-y-4">
+      <h2 class="text-2xl md:text-3xl font-semibold text-[color:var(--color-brand-primary)] leading-snug">
+        Free Download: Your First Digital Product Planner
+      </h2>
+      <p class="text-[color:var(--color-font-main)] md:text-lg">
+        Get your idea out of your head and into a plan that sells. This short, practical planner helps you define what your first digital product will be, who it is for, and how you will deliver it — without getting lost in tech or perfection.
+      </p>
+
+      <ul class="list-disc list-inside text-[color:var(--color-font-main)] space-y-1 md:text-base">
+        <li> Identify the real problem your product solves</li>
+        <li> Define your ideal audience and what they want</li>
+        <li> Choose your delivery format and platform</li>
+        <li> Plan your pricing and next steps before you build</li>
+      </ul>
+
+      <div class="flex flex-wrap gap-3 pt-3">
+        <a href="https://djangify.com/media/news/resources/digital-product-planner.pdf"
+        
+          class="inline-flex items-center uppercase border-2 border-[color:var(--color-brand-primary)] bg-[color:var(--color-brand-primary)] text-[color:var(--color-brand-light)] sm:text-sm px-5 py-4 rounded font-semibold hover:bg-[color:var(--color-brand-secondary)] transition">
+          Download The Planner
+        </a>
+        <a href="{% url 'core:home' %}#latest-products"
+          class="inline-flex items-center px-5 py-4 rounded-md border border-[color:var(--color-brand-accent)] text-[color:var(--color-brand-dark)] bg-[color:var(--color-brand-light)] font-medium hover:bg-[color:var(--color-brand-secondary)] hover:text-[color:var(--color-brand-light)] transition uppercase">
+          Explore Our Shop
+        </a>
       </div>
     </div>
-  </section>
+
+    <!-- Image Preview -->
+<div class="flex justify-center lg:justify-end mt-8 lg:mt-0">
+  <!-- mirror product figure + cap width -->
+  <figure class="w-56 sm:w-60 md:w-64 lg:w-60 aspect-[3/4] flex items-center justify-center overflow-hidden rounded-md ">
+    <img
+      src="{% static 'images/digitalproductplanner.png' %}"
+      alt="Your First Digital Product Planner Preview"
+      class="object-contain w-full h-full"
+    />
+  </figure>
+</div>
+
+    
+
+  </div>
+</section>
