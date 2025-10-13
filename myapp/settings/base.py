@@ -26,7 +26,6 @@ INSTALLED_APPS = [
     "contact",
     "core",
     "news",
-    "portfolio",
     "accounts",
     "shop",
     "widget_tweaks",

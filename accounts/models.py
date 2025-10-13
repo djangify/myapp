@@ -12,7 +12,6 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     verified = models.BooleanField(default=False)
     bio = models.TextField(max_length=500, blank=True)
-
     favourite_products = models.ManyToManyField(
         "shop.Product", blank=True, related_name="favorited_by"
     )
