@@ -42,9 +42,9 @@
       <a href="{{ related.get_absolute_url }}" class="group block">
         <div class="h-48 overflow-hidden rounded-lg border border-[color:var(--color-brand-accent)]/30 bg-[color:var(--color-brand-light)] mb-4">
           {% if related.external_image_url %}
-          <img src="{{ related.external_image_url }}" alt="{{ related.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <img src="{{ related.external_image_url }}" alt="image for {{ related.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
           {% elif related.image %}
-          <img src="{{ related.image.url }}" alt="{{ related.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <img src="{{ related.image.url }}" alt="related image for {{ related.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
           {% else %}
           <div class="flex items-center justify-center h-full text-[color:var(--color-brand-accent)]">No Image</div>
           {% endif %}

@@ -44,12 +44,12 @@
         <article class="bg-white rounded-lg border border-[color:var(--color-brand-accent)]/30 shadow-sm hover:shadow-md overflow-hidden flex flex-col transition">
           <a href="{{ post.get_absolute_url }}">
             {% if post.external_image_url %}
-              <img src="{{ post.external_image_url }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
+              <img src="{{ post.external_image_url }}" alt=" image for {{ post.title }}" class="w-full h-48 object-cover">
             {% elif post.get_image_url %}
-              <img src="{{ post.get_image_url }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
+              <img src="{{ post.get_image_url }}" alt="image for {{ post.title }}" class="w-full h-48 object-cover">
             {% elif post.youtube_url %}
               <img src="https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/maxresdefault.jpg"
-                   alt="{{ post.title }}"
+                   alt="video image for {{ post.title }}"
                    class="w-full h-48 object-cover"
                    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/hqdefault.jpg';">
             {% endif %}
@@ -79,9 +79,9 @@
       <article class="bg-white rounded-lg border border-[color:var(--color-brand-accent)]/30 shadow-sm hover:shadow-md overflow-hidden flex flex-col transition">
         <a href="{{ post.get_absolute_url }}">
           {% if post.external_image_url %}
-            <img src="{{ post.external_image_url }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
+            <img src="{{ post.external_image_url }}" alt="image for {{ post.title }}" class="w-full h-48 object-cover">
           {% elif post.get_image_url %}
-            <img src="{{ post.get_image_url }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
+            <img src="{{ post.get_image_url }}" alt="image for {{ post.title }}" class="w-full h-48 object-cover">
           {% elif post.youtube_url %}
             <img src="https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/maxresdefault.jpg"
                  alt="{{ post.title }}"

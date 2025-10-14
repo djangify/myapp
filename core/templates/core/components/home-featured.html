@@ -23,9 +23,9 @@
               <figure class="py-4 mx-2 flex items-center justify-center overflow-hidden bg-white rounded-md" style="height:350px;">
 
                 {% if product.get_image_url %}
-                  <img src="{{ product.get_image_url }}" alt="{{ product.title }}" class="object-contain w-full h-full">
+                  <img src="{{ product.get_image_url }}" alt=Featured product - "{{ product.title }}" class="object-contain w-full h-full">
                 {% else %}
-                  <img src="{% static 'images/djangify-logo.png' %}" alt="{{ product.title }}" class="object-contain w-full h-full">
+                  <img src="{% static 'images/djangify-logo.png' %}" alt="Product image for {{ product.title }}" class="object-contain w-full h-full">
                 {% endif %}
               </figure>
             </a>

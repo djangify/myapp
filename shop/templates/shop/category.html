@@ -24,7 +24,7 @@
         <a href="{{ product.get_absolute_url }}">
           {% if product.get_image_url %}
           <img src="{{ product.get_image_url }}" 
-               alt="{{ product.title }}" 
+               alt="shop category for {{ product.title }}" 
                class="w-full h-56 object-cover">
           {% else %}
           <div class="w-full h-56 bg-[color:var(--color-brand-light)] flex items-center justify-center text-[color:var(--color-brand-accent)]">

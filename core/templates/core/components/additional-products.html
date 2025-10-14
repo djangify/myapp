@@ -12,9 +12,9 @@
           <a href="{{ product.get_absolute_url }}">
             <figure class="mb-4 aspect-[3/4] flex items-center justify-center overflow-hidden rounded-md">
               {% if product.get_image_url %}
-                <img src="{{ product.get_image_url }}" alt="{{ product.title }}" class="object-contain w-full h-full">
+                <img src="{{ product.get_image_url }}" alt=Additional products - "{{ product.title }}" class="object-contain w-full h-full">
               {% else %}
-                <img src="{% static 'images/placeholder.webp' %}" alt="Placeholder" class="object-contain w-full h-full">
+                <img src="{% static 'images/placeholder.webp' %}" alt="Placeholder image" class="object-contain w-full h-full">
               {% endif %}
             </figure>
             <h3 class="text-lg font-semibold text-[color:var(--color-brand-primary)] mb-2">{{ product.title }}</h3>

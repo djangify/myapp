@@ -21,11 +21,11 @@
         </div>
       {% elif post.external_image_url %}
         <div class="hero-media mb-8">
-          <img src="{{ post.external_image_url }}" alt="{{ post.title }}" class="hero-image">
+          <img src="{{ post.external_image_url }}" alt="image for {{ post.title }}" class="hero-image">
         </div>
       {% elif post.image %}
         <div class="hero-media mb-8">
-          <img src="{{ post.image.url }}" alt="{{ post.title }}" class="hero-image">
+          <img src="{{ post.image.url }}" alt="image for {{ post.title }}" class="hero-image">
         </div>
       {% endif %}
 

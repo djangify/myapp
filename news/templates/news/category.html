@@ -23,9 +23,9 @@
         <!-- Image -->
         <div class="w-full h-48 overflow-hidden">
           {% if post.external_image_url %}
-          <img src="{{ post.external_image_url }}" alt="{{ post.title }}" class="w-full h-full object-contain bg-[color:var(--color-brand-light)]">
+          <img src="{{ post.external_image_url }}" alt="Image for {{ post.title }}" class="w-full h-full object-contain bg-[color:var(--color-brand-light)]">
           {% elif post.get_image_url %}
-          <img src="{{ post.get_image_url }}" alt="{{ post.title }}" class="w-full h-full object-cover">
+          <img src="{{ post.get_image_url }}" alt="image for {{ post.title }}" class="w-full h-full object-cover">
           {% elif post.youtube_url %}
           <img src="https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/maxresdefault.jpg"
                alt="{{ post.title }}"

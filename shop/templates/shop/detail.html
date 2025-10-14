@@ -14,7 +14,7 @@
           <img
             id="main-product-image"
             src="{{ product.get_image_url|default:'/static/images/placeholder.png' }}"
-            alt="{{ product.title }}"
+            alt="product detail for {{ product.title }}"
             class="block h-auto w-full max-w-md object-contain mx-auto transition duration-300"
           />
         </div>
@@ -24,7 +24,7 @@
           <img
             src="{{ product.get_image_url|default:'/static/images/placeholder.png' }}"
             data-src="{{ product.get_image_url|default:'/static/images/placeholder.png' }}"
-            alt="{{ product.title }}"
+            alt="product title for {{ product.title }}"
             class="w-20 h-20 object-cover border-2 border-[color:var(--color-brand-primary)] rounded hover:shadow-md cursor-pointer product-thumbnail active-thumbnail"
           />
           {% for img in product.images.all %}

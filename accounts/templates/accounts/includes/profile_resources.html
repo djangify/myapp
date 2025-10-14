@@ -10,7 +10,7 @@
         <!-- Thumbnail -->
         {% if resource.thumbnail %}
           <img src="{{ resource.thumbnail.url }}" 
-               alt="{{ resource.title }}" 
+               alt="Thumbnail for {{ resource.title }}" 
                class="w-full h-52 object-contain bg-[color:var(--color-brand-light)] rounded-t-md">
         {% else %}
           <div class="w-full h-52 flex items-center justify-center bg-[color:var(--color-brand-light)] text-[color:var(--color-brand-accent)]">
