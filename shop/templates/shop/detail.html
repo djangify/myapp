@@ -44,7 +44,7 @@
   "category": "{{ product.category.name }}",
   "brand": {
     "@type": "Brand",
-    "name": "Djangify eCommerce Shop"
+    "name": "Djangify eCommerce"
   },
   {% if product.average_rating %}
   "aggregateRating": {
@@ -279,81 +279,7 @@
     </div>
   </div>
 </div>
-<!-- JSON-LD Schema for Shop Product -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "{{ product.title|escapejs }}",
-  "description": "{{ product.section_description|default:product.description|striptags|truncatechars:160|escapejs }}",
-  "image": [
-    {% if product.get_image_url %}
-      "{{ request.scheme }}://{{ request.get_host }}{{ product.get_image_url }}"
-    {% else %}
-      "{{ request.scheme }}://{{ request.get_host }}{% static 'images/placeholder.webp' %}"
-    {% endif %}
-  ],
-  "sku": "{{ product.public_id|default:product.slug }}",
-  "category": "{{ product.category.name }}",
-  "brand": {
-    "@type": "Brand",
-    "name": "Djangify"
-  },
-  {% if product.average_rating %}
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "{{ product.average_rating|floatformat:1 }}",
-    "reviewCount": "{{ product.total_reviews }}"
-  },
-  {% endif %}
-  "offers": {
-    "@type": "Offer",
-    "url": "{{ request.build_absolute_uri }}",
-    "priceCurrency": "GBP",
-    "price": "{{ product.current_price }}",
-    "priceValidUntil": "{{ product.updated|date:'Y-m-d' }}",
-    "availability": "https://schema.org/{% if product.is_active and not product.is_coming_soon and not product.is_fully_booked %}InStock{% else %}OutOfStock{% endif %}",
-    "itemCondition": "https://schema.org/NewCondition",
-    "shippingDetails": {
-      "@type": "OfferShippingDetails",
-      "shippingRate": {
-        "@type": "MonetaryAmount",
-        "value": "0.00",
-        "currency": "GBP"
-      },
-      "shippingDestination": {
-        "@type": "DefinedRegion",
-        "addressCountry": "GB"
-      },
-      "deliveryTime": {
-        "@type": "ShippingDeliveryTime",
-        "handlingTime": {
-          "@type": "QuantitativeValue",
-          "minValue": 0,
-          "maxValue": 0,
-          "unitCode": "DAY"
-        },
-        "transitTime": {
-          "@type": "QuantitativeValue",
-          "minValue": 0,
-          "maxValue": 0,
-          "unitCode": "DAY"
-        }
-      }
-    },
-    "hasMerchantReturnPolicy": {
-      "@type": "MerchantReturnPolicy",
-      "applicableCountry": "GB",
-      "returnPolicyCategory": "https://schema.org/NoReturnsAccepted",
-      "name": "Digital download – no physical shipping"
-    }
-  },
-  "isAccessoryOrSparePartFor": {
-    "@type": "ProductGroup",
-    "productGroupID": "digital-downloads",
-    "name": "Digital Downloads"
-  }
-}
+
 </script>
 
 <!-- Accordion Script -->

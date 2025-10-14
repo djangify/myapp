@@ -5,7 +5,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
         <!-- Text / About Box -->
         <div class="border-2 border-[color:var(--color-brand-accent)] p-6  flex flex-col justify-center hover:shadow-md transition">
-          <h2 class="text-3xl font-semibold text-[color:var(--color-brand-secondary)] mb-6">
+          <h2 class="text-3xl  text-[color:var(--color-font-main)] mb-6">
             From Ideas To Income
           </h2>
           <p class="text-gray-700 leading-relaxed mb-4">
@@ -32,7 +32,7 @@
 
             <!-- Text + Info -->
             <div class="p-4 flex flex-col flex-grow justify-between text-center">
-              <h3 class="text-lg font-semibold text-[color:var(--color-brand-primary)] mb-2">{{ product.title }}</h3>
+              <h3 class="text-lg  text-[color:var(--color-font-main)] mb-2">{{ product.title }}</h3>
               
               <p class="text-sm mb-3">
                 {% if product.section_description %}
@@ -69,8 +69,8 @@
 
               <!-- Button -->
               <a href="{{ product.get_absolute_url }}"
-                class="text-sm uppercase border border-[color:var(--color-brand-secondary)] text-[color:var(--color-brand-secondary)] px-3 py-1.5 rounded hover:bg-[color:var(--color-brand-secondary)] hover:text-[color:var(--color-brand-light)] transition inline-block mx-auto w-auto">
-                View
+                class="text-sm  border  bg-[color:var(--color-brand-secondary)] font-semibold text-[color:var(--color-font-main)] px-3 py-1.5 rounded hover:bg-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-light)] transition inline-block mx-auto w-auto">
+                See Full Details
               </a>
             </div>
           </div>

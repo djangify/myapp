@@ -1,36 +1,74 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Meta Description -->
-    
-    {% block meta_description %}
-     <meta name="description" content="Djangify helps creators and entrepreneurs build AI-search-ready ecommerce shops, and digital systems using Django. Simple, practical, and ready to grow.">
-    {% endblock %}
-    
+ <head>
+    <!-- Preconnect & Prefetch -->
+  <link rel="preconnect" href="https://www.djangify.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.djangify.com">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="keywords" content="{% block meta_keywords %}digital business guides, online business for beginners, creative entrepreneur resources, printable business planner,small business digital products, start selling digital products{% endblock %}">
+  <!-- Primary Meta Description -->
+  {% block meta_description %}
+  <meta name="description" content="Djangify helps creators and entrepreneurs build AI-search-ready ecommerce shops and digital systems using Django. Simple, practical, and ready to grow.">
+  {% endblock %}
 
-    {% block open_graph_tags %}
-    <meta property="fb:app_id" content="2433552923679047" />
-    <meta property="og:title" content="Your Starter Pack for Building a Digital Business"
-      property="og:description"
-      content="Djangify helps creative entrepreneurs turn their ideas into reliable income by giving them the structure to start, build, and sell online with confidence."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
-    <meta property="og:image" content="{% static 'images/djangify-logo.png' %}" />
-    {% endblock %}
-    
-    <link rel="stylesheet" href="{% static 'dist/output.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    <link rel="icon" type="image/ico" href="{% static 'images/favicon.ico' %}">
-    <title>{% block title %}Digital Business Guides for creativepreneurs, solopreneurs and freelancers{% endblock %}</title>
-    {% block extra_meta %}{% endblock %}
-  </head>
+  <!-- Keywords -->
+  <meta name="keywords" content="{% block meta_keywords %}mini ecommerce shop, mini ecommerce store, AI search ready websites, Django ecommerce, digital product systems, build online shops, ecommerce setup, digital business guides{% endblock %}">
+
+  <!-- Open Graph / Social -->
+  {% block open_graph_tags %}
+  <meta property="og:title" content="Build Your Mini eCommerce Shop with Djangify">
+  <meta property="og:description" content="Djangify helps creators and entrepreneurs build mini ecommerce shops and digital systems using Django. Simple, practical, and ready to grow.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  <meta property="og:image" content="{% static 'images/djangify-logo.png' %}">
+  <meta property="fb:app_id" content="2433552923679047">
+  {% endblock %}
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+  <!-- Stylesheets -->
+  <link rel="preload" as="style" href="{% static 'dist/output.css' %}">
+  <link rel="preload" as="style" href="{% static 'css/custom.css' %}">
+  <link rel="stylesheet" href="{% static 'dist/output.css' %}" media="all" onload="this.onload=null;this.removeAttribute('media');">
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="{% static 'dist/output.css' %}"></noscript>
+  <noscript><link rel="stylesheet" href="{% static 'css/custom.css' %}"></noscript>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/ico" href="{% static 'images/favicon.ico' %}">
+
+  <!-- Page Title -->
+  <title>{% block title %}Mini eCommerce Shops & Digital Systems | Djangify{% endblock %}</title>
+
+  {% block extra_meta %}{% endblock %}
+  <!-- Website JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Djangify",
+    "url": "https://djangify.com/",
+    "description": "Djangify helps creators and entrepreneurs build mini ecommerce shops and digital systems using Django. Simple, practical, and ready to grow.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Djangify",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://djangify.com/static/images/djangify-logo.png"
+      }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://djangify.com/shop/search/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+
   <body>
      {% if messages %}
       <section aria-label="Notifications" role="alert">
@@ -73,11 +111,6 @@
   </div>  
 <!-- Scripts -->
 {% block extra_js %}
-<script src="{% static 'js/app.js' %}" defer></script>
-<script src="{% static 'js/messages.js' %}"defer></script>
-<script src="{% static 'js/category-filter.js' %}" defer></script>
-
- <!-- Cookie Consent Script (show once, then never again) -->
 <!-- Cookie Consent Script (works first time, then gone) -->
 <script>
 (function () {
@@ -130,11 +163,9 @@
   });
 })();
 </script>
-
-
-
-
 {% endblock %}
-
+<script src="{% static 'js/app.js' %}" defer></script>
+<script src="{% static 'js/messages.js' %}"defer></script>
+<script src="{% static 'js/category-filter.js' %}" defer></script>
   </body>
 </html>

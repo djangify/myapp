@@ -10,14 +10,14 @@
 <main class="text-[color:var(--color-font-main)]">
   <!-- Shop Heading -->
   <section class="px-6 md:px-16 py-8 text-center space-y-2">
-  <h1 class="text-3xl md:text-4xl font-semibold text-[color:var(--color-brand-secondary)]">
+  <h1 class="text-3xl md:text-4xl font-semibold text-[color:var(--color-font-main)]">
     Latest Products
   </h1>
 </section>
   <!-- Category Pills -->
   <div id="categories-grid" class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 md:mb-10 uppercase px-4">
     <a href="{% url 'core:home' %}"
-    class="px-4 py-2 rounded-md text-sm font-semibold border border-[color:var(--color-brand-accent)] text-[color:var(--color-brand-dark)] bg-[color:var(--color-brand-light)] hover:bg-[color:var(--color-brand-secondary)] hover:text-[color:var(--color-brand-light)] transition-colors {% if not current_category %}bg-[color:var(--color-brand-secondary)] text-[color:var(--color-brand-dark)] border-[color:var(--color-brand-secondary)]{% endif %}">
+    class="px-4 py-2 rounded-md text-sm font-semibold border border-[color:var(--color-brand-accent)] text-[color:var(--color-brand-dark)] bg-[color:var(--color-brand-light)] hover:bg-[color:var(--color-brand-secondary)] hover:text-[color:var(--color-brand-light)] transition-colors {% if not current_category %}bg-[color:var(--color-brand-accent)] text-[color:var(--color-brand-dark)] font-bold border-[color:var(--color-brand-accent)]{% endif %}">
     All Products
   </a>
     {% for category in categories %}
@@ -42,15 +42,15 @@
                 <img src="{% static 'images/placeholder.webp' %} alt="" aria-hidden="true class="object-contain w-full h-full">
               {% endif %}
             </figure>
-            <h2 class="text-lg font-semibold text-[color:var(--color-brand-primary)] mb-2">{{ product.title }}</h2>
+            <h2 class="text-lg font-semibold text-[color:var(--color-font-main)] mb-2">{{ product.title }}</h2>
           </a>
           <div class="flex justify-between items-center mt-auto">
-            <span class="text-lg font-semibold text-[color:var(--color-brand-accent)]">
+            <span class="text-lg font-semibold text-[color:var(--color-font-main)]">
               £{{ product.current_price }}
             </span>
             <a href="{{ product.get_absolute_url }}"
-              class="text-sm uppercase border border-[color:var(--color-brand-secondary)] text-[color:var(--color-brand-secondary)] px-3 py-1.5 rounded hover:bg-[color:var(--color-brand-secondary)] hover:text-[color:var(--color-brand-light)] transition-colors">
-              View
+              class="text-sm border border-[color:var(--color-brand-secondary)] bg-[color:var(--color-brand-light)] font-semibold text-[color:var(--color-brand-secondary)] px-3 py-1.5 rounded hover:bg-[color:var(--color-brand-secondary)] hover:text-[color:var(--color-brand-light)] transition-colors">
+              View Product
             </a>
           </div>
         </div>

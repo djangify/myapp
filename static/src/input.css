@@ -31,15 +31,6 @@
 }
 
 /* -------------------------------
-   Global Utilities (optional)
----------------------------------- */
-@layer utilities {
-  .fade-transition {
-    @apply transition-opacity duration-[2000ms] ease-in-out;
-  }
-}
-
-/* -------------------------------
    Tailwind v4 Theme Variables
    (Djangify brand colors)
 ---------------------------------- */
@@ -86,3 +77,11 @@
    bg-[--color-brand-accent-contrast]
    hover:text-[--color-font-main]
 */
+/* -------------------------------
+   Global Utilities (optional)
+---------------------------------- */
+@layer utilities {
+  .fade-transition {
+    @apply transition-opacity duration-[2000ms] ease-in-out;
+  }
+}
