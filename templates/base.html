@@ -89,28 +89,37 @@
     {% include 'base/footer.html' %}
 
     
-  <!-- Cookie Consent -->
-  <div id="cookie-banner"
-     role="dialog"
-     aria-modal="true"
-     aria-labelledby="cookie-title"
-     aria-describedby="cookie-description"
-     class="cookie-banner hidden">
-
-    <div class="cookie-container">
-        <h2 id="cookie-title" class="sr-only">Cookie Consent</h2>
-        <div id="cookie-description" class="cookie-text">
-          We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
-          <a href="{% url 'core:cookie_policy' %}" class="cookie-link">Cookie Policy</a>
-        </div>
-      <div class="cookie-actions">
-        <button id="accept-cookies" class="cookie-btn accept">Accept</button>
-        <button id="decline-cookies" class="cookie-btn decline">Decline</button>
-      </div>
+ <!-- Cookie Consent -->
+<div
+  id="cookie-banner"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cookie-title"
+  aria-hidden="true"
+  class="fixed bottom-0 inset-x-0 border-t border-[var(--color-brand-secondary)] bg-[color:var(--color-brand-light)] shadow-md z-50 hidden"
+>
+  <div class="max-w-5xl mx-auto px-6 py-6 text-center">
+    <h2 id="cookie-title" class="sr-only">Cookie Consent</h2>
+    <p class="mb-4">
+      We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
+      <a href="{% url 'core:cookie_policy' %}"
+         class="text-[color:var(--color-brand-secondary)] hover:text-[color:var(--color-brand-dark)] underline ml-1">
+        Cookie Policy
+      </a>
+    </p>
+    <div class="flex justify-center gap-4">
+      <button id="accept-cookies"
+              class="px-4 py-2 bg-[color:var(--color-brand-primary)] text-[color:var(--color-brand-light)] rounded-lg hover:bg-[color:var(--color-brand-dark)] transition">
+        Accept
+      </button>
+      <button id="decline-cookies"
+              class="px-4 py-2 border border-[color:var(--color-brand-accent)] text-[color:var(--color-font-main)] rounded-lg hover:bg-[color:var(--color-brand-secondary)] hover:text-[color:var(--color-brand-light)] transition">
+        Decline
+      </button>
     </div>
-  </div>  
-<!-- Scripts -->
-{% block extra_js %}
+  </div>
+</div>
+
 <!-- Cookie Consent Script (works first time, then gone) -->
 <script>
 (function () {
@@ -163,7 +172,9 @@
   });
 })();
 </script>
-{% endblock %}
+
+
+
 <script src="{% static 'js/app.js' %}" defer></script>
 <script src="{% static 'js/messages.js' %}"defer></script>
 <script src="{% static 'js/category-filter.js' %}" defer></script>
