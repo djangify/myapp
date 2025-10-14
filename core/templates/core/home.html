@@ -39,10 +39,10 @@
               {% if product.get_image_url %}
                 <img src="{{ product.get_image_url }}" alt=Product - "{{ product.title }}" class="object-contain w-full h-full">
               {% else %}
-                <img src="{% static 'images/placeholder.webp' %}" alt="Placeholder image" class="object-contain w-full h-full">
+                <img src="{% static 'images/placeholder.webp' %} alt="" aria-hidden="true class="object-contain w-full h-full">
               {% endif %}
             </figure>
-            <h3 class="text-lg font-semibold text-[color:var(--color-brand-primary)] mb-2">{{ product.title }}</h3>
+            <h2 class="text-lg font-semibold text-[color:var(--color-brand-primary)] mb-2">{{ product.title }}</h2>
           </a>
           <div class="flex justify-between items-center mt-auto">
             <span class="text-lg font-semibold text-[color:var(--color-brand-accent)]">

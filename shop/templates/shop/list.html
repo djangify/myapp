@@ -56,7 +56,7 @@
     <div class="bg-[color:var(--color-brand-light)] border border-[color:var(--color-brand-light)] rounded-xl shadow-sm hover:shadow-lg flex flex-col overflow-hidden transition">
       <a href="{{ product.get_absolute_url }}">
         {% if product.get_image_url %}
-        <img src="{{ product.get_image_url }}" alt="{{ product.title }}"
+        <img src="{{ product.get_image_url }}" alt="product image for {{ product.title }}"
              class="w-full h-[200px] object-contain bg-[color:var(--color-brand-light)] p-4 rounded-t-xl" />
         {% else %}
         <div class="w-full h-[200px] flex items-center justify-center bg-[color:var(--color-brand-light)] text-[color:var(--color-brand-accent)] rounded-t-xl">

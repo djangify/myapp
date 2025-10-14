@@ -1,6 +1,96 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block open_graph_tags %}
+  <meta property="og:title" content="{{ product.meta_title|default:product.title }}" />
+  {% if product.meta_description %}
+    <meta property="og:description" content="{{ product.meta_description|truncatewords:25 }}" />
+  {% else %}
+    <meta property="og:description" content="{{ product.description|truncatewords:25 }}" />
+  {% endif %}
+  <meta property="og:image" content="{{ product.get_image_url|default:'/static/images/placeholder.webp' }}" />
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:type" content="product" />
+
+  <!-- Twitter (X) Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ product.meta_title|default:product.title }}" />
+  {% if product.meta_description %}
+    <meta name="twitter:description" content="{{ product.meta_description|truncatewords:25 }}" />
+  {% else %}
+    <meta name="twitter:description" content="{{ product.description|truncatewords:25 }}" />
+  {% endif %}
+  <meta name="twitter:image" content="{{ product.get_image_url|default:'/static/images/djangify-logo.png' }}" />
+{% endblock %}
+
+{% block extra_head %}
+
+{% endblock %}
+<!-- JSON-LD Schema for Shop Product -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ product.title|escapejs }}",
+  "description": "{{ product.section_description|default:product.description|striptags|truncatechars:160|escapejs }}",
+  "image": [
+    {% if product.get_image_url %}
+      "{{ request.scheme }}://{{ request.get_host }}{{ product.get_image_url }}"
+    {% else %}
+      "{{ request.scheme }}://{{ request.get_host }}{% static 'images/bookgirl.png' %}"
+    {% endif %}
+  ],
+  "sku": "{{ product.public_id|default:product.slug }}",
+  "category": "{{ product.category.name }}",
+  "brand": {
+    "@type": "Brand",
+    "name": "Djangify eCommerce Shop"
+  },
+  {% if product.average_rating %}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ product.average_rating|floatformat:1 }}",
+    "reviewCount": "{{ product.total_reviews }}"
+  },
+  {% endif %}
+  "offers": {
+    "@type": "Offer",
+    "url": "{{ request.build_absolute_uri }}",
+    "priceCurrency": "GBP",
+    "price": "{{ product.current_price }}",
+    "availability": "https://schema.org/{% if product.is_active and not product.is_coming_soon and not product.is_fully_booked %}InStock{% else %}OutOfStock{% endif %}",
+    "itemCondition": "https://schema.org/NewCondition",
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "0.00",
+        "currency": "GBP"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "GB"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY" },
+        "transitTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY" }
+      }
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "GB",
+      "returnPolicyCategory": "https://schema.org/NoReturnsAccepted",
+      "name": "Digital download – no physical shipping"
+    }
+  },
+  "isAccessoryOrSparePartFor": {
+    "@type": "ProductGroup",
+    "productGroupID": "digital-downloads",
+    "name": "Digital Downloads"
+  }
+}
+</script>
 {% block content %}
 <div class="min-h-screen mt-16">
   <div class="container mx-auto px-4 py-12">
@@ -13,7 +103,7 @@
         <div class="relative border border-[color:var(--color-brand-light)] overflow-hidden rounded-lg">
           <img
             id="main-product-image"
-            src="{{ product.get_image_url|default:'/static/images/placeholder.png' }}"
+            src="{{ product.get_image_url|default:'/static/images/placeholder.webp' }}"
             alt="product detail for {{ product.title }}"
             class="block h-auto w-full max-w-md object-contain mx-auto transition duration-300"
           />
@@ -22,8 +112,8 @@
         <!-- Thumbnails -->
         <div class="flex mt-4 gap-4 justify-center">
           <img
-            src="{{ product.get_image_url|default:'/static/images/placeholder.png' }}"
-            data-src="{{ product.get_image_url|default:'/static/images/placeholder.png' }}"
+            src="{{ product.get_image_url|default:'/static/images/placeholder.webp' }}"
+            data-src="{{ product.get_image_url|default:'/static/images/placeholder.webp' }}"
             alt="product title for {{ product.title }}"
             class="w-20 h-20 object-cover border-2 border-[color:var(--color-brand-primary)] rounded hover:shadow-md cursor-pointer product-thumbnail active-thumbnail"
           />
@@ -200,7 +290,7 @@
     {% if product.get_image_url %}
       "{{ request.scheme }}://{{ request.get_host }}{{ product.get_image_url }}"
     {% else %}
-      "{{ request.scheme }}://{{ request.get_host }}{% static 'images/placeholder.png' %}"
+      "{{ request.scheme }}://{{ request.get_host }}{% static 'images/placeholder.webp' %}"
     {% endif %}
   ],
   "sku": "{{ product.public_id|default:product.slug }}",

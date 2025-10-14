@@ -6,7 +6,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Meta Description -->
-    <meta name="description" content="{% block meta_description %}Digital Business Guides for creativepreneurs{% endblock %}">
+    
+    {% block meta_description %}
+     <meta name="description" content="Djangify helps creators and entrepreneurs build AI-search-ready ecommerce shops, and digital systems using Django. Simple, practical, and ready to grow.">
+    {% endblock %}
     
 
     <meta name="keywords" content="{% block meta_keywords %}digital business guides, online business for beginners, creative entrepreneur resources, printable business planner,small business digital products, start selling digital products{% endblock %}">
@@ -48,20 +51,26 @@
     {% include 'base/footer.html' %}
 
     
-    <!-- Cookie Consent -->
-   <aside id="cookie-banner" class="cookie-banner hidden" role="dialog" aria-labelledby="cookie-title">
+  <!-- Cookie Consent -->
+  <div id="cookie-banner"
+     role="dialog"
+     aria-modal="true"
+     aria-labelledby="cookie-title"
+     aria-describedby="cookie-description"
+     class="cookie-banner hidden">
+
     <div class="cookie-container">
-      <div class="cookie-text">
         <h2 id="cookie-title" class="sr-only">Cookie Consent</h2>
-        We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. 
-        <a href="{% url 'core:cookie_policy' %}" class="cookie-link">Cookie Policy</a>
-      </div>
+        <div id="cookie-description" class="cookie-text">
+          We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
+          <a href="{% url 'core:cookie_policy' %}" class="cookie-link">Cookie Policy</a>
+        </div>
       <div class="cookie-actions">
         <button id="accept-cookies" class="cookie-btn accept">Accept</button>
         <button id="decline-cookies" class="cookie-btn decline">Decline</button>
       </div>
     </div>
-  </aside>  
+  </div>  
 <!-- Scripts -->
 {% block extra_js %}
 <script src="{% static 'js/app.js' %}" defer></script>

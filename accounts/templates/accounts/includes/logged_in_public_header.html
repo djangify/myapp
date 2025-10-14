@@ -30,9 +30,14 @@
 
       <!-- User Dropdown -->
       <div class="relative">
-        <button id="user-menu-button" 
-                type="button" 
-                class="flex items-center gap-1 text-[color:var(--color-font-main)] hover:text-[color:var(--color-brand-secondary)] transition">
+        <button
+          id="user-menu-button"
+          type="button"
+          aria-label="Toggle user menu"
+          aria-expanded="false"
+          aria-controls="user-dropdown"
+          class="flex items-center gap-1 text-[color:var(--color-font-main)] hover:text-[color:var(--color-brand-secondary)] transition"
+        >
           <span class="font-medium mr-1 hidden sm:inline">MENU</span>
           <svg xmlns="http://www.w3.org/2000/svg"
                class="chevron-icon w-4 h-4 transition-transform duration-200"
@@ -76,14 +81,15 @@
   const button = document.getElementById("user-menu-button");
   const chevron = button.querySelector(".chevron-icon");
 
+
   button.addEventListener("click", (e) => {
     e.stopPropagation();
-    const isHidden = dropdown.classList.contains("hidden");
+    const expanded = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", !expanded);
     dropdown.classList.toggle("hidden");
-    dropdown.style.display = isHidden ? "block" : "none";
+    dropdown.style.display = expanded ? "none" : "block";
     chevron.classList.toggle("rotate-180");
   });
-
   document.addEventListener("click", (event) => {
     if (!dropdown.contains(event.target) && !button.contains(event.target)) {
       dropdown.classList.add("hidden");

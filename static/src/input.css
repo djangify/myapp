@@ -45,21 +45,34 @@
 ---------------------------------- */
 @theme {
   /* Core brand palette */
-  --color-brand-primary: ;
+  --color-brand-primary: #227c81;
+  --color-brand-primary-contrast: #124345;
+
   --color-brand-secondary: #c9a37a;
+  --color-brand-secondary-contrast: #8c693f;
+
   --color-brand-accent: #9ba3b4;
+  --color-brand-accent-contrast: #49546b;
+
   --color-brand-dark: #475569;
+  --color-brand-dark-contrast: #1e293b;
+
   --color-brand-light: #f8fafc;
+  --color-brand-light-contrast: #e2e8f0;
 
   /* Font */
   --color-font-main: #2b2b2b;
-  /* primary text */
+  --color-font-contrast: #1a1a1a;
+
+  /* Background options */
+  --color-bg-default: #ffffff;
+  --color-bg-contrast: #f1f5f9;
 
   /* Extended palette for badges and alerts */
   --color-badge-rose: #fecdd3;
   /* light rose */
   --color-badge-mint: #bbf7d0;
-  /* mint green (optional contrast) */
+  /* mint green */
   --color-badge-yellow: #fef9c3;
   /* soft yellow */
   --color-badge-red-light: #fee2e2;
@@ -69,7 +82,7 @@
 }
 
 /* Example usage:
-   bg-[color:var(--color-primary)]
-   text-[color:var(--color-text)]
-   hover:bg-[color:var(--color-secondary)]
+   text-[--color-brand-primary-contrast]
+   bg-[--color-brand-accent-contrast]
+   hover:text-[--color-font-main]
 */
