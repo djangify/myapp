@@ -30,6 +30,45 @@
   }
 }
 
+@layer components {
+
+  /* Typography styling similar to Tailwind Typography plugin */
+  .prose {
+    @apply max-w-none text-[color:var(--color-font-main)] leading-relaxed;
+  }
+
+  .prose p {
+    @apply mb-4 text-lg;
+  }
+
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    @apply mt-6 mb-2 font-semibold text-[color:var(--color-brand-dark)];
+  }
+
+  .prose ul {
+    @apply list-disc list-inside mb-4 ml-4;
+  }
+
+  .prose ol {
+    @apply list-decimal list-inside mb-4 ml-4;
+  }
+
+  .prose li {
+    @apply mb-1;
+  }
+
+  .prose strong {
+    @apply font-semibold text-[color:var(--color-brand-dark)];
+  }
+
+  .prose a {
+    @apply text-[color:var(--color-brand-accent)] underline hover:text-[color:var(--color-brand-secondary)];
+  }
+}
+
+
 /* -------------------------------
    Tailwind v4 Theme Variables
    (Djangify brand colors)
