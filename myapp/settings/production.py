@@ -8,7 +8,6 @@ ALLOWED_HOSTS = [
     "djangify.corrisonapi.com",
     "djangify.com",
     "www.djangify.com",
-    "news.djangify.com",
     "tracker.djangify.com",
     ".djangify.com",
     "65.108.89.200",
@@ -20,7 +19,6 @@ ALLOWED_HOSTS = [
 
 # CSRF Configuration
 CSRF_TRUSTED_ORIGINS = [
-    "https://djangify.corrisonapi.com",
     "https://djangify.com",
     "https://www.djangify.com",
     "https://65.108.89.200",
@@ -72,3 +70,62 @@ ADMINS = [
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 SITE_URL = env("SITE_URL", default="https://www.djangify.com")
+
+# Logging configuration
+LOG_DIR = os.path.join(BASE_DIR, "logs")
+os.makedirs(LOG_DIR, exist_ok=True)
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "[{asctime}] {levelname} {name} ({lineno}) — {message}",
+            "style": "{",
+        },
+        "simple": {
+            "format": "{levelname} {message}",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        # Write all warnings and errors to file
+        "file": {
+            "level": "WARNING",
+            "class": "logging.FileHandler",
+            "filename": os.path.join(LOG_DIR, "django.log"),
+            "formatter": "verbose",
+        },
+        # Email admins on errors
+        "mail_admins": {
+            "level": "ERROR",
+            "class": "django.utils.log.AdminEmailHandler",
+            "include_html": True,
+        },
+        # Optional: log to console during development
+        "console": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+        },
+    },
+    "loggers": {
+        # Django core
+        "django": {
+            "handlers": ["file", "mail_admins"],
+            "level": "WARNING",
+            "propagate": True,
+        },
+        # Log database queries or silent fails if needed
+        "django.db.backends": {
+            "handlers": ["file"],
+            "level": "ERROR",  # Change to DEBUG if you want all queries logged
+            "propagate": False,
+        },
+        # Your own apps
+        "core": {"handlers": ["file"], "level": "INFO", "propagate": True},
+        "shop": {"handlers": ["file"], "level": "INFO", "propagate": True},
+        "accounts": {"handlers": ["file"], "level": "INFO", "propagate": True},
+        "news": {"handlers": ["file"], "level": "INFO", "propagate": True},
+    },
+}
