@@ -37,8 +37,6 @@
   <noscript><link rel="stylesheet" href="{% static 'dist/output.css' %}"></noscript>
   <noscript><link rel="stylesheet" href="{% static 'css/custom.css' %}"></noscript>
 
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-VX1TqVZJd8+NczRjv6jIl1xO5AfhmQq2A1K13Qn1JXgH3rZyFl4YfG6mMyF4sEohw4oC3E+i0W7u7lAFxxz+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
     
   <!-- Favicon -->
   <link rel="icon" type="image/ico" href="{% static 'images/favicon.ico' %}">
@@ -82,14 +80,14 @@
     {% if request.user.is_authenticated %}
       {% include "accounts/includes/logged_in_public_header.html" %}
     {% else %}
-      {% include "base/navbar.html" %}
+      {% include "includes/navbar.html" %}
     {% endif %}
 
 
     {% block content %}
     {% endblock %}
 
-    {% include 'base/footer.html' %}
+    {% include "includes/footer.html" %}
 
     
  <!-- Cookie Consent -->
@@ -180,6 +178,6 @@
 
 <script src="{% static 'js/app.js' %}" defer></script>
 <script src="{% static 'js/messages.js' %}"defer></script>
-<script src="{% static 'js/category-filter.js' %}" defer></script>
+
   </body>
 </html>

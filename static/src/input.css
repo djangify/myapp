@@ -124,3 +124,41 @@
     @apply transition-opacity duration-[2000ms] ease-in-out;
   }
 }
+
+/* -------------------------------
+   Global Bullet Alignment Fix
+---------------------------------- */
+ul,
+ol {
+  list-style-position: outside !important;
+  padding-left: 1.5rem !important;
+  /* ensures space for bullets */
+}
+
+li {
+  text-indent: 0 !important;
+  /* prevents wrapped text indent */
+  margin-bottom: 0.25rem;
+}
+
+.prose ul,
+.prose ol {
+  list-style-position: outside !important;
+  padding-left: 1.5rem !important;
+  margin-bottom: 1rem;
+}
+
+.prose li {
+  margin-bottom: 0.25rem;
+  color: var(--color-font-main);
+}
+
+/* Fix misaligned bullets inside centered text blocks */
+.text-center ul,
+.text-center ol {
+  text-align: left !important;
+  margin-left: auto;
+  margin-right: auto;
+  list-style-position: outside;
+  padding-left: 1.5rem;
+}

@@ -1,43 +1,60 @@
- <!-- Latest Blog Posts Section -->
-  {% load static %}
-  {% load video_tags %}
-  <section class="w-full bg-white py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <a href="{% url 'news:list' %}" class="hover:text-teal-800">
-      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-teal-700 mb-4 text-center">
-      Personal Development Blog
+{% load static %}
+{% load video_tags %}
+
+<!-- Latest Blog Posts Section -->
+<section class="w-full py-8">
+  <div class="max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+    <!-- Blog Section Title and Intro -->
+    <a href="{% url 'news:list' %}" class="hover:text-[--color-brand-secondary] transition-colors">
+      <h2 class="text-3xl sm:text-4xl lg:text-4xl font-semibold tracking-tight text-[--color-brand-primary] mb-2">
+        {{ homepage_settings.blog_section_title }}
       </h2>
-      </a>
-      <p class="text-gray-600 mb-8">Helpful tools, exercises, and prompts on building MORE! Momentum · Ownership · Resilience · Empowerment. Curated and edited by Diana Morgan.</p>
-      {% if blog_posts %}
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {% for post in blog_posts %}
-            <div class="bg-white rounded-md mb-6 md:mb-0 shadow-sm overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-              <a href="{{ post.get_absolute_url }}" class="block">
-                <div class="h-48 overflow-hidden">
-                  {% if post.image %}
-                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-full object-cover">
-                  {% elif post.external_image_url %}
-                    <img src="{{ post.external_image_url }}" alt="{{ post.title }}" class="w-full h-full object-cover">
-                  {% elif post.youtube_url %}
-                    {% with post.youtube_url|youtube_id as video_id %}
-                      <img src="https://img.youtube.com/vi/{{ video_id }}/maxresdefault.jpg"
-                          alt="{{ post.title }}"
-                          class="w-full h-full object-cover"
-                          onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ video_id }}/hqdefault.jpg';">
-                    {% endwith %}
-                  {% endif %}
-                </div>
-                <div class="p-4">
-                  <h3 class="text-lg font-bold text-gray-900 mb-2">{{ post.title }}</h3>
-                  <p class="text-md text-gray-700 mb-3">{{ post.content|striptags|truncatewords:25 }}</p>
-                  <span class="text-teal-700 hover:text-teal-700 text-sm font-medium">Read more →</span>
-                </div>
-              </a>
-            </div>
-          {% endfor %}
-        </div>
-      {% else %}
-        <p class="text-center text-gray-500">No posts available yet.</p>
-      {% endif %}
-    </div>
+    </a>
+
+    <p class="text-[--color-font-main] mb-8 max-w-3xl mx-auto leading-relaxed">
+      {{ homepage_settings.blog_section_intro |safe }}
+    </p>
+
+    {% if blog_posts %}
+      <div class="grid grid-cols-1 md:grid-cols-3 mt-8 gap-8">
+        {% for post in blog_posts %}
+          <div class="border border-[color:var(--color-brand-accent)] rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <a href="{{ post.get_absolute_url }}" class="block group">
+              
+              <!-- Thumbnail -->
+              <div class="h-48 overflow-hidden">
+                {% if post.image %}
+                  <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                {% elif post.external_image_url %}
+                  <img src="{{ post.external_image_url }}" alt="{{ post.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                {% elif post.youtube_url %}
+                  {% with post.youtube_url|youtube_id as video_id %}
+                    <img src="https://img.youtube.com/vi/{{ video_id }}/maxresdefault.jpg"
+                      alt="{{ post.title }}"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ video_id }}/hqdefault.jpg';">
+                  {% endwith %}
+                {% endif %}
+              </div>
+
+              <!-- Post Content -->
+              <div class="p-6 text-left bg-white">
+                <h3 class="text-xl font-semibold  mb-3">
+                  {{ post.title }}
+                </h3>
+                <p class=" mb-4 text-base leading-relaxed">
+                  {{ post.content|safe|truncatewords:25 }}
+                </p>
+                <span class="block mt-4 text-[color:var(--color-brand-primary)] font-medium uppercase text-sm tracking-wide">
+                  Continue Reading →
+                </span>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+        {% endif %}
+  </div>
+</section>
+

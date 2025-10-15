@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 /* === NEWS DETAIL PAGE MEDIA === */
 .newsformat .hero-media {
   max-width: 900px;

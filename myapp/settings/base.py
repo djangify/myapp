@@ -54,6 +54,7 @@ TEMPLATES = [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
+                "core.context_processors.homepage_settings",
                 "django.contrib.messages.context_processors.messages",
             ],
         },
