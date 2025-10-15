@@ -24,7 +24,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("core.urls", namespace="core")),
     path("news/", include("news.urls")),
-    # path("contact/", include("contact.urls")),
     path("accounts/", include("accounts.urls")),
     path("shop/", include("shop.urls")),
     path(
