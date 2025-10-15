@@ -23,7 +23,6 @@ INSTALLED_APPS = [
     "django.contrib.redirects",
     "django.contrib.sitemaps",
     "tinymce",
-    "contact",
     "core",
     "news",
     "accounts",
