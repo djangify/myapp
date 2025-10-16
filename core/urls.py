@@ -13,6 +13,11 @@ urlpatterns = [
         name="digital_marketing_specialist",
     ),
     path(
+        "create-mini-ecommerce",
+        TemplateView.as_view(template_name="core/create-mini-ecommerce.html"),
+        name="mini-ecommerce",
+    ),
+    path(
         "tech-va/",
         TemplateView.as_view(template_name="core/tech-va.html"),
         name="tech_va",
