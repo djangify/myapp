@@ -42,7 +42,7 @@
   <link rel="icon" type="image/ico" href="{% static 'images/favicon.ico' %}">
 
   <!-- Page Title -->
-  <title>{% block title %}Mini eCommerce Shops & Digital Systems | Djangify{% endblock %}</title>
+  <title>{% block title %}Mini eCommerce Shops & Digital Systems | {{ request.site.name }}{% endblock %}</title>
 
   {% block extra_meta %}{% endblock %}
   <!-- Website JSON-LD Schema -->

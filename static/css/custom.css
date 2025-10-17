@@ -229,3 +229,24 @@ padding-left: 1rem;
 .shop-category:hover {
   background: var(--color-brand-light-contrast);
 }
+
+/* ===========================
+   Flash Message Colours (works in Tailwind v4)
+=========================== */
+.alert-success {
+  background-color: var(--color-badge-mint);
+  color: var(--color-brand-primary-contrast);
+  border-left: 4px solid var(--color-brand-primary);
+}
+
+.alert-error {
+  background-color: var(--color-badge-red-light);
+  color: var(--color-badge-red-text);
+  border-left: 4px solid var(--color-badge-red-text);
+}
+
+.alert-info {
+  background-color: var(--color-badge-yellow);
+  color: var(--color-brand-dark-contrast);
+  border-left: 4px solid var(--color-brand-secondary);
+}
