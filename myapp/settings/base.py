@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     "news",
     "accounts",
     "shop",
+    "infopages",
     "widget_tweaks",
 ]
 

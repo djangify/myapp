@@ -1,51 +1,70 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Create Your Mini Ecommerce Shop — Djangify{% endblock %}
+{% block title %}Create Your Mini Ecommerce Site — Djangify{% endblock %}
 
 {% block content %}
-<main id="main-content" class="bg-[color:var(--color-brand-light)] text-[color:var(--color-font-main)]">
+<main id="main-content" class=" text-[color:var(--color-font-main)]">
 
   <!-- ================= HERO SECTION ================= -->
   <section aria-labelledby="hero-title" class="w-full bg-[color:var(--color-brand-primary)] text-[color:var(--color-brand-light)] py-20 px-6 text-center">
     <div class="max-w-4xl mx-auto space-y-6">
-      <h1 id="hero-title" class="text-4xl font-bold leading-tight">Create Your Mini Ecommerce Shop — £250–£495 One-Time</h1>
-      <p class="text-lg">Build a professional digital download store that is AI-search-ready, mobile-responsive, and ready to grow.</p>
+      <h1 id="hero-title" class="text-4xl font-bold leading-tight">Create Your Mini Ecommerce Site </h1>
+      <p class="text-lg">I will build a professional digital download eCommerce site for you that is ready to grow with your business.</p>
     </div>
   </section>
-
-  <!-- ================= INTRODUCTION ================= -->
-  <section aria-labelledby="intro-title" class="max-w-5xl mx-auto py-16 px-6 space-y-6">
+  <div class="pageformat">
+    <!-- ================= INTRODUCTION ================= -->
+  <section aria-labelledby="intro-title" class="max-w-5xl mx-auto py-8 px-6 space-y-6">
     <h2 id="intro-title" class="text-3xl font-semibold text-[color:var(--color-brand-primary)]">Introduction</h2>
-    <p>Djangify helps creators and entrepreneurs build AI-search-ready ecommerce shops and digital systems using Django — simple, practical, and ready to grow.</p>
-    <p>If you are ready to sell your digital products online — guides, workbooks, or templates — this setup gives you everything you need. You will have a secure digital shop with Stripe checkout, a clean product dashboard, and hosting included for twelve months.</p>
+    <p>Djangify helps creators and entrepreneurs build  ecommerce sites and AI-search-ready digital systems that are simple, practical, and ready to grow.</p>
+    <p>
+      Djangify is both a live working ecommerce site and <strong>a full example of what you will receive when you order a Mini Digital Ecommerce Site.</strong> Every page, product, and feature you see here has been built using the same setup that I deliver to clients.  </p>
+    <p>If you are ready to sell your digital products online — guides, workbooks, or templates — this setup gives you everything you need. You will have a secure digital site with Stripe checkout, a clean product dashboard, and hosting included for six months.</p>
   </section>
 
   
-
-  <!-- ================= WHAT’S INCLUDED ================= -->
-  <section aria-labelledby="included-title" class="bg-[color:var(--color-bg-contrast)] py-16 px-6">
-    <div class="max-w-5xl mx-auto">
-      <h2 id="included-title" class="text-3xl font-semibold text-[color:var(--color-brand-primary)] mb-8">What’s Included</h2>
-      <ol class="space-y-6 list-decimal list-inside">
+  <!-- ================= SITE FEATURES ================= -->
+  <div class="responsive-grid">
+    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
+      <h2 id="site-features-title" class="text-xl font-semibold text-indigo-700 mb-3">Site Features</h2>
+      <ul class="space-y-6 list-decimal list-inside">
         <li><strong>Content Management System (CMS)</strong><br>Manage your products, pages, and images easily through a secure Django admin area.</li>
+        <li><strong>Homepage Layout</strong><br>Includes Call-to-Action Box, Latest Products, Featured Products, and optional 'Contact Us' Form.</li>
+        <li><strong>Digital Product Dashboard</strong><br>Customers receive login access to download their purchases at any time. Area to include free PDF downloads to encourage registration (optional)</li>
         <li><strong>Mobile-Responsive Website</strong><br>Built with Tailwind CSS for optimal display on desktops, tablets, and phones.</li>
-        <li><strong>Digital Product Dashboard</strong><br>Customers receive login access to download their purchases at any time.</li>
+        
         <li><strong>Newsletter Subscription Form</strong><br>Capture leads directly from your homepage and grow your email list.</li>
+      </ul>
+    </div>
+
+    <!-- How I Work -->
+    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
+      <h2 id="how-it-works-title" class="text-xl font-semibold text-indigo-700 mb-3">How It Works</h2>
+      <ul class="space-y-6 list-decimal list-inside">
+        
         <li><strong>Stripe Payment Integration</strong><br>Secure, tested checkout flow for digital downloads.</li>
         <li><strong>Ecommerce Shop (1–6 Products)</strong><br>Setup and upload of up to six digital products with full descriptions and images.</li>
-        <li><strong>Homepage Layout</strong><br>Includes Call-to-Action Box, Latest Products, Featured Products, and optional Contact Form.</li>
+        
         <li><strong>AI Search Schema + JSON-LD</strong><br>Built-in structured data for AI search readiness and SEO visibility.</li>
         <li><strong>Social + SEO Setup</strong><br>Includes Open Graph tags, sitemap, and robots.txt for indexing control.</li>
-        <li><strong>Hosting + Brand Colours</strong><br>Twelve months secure hosting (£9 per month thereafter). Brand colours applied site-wide.</li>
-      </ol>
+        <li><strong>Hosting + Brand Colours</strong><br>SIX MONTHS of secure hosting is included (£9 per month thereafter) - although you are free to transfer the site to your own hosting at any time. Brand colours applied site-wide.</li>
+      </ul>
     </div>
-  </section>
+  </div>
 
-  <!-- ================= OUTCOME ================= -->
-  <section aria-labelledby="outcome-title" class="max-w-5xl mx-auto py-16 px-6 space-y-6">
-    <h2 id="outcome-title" class="text-3xl font-semibold text-[color:var(--color-brand-primary)]">Outcome</h2>
-    <ul class="list-disc list-inside space-y-2">
+  
+  <!-- ================= OUTCOME WITH IMAGE ================= -->
+  <div class="responsive-grid">
+    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
+      <img src="{% static 'images/full-stack-software-developer-certificate.png' %}" 
+           alt="Full-stack software developer certificate" 
+           class="w-full h-auto rounded-xl object-cover shadow-md" loading="lazy">
+    </div>
+    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
+       <h2 id="outcome-title" class="text-xl font-semibold text-indigo-700 mb-3">Outcome</h2>
+      <ul class="space-y-6 list-decimal list-inside">
+     <ul class="list-disc list-inside space-y-2">
       <li>Accept secure Stripe payments</li>
       <li>Deliver digital files automatically</li>
       <li>Look professional across all devices</li>
@@ -53,12 +72,13 @@
       <li>Run an AI-search-ready system from day one</li>
     </ul>
     <p>Everything is tested, configured, and ready to use immediately.</p>
-  </section>
-
+    </div>
+  </div>
+  
   <!-- ================= HOW THIS HELPS ================= -->
-  <section aria-labelledby="helps-title" class="bg-[color:var(--color-bg-contrast)] py-16 px-6">
-    <div class="max-w-5xl mx-auto">
-      <h2 id="helps-title" class="text-3xl font-semibold text-[color:var(--color-brand-primary)] mb-6">How This Helps Your Business</h2>
+  <div class="responsive-grid">
+    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
+     <h2 id="helps-title" class="text-xl font-semibold text-indigo-700 mb-3">How This Helps Your Business</h2>
       <ul class="list-disc list-inside space-y-2">
         <li>Launch your first digital shop without hiring a development team.</li>
         <li>Sell PDFs, guides, or digital resources instantly.</li>
@@ -67,91 +87,117 @@
         <li>Expand later by adding products or a blog.</li>
       </ul>
     </div>
-  </section>
-
-  <!-- ================= WHO IT’S FOR ================= -->
-  <section aria-labelledby="audience-title" class="max-w-5xl mx-auto py-16 px-6 space-y-4">
-    <h2 id="audience-title" class="text-3xl font-semibold text-[color:var(--color-brand-primary)]">Who It’s For</h2>
-    <ul class="list-disc list-inside space-y-2">
-      <li>Creators and entrepreneurs selling digital downloads</li>
-      <li>Coaches and consultants offering templates or guides</li>
-      <li>Small businesses ready to add instant digital sales</li>
-      <li>Anyone wanting a low-maintenance, AI-ready system</li>
-    </ul>
-  </section>
-
-  <!-- ================= OPTIONAL EXTRAS ================= -->
-  <section aria-labelledby="extras-title" class="bg-[color:var(--color-bg-contrast)] py-16 px-6">
-    <div class="max-w-5xl mx-auto space-y-4">
-      <h2 id="extras-title" class="text-3xl font-semibold text-[color:var(--color-brand-primary)]">Optional Extras</h2>
-      <ul class="list-disc list-inside space-y-2">
-        <li><strong>Add a Blog — £95</strong><br>Includes categories, featured images, and SEO schema.</li>
-        <li><strong>Extra Products — £25 each</strong><br>For additional digital products beyond the included six.</li>
-      </ul>
+    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
+      <img src="{% static 'images/digital_marketing_certificate.jpg' %}" 
+           alt="Digital marketing specialist certificate" 
+           class="w-full h-auto rounded-xl object-cover shadow-md" loading="lazy">
     </div>
-  </section>
+  </div>
 
-  <!-- ================= HOW IT WORKS ================= -->
-  <section aria-labelledby="process-title" class="max-w-5xl mx-auto py-16 px-6 space-y-6">
-    <h2 id="process-title" class="text-3xl font-semibold text-[color:var(--color-brand-primary)]">How It Works</h2>
+
+  
+  <!-- ================= HOW THIS WORKS ================= -->
+  <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
+    <h2 id="process-title" class="text-xl font-semibold text-indigo-700 mb-3">How It Works</h2>
     <ol class="list-decimal list-inside space-y-3">
       <li><strong>Purchase and Download the Project Questionnaire</strong><br>After purchase, download the PDF and complete your details.</li>
       <li><strong>Return Within 72 Hours</strong><br>Send back your questionnaire and product files.</li>
       <li><strong>Build and Testing (3–5 Days)</strong><br>Your store is configured, styled, and fully tested.</li>
       <li><strong>Handover</strong><br>Receive admin logins and a short management guide.</li>
     </ol>
-  </section>
-
-  <!-- ================= WHY CHOOSE DJANGIFY ================= -->
-  <section aria-labelledby="why-title" class="bg-[color:var(--color-bg-contrast)] py-16 px-6">
-    <div class="max-w-5xl mx-auto space-y-4">
-      <h2 id="why-title" class="text-3xl font-semibold text-[color:var(--color-brand-primary)]">Why Choose Djangify</h2>
-      <ul class="list-disc list-inside space-y-2">
-        <li>Built with Django — fast, secure, and scalable</li>
-        <li>Plain English, no jargon</li>
-        <li>One-time setup, no ongoing retainers</li>
-        <li>Selective projects — every system tested before handover</li>
-      </ul>
-    </div>
-  </section>
-
+  </div>
   <!-- ================= FAQ SECTION ================= -->
   <section aria-labelledby="faq-title" class="max-w-5xl mx-auto py-16 px-6">
     <h2 id="faq-title" class="text-3xl font-semibold text-[color:var(--color-brand-primary)] mb-8">Frequently Asked Questions</h2>
     <div class="space-y-6">
       <details class="border-b border-gray-300 pb-4">
         <summary class="font-semibold cursor-pointer">What makes this ecommerce shop AI-search-ready?</summary>
-        <p class="mt-2 text-[color:var(--color-font-main)]">Each product page includes structured JSON-LD schema and meta data that help Google and AI search systems understand your content. This improves visibility in AI-powered search results.</p>
+        <p class="mt-2 text-[color:var(--color-font-main)]">Each product page includes structured JSON-LD schema and meta data that help Google and AI search systems understand your content. This is important for modern-day SEO because it improves visibility in AI-powered search results.</p>
       </details>
       <details class="border-b border-gray-300 pb-4">
         <summary class="font-semibold cursor-pointer">Can I manage my own products after launch?</summary>
-        <p class="mt-2">Yes. You will receive admin access to upload new files, change prices, and edit content without coding.</p>
+        <p class="mt-2">Yes. Once complete this eCommerce site belongs to you. I will provide you with admin access and you can upload new files, change prices, and edit content without coding.</p>
       </details>
       <details class="border-b border-gray-300 pb-4">
         <summary class="font-semibold cursor-pointer">Do I need to provide hosting?</summary>
-        <p class="mt-2">No. Hosting is included for the first twelve months. Continue at £9 per month or migrate later if preferred.</p>
+        <p class="mt-2">No. Hosting is included for the first six months. You can then continue with me at £9 per month or migrate your site to your own hosting provider if preferred. You are free to migrate at any time of course.</p>
       </details>
       <details class="border-b border-gray-300 pb-4">
         <summary class="font-semibold cursor-pointer">How long does setup take?</summary>
-        <p class="mt-2">Once you return your completed questionnaire, your store will be ready within three to five working days.</p>
+        <p class="mt-2">Once you return your completed questionnaire with all your product information and images, your store will be ready within three to five working days.</p>
+      </details>
+      <details class="border-b border-gray-300 pb-4">
+        <summary class="font-semibold cursor-pointer">Who is this for?</summary>
+        <p class="mt-2"><ul class="list-disc list-inside space-y-2">
+      <li>Creators and entrepreneurs selling digital downloads</li>
+      <li>Coaches and consultants offering templates or guides</li>
+      <li>Small businesses ready to add instant digital sales</li>
+      <li>Anyone wanting a low-maintenance, AI-ready system</li>
+    </ul></p>
       </details>
       <details>
         <summary class="font-semibold cursor-pointer">Can I add a blog later?</summary>
-        <p class="mt-2">Yes. You can add a blog at any time for £95, matching your store design with full SEO schema included.</p>
+        <p class="mt-2">Yes. You can add a blog at any time. This is an optional extra, get in touch for current prices. The blog will match your store design with full SEO schema included.</p>
       </details>
     </div>
   </section>
+  <!-- =================  DJANGIFY RECOMMENDS ================= -->
+  <section aria-labelledby="why-title" class="bg-[color:var(--color-bg-contrast)] py-16 px-6">
+    <div class="max-w-5xl mx-auto space-y-4">
+      <h2 id="why-title" class="text-3xl font-semibold text-[color:var(--color-brand-primary)]">Djangify Recommends</h2>
+     <p>If you are looking for a complete funnel system where you can offer courses/membership sites as well as products, Djangify recommends <strong>Systeme.io.</strong> If you want to sell physical products in the UK we recommend <strong>ShopWired.</strong>
+      <p class="mt-2 text-sm"><i>Affiliate Disclosure: Some links on this site are affiliate links, which means I may receive a small commission if you make a purchase — at no extra cost to you. Only tools and services that are used and/or trusted are recommended.</p></i>
+    </div>
+    
+  <!-- Tools I Recommend -->
+  <div class="responsive-grid">
+    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
+      <h2 class="text-xl font-semibold text-indigo-700 mb-3">Why Systeme.io</h2>
+      <p class="text-gray-700 leading-relaxed">
+        <a href="https://systeme.io/?sa=sa02490211147f583955a3eb1c4b3f55247280cb2b" 
+           class="link-underline" target="_blank" rel="noopener noreferrer" 
+           aria-label="Systeme.io (opens in a new window)">
+           Systeme.io</a> is a brilliant go-to all-in-one platform. It brings funnels, websites, email, 
+        automation, and memberships together in one place. That means fewer tools, lower 
+        costs, and less hassle. <strong>Visit 
+        <a href="https://systeme.io/?sa=sa02490211147f583955a3eb1c4b3f55247280cb2b" 
+           class="link-underline" target="_blank" rel="noopener noreferrer" 
+           aria-label="Systeme.io (opens in a new window)">
+           Systeme.io Site</a></strong>
+      </p>
+    </div>
+    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
+      <h2 class="text-xl font-semibold text-indigo-700 mb-3">Why ShopWired</h2>
+      <p class="text-gray-700 leading-relaxed">
+        <a href="https://www.shopwired.co.uk/?affiliate=djangify" 
+           class="link-underline" target="_blank" rel="noopener noreferrer" 
+           aria-label="ShopWired (opens in a new window)">
+           ShopWired</a> is the best UK alternative to Shopify for selling physical products. It handles VAT properly, has 
+        excellent support, and is built with UK businesses in mind. I recommend it to clients 
+        who want to sell physical products online. <strong> <a href="https://www.shopwired.co.uk/?affiliate=djangify" 
+           class="link-underline" target="_blank" rel="noopener noreferrer" 
+           aria-label="ShopWired (opens in a new window)">
+           Visit ShopWired Site</a> </strong>
+      </p>
+    </div>
+  </div>
+  </section>
+
+</div>
+  
 
   <!-- ================= FINAL CTA ================= -->
   <section aria-labelledby="cta-title" class="w-full bg-[color:var(--color-brand-primary)] text-[color:var(--color-brand-light)] py-20 px-6 text-center">
     <div class="max-w-3xl mx-auto space-y-6">
       <h2 id="cta-title" class="text-3xl font-semibold">Get Your Mini Ecommerce Shop Today</h2>
       <p class="text-lg">Stop over-complicating your digital setup. Get a professional ecommerce shop built on Django — fast, secure, and AI-search-ready.</p>
-      <a href="{% url 'shop:product_detail' slug='mini-digital-ecommerce-store' %}"
-         class="inline-block bg-[color:var(--color-brand-secondary)] hover:bg-[color:var(--color-brand-secondary-contrast)] text-[color:var(--color-font-contrast)] font-semibold py-3 px-8 rounded-lg transition-colors duration-200"
+      <a href="{% url 'shop:product_detail' slug='mini-digital-ecommerce-site' %}"
+         class="inline-block bg-[color:var(--color-brand-secondary)] hover:bg-[color:var(--color-brand-secondary-contrast)] text-[color:var(--color-font-contrast)] font-semibold py-4 px-8 rounded-lg transition-colors duration-200"
          aria-label="Get your Mini Ecommerce Shop now">Get Your Mini Ecommerce Shop</a>
     </div>
   </section>
 
 </main>
+
+
 {% endblock %}

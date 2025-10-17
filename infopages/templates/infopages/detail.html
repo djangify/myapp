@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ page.title }} - {{ request.site.name }}{% endblock %}
+
+{% block extra_meta %}
+{# --- Dynamic JSON-LD Schema for Policies & Documentation --- #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  {% if page.page_type == "policy" %}
+    "@type": "{% if 'privacy' in page.title|lower %}PrivacyPolicy{% elif 'terms' in page.title|lower %}TermsOfService{% elif 'cookie' in page.title|lower %}WebPage{% else %}WebPage{% endif %}",
+  {% elif page.page_type == "doc" %}
+    "@type": "TechArticle",
+  {% else %}
+    "@type": "WebPage",
+  {% endif %}
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ request.build_absolute_uri }}"
+  },
+  "headline": "{{ page.title|escapejs }}",
+  "dateModified": "{{ page.last_updated|date:'Y-m-d' }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ request.site.name }}",
+    "url": "{{ request.scheme }}://{{ request.get_host }}/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/djangify-logo.png' %}"
+    }
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<main id="main-content" role="main" class="w-full" aria-labelledby="page-heading">
+  <article id="info-page-{{ page.slug }}"
+           class="pageformat"
+           itemscope
+           itemtype="https://schema.org/Article">
+    <header>
+      <h1 id="page-heading"
+          itemprop="headline"
+          class="text-4xl font-bold text-[color:var(--color-font-main)] mb-6">
+        {{ page.title }}
+      </h1>
+      <p class="text-sm text-[color:var(--color-font-main)]/70 mb-8" itemprop="dateModified">
+        Last updated: {{ page.last_updated|date:"F Y" }}
+      </p>
+    </header>
+
+    <div id="page-content" class="prose" itemprop="articleBody">
+      {{ page.content|safe }}
+    </div>
+
+    <footer class="mt-12 border-t border-[color:var(--color-brand-accent)] pt-6">
+      <nav aria-label="Back to section">
+        {% if page.page_type == "policy" %}
+          <a href="{% url 'infopages:policy_index' %}"
+             class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-primary)] underline transition-colors">
+            Back to Policies
+          </a>
+        {% elif page.page_type == "doc" %}
+          <a href="{% url 'infopages:docs_index' %}"
+             class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-primary)] underline transition-colors">
+            Back to Documentation
+          </a>
+        {% endif %}
+      </nav>
+    </footer>
+  </article>
+</main>
+{% endblock %}
