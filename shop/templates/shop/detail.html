@@ -105,7 +105,7 @@
             id="main-product-image"
             src="{{ product.get_image_url|default:'/static/images/placeholder.webp' }}"
             alt="product detail for {{ product.title }}"
-            class="block h-auto w-full max-w-md object-contain mx-auto transition duration-300"
+            class="block w-full h-full object-contain  transition duration-300" width="600" height="800" loading="lazy"
           />
         </div>
 
