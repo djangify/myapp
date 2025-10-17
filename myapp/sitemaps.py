@@ -3,29 +3,43 @@ from django.urls import reverse
 from news.models import Post, Category as NewsCategory
 from shop.models import Product, Category
 from django.utils import timezone
+from infopages.models import InfoPage
 
 
 class StaticViewSitemap(Sitemap):
-    priority = 0.5
-    changefreq = "weekly"
+    priority = 0.6
+    changefreq = "monthly"
 
     def items(self):
         return [
             "core:home",
-            "core:privacy_policy",
-            "core:cookie_policy",
-            "core:terms_conditions",
-            "news:list",
+            "core:mini-ecommerce",
+            "core:tech_va",
+            "core:pdf_creation",
+            "core:support",
+            "infopages:policy_index",
+            "infopages:docs_index",
         ]
 
     def location(self, item):
-        url = reverse(item)
-        # Remove any protocol prefix if it exists to prevent duplication
-        if url.startswith("http"):
-            url_parts = url.split("://", 1)
-            if len(url_parts) > 1:
-                return url_parts[1]
-        return url
+        return reverse(item)
+
+
+class InfoPageSitemap(Sitemap):
+    priority = 0.8
+    changefreq = "monthly"
+
+    def items(self):
+        # Include only published policies and docs
+        return InfoPage.objects.filter(published=True)
+
+    def lastmod(self, obj):
+        return obj.last_updated
+
+    def location(self, obj):
+        if obj.page_type == "policy":
+            return reverse("infopages:policy_detail", kwargs={"slug": obj.slug})
+        return reverse("infopages:doc_detail", kwargs={"slug": obj.slug})
 
 
 class NewsSitemap(Sitemap):
@@ -81,6 +95,7 @@ class ShopCategorySitemap(Sitemap):
 # Combine all sitemaps in a dictionary
 sitemaps = {
     "static": StaticViewSitemap,
+    "info_pages": InfoPageSitemap,
     "news": NewsSitemap,
     "news_category": NewsCategorySitemap,
     "shop": ShopSitemap,

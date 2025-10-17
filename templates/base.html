@@ -42,7 +42,7 @@
   <link rel="icon" type="image/ico" href="{% static 'images/favicon.ico' %}">
 
   <!-- Page Title -->
-  <title>{% block title %}Mini eCommerce Shops & Digital Systems | {{ request.site.name }}{% endblock %}</title>
+  <title>{% block title %}Mini eCommerce Shops & Digital Systems | {{ site.name }}{% endblock %}</title>
 
   {% block extra_meta %}{% endblock %}
   <!-- Website JSON-LD Schema -->
@@ -103,7 +103,7 @@
     <h2 id="cookie-title" class="sr-only">Cookie Consent</h2>
     <p class="mb-4">
       We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
-      <a href="{% url 'core:cookie_policy' %}"
+      <a href="{% url 'infopages:policy_detail' slug='cookie-policy' %}"
          class="text-[color:var(--color-brand-secondary)] hover:text-[color:var(--color-brand-dark)] underline ml-1">
         Cookie Policy
       </a>

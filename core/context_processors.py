@@ -1,5 +1,6 @@
 # core/context_processors.py
 from .models import HomePageSettings
+from django.contrib.sites.models import Site
 
 
 def homepage_settings(request):
@@ -19,3 +20,11 @@ def homepage_settings(request):
         "homepage_settings": settings,
         "social_links": social_links,  # ✅ available everywhere
     }
+
+
+def current_site(request):
+    try:
+        site = Site.objects.get_current()
+    except Site.DoesNotExist:
+        site = None
+    return {"site": site}

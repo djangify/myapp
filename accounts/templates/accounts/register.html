@@ -64,7 +64,7 @@
       <div class="flex items-start gap-2">
         <input type="checkbox" id="terms" required class="mt-1 accent-[color:var(--color-brand-primary)]">
         <label for="terms" class="text-sm text-[color:var(--color-font-main)]">I accept the
-          <a href="/policy/terms-conditions" class="text-[color:var(--color-brand-secondary)] hover:text-[color:var(--color-brand-accent)] font-medium">Terms and Conditions</a>
+          <a href="{% url 'infopages:policy_detail' slug='terms-and-conditions' %}" class="text-[color:var(--color-brand-secondary)] hover:text-[color:var(--color-brand-accent)] font-medium">Terms and Conditions</a>
         </label>
       </div>
 

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}{{ page.title }} - {{ request.site.name }}{% endblock %}
+{% block title %}{{ page.title }} - {{ site.name }}{% endblock %}
 
 {% block extra_meta %}
 {# --- Dynamic JSON-LD Schema for Policies & Documentation --- #}
@@ -23,7 +23,7 @@
   "dateModified": "{{ page.last_updated|date:'Y-m-d' }}",
   "publisher": {
     "@type": "Organization",
-    "name": "{{ request.site.name }}",
+    "name": "{{ site.name }}",
     "url": "{{ request.scheme }}://{{ request.get_host }}/",
     "logo": {
       "@type": "ImageObject",
@@ -40,6 +40,8 @@
            class="pageformat"
            itemscope
            itemtype="https://schema.org/Article">
+
+    <!-- Header -->
     <header>
       <h1 id="page-heading"
           itemprop="headline"
@@ -51,10 +53,30 @@
       </p>
     </header>
 
+    <!-- Auto-generated Table of Contents -->
+    {% if toc %}
+    <nav aria-label="Table of contents"
+         class="mb-8 bg-[color:var(--color-brand-light)] border border-[color:var(--color-brand-accent)] p-6 rounded-lg shadow-sm">
+      <h2 class="text-xl font-semibold mb-4 text-[color:var(--color-brand-primary)]">Contents</h2>
+      <ol class="space-y-2">
+        {% for item in toc %}
+          <li>
+            <a href="#{{ item.id }}"
+               class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-primary)] transition-colors">
+              {{ item.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ol>
+    </nav>
+    {% endif %}
+
+    <!-- Page Content -->
     <div id="page-content" class="prose" itemprop="articleBody">
-      {{ page.content|safe }}
+      {{ rendered_content|safe }}
     </div>
 
+    <!-- Footer Navigation -->
     <footer class="mt-12 border-t border-[color:var(--color-brand-accent)] pt-6">
       <nav aria-label="Back to section">
         {% if page.page_type == "policy" %}

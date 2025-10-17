@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Policies - {{ request.site.name }}{% endblock %}
+{% block title %}Policies - {{ site.name }}{% endblock %}
 
 {% block content %}
 <section id="policies-section" class="w-full" aria-labelledby="policies-heading">
@@ -10,7 +10,7 @@
       Policies
     </h1>
     <p class="text-[color:var(--color-font-main)]/80 mb-10 max-w-5xl">
-      These policies explain how {{ request.site.name }} operates, protects user information, and maintains a safe experience for everyone.
+      These policies explain how {{ site.name }} operates, protects user information, and maintains a safe experience for everyone.
     </p>
 
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3" role="list">

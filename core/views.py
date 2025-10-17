@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, Http404
-from django.urls import reverse
 from django.utils import timezone
 from django.views.decorators.http import require_GET
 from django.contrib import messages
@@ -98,67 +97,6 @@ def home(request):
     return render(request, "core/home.html", context)
 
 
-def policies_index_view(request):
-    """View function for the policies index page."""
-    breadcrumbs = [{"title": "Policies", "url": None}]
-    template_name = "core/policy/policies_index.html"
-    return render(request, template_name, {"breadcrumbs": breadcrumbs})
-
-
-def privacy_view(request):
-    breadcrumbs = [
-        {"title": "Policies", "url": reverse("core:policies_index")},
-        {"title": "Privacy Policy", "url": None},
-    ]
-    template_name = "core/policy/privacy.html"
-    return render(request, template_name, {"breadcrumbs": breadcrumbs})
-
-
-def cookie_view(request):
-    breadcrumbs = [
-        {"title": "Policies", "url": reverse("core:policies_index")},
-        {"title": "Cookie Policy", "url": None},
-    ]
-    template_name = "core/policy/cookies.html"
-    return render(request, template_name, {"breadcrumbs": breadcrumbs})
-
-
-def affiliate_view(request):
-    breadcrumbs = [
-        {"title": "Affiliate", "url": reverse("core:policies_index")},
-        {"title": "Affiliate Policy", "url": None},
-    ]
-    template_name = "core/policy/affiliate.html"
-    return render(request, template_name, {"breadcrumbs": breadcrumbs})
-
-
-def terms_view(request):
-    breadcrumbs = [
-        {"title": "Policies", "url": reverse("core:policies_index")},
-        {"title": "Terms & Conditions", "url": None},
-    ]
-    template_name = "core/policy/terms.html"
-    return render(request, template_name, {"breadcrumbs": breadcrumbs})
-
-
-def ai_writing_view(request):
-    breadcrumbs = [
-        {"title": "Policies", "url": reverse("core:policies_index")},
-        {"title": "AI Writing Policy", "url": None},
-    ]
-    template_name = "core/policy/ai-writing-policy.html"
-    return render(request, template_name, {"breadcrumbs": breadcrumbs})
-
-
-def support_view(request):
-    breadcrumbs = [
-        {"title": "Policies", "url": reverse("core:policies_index")},
-        {"title": "Support Policy", "url": None},
-    ]
-    template_name = "core/policy/support.html"
-    return render(request, template_name, {"breadcrumbs": breadcrumbs})
-
-
 def handler500(request):
     return render(request, "error/500.html", status=500)
 
@@ -192,11 +130,24 @@ def handler404(request, exception):
     return render(request, "error/404.html", context, status=404)
 
 
+def support(request):
+    form = SupportForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        form.save()  # saves to DB + emails + auto-ack
+        messages.success(request, "Thank you! Your message has been sent.")
+        return redirect("core:support")
+    return render(request, "core/support.html", {"form": form})
+
+
 @require_GET
 def robots_txt(request):
+    """
+    Robots.txt for production — blocks sensitive areas and legacy URLs,
+    allows public pages, and points to the current sitemap.
+    """
     lines = [
         "User-agent: *",
-        # Block sensitive areas
+        # Block sensitive or user areas
         "Disallow: /accounts/",
         "Disallow: /admin/",
         "Disallow: /login/",
@@ -205,17 +156,11 @@ def robots_txt(request):
         "Disallow: /dashboard/",
         "Disallow: /cart/",
         "Disallow: /checkout/",
-        # Allow everything else
-        "Disallow: /portfolio/",
+        # Block old/legacy paths
+        "Disallow: /policy/",
+        "Allow: /policies/",
+        "Allow: /docs/",
+        # Sitemap location
         f"Sitemap: {request.build_absolute_uri('/sitemap.xml')}",
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
-
-
-def support(request):
-    form = SupportForm(request.POST or None)
-    if request.method == "POST" and form.is_valid():
-        form.save()  # saves to DB + emails + auto-ack
-        messages.success(request, "Thank you! Your message has been sent.")
-        return redirect("core:support")
-    return render(request, "core/support.html", {"form": form})

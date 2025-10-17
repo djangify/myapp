@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Documentation - {{ request.site.name }}{% endblock %}
+{% block title %}Documentation - {{ site.name }}{% endblock %}
 
 {% block content %}
 <section id="documentation-section" class="w-full" aria-labelledby="documentation-heading">
@@ -10,7 +10,7 @@
       Documentation
     </h1>
     <p class="text-[color:var(--color-font-main)]/80 mb-10 max-w-5xl">
-      Browse technical documentation and guides for {{ request.site.name }}. Each guide explains how to configure, use, and maintain your site.
+      Browse technical documentation and guides for {{ site.name }}. Each guide explains how to configure, use, and maintain your site.
     </p>
 
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3" role="list">
